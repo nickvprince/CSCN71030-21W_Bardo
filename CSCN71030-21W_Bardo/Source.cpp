@@ -19,9 +19,9 @@ int main() {
         printOptions();
         choice = getc(stdin);
         switch (choice) {
-        case 0:
+        case 48: // = int 0
             break;
-        case 1:
+        case 49: // = int 1
             exit(0);
         default:
             cout << choice;
