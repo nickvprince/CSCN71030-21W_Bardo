@@ -2,7 +2,5 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/.vs/Bardo5/v16
-/.vs/CSCN71030-21W_Bardo/v16/Browse.VC.opendb
-/.vs/CSCN71030-21W_Bardo/v16/Browse.VC.db-shm
+/.vs/
 *.db-wal
