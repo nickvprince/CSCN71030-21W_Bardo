@@ -23,6 +23,9 @@ int main() {
             break;
         case 49: // = int 1
             exit(0);
+        case 50:
+            // test
+            break;
         default:
             cout << choice;
             break;
