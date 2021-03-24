@@ -27,7 +27,7 @@
 #include <stdbool.h>
 
 using namespace std;
-typedef enum ErrorType { CHK_FAIL, EXISTS_FAIL, COMMON_FAIL, GOOD }ErrorType; // used to identify file errors
+
 
 #ifdef _WIN32
 bool VerifyHiddenFile(char* name); // verifies the file is hidden to the user

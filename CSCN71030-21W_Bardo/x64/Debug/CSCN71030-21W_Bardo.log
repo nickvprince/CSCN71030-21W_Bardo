@@ -1,2 +1,8 @@
 ﻿  ErrorChecking.cpp
+  FileIO.cpp
+C:\Users\User\source\repos\Bardo5\CSCN71030-21W_Bardo\FileIO.cpp(165,1): warning C4005: 'CRAFTING_MATERIAL_START': macro redefinition
+C:\Users\User\source\repos\Bardo5\CSCN71030-21W_Bardo\FileIO.cpp(61): message : see previous definition of 'CRAFTING_MATERIAL_START'
+  Objects.h
+  Source.cpp
+  Generating Code...
   CSCN71030-21W_Bardo.vcxproj -> C:\Users\User\source\repos\Bardo5\x64\Debug\CSCN71030-21W_Bardo.exe
