@@ -18,14 +18,14 @@
     <ClCompile Include="Source.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Objects.h">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="ErrorChecking.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="FileIO.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Objects.h">
+      <Filter>Header Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
