@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Crafting.cpp" />
     <ClCompile Include="Objects.h" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>

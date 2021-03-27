@@ -13,12 +13,21 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\Craft Item">
+      <UniqueIdentifier>{d22337b4-de3c-44a5-af3f-550c386a425a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\See Inventory">
+      <UniqueIdentifier>{c729d528-3962-490b-8ff7-c029eb11fb67}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Objects.h">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Crafting.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
