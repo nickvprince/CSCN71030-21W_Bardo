@@ -139,9 +139,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="By_Search.cpp" />
+    <ClCompile Include="By_Type.cpp" />
     <ClCompile Include="Crafting.cpp" />
+    <ClCompile Include="craftItem.cpp" />
+    <ClCompile Include="item.cpp" />
     <ClCompile Include="Objects.h" />
+    <ClCompile Include="seeInventory.cpp" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="StarterMenu.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Crafting.h" />
+    <ClInclude Include="craftItem.h" />
+    <ClInclude Include="inventory.h" />
+    <ClInclude Include="item.h" />
+    <ClInclude Include="seeInventory.h" />
+    <ClInclude Include="StarterMenu.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
