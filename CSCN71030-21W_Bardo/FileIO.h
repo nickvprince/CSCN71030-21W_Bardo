@@ -34,3 +34,4 @@ bool createDirectory(char* name); // creates a directory
 bool removeDirectory(char* name); // removes a directory
 ErrorType isFileGood(char* name); // Checks if a file is good using file exists and checksum
 
+// test
