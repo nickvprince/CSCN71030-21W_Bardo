@@ -1,4 +1,7 @@
-﻿  Objects.h
+﻿  Dealer.cpp
+  Shop.cpp
   Source.cpp
+  WeaponsDealer.cpp
   Generating Code...
-  CSCN71030-21W_Bardo.vcxproj -> C:\Users\User\source\repos\Bardo5\x64\Debug\CSCN71030-21W_Bardo.exe
+C:\Users\nickv\Desktop\New folder\CSCN71030-21W_Bardo\Shop.cpp(50): warning C4715: 'shopMain': not all control paths return a value
+  CSCN71030-21W_Bardo.vcxproj -> C:\Users\nickv\Desktop\New folder\x64\Debug\CSCN71030-21W_Bardo.exe

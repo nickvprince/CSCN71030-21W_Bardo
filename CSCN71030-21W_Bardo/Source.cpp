@@ -22,22 +22,44 @@
 
 
 
-using namespace std;
 #include <stdlib.h>
 #include <iostream>
 #include <stdio.h>
 #include <fstream>
 #include <string>
-#include "Objects.h"
-void printOptions();
+
+#include "Shop.h"
+
+using namespace std;
+
+void printOptions() {
+	cout << "Welcome to the Bardo home town please choose an option\n";
+	cout << "-------------------------------------------------------\n";
+	cout << endl;
+	cout << "1. Battle\n";
+	cout << "2. Shop\n";
+	cout << "3. Forge\n";
+	cout << "4. Skill tree\n";
+	cout << "5. Exit\n";
+	cout << "Enter : ";
+}
+
 int main() {
+
+	weapon sword;
+	sword.value = 100;
+
+	defence shield;
+	shield.value = 250;
+
+	potion hPot;
+	hPot.value = 450;
+
+	user character;
+	character.gold = 2500;
+	
+
     int choice = 0;
-
-    // INIT ->
-
-
-    // <- INIT
-   
 
     while (true) {
         system("cls");
@@ -47,6 +69,7 @@ int main() {
         case 49: // 1
             break;
         case 50: // 2
+			shopMain(&character);
             break;
         case 51: // 3
             break;
@@ -61,15 +84,4 @@ int main() {
         }
         while ((getchar()) != '\n');
     }
-}
-void printOptions() {
-    cout << "Welcome to the Bardo home town please choose an option\n";
-    cout << "-------------------------------------------------------\n";
-    cout << endl;
-    cout << "1. Battle\n";
-    cout << "2. Shop\n";
-    cout << "3. Forge\n";
-    cout << "4. Skill tree\n";
-    cout << "5. Exit\n";
-    cout << "Enter : ";
 }

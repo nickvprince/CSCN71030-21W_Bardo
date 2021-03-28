@@ -51,6 +51,8 @@ public:
 
 class potion {
 public:
+	string name;
+	int value = 0;
 };
 
 class spell {

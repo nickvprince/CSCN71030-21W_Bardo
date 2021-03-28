@@ -21,5 +21,25 @@
     <ClCompile Include="Objects.h">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Shop.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WeaponsDealer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Dealer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Shop.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Dealer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WeaponsDealer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
