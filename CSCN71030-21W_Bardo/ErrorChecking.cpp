@@ -186,7 +186,6 @@ bool VerifyAllFiles() { // runs CheckSum on all files to verify they are the pro
 
 	return failed;
 }
-
 #ifdef _WIN32 // only run in windows OS
 #include <Windows.h>
 void HideFile(string name, int system_Yes_No) { // hides a file from the user so its only visible to the system
