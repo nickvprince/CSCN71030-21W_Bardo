@@ -32,6 +32,7 @@ int lengthOfFile(char* name); // length of file in bytes
 bool createFile(char* name); // creates an empty file
 bool createDirectory(char* name); // creates a directory
 bool removeDirectory(char* name); // removes a directory
+void ErrorLog(string message,string Severity); // outputs error message to file
 ErrorType isFileGood(char* name); // Checks if a file is good using file exists and checksum
 
 // test

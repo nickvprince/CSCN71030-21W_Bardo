@@ -3,7 +3,7 @@
 #include <fstream>
 #include <iostream>
 #include <direct.h>
-
+#include <ctime>
 
 
 using namespace std;
@@ -39,6 +39,9 @@ using namespace std;
 #define INVENTORYDIR "./GameFiles/Inventory/"
 #define ENEMYDIR "./GameFiles/Enemy/"
 #define WORD_SIZE 15
+string ERRORLOG ="./GameFiles/ErrorLog.txt";
+
+
 
 // used in file verification
 int checkSums[] = { 3, 5, 5, 0,0,1,1,2 };
@@ -340,7 +343,16 @@ potion get_Potion(string name) { // retrieves a potion from a file and returns i
 	return Potion;
 }
 
-
+void ErrorLog(string message, string Severity) {
+	
+		fstream f;
+		time_t now = time(0);
+		tm* time = gmtime(&now);
+		f.open(ERRORLOG, ios::app);
+		f << message <<  " | Severity : "<< Severity <<" 2021" << "/" << time->tm_mon << "/" << time->tm_mday << " " << (time->tm_hour) - 4 << ":" << time->tm_min << ":" << time->tm_sec << "EST" << endl;
+		f.close();
+	
+}
 
 spell get_Spell(string name) { // retrieves a spell from a file and returns it as an object
 	spell Spell;

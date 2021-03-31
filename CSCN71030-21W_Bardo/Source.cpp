@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 /*
 * File Name : Main.cpp
 *
@@ -41,13 +42,15 @@ int main() {
     // <- INIT
 
 
+    ErrorLog("crash1","High");
+    ErrorLog("crash2", "low");
     while (true) {
         system("cls");
         printOptions();
         choice = getc(stdin);
         switch (choice) {
         case 49: // 1
-           void menu(entity& Player);
+           bool menu(entity& Player);
             break;
         case 50: // 2
            bool shopMain(entity& Player);
@@ -59,6 +62,7 @@ int main() {
              bool skillMain(entity& Player);
             break;
         case 53: // 5
+         
             exit(0);
             break;
         default:
