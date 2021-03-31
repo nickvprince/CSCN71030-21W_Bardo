@@ -68,17 +68,18 @@ public:
 	spell Spells[MAX_ITEMS];
 	int ItemCount[MAX_ITEMS]; // number of items carried lines up with each array item at index
 };
+class entity {
 
-class user {
+};
+class user:public entity {
 public:
 	string name;
 	string race;
 	weapon Weapon;
 	defence Shield;
-	inventory InBattleINV;
-	inventory outBattleINV;
+	inventory INV;
 	ErrorType failed = GOOD;
-	int defence = 0, health = 0, level = 1, exp = 0, gold = 0;
+	int defence = 0,damage=0, health = 0, level = 1, currentexp = 0,lvlexp=600, gold = 0;
 
 };
 

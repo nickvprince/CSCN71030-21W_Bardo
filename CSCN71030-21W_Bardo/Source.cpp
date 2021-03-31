@@ -14,10 +14,10 @@
 *
 *
 * History :
-*	ReadMe File Created, IronSword weapon test file created
+*    ReadMe File Created, IronSword weapon test file created
 *
 * Revision Ideas -
-*	FileIO as threads to do the workload while other operations are running
+*    FileIO as threads to do the workload while other operations are running
 */
 
 
@@ -36,10 +36,10 @@ int main() {
     int choice = 0;
 
     // INIT ->
-
+    user* Player = get_User("User");
 
     // <- INIT
-   
+
 
     while (true) {
         system("cls");
@@ -47,12 +47,16 @@ int main() {
         choice = getc(stdin);
         switch (choice) {
         case 49: // 1
+           void menu(entity& Player);
             break;
         case 50: // 2
+           bool shopMain(entity& Player);
             break;
         case 51: // 3
+            bool crafting(entity& player);
             break;
         case 52: // 4
+             bool skillMain(entity& Player);
             break;
         case 53: // 5
             exit(0);
