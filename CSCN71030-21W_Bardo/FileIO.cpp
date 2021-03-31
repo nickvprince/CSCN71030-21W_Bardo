@@ -577,7 +577,7 @@ user* get_User(string name) { // retrieves user information from a file and retu
 }
 void remove_Enemy(enemy* orc) { // removes an enemy and its inventory from heap
 
-	delete(orc->Droppables);
+	delete(orc->INV);
 
 	delete(orc);
 
@@ -589,7 +589,7 @@ enemy* get_Enemy(string name) { // retrieves an enemy from a file and returns it
 	enemy* Enemy = new enemy;
 	fstream enemy_File;
 	Enemy->race = name;
-	Enemy->Droppables = get_Inventory(name);
+	Enemy->INV = get_Inventory(name);
 	name = name + ".BENF";
 	char WORD[WORD_SIZE];
 	int caseNumber = 0;
@@ -645,7 +645,7 @@ enemy* get_Enemy(string name) { // retrieves an enemy from a file and returns it
 					Enemy->level = atoi(WORD);
 					break;
 				case 5:
-					Enemy->exp = atoi(WORD);
+					Enemy->currentexp = atoi(WORD);
 					break;
 				case 6:
 					Enemy->Shield = get_Defence(WORD);

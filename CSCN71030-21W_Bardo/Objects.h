@@ -69,29 +69,26 @@ public:
 	int ItemCount[MAX_ITEMS]; // number of items carried lines up with each array item at index
 };
 class entity {
-
+public:
+	string name;
+	string race;
+	weapon Weapon;
+	defence Shield;
+	inventory* INV; // items an enemy could drop in combat
+	ErrorType failed = GOOD;
+	int defence = 0, health = 0, level = 1, damage = 0, currentexp = 0, gold = 0;
 };
 class user:public entity {
 public:
-	string name;
-	string race;
-	weapon Weapon;
-	defence Shield;
-	inventory INV;
-	ErrorType failed = GOOD;
-	int defence = 0,damage=0, health = 0, level = 1, currentexp = 0,lvlexp=600, gold = 0;
+
+	int lvlexp = 600;
 
 };
 
-class enemy {
+class enemy:public entity {
 public:
-	string name;
-	string race;
-	weapon Weapon;
-	defence Shield;
-	inventory* Droppables; // items an enemy could drop in combat
-	ErrorType failed = GOOD;
-	int defence = 0, health = 0, level = 0, exp = 0;
+
+	
 	int GetDefence() {
 
 	}

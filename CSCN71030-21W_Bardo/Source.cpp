@@ -41,9 +41,7 @@ int main() {
 
     // <- INIT
 
-
-    ErrorLog("crash1","High");
-    ErrorLog("crash2", "low");
+    
     while (true) {
         system("cls");
         printOptions();
