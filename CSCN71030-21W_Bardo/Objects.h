@@ -88,22 +88,5 @@ public:
 class enemy:public entity {
 public:
 
-	
-	int GetDefence() {
-
-	}
-	int GetArmour() {
-
-	}
-	int GetHealth() {
-
-	}
-	int GetLevel() {
-
-	}
-	int GetWeapon() {
-
-	}
-
 };
 

@@ -32,6 +32,28 @@ using namespace std;
 #include "Psecurity.h"
 
 
+
+// temp
+bool skillMain(entity& Player);
+bool crafting(entity& player);
+bool shopMain(entity& Player);
+bool menu(entity& Player);
+bool menu(entity& Player) {
+    return false;
+}
+bool shopMain(entity& Player) {
+    return false;
+}
+bool crafting(entity& player) {
+    return false;
+}
+bool skillMain(entity& Player) {
+    return false;
+}
+// temp
+
+
+
 void printOptions();
 int main() {
     int choice = 0;
@@ -48,16 +70,24 @@ int main() {
         choice = getc(stdin);
         switch (choice) {
         case 49: // 1
-           bool menu(entity& Player);
+            if (menu(*Player) == false) {
+                ErrorLog("Battle failed", "Severe");
+            }
             break;
         case 50: // 2
-           bool shopMain(entity& Player);
+            if (shopMain(*Player) == false) {
+                ErrorLog("Shop failed", "Severe");
+            }
             break;
         case 51: // 3
-            bool crafting(entity& player);
+            if (crafting(*Player) == false) {
+                ErrorLog("Crafting failed", "Severe");
+            }
             break;
         case 52: // 4
-             bool skillMain(entity& Player);
+            if (skillMain(*Player) == false) {
+                ErrorLog("Skill Main failed", "Severe");
+            }
             break;
         case 53: // 5
          

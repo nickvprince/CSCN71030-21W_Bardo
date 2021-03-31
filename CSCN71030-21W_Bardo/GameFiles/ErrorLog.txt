@@ -1,0 +1,5 @@
+Battle failed | Severity : Severe 2021/2/31 17:1:17EST
+Shop failed | Severity : Severe 2021/2/31 17:1:19EST
+Crafting failed | Severity : Severe 2021/2/31 17:1:20EST
+Skill Main failed | Severity : Severe 2021/2/31 17:1:21EST
+Battle failed | Severity : Severe 2021/2/31 17:1:22EST
