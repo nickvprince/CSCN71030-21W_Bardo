@@ -79,9 +79,11 @@ weapon get_Weapon(string name) { // retrieves a weapon from a file and returns i
 	switch (isFileGood((char*)name.c_str())) { // is the file passed usable
 	case CHK_FAIL: // weapon fail state set to checksum fail
 		Weapon.failed = CHK_FAIL;
+		ErrorLog("Checksum Fail", "Low");
 		break;
 	case EXISTS_FAIL: // weapon fail state set to file not exists fail
 		Weapon.failed = EXISTS_FAIL;
+		ErrorLog("Exists Fail", "Average");
 		break;
 	case GOOD: // file is usable start reading
 
@@ -163,6 +165,7 @@ weapon get_Weapon(string name) { // retrieves a weapon from a file and returns i
 		break;
 	default: // all other fails
 		Weapon.failed = COMMON_FAIL;
+		ErrorLog("Unkown Fail", "High");
 		break;
 	}
 
@@ -188,9 +191,11 @@ defence get_Defence(string name) { // retrieves a defence item from a file and r
 	switch (isFileGood((char*)name.c_str())) { // is the file passed usable
 	case CHK_FAIL: // weapon fail state set to checksum fail
 		Defence.failed = CHK_FAIL;
+		ErrorLog("Checksum Fail", "Low");
 		break;
 	case EXISTS_FAIL: // weapon fail state set to file not exists fail
 		Defence.failed = EXISTS_FAIL;
+		ErrorLog("Exists Fail", "Average");
 		break;
 	case GOOD: // file is usable start reading
 
@@ -259,6 +264,7 @@ defence get_Defence(string name) { // retrieves a defence item from a file and r
 		break;
 	default: // all other fails
 		Defence.failed = COMMON_FAIL;
+		ErrorLog("Unknown Fail", "High");
 		break;
 	}
 
@@ -289,9 +295,11 @@ item get_Item(string name) {
 	switch (isFileGood((char*)name.c_str())) { // is the file passed usable
 	case CHK_FAIL: // weapon fail state set to checksum fail
 		ITEM.failed = CHK_FAIL;
+		ErrorLog("Checksum Fail", "Low");
 		break;
 	case EXISTS_FAIL: // weapon fail state set to file not exists fail
 		ITEM.failed = EXISTS_FAIL;
+		ErrorLog("File Exists Fail", "Average");
 		break;
 	case GOOD: // file is usable start reading
 
@@ -339,6 +347,7 @@ item get_Item(string name) {
 		break;
 	default: // all other fails
 		ITEM.failed = COMMON_FAIL;
+		ErrorLog("Unknown Fail", "High");
 		break;
 	}
 	// Reset variables without resetting item count
@@ -400,9 +409,11 @@ inventory* get_Inventory(string name) { // retrieves inventory from a file and r
 	switch (isFileGood((char*)name.c_str())) { // is the file passed usable
 	case CHK_FAIL: // weapon fail state set to checksum fail
 		Inventory->failed = CHK_FAIL;
+		ErrorLog("Checksum Fail", "Low");
 		break;
 	case EXISTS_FAIL: // weapon fail state set to file not exists fail
 		Inventory->failed = EXISTS_FAIL;
+		ErrorLog("Exists Fail", "Average");
 		break;
 	case GOOD: // file is usable start reading
 
@@ -477,8 +488,12 @@ inventory* get_Inventory(string name) { // retrieves inventory from a file and r
 					}
 					else {
 						Inventory->failed = COMMON_FAIL;
+						ErrorLog("Unknown Inventory type", "Average");
 						return Inventory;
 					}
+					break;
+				default:
+					ErrorLog("Default Triggered in Inventory", "High");
 					break;
 				}
 				retrieval++;
@@ -497,6 +512,7 @@ inventory* get_Inventory(string name) { // retrieves inventory from a file and r
 		break;
 	default: // all other fails
 		Inventory->failed = COMMON_FAIL;
+		ErrorLog("Unknown Fail", "High");
 		break;
 	}
 	file.close();
@@ -524,9 +540,11 @@ user* get_User(string name) { // retrieves user information from a file and retu
 	switch (isFileGood((char*)name.c_str())) { // is the file passed usable
 	case CHK_FAIL: // weapon fail state set to checksum fail
 		User->failed = CHK_FAIL;
+		ErrorLog("Checksum Fail", "Low");
 		break;
 	case EXISTS_FAIL: // weapon fail state set to file not exists fail
 		User->failed = EXISTS_FAIL;
+		ErrorLog("File Exists Fail", "Average");
 		break;
 	case GOOD: // file is usable start reading
 
@@ -579,6 +597,7 @@ user* get_User(string name) { // retrieves user information from a file and retu
 					User->Shield = get_Defence(WORD);
 					break;
 				default:
+					ErrorLog("Default triggered in get User", "High");
 					break;
 				}
 				for (int emptyCounter = 0; emptyCounter < WORD_SIZE; emptyCounter++) {
@@ -606,11 +625,8 @@ user* get_User(string name) { // retrieves user information from a file and retu
 
 
 void cleanObj(entity* obj) { // removes an enemy and its inventory from heap
-
 	delete(obj->INV);
-
 	delete(obj);
-
 }
 // data structures were getting so large that enemies and inventory need to be kept on the heap.
 // Stress testing 50 enemies created made a memory increase from 920KB to 4MB then deleting them reduced memory back to 1.5MB
@@ -632,9 +648,11 @@ enemy* get_Enemy(string name) { // retrieves an enemy from a file and returns it
 	switch (isFileGood((char*)name.c_str())) { // is the file passed usable
 	case CHK_FAIL: // weapon fail state set to checksum fail
 		Enemy->failed = CHK_FAIL;
+		ErrorLog("Checksum Fail", "Low");
 		break;
 	case EXISTS_FAIL: // weapon fail state set to file not exists fail
 		Enemy->failed = EXISTS_FAIL;
+		ErrorLog("File Exists Fail", "Average");
 		break;
 	case GOOD: // file is usable start reading
 
@@ -684,6 +702,7 @@ enemy* get_Enemy(string name) { // retrieves an enemy from a file and returns it
 					Enemy->Shield = get_Defence(WORD);
 					break;
 				default:
+					ErrorLog("Default Triggered in get enemy", "High");
 					break;
 				}
 				for (int emptyCounter = 0; emptyCounter < WORD_SIZE; emptyCounter++) {
@@ -699,6 +718,7 @@ enemy* get_Enemy(string name) { // retrieves an enemy from a file and returns it
 		break;
 	default: // all other fails
 		Enemy->failed = COMMON_FAIL;
+		ErrorLog("Unknown Fail", "High");
 		break;
 	}
 	for (int emptyCounter = 0; emptyCounter < WORD_SIZE; emptyCounter++) {
@@ -722,6 +742,7 @@ bool FileExists(string name) { // checks if file exists
 	f.close();
 	if (!file) {
 		return false;
+		ErrorLog("File Doesnt Exist (FileExists)", "Unknown");
 	}
 	else {
 		return true;
@@ -761,6 +782,7 @@ bool createDirectory(char* name) { // create directory
 		return true;
 		break;
 	default:
+		ErrorLog("Could not create Directory", "Unknown");
 		return false;
 	}
 }
@@ -774,6 +796,7 @@ ErrorType isFileGood(char* name) { // does checking if file is good
 			string path = exemptDirectories[exempt] + name;
 			if (FileExists(path) == 0) {
 				return EXISTS_FAIL; // directory not exist fail
+				ErrorLog("Exist Fail Triggered in isFileGood", "Unknown");
 			}
 			else {
 				return GOOD;
@@ -791,9 +814,11 @@ ErrorType isFileGood(char* name) { // does checking if file is good
 			string path = Directories[counter] + name;
 			if (FileExists(path) == 0) {
 				return EXISTS_FAIL; // directory not exist fail
+				ErrorLog("Exists Fail triggered in isFileGood", "Unknown");
 			}
 			else if (Checksum(path, checkSums[counter]) == 0) { // if checksum is wrong from that identified at the top of the file
 				return CHK_FAIL;
+				ErrorLog("Checksum Fail triggerd in isFileGood", "Unknown");
 			}
 
 		}
@@ -817,6 +842,7 @@ bool removeDirectory(char* name) { // remove directory
 		return true;
 		break;
 	default:
+		ErrorLog("Remove Directory Fail", "Unknown");
 		return false;
 	}
 }

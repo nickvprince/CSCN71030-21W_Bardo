@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <fstream>
 #include "ErrorChecking.h"
@@ -29,6 +30,7 @@ using namespace std;
 
 #ifdef _WIN32
 #include <Windows.h>
+
 bool VerifyHiddenFile(char* name) { // verifies the file is hidden to the user
 	DWORD word = GetFileAttributesA((LPCSTR)name);
 	switch (word & FILE_ATTRIBUTE_HIDDEN) {
@@ -39,6 +41,7 @@ bool VerifyHiddenFile(char* name) { // verifies the file is hidden to the user
 		return true;
 		break;
 	default:
+		
 		return false;
 	}
 }

@@ -144,6 +144,7 @@ public:
 		fstream File2;
 
 		if (!FileExists(name)) {
+			ErrorLog("File Does not exist in encrypt", "Average");
 			return;
 		}
 		string name2 = name + "2";

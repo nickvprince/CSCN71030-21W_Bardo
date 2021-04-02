@@ -38,6 +38,7 @@ bool skillMain(entity& Player);
 bool crafting(entity& player);
 bool shopMain(entity& Player);
 bool menu(entity& Player);
+
 bool menu(entity& Player) {
     return false;
 }
