@@ -25,7 +25,7 @@ inventory* get_Inventory(string name); // retrieves inventory from a file and re
 user* get_User(string name); // retrieves user information from a file and returns it as an object
 enemy* get_Enemy(string name); // retrieves an enemy from a file and returns it as an object
 item get_Item(string name); // retrieves an item such as leather or copper
-void remove_Enemy(enemy* orc); // removes an enemy from heap
+void cleanObj(entity* obj); // removes an enemy or user from heap
 void write_User_To_File(string name); // writes the user object to a file
 bool FileExists(string name); // checks if file exists
 int lengthOfFile(char* name); // length of file in bytes

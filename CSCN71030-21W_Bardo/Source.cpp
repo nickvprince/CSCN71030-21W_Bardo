@@ -56,14 +56,12 @@ bool skillMain(entity& Player) {
 
 void printOptions();
 int main() {
-    int choice = 0;
-
+    
     // INIT ->
     user* Player = get_User("User");
-
+    int choice = 0;
     // <- INIT
 
-    
     while (true) {
         system("cls");
         printOptions();
@@ -71,7 +69,7 @@ int main() {
         switch (choice) {
         case 49: // 1
             if (menu(*Player) == false) {
-                ErrorLog("Battle failed", "Severe");
+                ErrorLog("Check sum error", "Low spfgnwepifgn");
             }
             break;
         case 50: // 2
@@ -90,7 +88,6 @@ int main() {
             }
             break;
         case 53: // 5
-         
             exit(0);
             break;
         default:

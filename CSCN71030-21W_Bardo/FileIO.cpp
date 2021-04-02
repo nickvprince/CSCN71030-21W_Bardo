@@ -38,6 +38,7 @@ using namespace std;
 #define ITEMDIR "./GameFiles/Items/"
 #define INVENTORYDIR "./GameFiles/Inventory/"
 #define ENEMYDIR "./GameFiles/Enemy/"
+#define USERDIR "./GameFiles/UserFiles/"
 #define WORD_SIZE 15
 string ERRORLOG ="./GameFiles/ErrorLog.txt";
 
@@ -71,7 +72,8 @@ weapon get_Weapon(string name) { // retrieves a weapon from a file and returns i
 	int counter = 0;
 	weapon Weapon;
 	Weapon.name = name;
-
+	int SWITCH = 0;
+	int barterPosition = 0;
 	name = name + ".BWPF";
 
 	switch (isFileGood((char*)name.c_str())) { // is the file passed usable
@@ -115,15 +117,29 @@ weapon get_Weapon(string name) { // retrieves a weapon from a file and returns i
 					break;
 
 				case (CRAFTING_MATERIAL_START + 1):
-
-					Weapon.craftingItemsNum[itemPosition] = atoi(word);
-					itemPosition++;
-					retrieval = CRAFTING_MATERIAL_START - 1;
+					if (SWITCH == 0) {
+						Weapon.craftingItemsNum[itemPosition] = atoi(word);
+						itemPosition++;
+						SWITCH++;
+					}
+					else {
+						Weapon.BarterItemsNum[barterPosition] = atoi(word);
+						retrieval = CRAFTING_MATERIAL_START - 1;
+						SWITCH--;
+					}
 					break;
 				default:
 
 					if (atoi(word) == 0) {
-						Weapon.craftingItems[itemPosition] = word;
+						if (SWITCH == 0) {
+							Weapon.craftingItems[itemPosition] = word;
+							retrieval--;
+							SWITCH++;
+						}
+						else {
+							Weapon.BarterItems[barterPosition] = word;
+							SWITCH--;
+						}
 					}
 					else {
 						Weapon.failed = COMMON_FAIL;
@@ -153,7 +169,7 @@ weapon get_Weapon(string name) { // retrieves a weapon from a file and returns i
 	file.close();
 	return Weapon;
 } // just takes in name of file not the dir
-
+// been updated for bartering ^
 
 
 defence get_Defence(string name) { // retrieves a defence item from a file and returns it as an object
@@ -249,7 +265,7 @@ defence get_Defence(string name) { // retrieves a defence item from a file and r
 	file.close();
 	return Defence;
 }
-
+// Needs updating for bartering ^
 item get_Item(string name) {
 	int length = 0;
 	char input;
@@ -337,11 +353,14 @@ item get_Item(string name) {
 
 	return ITEM;
 }
-
+// Needs updating for bartering ^
 potion get_Potion(string name) { // retrieves a potion from a file and returns it as an object
 	potion Potion;
 	return Potion;
 }
+// Needs updating for bartering ^
+
+
 
 void ErrorLog(string message, string Severity) {
 	
@@ -487,18 +506,21 @@ inventory* get_Inventory(string name) { // retrieves inventory from a file and r
 
 
 user* get_User(string name) { // retrieves user information from a file and returns it as an object
+	
 	user* User = new user;
-	int length = 0;
-	char input;
-	int itemPosition = 0;
-	int retrieval = 0;
-	char word[WORD_SIZE];
-	fstream file;
-	int counter = 0;
-
-
+	
+	fstream userFile;
+	User->race = name;
+	User->INV = get_Inventory(name);
 	name = name + ".BSURF";
+	char WORD[WORD_SIZE];
+	int caseNumber = 0;
+	char readInput = '\0';
+	int NEWCOUNTER = 0;
 
+	for (int emptyCounter = 0; emptyCounter < WORD_SIZE; emptyCounter++) {
+		WORD[emptyCounter] = '\0';
+	}
 	switch (isFileGood((char*)name.c_str())) { // is the file passed usable
 	case CHK_FAIL: // weapon fail state set to checksum fail
 		User->failed = CHK_FAIL;
@@ -509,59 +531,62 @@ user* get_User(string name) { // retrieves user information from a file and retu
 	case GOOD: // file is usable start reading
 
 		User->failed = GOOD;
-		file.open(WEAPONDIR + (string)name, ios::in);
-		if (file.is_open()) {
+		userFile.open(USERDIR + (string)name, ios::in);
+		if (userFile.is_open()) {
 
 
-			file >> input;
+			userFile >> readInput;
 
 			// get info ->
-			while (input != 38) {
+			while (readInput != 38) {
 
-				while (input != 59 && input != 38) {
-					word[counter] = input;
-					counter++;
+				while (readInput != 59 && readInput != 38) {
+					WORD[NEWCOUNTER] = readInput;
+					NEWCOUNTER++;
 
-					file >> input;
+					userFile >> readInput;
 				}
 				// debugging and seeing each word >
-				//cout << "WORD : " << word << "\n";
+				//cout << "WORD : " << WORD << "\n";
 
-				switch (retrieval) {
+				switch (caseNumber) {
 				case 0:
+					User->name = WORD;
 					break;
 				case 1:
+					User->Weapon = get_Weapon(WORD);
 					break;
 				case 2:
+					//defence health level exp
+					User->defence = atoi(WORD);
 					break;
 				case 3:
+					User->health = atoi(WORD);
 					break;
 				case 4:
+					User->level = atoi(WORD);
 					break;
 				case 5:
+					User->currentexp = atoi(WORD);
 					break;
 				case 6:
+					User->lvlexp = atoi(WORD);
 					break;
 				case 7:
+					User->gold = atoi(WORD);
 					break;
 				case 8:
+					User->Shield = get_Defence(WORD);
 					break;
-				case 9:
-					break;
-				case 10:
-					break;
-				case 11:
+				default:
 					break;
 				}
-				retrieval++;
-				counter = 0;
-
 				for (int emptyCounter = 0; emptyCounter < WORD_SIZE; emptyCounter++) {
-					word[emptyCounter] = '\0';
+					WORD[emptyCounter] = '\0';
 				}
-
-				file >> input;
-
+				caseNumber++;
+				NEWCOUNTER = 0;
+				userFile >> readInput;
 			}
 			// get info  < -
 
@@ -571,15 +596,20 @@ user* get_User(string name) { // retrieves user information from a file and retu
 		User->failed = COMMON_FAIL;
 		break;
 	}
+	for (int emptyCounter = 0; emptyCounter < WORD_SIZE; emptyCounter++) {
+		WORD[emptyCounter] = '\0';
+	}
+	userFile.close();
 
-	file.close();
 	return User;
 }
-void remove_Enemy(enemy* orc) { // removes an enemy and its inventory from heap
 
-	delete(orc->INV);
 
-	delete(orc);
+void cleanObj(entity* obj) { // removes an enemy and its inventory from heap
+
+	delete(obj->INV);
+
+	delete(obj);
 
 }
 // data structures were getting so large that enemies and inventory need to be kept on the heap.
@@ -648,6 +678,9 @@ enemy* get_Enemy(string name) { // retrieves an enemy from a file and returns it
 					Enemy->currentexp = atoi(WORD);
 					break;
 				case 6:
+					Enemy->gold = atoi(WORD);
+					break;
+				case 7:
 					Enemy->Shield = get_Defence(WORD);
 					break;
 				default:

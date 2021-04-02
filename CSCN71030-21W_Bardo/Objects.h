@@ -27,6 +27,8 @@ class item {
 public:
 	string name;
 	int value = 0;
+	string BarterItems[MAX_MATERIALS];
+	int BarterItemsNum[MAX_MATERIALS];
 	ErrorType failed = GOOD;
 };
 
@@ -35,6 +37,8 @@ public:
 	string name;
 	int damage = 0, value = 0, level = 0;
 	string craftingItems[MAX_MATERIALS]; // name of items required for crafting
+	string BarterItems[MAX_MATERIALS];
+	int BarterItemsNum[MAX_MATERIALS];
 	int craftingItemsNum[MAX_MATERIALS]; // number of those items required
 	ErrorType failed = GOOD;
 
@@ -46,11 +50,15 @@ public:
 	int blockChance = 0, Defence = 0, value = 0, level = 0;
 	string craftingItems[MAX_MATERIALS];
 	int craftingItemsNum[MAX_MATERIALS];
+	string BarterItems[MAX_MATERIALS];
+	int BarterItemsNum[MAX_MATERIALS];
 	ErrorType failed = GOOD;
 };
 
 class potion {
 public:
+	string BarterItems[MAX_MATERIALS];
+	int BarterItemsNum[MAX_MATERIALS];
 };
 
 class spell {
