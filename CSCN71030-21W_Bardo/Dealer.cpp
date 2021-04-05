@@ -4,7 +4,7 @@
 * Programmer: Nicholas Prince
 * Class: Team Based Software Development CSCN71030-21W-SEC1-PROJECT 2
 * Date: March 22, 2021
-* Teacher: Dr. Elliot Coleshill
+* Teacher: Dr. Elliott Coleshill
 * Team: Dominic Pham, Thomas Horvath, Danny Smith, Ali Syed
 *
 * Module: Economy
@@ -35,8 +35,6 @@ void Dealer::printDealerHeader() {
 void Dealer::getOptionChoice(Dealer* dealer, user* character) {
 
 	int choice = 0;
-	inventory* inv = new inventory;
-	inv = &character->outBattleINV;
 
 	do {
 		//system("cls");

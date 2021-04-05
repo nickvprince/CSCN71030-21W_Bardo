@@ -48,6 +48,7 @@ int main() {
 
 	weapon sword;
 	sword.value = 100;
+	sword.name = "sword";
 
 	defence shield;
 	shield.value = 250;
@@ -55,8 +56,22 @@ int main() {
 	potion hPot;
 	hPot.value = 450;
 
-	user character;
-	character.gold = 2500;
+	user* character = new user;
+	character->gold = 2500;
+
+	inventory* inv = new inventory;
+	character->outBattleINV = inv;
+
+	for (int i = 0; i < MAX_ITEMS; i++) {
+		character->outBattleINV->ItemCount[i] = NULL;
+	}
+	
+	character->outBattleINV->ItemCount[0] = 1;
+	character->outBattleINV->Weapons[0] = sword;
+
+
+	
+
 	
 
     int choice = 0;
@@ -69,7 +84,7 @@ int main() {
         case 49: // 1
             break;
         case 50: // 2
-			shopMain(&character);
+			shopMain(character);
             break;
         case 51: // 3
             break;

@@ -4,7 +4,7 @@
 * Programmer: Nicholas Prince
 * Class: Team Based Software Development CSCN71030-21W-SEC1-PROJECT 2
 * Date: March 22, 2021
-* Teacher: Dr. Elliot Coleshill
+* Teacher: Dr. Elliott Coleshill
 * Team: Dominic Pham, Thomas Horvath, Danny Smith, Ali Syed
 *
 * Module: Economy
@@ -33,18 +33,31 @@ int WeaponDealer::getDealerBalance() {
 
 void WeaponDealer::buy(user* user, string w) {
 
+	// Get item by name
+	// do blance stuff
+	// add item to inventory
+
 	weapon sword;
 	sword.value = 100;
+	sword.name = "IronSword";
 
 	user->gold -= sword.value;
 	this->balance += sword.value;
 	
-	user->outBattleINV.Weapons[0] = sword;
+	if (user->outBattleINV->itemsUsed != MAX_ITEMS) {
+		for (int i = 0; i < MAX_ITEMS; i++) {
+			if (user->outBattleINV->ItemCount[i] == NULL) {
+				user->outBattleINV->Weapons[i] = sword;
+				break;
+			}
+		}
+	}
 
 	cout << "Weapon: " << w << endl;
 }
 
 void WeaponDealer::sell(inventory* inv, string weapon) {
+
 
 }
 

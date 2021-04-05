@@ -4,7 +4,7 @@
 * Programmer: Nicholas Prince
 * Class: Team Based Software Development CSCN71030-21W-SEC1-PROJECT 2
 * Date: March 22, 2021
-* Teacher: Dr. Elliot Coleshill
+* Teacher: Dr. Elliott Coleshill
 * Team: Dominic Pham, Thomas Horvath, Danny Smith, Ali Syed
 *
 * Module: Economy
@@ -17,10 +17,11 @@
 #include <iostream>
 #include <stdio.h>
 #include <string>
+#include <stdbool.h>
 
 #include "WeaponsDealer.h"
 
 using namespace std;
 
-int shopMain(user*);
+bool shopMain(user*);
 void printShops();

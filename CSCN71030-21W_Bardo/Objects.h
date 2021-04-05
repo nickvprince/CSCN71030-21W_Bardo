@@ -21,6 +21,7 @@
 #define MAX_ITEMS 20 
 using namespace std;
 #include <string>
+#include <stdlib.h>
 typedef enum ErrorType { CHK_FAIL, EXISTS_FAIL, COMMON_FAIL, GOOD }ErrorType; // used to identify file errors
 class item {
 
@@ -77,8 +78,8 @@ public:
 	string race;
 	weapon Weapon;
 	defence Shield;
-	inventory InBattleINV;
-	inventory outBattleINV;
+	//inventory InBattleINV;
+	inventory* outBattleINV;
 	ErrorType failed = GOOD;
 	int defence = 0, health = 0, level = 1, exp = 0, gold = 0;
 
