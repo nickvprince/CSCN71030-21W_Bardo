@@ -71,15 +71,8 @@ public:
 	ErrorType failed = GOOD;
 
 	int itemsUsed = 0; // how many items in inventory
-	//int weaponsUsed = 0;
-	//int defenceUsed = 0;
-	//int potionsUsed = 0;
 
 	int itemCount[MAX_ITEMS]; // number of items carried lines up with each array item at index
-	//int weaponCount[MAX_ITEMS];
-	//int defenceCount[MAX_ITEMS];
-	//int potionCount[MAX_ITEMS];
-
 	item Items[MAX_ITEMS];
 	weapon Weapons[MAX_ITEMS];
 	defence Shields[MAX_ITEMS];

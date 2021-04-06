@@ -51,6 +51,8 @@ void Dealer::getOptionChoice(Dealer* dealer, user* character) {
 			dealer->sell(character);
 			break;
 		case 3:
+			dealer->printDealerHeader(character);
+			dealer->barter(character);
 			break;
 		case 4:
 			break;
@@ -73,6 +75,9 @@ void checkUserInput() {
 }
 
 void pressAnyButtonToContinue(string str) {
-	cout << str;
+
+	if (str != "") {
+		cout << str;
+	}
 	system("pause >nul");
 }

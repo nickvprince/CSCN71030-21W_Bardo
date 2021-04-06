@@ -57,10 +57,7 @@ int main() {
 	character->inv = inv;
 
 	for (int i = 0; i < MAX_ITEMS; i++) {
-		character->inv->itemCount[i] = NULL;
-		/*character->inv->weaponCount[i] = NULL;
-		character->inv->defenceCount[i] = NULL;
-		character->inv->potionCount[i] = NULL;*/
+		character->inv->itemCount[i] = 0;
 	}
 
 	item wood;
@@ -74,21 +71,17 @@ int main() {
 	character->inv->Items[0] = iron;
 	character->inv->itemCount[0] = 3;
 	character->inv->Items[1] = wood;
-	character->inv->itemCount[1] = 4;
-
-	
-
+	character->inv->itemCount[1] = 1;
 
 	weapon sword;
 	sword.value = 100;
 	sword.name = "sword";
 	//sword.BarterItems[0] = "wood";
 
-	character->inv->itemCount[0] = 1;
-	character->inv->itemsUsed = 1;
+	character->inv->itemCount[2] = 1;
 	character->inv->Weapons[0] = sword;
 
-	character->inv->itemsUsed = 8;
+	character->inv->itemsUsed = 3;
 
 
     int choice = 0;

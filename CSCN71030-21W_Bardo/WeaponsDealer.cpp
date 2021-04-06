@@ -38,7 +38,7 @@ void WeaponDealer::buy(user* user) {
 	// If the user's inventory is full, return.
 	if (user->inv->itemsUsed == MAX_ITEMS) {
 		cout << "You already have " << MAX_ITEMS << " in your inventory, consider selling some items to make space for purchases." << endl;
-		getc(stdin);
+		pressAnyButtonToContinue("");
 		return;
 	}
 
@@ -108,7 +108,7 @@ void WeaponDealer::buy(user* user) {
 	exists = false;
 
 	pressAnyButtonToContinue("Press any key to return to the dealer menu...");
-
+	return;
 }
 
 void WeaponDealer::sell(user* user) {
@@ -171,14 +171,177 @@ void WeaponDealer::sell(user* user) {
 	}
 
 	pressAnyButtonToContinue("Press any key to return to the dealer menu...");
-
+	return;
 }
 
 void WeaponDealer::barter(user* user) {
 	
+	system("cls");
+
+	// If the user's inventory is full, return.
+	if (user->inv->itemsUsed == MAX_ITEMS) {
+		cout << "You already have " << MAX_ITEMS << " in your inventory, consider selling some items to make space for purchases." << endl;
+		pressAnyButtonToContinue("");
+		return;
+	}
+
+	item nullItem;
+	bool validAmountItems[MAX_MATERIALS] = { false };
+	weapon weap;
+	bool exists = false;
+	bool allValid = true;
+
+	string strWeap = getDealerBuyChoice();
+	// weapon weap = getWeapon(strWeap);
+
+	// If the weapon condition fails, errorlog, return.
+	if (weap.failed != GOOD) {
+		//ErrorLog("An error has occured while getting a weapon", "Medium");
+		cout << "An error has occured while getting a weapon" << endl;
+		pressAnyButtonToContinue("Press any key to return to the dealer menu...");
+		return;
+	}
+
+	if (strWeap == "Sword") {
+		weap.value = 125;
+		weap.name = "IronSword";
+
+		weap.BarterItems[0] = "wood";
+		weap.BarterItems[1] = "iron";
+		weap.BarterItems[2] = "";
+
+		weap.BarterItemNum[0] = 1;
+		weap.BarterItemNum[1] = 2;
+		weap.BarterItemNum[2] = 0;
+		
+	} else if (strWeap == "Bow") {
+		weap.value = 225;
+		weap.name = "Bow";
+
+		weap.BarterItems[0] = "wood";
+		weap.BarterItems[1] = "";
+		weap.BarterItems[2] = "iron";
+
+		weap.BarterItemNum[0] = 2;
+		weap.BarterItemNum[1] = NULL;
+		weap.BarterItemNum[2] = 1;
+
+
+	} else if (strWeap == "Axe") {
+		weap.value = 500;
+		weap.name = "Axe";
+
+		weap.BarterItems[0] = "wood";
+		weap.BarterItems[1] = "iron";
+		weap.BarterItems[2] = "";
+
+		weap.BarterItemNum[0] = 3;
+		weap.BarterItemNum[1] = 3;
+		weap.BarterItemNum[2] = 0;
+
+	} else {
+		cout << "A problem has occured" << endl;
+		return;
+	}
+
+	// ----- Check if user has correct amount of items -----
+	for (int i = 0; i < MAX_ITEMS; i++) {
+		for (int j = 0; j < sizeof(weap.BarterItems) / sizeof(string); j++) {
+			if (weap.BarterItems[i] == user->inv->Items[j].name) {
+				// If they have more or equal to the amount || if the item is null (user needs none)
+				if (user->inv->itemCount[i] >= weap.BarterItemNum[j] || weap.BarterItemNum[j] == NULL) {
+					validAmountItems[j] = true;
+				}
+			}
+		}
+	}
+
+	// ----- Check make sure that the user has the correct amount for ALL items (errorCheck) -----
+
+	for (int i = 0; i < MAX_MATERIALS; i++) {
+		if (validAmountItems[i] != true) {
+			allValid = false;
+		}
+	}
+
+	if (allValid == false) {
+		cout << "You are missing items to complete the trade!" << endl << endl;
+		cout << "Your Items: " << endl;
+		for (int i = 0; i < MAX_ITEMS; i++) {
+			if (user->inv->Items[i].name != "") {
+				cout << "Item: " << user->inv->Items[i].name << " | Quantity: " << user->inv->itemCount[i] << endl;
+			}
+		}
+		cout << endl;
+		cout << "Required Items: " << endl;
+		for (int i = 0; i < MAX_MATERIALS; i++) {
+			if (weap.BarterItems[i] != "") {
+				cout << "Item: " << weap.BarterItems[i] << " | Quantity: " << weap.BarterItemNum[i] << endl;
+			}
+		}
+
+		cout << endl;
+
+		pressAnyButtonToContinue("Press any key to return to the dealer menu...");
+		return;
+
+	}
 	
+	// ----- Remove item quanitites -----
+	for (int i = 0; i < MAX_ITEMS; i++) {
+		for (int j = 0; j < sizeof(weap.BarterItems) / sizeof(string); j++) {
+			if (weap.BarterItems[i] == user->inv->Items[j].name && weap.BarterItems[i] != "") {
+				
+				// Take away item count
+				user->inv->itemCount[i] -= weap.BarterItemNum[j];
+				user->inv->itemsUsed -= weap.BarterItemNum[j];
+		
+				// If the item count is 0, make the item null (free the slot).
+				if (user->inv->itemCount[i] < 1) {
+					user->inv->Items[i] = nullItem;
+					break;
+				} 
 
+			}
+		}
+	}
 
+	// Find the next available slot for a weapon and put it there.
+
+	// If the item exists already.
+	for (int i = 0; i < MAX_ITEMS; i++) {
+		if (user->inv->Weapons[i].name == weap.name) {
+			user->inv->itemCount[i]++;
+			user->inv->itemsUsed++;
+			exists = true;
+		}
+	}
+
+	// If the item does not exist already.
+	if (exists == false) {
+		for (int i = 0; i < MAX_ITEMS; i++) {
+			if (user->inv->itemCount[i] == NULL || user->inv->itemCount[i] == 0) {
+				user->inv->Weapons[i] = weap;
+				user->inv->itemCount[i]++;
+				user->inv->itemsUsed++;
+				break;
+			}
+		}
+	}
+
+	cout << "You have successfully bartered the following materials for:" << endl
+		<< "Weapon: " << weap.name << endl;
+
+	for (int i = 0; i < MAX_MATERIALS; i++) {
+		if (weap.BarterItems[i] != "") {
+			cout << "Item: " << weap.BarterItems[i] << " | Quantity: " << weap.BarterItemNum[i] << endl;
+		}
+	} 
+
+	exists = false;
+
+	pressAnyButtonToContinue("Press any key to return to the dealer menu...");
+	return;
 }
 
 string WeaponDealer::getDealerBuyChoice() {
@@ -186,7 +349,7 @@ string WeaponDealer::getDealerBuyChoice() {
 	int itemChoice = 0;
 	string strWeap = "";
 
-	cout << "Select an item to purchase: " << endl;
+	cout << "Select an item to barter/purchase: " << endl;
 
 	/*string weapArray = getListWeapons();
 
