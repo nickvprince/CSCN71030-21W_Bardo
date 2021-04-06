@@ -66,6 +66,8 @@ int main() {
     getc(stdin);
     // INIT ->
     user* Player = get_User("User");
+    Save(Player);
+    getc(stdin);
     int choice = 0;
     // <- INIT
 

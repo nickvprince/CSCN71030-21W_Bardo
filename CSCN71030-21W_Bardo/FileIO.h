@@ -27,7 +27,6 @@ enemy* get_Enemy(string name); // retrieves an enemy from a file and returns it 
 item get_Item(string name); // retrieves an item such as leather or copper
 void cleanObj(entity* obj); // removes an enemy or user from heap
 void cleanObj(list* list);
-void write_User_To_File(string name); // writes the user object to a file
 bool FileExists(string name); // checks if file exists
 int lengthOfFile(char* name); // length of file in bytes
 bool createFile(char* name); // creates an empty file
@@ -35,7 +34,7 @@ bool createDirectory(char* name); // creates a directory
 bool removeDirectory(char* name); // removes a directory
 void ErrorLog(string message,string Severity); // outputs error message to file
 ErrorType isFileGood(char* name); // Checks if a file is good using file exists and checksum
-bool Save(entity* Player);
+bool Save(user* Player);
 list* getListWeapons();
 list* getListDefences();
 list* getListItems();

@@ -734,12 +734,6 @@ enemy* get_Enemy(string name) { // retrieves an enemy from a file and returns it
 }
 
 
-
-void write_User_To_File(string name) { // writes user information to their files
-
-}
-
-
 bool FileExists(string name) { // checks if file exists
 	fstream f;
 	f.open(name, ios::in);
@@ -752,18 +746,7 @@ bool FileExists(string name) { // checks if file exists
 		return true;
 	}
 }
-bool FileExists(string name,string type) { // checks if file exists
-	fstream f;
-	f.open(name, ios::in);
-	f.close();
-	if (!file) {
-		return false;
-		ErrorLog("File Doesnt Exist (FileExists)", "Unknown");
-	}
-	else {
-		return true;
-	}
-}
+
 
 
 int lengthOfFile(char* name) { // length of file in bytes ( used for checksum
@@ -1108,8 +1091,24 @@ list* getListEnemy() {
 	}
 	return names;
 }
-bool Save(entity* Player) {
-
-
-	return true;
+bool Save(user* Player) {
+	fstream file;
+	file.open(USERDIR+(string)"USER.BSURF", ios::out);
+	if (file.is_open()) {
+		file << Player->name << ";" << endl;
+		file << Player->Weapon.name << ";" << endl;
+		file << Player->defence << ";" << endl;
+		file << Player->health << ";" << endl;
+		file << Player->level << ";" << endl;
+		file << Player->currentexp << ";" << endl;
+		file << Player->lvlexp << ";" << endl;
+		file << Player->gold << ";" << endl;
+		file << Player->Shield.name << "&";
+		file.close();
+		return true;
+	}
+	else {
+		ErrorLog("File Did not open to save", "Severe");
+		return false;
+	}
 }
