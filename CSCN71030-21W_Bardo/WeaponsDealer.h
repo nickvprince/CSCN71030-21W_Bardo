@@ -28,8 +28,9 @@ public:
 	void printDealerInfo()override;
 	string getName()override;
 	int getDealerBalance()override;
-	void buy(user*, string)override;
-	void sell(inventory*, string)override;
-	void listDealerItems()override;
+	void buy(user*)override;
+	void sell(user*)override;
+	void barter(user*)override;
+	string getDealerBuyChoice()override;
 	void printDealerOptions()override;
 };

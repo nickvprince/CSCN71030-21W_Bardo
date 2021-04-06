@@ -20,8 +20,6 @@
 *	FileIO as threads to do the workload while other operations are running
 */
 
-
-
 #include <stdlib.h>
 #include <iostream>
 #include <stdio.h>
@@ -46,10 +44,6 @@ void printOptions() {
 
 int main() {
 
-	weapon sword;
-	sword.value = 100;
-	sword.name = "sword";
-
 	defence shield;
 	shield.value = 250;
 
@@ -60,19 +54,46 @@ int main() {
 	character->gold = 2500;
 
 	inventory* inv = new inventory;
-	character->outBattleINV = inv;
+	character->inv = inv;
 
 	for (int i = 0; i < MAX_ITEMS; i++) {
-		character->outBattleINV->ItemCount[i] = NULL;
+		character->inv->itemCount[i] = NULL;
+		/*character->inv->weaponCount[i] = NULL;
+		character->inv->defenceCount[i] = NULL;
+		character->inv->potionCount[i] = NULL;*/
 	}
-	
-	character->outBattleINV->ItemCount[0] = 1;
-	character->outBattleINV->Weapons[0] = sword;
 
+	//item wood;
+	//wood.name = "wood";
+	//wood.value = 10;
 
-	
+	//item iron;
+	//iron.name = "iron";
+	//iron.value = 10;
 
-	
+	//for (int i = 0; i < 3; i++) {
+	//	character->inv->Items[i] = wood;
+	//	character->inv->itemCount[i] = 1;
+	//}
+
+	//for (int i = 3; i < 6; i++) {
+	//	character->inv->Items[i] = iron;
+	//	character->inv->itemCount[i] = 1;
+	//}
+
+	//character->inv->itemsUsed = 6;
+
+	weapon sword;
+	sword.value = 100;
+	sword.name = "sword";
+	//sword.BarterItems[0] = "wood";
+
+	character->inv->itemCount[0] = 1;
+	character->inv->itemsUsed = 1;
+	character->inv->Weapons[0] = sword;
+
+	//character->inv->weaponCount[0] = 1;
+	//character->inv->weaponsUsed = 1;
 
     int choice = 0;
 
@@ -97,6 +118,6 @@ int main() {
             break;
 
         }
-        while ((getchar()) != '\n');
+       // while ((getchar()) != '\n');
     }
 }

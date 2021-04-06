@@ -26,24 +26,29 @@ void Dealer::printDealerOptions() {
 		<< "4. Back" << endl;
 }
 
-void Dealer::printDealerHeader() {
+void Dealer::printDealerHeader(user* character) {
 	cout << endl
-		<< "Dealer Name: " << this->name << " || Dealer Balance: " << this->balance << endl
-		<< "-------------------------------------------------------" << endl << endl;
+		<< "Dealer Name: " << this->name << " || Dealer Balance: " << this->balance << "|| User Balance: " << character->gold << endl
+		<< "-----------------------------------------------------------------" << endl << endl;
 }
 
 void Dealer::getOptionChoice(Dealer* dealer, user* character) {
 
 	int choice = 0;
+	int itemChoice = 0;
+	string strWeap = "";
 
 	do {
 		//system("cls");
 		cin >> choice;
 		switch (choice) {
-		case 1: 
-			dealer->buy(character, "Sword");
+		case 1:
+			dealer->printDealerHeader(character);
+			dealer->buy(character);
 			break;
 		case 2: 
+			dealer->printDealerHeader(character);
+			dealer->sell(character);
 			break;
 		case 3:
 			break;

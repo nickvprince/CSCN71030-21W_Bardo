@@ -31,11 +31,12 @@ public:
 	virtual void printDealerInfo() = 0;
 	virtual string getName() = 0;
 	virtual int getDealerBalance() = 0;
-	virtual void buy(user*, string) = 0;
-	virtual void sell(inventory*, string) = 0;
-	virtual void listDealerItems() = 0;
+	virtual void buy(user*) = 0;
+	virtual void sell(user*) = 0;
+	virtual void barter(user*) = 0;
+	virtual string getDealerBuyChoice() = 0;
 	virtual void printDealerOptions();
-	virtual void printDealerHeader();
+	virtual void printDealerHeader(user*);
 	virtual void getOptionChoice(Dealer*, user*);
 };
  

@@ -35,6 +35,8 @@ class weapon {
 public:
 	string name;
 	int damage = 0, value = 0, level = 0;
+	string BarterItems[MAX_MATERIALS];
+	int BarterItemNum[MAX_MATERIALS];
 	string craftingItems[MAX_MATERIALS]; // name of items required for crafting
 	int craftingItemsNum[MAX_MATERIALS]; // number of those items required
 	ErrorType failed = GOOD;
@@ -45,6 +47,8 @@ class defence {
 public:
 	string name;
 	int blockChance = 0, Defence = 0, value = 0, level = 0;
+	string BarterItems[MAX_MATERIALS];
+	int BarterItemNum[MAX_MATERIALS];
 	string craftingItems[MAX_MATERIALS];
 	int craftingItemsNum[MAX_MATERIALS];
 	ErrorType failed = GOOD;
@@ -52,6 +56,8 @@ public:
 
 class potion {
 public:
+	string BarterItems[MAX_MATERIALS];
+	int BarterItemNum[MAX_MATERIALS];
 	string name;
 	int value = 0;
 };
@@ -63,13 +69,23 @@ public:
 class inventory {
 public:
 	ErrorType failed = GOOD;
+
 	int itemsUsed = 0; // how many items in inventory
+	//int weaponsUsed = 0;
+	//int defenceUsed = 0;
+	//int potionsUsed = 0;
+
+	int itemCount[MAX_ITEMS]; // number of items carried lines up with each array item at index
+	//int weaponCount[MAX_ITEMS];
+	//int defenceCount[MAX_ITEMS];
+	//int potionCount[MAX_ITEMS];
+
 	item Items[MAX_ITEMS];
 	weapon Weapons[MAX_ITEMS];
 	defence Shields[MAX_ITEMS];
 	potion Potions[MAX_ITEMS];
 	spell Spells[MAX_ITEMS];
-	int ItemCount[MAX_ITEMS]; // number of items carried lines up with each array item at index
+	
 };
 
 class user {
@@ -78,8 +94,7 @@ public:
 	string race;
 	weapon Weapon;
 	defence Shield;
-	//inventory InBattleINV;
-	inventory* outBattleINV;
+	inventory* inv;
 	ErrorType failed = GOOD;
 	int defence = 0, health = 0, level = 1, exp = 0, gold = 0;
 

@@ -16,7 +16,10 @@
 
 bool shopMain(user* character) {
 
-	Dealer* dealer;
+	Dealer* weaponDealer = new WeaponDealer;
+	/*Dealer* defenceDealer = new DefenceDealer;
+	Dealer* potionDealer = new PotionDealer;
+	Dealer* itemDealer = new ItemDealer;*/
 
 	int choice = 0;
 	int optionChoice = 0;
@@ -26,27 +29,28 @@ bool shopMain(user* character) {
 		printShops();
 		cin >> choice;
 		switch (choice) {
-		case 1: // 1
+		case 1:
 			//system("cls");
-			dealer = new WeaponDealer;
-			dealer->printDealerHeader();
-			dealer->printDealerOptions();
-			dealer->getOptionChoice(dealer, character);
+			weaponDealer->printDealerHeader(character);
+			weaponDealer->printDealerOptions();
+			weaponDealer->getOptionChoice(weaponDealer, character);
 			break;
-		case 2: // 2
+		case 2:
 			break;
-		case 3: // 3
+		case 3:
 			break;
-		case 4: // 4
+		case 4:
 			break;
-		case 5: // 5
+		case 5:
 			exit(0);
 			break;
 		default:
 			break;
 
 		}
-	} while ((getchar()) != '\n');
+
+	} while (true);
+	
 }
 void printShops() {
 	cout << "Welcome to the Market please choose a dealer: \n";
