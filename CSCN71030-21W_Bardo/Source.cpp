@@ -51,7 +51,7 @@ int main() {
 	hPot.value = 450;
 
 	user* character = new user;
-	character->gold = 2500;
+	character->gold = 7500;
 
 	inventory* inv = new inventory;
 	character->inv = inv;
@@ -63,25 +63,21 @@ int main() {
 		character->inv->potionCount[i] = NULL;*/
 	}
 
-	//item wood;
-	//wood.name = "wood";
-	//wood.value = 10;
+	item wood;
+	wood.name = "wood";
+	wood.value = 10;
 
-	//item iron;
-	//iron.name = "iron";
-	//iron.value = 10;
+	item iron;
+	iron.name = "iron";
+	iron.value = 10;
 
-	//for (int i = 0; i < 3; i++) {
-	//	character->inv->Items[i] = wood;
-	//	character->inv->itemCount[i] = 1;
-	//}
+	character->inv->Items[0] = iron;
+	character->inv->itemCount[0] = 3;
+	character->inv->Items[1] = wood;
+	character->inv->itemCount[1] = 4;
 
-	//for (int i = 3; i < 6; i++) {
-	//	character->inv->Items[i] = iron;
-	//	character->inv->itemCount[i] = 1;
-	//}
+	
 
-	//character->inv->itemsUsed = 6;
 
 	weapon sword;
 	sword.value = 100;
@@ -92,8 +88,8 @@ int main() {
 	character->inv->itemsUsed = 1;
 	character->inv->Weapons[0] = sword;
 
-	//character->inv->weaponCount[0] = 1;
-	//character->inv->weaponsUsed = 1;
+	character->inv->itemsUsed = 8;
+
 
     int choice = 0;
 

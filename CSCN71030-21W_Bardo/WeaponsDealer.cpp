@@ -35,16 +35,24 @@ void WeaponDealer::buy(user* user) {
 
 	system("cls");
 
+	// If the user's inventory is full, return.
+	if (user->inv->itemsUsed == MAX_ITEMS) {
+		cout << "You already have " << MAX_ITEMS << " in your inventory, consider selling some items to make space for purchases." << endl;
+		getc(stdin);
+		return;
+	}
+
 	weapon weap;
 	bool exists = false;
 
 	string strWeap = getDealerBuyChoice();
 	// weapon weap = getWeapon(strWeap);
 
+	// If the weapon condition fails, errorlog, return.
 	if (weap.failed != GOOD) {
 		//ErrorLog("An error has occured while getting a weapon", "Medium");
 		cout << "An error has occured while getting a weapon" << endl;
-		getc(stdin);
+		pressAnyButtonToContinue("Press any key to return to the dealer menu...");
 		return;
 	}
 
@@ -64,43 +72,42 @@ void WeaponDealer::buy(user* user) {
 
 	if (user->gold < weap.value) {
 		cout << "You do not have enough gold to purchase that item." << endl;
-		getc(stdin);
+		pressAnyButtonToContinue("Press any key to return to the dealer menu...");
 		return;
 	}
 
 	user->gold -= weap.value;
 	this->balance += weap.value;
 
-	if (user->inv->itemsUsed != MAX_ITEMS) {
-		for (int i = 0; i < MAX_ITEMS; i++) {
-			if (user->inv->Weapons[i].name == weap.name) {
-				user->inv->itemCount[i]++;
-				exists = true;
-			}
+	// If the item exists already.
+	for (int i = 0; i < MAX_ITEMS; i++) {
+		if (user->inv->Weapons[i].name == weap.name) {
+			user->inv->itemCount[i]++;
+			user->inv->itemsUsed++;
+			exists = true;
 		}
-
-		if (exists == false) {
-			for (int i = 0; i < MAX_ITEMS; i++) {
-				if (user->inv->itemCount[i] == NULL || user->inv->itemCount[i] == 0) {
-					user->inv->Weapons[i] = weap;
-					user->inv->itemCount[i] += 1;
-					user->inv->itemsUsed += 1;
-					break;
-				}
-			}
-		}
-
-		cout << "Weapon: " << weap.name
-			<< " has been purchased for "
-			<< weap.value << " gold." << endl;
-
 	}
 
-	cout << endl << "press enter to continue: " << endl;
+	// If the item does not exist already.
+	if (exists == false) {
+		for (int i = 0; i < MAX_ITEMS; i++) {
+			if (user->inv->itemCount[i] == NULL || user->inv->itemCount[i] == 0) {
+				user->inv->Weapons[i] = weap;
+				user->inv->itemCount[i]++;
+				user->inv->itemsUsed++;
+				break;
+			}
+		}
+	}
+
+	cout << "Weapon: " << weap.name
+		<< " has been purchased for "
+		<< weap.value << " gold." << endl << endl;
+
 
 	exists = false;
 
-	getchar();
+	pressAnyButtonToContinue("Press any key to return to the dealer menu...");
 
 }
 
@@ -116,7 +123,9 @@ void WeaponDealer::sell(user* user) {
 
 	for (int i = 0; i < MAX_ITEMS; i++) {
 		if (user->inv->Weapons[i].name != "") {
-			cout << i + 1 << ". " << user->inv->Weapons[i].name << " valued at " << user->inv->Weapons[i].value << "." << endl;
+			cout << i + 1 << ". " << user->inv->Weapons[i].name 
+				<< " (Quantity = " << user->inv->itemCount[i] << ") valued at " 
+				<< user->inv->Weapons[i].value << "." << endl;
 		}
 	}
 
@@ -130,7 +139,7 @@ void WeaponDealer::sell(user* user) {
 
 	if (this->balance < user->inv->Weapons[choice].value) {
 		cout << "The dealer does not have enough gold to purchase that item from you." << endl;
-		getc(stdin);
+		pressAnyButtonToContinue("Press any key to return to the dealer menu...");
 		return;
 	}
 
@@ -161,9 +170,8 @@ void WeaponDealer::sell(user* user) {
 		cout << "There is nothing to sell there." << endl;
 	}
 
-	cout << endl << "press enter to continue: " << endl;
+	pressAnyButtonToContinue("Press any key to return to the dealer menu...");
 
-	getchar();
 }
 
 void WeaponDealer::barter(user* user) {
@@ -209,7 +217,7 @@ string WeaponDealer::getDealerBuyChoice() {
 		break;
 	case 4: break;
 	default:
-		cout << "please select an item" << endl;
+		cout << "please select a valid item" << endl;
 		break;
 	}
 

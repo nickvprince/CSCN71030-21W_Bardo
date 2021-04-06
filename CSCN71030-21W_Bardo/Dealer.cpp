@@ -60,3 +60,19 @@ void Dealer::getOptionChoice(Dealer* dealer, user* character) {
 		}
 	} while ((getchar()) != '\n');
 }
+
+void checkUserInput() {
+
+	string enter;
+	cin >> enter;
+
+	if (cin.fail()) {
+		cin.clear();
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+	}
+}
+
+void pressAnyButtonToContinue(string str) {
+	cout << str;
+	system("pause >nul");
+}

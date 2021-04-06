@@ -39,4 +39,7 @@ public:
 	virtual void printDealerHeader(user*);
 	virtual void getOptionChoice(Dealer*, user*);
 };
+
+void checkUserInput();
+void pressAnyButtonToContinue(string);
  
