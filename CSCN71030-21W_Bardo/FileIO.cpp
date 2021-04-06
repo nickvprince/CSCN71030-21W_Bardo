@@ -5,7 +5,6 @@
 #include <direct.h>
 #include <ctime>
 
-
 using namespace std;
 
 /*
@@ -32,7 +31,8 @@ using namespace std;
 *   get_Weapon version 1.1 finished without comments
 */
 
-
+#define SPELLSDIR "./GameFiles/Potions/"
+#define POTIONSDIR "./GameFiles/Spells/"
 #define WEAPONDIR "./GameFiles/Weapons/"
 #define DEFENCEDIR "./GameFiles/Armour/"
 #define ITEMDIR "./GameFiles/Items/"
@@ -69,6 +69,7 @@ weapon get_Weapon(string name) { // retrieves a weapon from a file and returns i
 	int retrieval = 0;
 	char word[WORD_SIZE];
 	fstream file;
+
 	int counter = 0;
 	weapon Weapon;
 	Weapon.name = name;
@@ -623,13 +624,16 @@ user* get_User(string name) { // retrieves user information from a file and retu
 	return User;
 }
 
-
-void cleanObj(entity* obj) { // removes an enemy and its inventory from heap
+// data structures were getting so large that enemies and inventory need to be kept on the heap.
+// Stress testing 50 enemies created made a memory increase from 920KB to 4MB then deleting them reduced memory back to 1.5MB
+void cleanObj(entity* obj) { // removes an entity and its inventory from heap
 	delete(obj->INV);
 	delete(obj);
 }
-// data structures were getting so large that enemies and inventory need to be kept on the heap.
-// Stress testing 50 enemies created made a memory increase from 920KB to 4MB then deleting them reduced memory back to 1.5MB
+void cleanObj(list* list) {
+	delete(list->names);
+	delete(list);
+}
 enemy* get_Enemy(string name) { // retrieves an enemy from a file and returns it as an object
 
 	enemy* Enemy = new enemy;
@@ -748,7 +752,18 @@ bool FileExists(string name) { // checks if file exists
 		return true;
 	}
 }
-
+bool FileExists(string name,string type) { // checks if file exists
+	fstream f;
+	f.open(name, ios::in);
+	f.close();
+	if (!file) {
+		return false;
+		ErrorLog("File Doesnt Exist (FileExists)", "Unknown");
+	}
+	else {
+		return true;
+	}
+}
 
 
 int lengthOfFile(char* name) { // length of file in bytes ( used for checksum
@@ -848,5 +863,253 @@ bool removeDirectory(char* name) { // remove directory
 }
 
 
+void printList(list* list,int type) {
+	for (int i = 0; i < MAX_NUM_FILES; i++) {
+
+		if (list->names[i] == "") {
+			return;
+		}
+		else {
+			if (type == 0) {
+				cout << list->names[i] << endl;
+			}
+			else {
+				cout << i+1 << ". " << list->names[i] << endl;
+			}
+		}
+
+	}
+}
+list* getListWeapons() {
+	list* names = new list;
+	fstream file;
+	char input;
+	int location = 0;
+	int counter = 0;
+	char word[WORD_SIZE];
+	for (int emptyCounter = 0; emptyCounter < WORD_SIZE; emptyCounter++) {
+		word[emptyCounter] = '\0';
+	}
+	file.open(WEAPONDIR + (string)"list.txt", ios::in);
+	if (file.is_open()) {
 
 
+		file >> input;
+
+		// get info ->
+		while (input != 38) {
+
+			while (input != 59 && input != 38) {
+			
+				word[counter] = input;
+				counter++;
+
+				file >> input;
+			}
+			names->names[location] = word;
+			location++;
+			for (int emptyCounter = 0; emptyCounter < WORD_SIZE; emptyCounter++) {
+				word[emptyCounter] = '\0';
+			}
+			counter = 0;
+
+			file >> input;
+		}
+	}
+	return names;
+}
+list* getListDefences() {
+	list* names = new list;
+	fstream file;
+	char input;
+	int location = 0;
+	int counter = 0;
+	char word[WORD_SIZE];
+	for (int emptyCounter = 0; emptyCounter < WORD_SIZE; emptyCounter++) {
+		word[emptyCounter] = '\0';
+	}
+	file.open(DEFENCEDIR + (string)"list.txt", ios::in);
+	if (file.is_open()) {
+
+
+		file >> input;
+
+		// get info ->
+		while (input != 38) {
+
+			while (input != 59 && input != 38) {
+
+				word[counter] = input;
+				counter++;
+
+				file >> input;
+			}
+			names->names[location] = word;
+			location++;
+			for (int emptyCounter = 0; emptyCounter < WORD_SIZE; emptyCounter++) {
+				word[emptyCounter] = '\0';
+			}
+			counter = 0;
+
+			file >> input;
+		}
+	}
+	return names;
+}
+list* getListItems() {
+	list* names = new list;
+	fstream file;
+	char input;
+	int location = 0;
+	int counter = 0;
+	char word[WORD_SIZE];
+	for (int emptyCounter = 0; emptyCounter < WORD_SIZE; emptyCounter++) {
+		word[emptyCounter] = '\0';
+	}
+	file.open(ITEMDIR + (string)"list.txt", ios::in);
+	if (file.is_open()) {
+
+
+		file >> input;
+
+		// get info ->
+		while (input != 38) {
+
+			while (input != 59 && input != 38) {
+
+				word[counter] = input;
+				counter++;
+
+				file >> input;
+			}
+			names->names[location] = word;
+			location++;
+			for (int emptyCounter = 0; emptyCounter < WORD_SIZE; emptyCounter++) {
+				word[emptyCounter] = '\0';
+			}
+			counter = 0;
+
+			file >> input;
+		}
+	}
+	return names;
+}
+list* getListPotions() {
+	list* names = new list;
+	fstream file;
+	char input;
+	int location = 0;
+	int counter = 0;
+	char word[WORD_SIZE];
+	for (int emptyCounter = 0; emptyCounter < WORD_SIZE; emptyCounter++) {
+		word[emptyCounter] = '\0';
+	}
+	file.open(POTIONSDIR + (string)"list.txt", ios::in);
+	if (file.is_open()) {
+
+
+		file >> input;
+
+		// get info ->
+		while (input != 38) {
+
+			while (input != 59 && input != 38) {
+
+				word[counter] = input;
+				counter++;
+
+				file >> input;
+			}
+			names->names[location] = word;
+			location++;
+			for (int emptyCounter = 0; emptyCounter < WORD_SIZE; emptyCounter++) {
+				word[emptyCounter] = '\0';
+			}
+			counter = 0;
+
+			file >> input;
+		}
+	}
+	return names;
+}
+list* getListSpells() {
+	list* names = new list;
+	fstream file;
+	char input;
+	int location = 0;
+	int counter = 0;
+	char word[WORD_SIZE];
+	for (int emptyCounter = 0; emptyCounter < WORD_SIZE; emptyCounter++) {
+		word[emptyCounter] = '\0';
+	}
+	file.open(SPELLSDIR + (string)"list.txt", ios::in);
+	if (file.is_open()) {
+
+
+		file >> input;
+
+		// get info ->
+		while (input != 38) {
+
+			while (input != 59 && input != 38) {
+
+				word[counter] = input;
+				counter++;
+
+				file >> input;
+			}
+			names->names[location] = word;
+			location++;
+			for (int emptyCounter = 0; emptyCounter < WORD_SIZE; emptyCounter++) {
+				word[emptyCounter] = '\0';
+			}
+			counter = 0;
+
+			file >> input;
+		}
+	}
+	return names;
+}
+list* getListEnemy() {
+	list* names = new list;
+	fstream file;
+	char input;
+	int location = 0;
+	int counter = 0;
+	char word[WORD_SIZE];
+	for (int emptyCounter = 0; emptyCounter < WORD_SIZE; emptyCounter++) {
+		word[emptyCounter] = '\0';
+	}
+	file.open(ENEMYDIR + (string)"list.txt", ios::in);
+	if (file.is_open()) {
+
+
+		file >> input;
+
+		// get info ->
+		while (input != 38) {
+
+			while (input != 59 && input != 38) {
+
+				word[counter] = input;
+				counter++;
+
+				file >> input;
+			}
+			names->names[location] = word;
+			location++;
+			for (int emptyCounter = 0; emptyCounter < WORD_SIZE; emptyCounter++) {
+				word[emptyCounter] = '\0';
+			}
+			counter = 0;
+
+			file >> input;
+		}
+	}
+	return names;
+}
+bool Save(entity* Player) {
+
+
+	return true;
+}

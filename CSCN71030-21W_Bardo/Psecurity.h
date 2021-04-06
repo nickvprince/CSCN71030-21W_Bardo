@@ -193,9 +193,9 @@ public:
 		File2.close();
 		remove((const char*)name.c_str());
 		rename((const char*)name2.c_str(), (const char*)name.c_str());
-#ifdef _WIN32
+		#ifdef _WIN32
 		HideFile(name, 1);
-#endif
+		#endif
 	}
 
 }; // encrypt class

@@ -1,14 +1,1 @@
-Battle failed | Severity : Severe 2021/2/31 17:1:17EST
-Shop failed | Severity : Severe 2021/2/31 17:1:19EST
-Crafting failed | Severity : Severe 2021/2/31 17:1:20EST
-Skill Main failed | Severity : Severe 2021/2/31 17:1:21EST
-Battle failed | Severity : Severe 2021/2/31 17:1:22EST
-Check sum error | Severity : Low spfgnwepifgn 2021/3/1 16:15:22EST
-Shop failed | Severity : Severe 2021/3/1 16:15:23EST
-Crafting failed | Severity : Severe 2021/3/1 16:15:24EST
-Skill Main failed | Severity : Severe 2021/3/1 16:15:26EST
-Check sum error | Severity : Low spfgnwepifgn 2021/3/1 16:17:17EST
-Shop failed | Severity : Severe 2021/3/1 16:17:19EST
-Crafting failed | Severity : Severe 2021/3/1 16:17:24EST
-Skill Main failed | Severity : Severe 2021/3/1 16:17:26EST
-Skill Main failed | Severity : Severe 2021/3/2 1:5:15EST
+Skill Main failed | Severity : Severe 2021/3/6 0:50:44EST

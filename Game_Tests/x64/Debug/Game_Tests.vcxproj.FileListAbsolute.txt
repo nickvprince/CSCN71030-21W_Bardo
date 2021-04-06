@@ -1,0 +1,2 @@
+C:\Users\User\source\repos\Bardo5\x64\Debug\Game_Tests.dll.lastcodeanalysissucceeded
+C:\Users\User\source\repos\Bardo5\Game_Tests\x64\Debug\NativeCodeAnalysis.read.1.tlog

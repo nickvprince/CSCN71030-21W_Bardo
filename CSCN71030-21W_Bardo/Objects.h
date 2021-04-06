@@ -19,6 +19,7 @@
 */
 #define MAX_MATERIALS 10
 #define MAX_ITEMS 20 
+#define MAX_NUM_FILES 15
 using namespace std;
 #include <string>
 typedef enum ErrorType { CHK_FAIL, EXISTS_FAIL, COMMON_FAIL, GOOD }ErrorType; // used to identify file errors
@@ -76,6 +77,7 @@ public:
 	spell Spells[MAX_ITEMS];
 	int ItemCount[MAX_ITEMS]; // number of items carried lines up with each array item at index
 };
+
 class entity {
 public:
 	string name;
@@ -98,3 +100,7 @@ public:
 
 };
 
+class list {
+public:
+	string names[MAX_NUM_FILES];
+};

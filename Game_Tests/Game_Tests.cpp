@@ -393,3 +393,13 @@ namespace Main {
 		}
 	};
 }
+
+namespace Crafting {
+	TEST_CLASS(testing)
+	{
+	public:
+		TEST_METHOD(test) {
+
+		}
+	};
+}
