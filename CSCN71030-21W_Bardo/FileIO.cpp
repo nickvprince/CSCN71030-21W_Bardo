@@ -45,9 +45,9 @@ string ERRORLOG ="./GameFiles/ErrorLog.txt";
 
 
 // used in file verification
-int checkSums[] = { 3, 5, 5, 0,0,1,1,2 };
-string checkSumNames[] = { "IronSword.BWPF", "WoodBow.BWPF","IronShield.BAMF", "Copper.BITMF", "Leather.BITMF","Iron.BITMF", "Orc.BINVF","Orc.BENF" };
-string Directories[] = { WEAPONDIR,WEAPONDIR,DEFENCEDIR, ITEMDIR,ITEMDIR ,ITEMDIR, INVENTORYDIR,ENEMYDIR };
+int checkSums[] = { 16,16,16,16,14,14,14,14,26,26,26,26,16,1,1,1,1,1,0,1,1,0,0,0,1,0,0,5,679,45,30,1249,18,2,24,33,27,22,45,19 };
+string checkSumNames[] = { "WoodSword.BWPF","WoodAxe.BWPF","WoodMace.BWPF","WoodBow.BWPF","IronSword.BWPF","IronAxe.BWPF","IronMace.BWPF","IronBow.BWPF","GoldSword.BWPF","GoldAxe.BWPF","GoldMace.BWPF","GoldBow.BWPF","PlatinumStaff.BWPF","BabyDragon.BINVF","DarkElf.BINVF","Drough.BINVF","Elliott.BINVF","Orc.BINVF","Copper.BITMF","Gold.BITMF","Iron.BITMF","Leather.BITMF","Magnesium.BITMF","Paper.BITMF","Platinum.BITMF","Silver.BITMF","Water.BITMF","BabyDragon.BENF","DarkElf.BENF","Drough.BENF","Elliott.BENF","Orc.BENF","GoldArmour.BAMF","GoldShield.BAMF","IronArmour.BAMF","IronShield.BAMF","WoodShield.BAMF","WoodArmour.BAMF","PlatinumShield.BAMF","PlatinumArmour.BAMF"};
+string Directories[] = { WEAPONDIR,WEAPONDIR,WEAPONDIR ,WEAPONDIR ,WEAPONDIR ,WEAPONDIR ,WEAPONDIR ,WEAPONDIR ,WEAPONDIR ,WEAPONDIR ,WEAPONDIR ,WEAPONDIR ,WEAPONDIR,INVENTORYDIR ,INVENTORYDIR ,INVENTORYDIR ,INVENTORYDIR ,INVENTORYDIR,ITEMDIR,ITEMDIR,ITEMDIR,ITEMDIR,ITEMDIR,ITEMDIR,ITEMDIR,ITEMDIR,ITEMDIR,ENEMYDIR,ENEMYDIR,ENEMYDIR,ENEMYDIR,ENEMYDIR,DEFENCEDIR,DEFENCEDIR,DEFENCEDIR,DEFENCEDIR,DEFENCEDIR,DEFENCEDIR,DEFENCEDIR,DEFENCEDIR };
 
 // used in file reading
 fstream file;
@@ -787,18 +787,40 @@ bool createDirectory(char* name) { // create directory
 }
 
 ErrorType isFileGood(char* name) { // does checking if file is good
-	return GOOD;
-	string exemptDirectories[] = { "./GameFiles/Inventory/","./GameFiles/Inventory/","./GameFiles/UserFiles/","./GameFiles/UserFiles/","./GameFiles/UserFiles/" };
-	string exemptFiles[] = { "UserIN.BINVF","UserOUT.BINVF","Settings.BSET","USER.BSURF","UserData.BDF" };
+#define INVENTORYDIR "./GameFiles/Inventory/"
+#define USERDIR "./GameFiles/UserFiles/"
+	int flag = 0;
+	string exemptDirectories[] = { USERDIR,INVENTORYDIR,INVENTORYDIR,INVENTORYDIR,INVENTORYDIR,INVENTORYDIR,INVENTORYDIR };
+	string exemptFiles[] = { "User.BSURF","DarkElf.BINVF","User.BINVF","BabyDragon.BINVF","Drough.BINVF","Elliott.BINVF","Orc.BINVF" };
+	
 	for (int exempt = 0; exempt < sizeof(exemptFiles) / sizeof(string); exempt++) { // temporary exempt files from checksum ( files that change frequently ) until i get a better method of doing checksum
 		if (exemptFiles[exempt] == name) {
+		
+			flag = 1;
 			string path = exemptDirectories[exempt] + name;
 			if (FileExists(path) == 0) {
 				return EXISTS_FAIL; // directory not exist fail
 				ErrorLog("Exist Fail Triggered in isFileGood", "Unknown");
 			}
 			else {
+		
 				return GOOD;
+			}
+		}
+	}
+	if (flag != 1) {
+		
+		for (int i = 0; i < sizeof(checkSumNames) / sizeof(string); i++) {
+			
+			if (name == checkSumNames[i]) {
+				if (getCheckSum(Directories[i] + checkSumNames[i]) == checkSums[i]) {
+					
+					return GOOD;
+				}
+				else {
+					return CHK_FAIL;
+					ErrorLog("Checksum Triggered in isFileGood "+checkSumNames[i]+" ", "Low");
+				}
 			}
 		}
 	}

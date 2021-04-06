@@ -58,9 +58,7 @@ bool skillMain(entity* Player) {
 
 void printOptions();
 int main() {
-    
 
-   
     // INIT ->
     user* Player = get_User("User");
 
