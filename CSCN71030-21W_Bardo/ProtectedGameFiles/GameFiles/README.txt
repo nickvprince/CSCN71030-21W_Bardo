@@ -8,7 +8,7 @@ FileExtention by file type -
 .BINVF = Bardo Inventory File
 .BUSRF = Bardo User File
 .BSET  = Bardo Settings File // EXPERIMENTAL
-
+.BDF   = Bardo Data File // EXPERIMENTAL
 
 Symbols used in files - 
 * = space

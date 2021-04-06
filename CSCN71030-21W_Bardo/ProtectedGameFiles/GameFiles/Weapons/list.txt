@@ -1,0 +1,13 @@
+WoodSword;
+WoodAxe;
+WoodMace;
+WoodBow;
+IronSword;
+IronAxe;
+IronMace;
+IronBow;
+GoldSword;
+GoldAxe;
+GoldMace;
+GoldBow;
+PlatinumStaff&

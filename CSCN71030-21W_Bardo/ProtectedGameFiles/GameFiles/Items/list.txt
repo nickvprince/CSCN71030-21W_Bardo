@@ -1,0 +1,3 @@
+Copper;
+Iron;
+Leather&

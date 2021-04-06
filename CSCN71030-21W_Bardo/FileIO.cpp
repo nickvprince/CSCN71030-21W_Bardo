@@ -1103,7 +1103,7 @@ bool Save(user* Player) {
 		file << Player->currentexp << ";" << endl;
 		file << Player->lvlexp << ";" << endl;
 		file << Player->gold << ";" << endl;
-		file << Player->Shield.name << "&";
+		file << Player->Shield.name << "&3";
 		file.close();
 		return true;
 	}

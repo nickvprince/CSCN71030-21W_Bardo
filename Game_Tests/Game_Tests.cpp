@@ -26,7 +26,8 @@ using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 namespace FileIOTests
 {
 	//#include "PSecurity.h" // includes FileIO.h which includes >> objects.h && ErroChecking.h
-	//#include "Psecurity.h"
+	#include "Psecurity.h"
+
 	TEST_CLASS(Securitytests)
 	{
 	public:
@@ -51,6 +52,12 @@ namespace FileIOTests
 	TEST_CLASS(FileIOtests)
 	{
 	public:
+		TEST_METHOD(SaveGame) {
+
+		}
+		TEST_METHOD(SaveGameBadPlayerName) {
+
+		}
 		TEST_METHOD(getWeapon_checkDamage) {
 
 		}
