@@ -14,7 +14,7 @@
 #define R_WAR_HAMMER "Wood(3) and Iron Ore(5)"
 #define R_MUSKET "Wood(3) and Iron Ore(15)"
 #define R_BLACK_POWDER "Saltpetre(6), Charcoal(1), and Sulfur(1)"
-#define R_FLASH_POWDER "Saltpetre(4), Charcoal(2), and Sulfur(3)"
+#define R_FLASH_POWDER "Magnesium(4), Charcoal(2), and Sulfur(3)"
 #define R_FLASH_SPELL "Flash Powder(3) and Black Powder(1)"
 
 #include "inventory.h"

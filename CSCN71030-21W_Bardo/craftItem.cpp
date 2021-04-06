@@ -41,10 +41,10 @@ void craftItem(inventory* i) {		// Function asks user what type of item to craft
 					break;
 				case 2:
 					if ((FLASH_POWDER(i->material[7].getQuantity(), i->material[4].getQuantity(), i->material[3].getQuantity())) == 1) {
-						i->material[2].subQuantity(6);
-						i->material[3].subQuantity(1);
-						i->material[4].subQuantity(1);
-						i->material[5].addQuantity(1);
+						i->material[7].subQuantity(4);
+						i->material[3].subQuantity(3);
+						i->material[4].subQuantity(2);
+						i->material[6].addQuantity(1);
 						cout << i->material[6].getItemName() << " has been added to the inventory." << endl << endl;
 					}
 					else {
