@@ -1,6 +1,7 @@
 #include <iostream>
 #include <stdlib.h>
 #include <stdio.h>
+#include <string>
 #include <stdbool.h>
 #include "seeInventory.h"
 
@@ -10,7 +11,7 @@ void By_Search(inventory i) {
 	while (find_item != "exit") {
 		bool found_item = false;
 		cout << "Enter the item name to search (type <exit> to quit): "; 
-		cin >> find_item;
+		getline(cin, find_item);
 		system("cls");
 
 		if (find_item != "exit") {

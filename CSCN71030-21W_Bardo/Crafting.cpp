@@ -13,7 +13,7 @@
 // First draft of crafting module
 //
 // Future improvements and fixes:
-// - fix search function, cannot search for items with names that consists of more than 1 word
+// - fix search function, cannot search for items with names that consists of more than 1 word (fixed 04/05/21)
 // - improve search algorithmn to be more efficient
 // - better method to implement crafting recipes 
 
