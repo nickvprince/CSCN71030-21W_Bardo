@@ -4,10 +4,11 @@
 #include "craftItem.h"
 using namespace std;
 int item_type;
+int item_craft;
 
 void craftItem(inventory* i) {		// Function asks user what type of item to craft and user selects a craftable item from crafting list
 									// and checks if inventory contains required crafting materials for requestes item using boolean logic operaters
-	int item_craft = 0;
+	item_craft = 0;
 	while (item_type != 4) {
 		cout << "Select the type of item you wish to craft" << endl;
 		cout << "1 - Material" << endl;
