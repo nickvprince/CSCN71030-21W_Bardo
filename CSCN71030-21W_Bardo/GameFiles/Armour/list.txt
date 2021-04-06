@@ -1,1 +1,8 @@
-IronShield&
+GoldArmour;
+GoldShield;
+IronArmour;
+IronShield;
+WoodShield;
+WoodArmour;
+PlatinumShield;
+PlatinumArmour&

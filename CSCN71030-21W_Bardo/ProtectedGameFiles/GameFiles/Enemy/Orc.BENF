@@ -1,8 +1,8 @@
 WormTail;
-IronSword;
-12;
-120;
-5;
-50;
+WoodSword;
+2;
+100;
+1;
+300;
 10;
-IronShield&
+WoodShield;

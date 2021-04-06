@@ -272,6 +272,7 @@ defence get_Defence(string name) { // retrieves a defence item from a file and r
 	file.close();
 	return Defence;
 }
+
 // Needs updating for bartering ^
 item get_Item(string name) {
 	int length = 0;
@@ -363,12 +364,12 @@ item get_Item(string name) {
 
 	return ITEM;
 }
-// Needs updating for bartering ^
+
 potion get_Potion(string name) { // retrieves a potion from a file and returns it as an object
 	potion Potion;
 	return Potion;
 }
-// Needs updating for bartering ^
+
 
 
 
@@ -634,7 +635,7 @@ void cleanObj(list* list) {
 	delete(list->names);
 	delete(list);
 }
-enemy* get_Enemy(string name) { // retrieves an enemy from a file and returns it as an object
+enemy* get_Enemy(string name, int level) { // retrieves an enemy from a file and returns it as an object
 
 	enemy* Enemy = new enemy;
 	fstream enemy_File;
@@ -688,19 +689,19 @@ enemy* get_Enemy(string name) { // retrieves an enemy from a file and returns it
 					break;
 				case 2:
 					//defence health level exp
-					Enemy->defence = atoi(WORD);
+					Enemy->defence = (atoi(WORD)*level)/2;
 					break;
 				case 3:
-					Enemy->health = atoi(WORD);
+					Enemy->health = (atoi(WORD) * level) / 2;
 					break;
 				case 4:
-					Enemy->level = atoi(WORD);
+					Enemy->level = level;
 					break;
 				case 5:
-					Enemy->currentexp = atoi(WORD);
+					Enemy->currentexp = (atoi(WORD) * level) / 2;
 					break;
 				case 6:
-					Enemy->gold = atoi(WORD);
+					Enemy->gold = (atoi(WORD) * level) / 2;
 					break;
 				case 7:
 					Enemy->Shield = get_Defence(WORD);
@@ -1103,7 +1104,7 @@ bool Save(user* Player) {
 		file << Player->currentexp << ";" << endl;
 		file << Player->lvlexp << ";" << endl;
 		file << Player->gold << ";" << endl;
-		file << Player->Shield.name << "&3";
+		file << Player->Shield.name << "&";
 		file.close();
 		return true;
 	}

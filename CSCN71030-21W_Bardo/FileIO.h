@@ -23,7 +23,7 @@ potion get_Potion(string name); // retrieves a potion from a file and returns it
 spell get_Spell(string name); // retrieves a spell from a file and returns it as an object
 inventory* get_Inventory(string name); // retrieves inventory from a file and returns it as an object
 user* get_User(string name); // retrieves user information from a file and returns it as an object
-enemy* get_Enemy(string name); // retrieves an enemy from a file and returns it as an object
+enemy* get_Enemy(string name,int level); // retrieves an enemy from a file and returns it as an object
 item get_Item(string name); // retrieves an item such as leather or copper
 void cleanObj(entity* obj); // removes an enemy or user from heap
 void cleanObj(list* list);
