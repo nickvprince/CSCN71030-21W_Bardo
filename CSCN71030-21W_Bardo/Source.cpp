@@ -58,7 +58,10 @@ bool skillMain(entity* Player) {
 
 void printOptions();
 int main() {
-
+    list* weapons = getListDefences();
+    printList(weapons,3);
+    
+    getc(stdin);
     // INIT ->
     user* Player = get_User("User");
 

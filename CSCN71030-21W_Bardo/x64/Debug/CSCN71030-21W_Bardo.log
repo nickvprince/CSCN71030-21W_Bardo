@@ -1,10 +1,4 @@
-﻿  FileIO.cpp
-C:\Users\User\source\repos\Bardo5\CSCN71030-21W_Bardo\FileIO.cpp(188,1): warning C4005: 'CRAFTING_MATERIAL_START': macro redefinition
-C:\Users\User\source\repos\Bardo5\CSCN71030-21W_Bardo\FileIO.cpp(65): message : see previous definition of 'CRAFTING_MATERIAL_START'
-C:\Users\User\source\repos\Bardo5\CSCN71030-21W_Bardo\FileIO.cpp(635,21): warning C4156: deletion of an array expression without using the array form of 'delete'; array form substituted
-C:\Users\User\source\repos\Bardo5\CSCN71030-21W_Bardo\FileIO.cpp(635,21): warning C4154: deletion of an array expression; conversion to pointer supplied
-  Source.cpp
+﻿  Source.cpp
 C:\Users\User\source\repos\Bardo5\CSCN71030-21W_Bardo\Psecurity.h(82,1): warning C4554: '|': check operator precedence for possible error; use parentheses to clarify precedence
 C:\Users\User\source\repos\Bardo5\CSCN71030-21W_Bardo\Psecurity.h(111,1): warning C4554: '|': check operator precedence for possible error; use parentheses to clarify precedence
-  Generating Code...
   CSCN71030-21W_Bardo.vcxproj -> C:\Users\User\source\repos\Bardo5\x64\Debug\CSCN71030-21W_Bardo.exe

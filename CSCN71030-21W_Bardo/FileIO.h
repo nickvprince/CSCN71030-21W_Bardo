@@ -34,6 +34,7 @@ bool createDirectory(char* name); // creates a directory
 bool removeDirectory(char* name); // removes a directory
 void ErrorLog(string message,string Severity); // outputs error message to file
 ErrorType isFileGood(char* name); // Checks if a file is good using file exists and checksum
+
 bool Save(user* Player);
 list* getListWeapons();
 list* getListDefences();
