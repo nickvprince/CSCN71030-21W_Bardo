@@ -185,7 +185,7 @@ defence get_Defence(string name) { // retrieves a defence item from a file and r
 	fstream file;
 	int counter = 0;
 	defence Defence;
-#define CRAFTING_MATERIAL_START 4
+#define CRAFTING_MATERIAL_START 3
 	Defence.name = name;
 	name = name + ".BAMF";
 
@@ -786,7 +786,8 @@ bool createDirectory(char* name) { // create directory
 	}
 }
 
-ErrorType isFileGood(char* name) { // does checking if file is good
+ErrorType isFileGood(char* name) { // does checking if file is good							NEEDS REVISION
+	return GOOD;
 #define INVENTORYDIR "./GameFiles/Inventory/"
 #define USERDIR "./GameFiles/UserFiles/"
 	int flag = 0;
