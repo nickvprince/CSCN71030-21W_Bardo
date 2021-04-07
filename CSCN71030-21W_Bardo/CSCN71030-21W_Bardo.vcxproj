@@ -139,14 +139,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ErrorChecking.cpp" />
-    <ClCompile Include="FileIO.cpp" />
-    <ClCompile Include="Objects.h" />
+    <ClCompile Include="battle.cpp" />
+    <ClCompile Include="BattleModule.cpp" />
+    <ClCompile Include="enemy.cpp" />
+    <ClCompile Include="entity.cpp" />
+    <ClCompile Include="player.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ErrorChecking.h" />
-    <ClInclude Include="FileIO.h" />
+    <ClInclude Include="battle.h" />
+    <ClInclude Include="BattleModule.h" />
+    <ClInclude Include="enemy.h" />
+    <ClInclude Include="entity.h" />
+    <ClInclude Include="player.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

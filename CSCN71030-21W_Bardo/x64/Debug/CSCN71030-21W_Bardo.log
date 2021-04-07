@@ -1,8 +1,20 @@
-﻿  ErrorChecking.cpp
-  FileIO.cpp
-C:\Users\User\source\repos\Bardo5\CSCN71030-21W_Bardo\FileIO.cpp(165,1): warning C4005: 'CRAFTING_MATERIAL_START': macro redefinition
-C:\Users\User\source\repos\Bardo5\CSCN71030-21W_Bardo\FileIO.cpp(61): message : see previous definition of 'CRAFTING_MATERIAL_START'
-  Objects.h
+﻿  Objects.h
   Source.cpp
+C:\Users\thorc\source\repos\BARDO\CSCN71030-21W_Bardo\FileIO.h(26,6): error C2143: syntax error: missing ';' before '*'
+C:\Users\thorc\source\repos\BARDO\CSCN71030-21W_Bardo\FileIO.h(26,6): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\thorc\source\repos\BARDO\CSCN71030-21W_Bardo\FileIO.h(26,30): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\thorc\source\repos\BARDO\CSCN71030-21W_Bardo\FileIO.h(28,26): error C2065: 'orc': undeclared identifier
+C:\Users\thorc\source\repos\BARDO\CSCN71030-21W_Bardo\FileIO.h(28,29): error C2182: 'remove_Enemy': illegal use of type 'void'
+C:\Users\thorc\source\repos\BARDO\CSCN71030-21W_Bardo\player.h(85,11): warning C4473: 'scanf_s' : not enough arguments passed for format string
+C:\Users\thorc\source\repos\BARDO\CSCN71030-21W_Bardo\player.h(85,11): message : placeholders and their parameters expect 2 variadic arguments, but 1 were provided
+C:\Users\thorc\source\repos\BARDO\CSCN71030-21W_Bardo\player.h(85,11): message : the missing variadic argument 2 is required by format string '%c'
+C:\Users\thorc\source\repos\BARDO\CSCN71030-21W_Bardo\player.h(85,11): message : this argument is used as a buffer size
+C:\Users\thorc\source\repos\BARDO\CSCN71030-21W_Bardo\player.h(166,11): warning C4473: 'scanf_s' : not enough arguments passed for format string
+C:\Users\thorc\source\repos\BARDO\CSCN71030-21W_Bardo\player.h(166,11): message : placeholders and their parameters expect 2 variadic arguments, but 1 were provided
+C:\Users\thorc\source\repos\BARDO\CSCN71030-21W_Bardo\player.h(166,11): message : the missing variadic argument 2 is required by format string '%c'
+C:\Users\thorc\source\repos\BARDO\CSCN71030-21W_Bardo\player.h(166,11): message : this argument is used as a buffer size
+C:\Users\thorc\source\repos\BARDO\CSCN71030-21W_Bardo\enemy.h(121,16): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\thorc\source\repos\BARDO\CSCN71030-21W_Bardo\enemy.h(121,1): error C2086: 'int enemy': redefinition
+C:\Users\thorc\source\repos\BARDO\CSCN71030-21W_Bardo\FileIO.h(26): message : see declaration of 'enemy'
+C:\Users\thorc\source\repos\BARDO\CSCN71030-21W_Bardo\enemy.h(121,7): error C2146: syntax error: missing ';' before identifier 'randEnemy'
   Generating Code...
-  CSCN71030-21W_Bardo.vcxproj -> C:\Users\User\source\repos\Bardo5\x64\Debug\CSCN71030-21W_Bardo.exe

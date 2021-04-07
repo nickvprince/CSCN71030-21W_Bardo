@@ -28,7 +28,8 @@ using namespace std;
 #include <stdio.h>
 #include <fstream>
 #include <string>
-#include "FileIO.h"
+#include "BattleModule.h"
+
 void printOptions();
 int main() {
     int choice = 0;
@@ -45,6 +46,7 @@ int main() {
         choice = getc(stdin);
         switch (choice) {
         case 49: // 1
+            battleMain();
             break;
         case 50: // 2
             break;
