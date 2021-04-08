@@ -4,8 +4,8 @@
 * Programmer : Danny Smith
 * Class : Team Based Software Development CSCN71030-21W-SEC1-PROJECT 2
 * Date : February 6, 2021
-* Teacher : Dr. Elliot Coleshill
-* Team : Dominic Pham, Thomas Horvath, Nicholas, Prince, Ali Syed
+* Teacher : Dr. Elliott Coleshill
+* Team : Dominic Pham, Thomas Horvath, Nicholas Prince, Ali Syed
 *
 * Description :
 *
@@ -19,6 +19,7 @@
 */
 #define MAX_MATERIALS 10
 #define MAX_ITEMS 20 
+#define MAX_NUM_FILES 15
 using namespace std;
 #include <string>
 typedef enum ErrorType { CHK_FAIL, EXISTS_FAIL, COMMON_FAIL, GOOD }ErrorType; // used to identify file errors
@@ -27,6 +28,8 @@ class item {
 public:
 	string name;
 	int value = 0;
+	string BarterItems[MAX_MATERIALS];
+	int BarterItemsNum[MAX_MATERIALS];
 	ErrorType failed = GOOD;
 };
 
@@ -35,6 +38,8 @@ public:
 	string name;
 	int damage = 0, value = 0, level = 0;
 	string craftingItems[MAX_MATERIALS]; // name of items required for crafting
+	string BarterItems[MAX_MATERIALS];
+	int BarterItemsNum[MAX_MATERIALS];
 	int craftingItemsNum[MAX_MATERIALS]; // number of those items required
 	ErrorType failed = GOOD;
 
@@ -46,11 +51,15 @@ public:
 	int blockChance = 0, Defence = 0, value = 0, level = 0;
 	string craftingItems[MAX_MATERIALS];
 	int craftingItemsNum[MAX_MATERIALS];
+	string BarterItems[MAX_MATERIALS];
+	int BarterItemsNum[MAX_MATERIALS];
 	ErrorType failed = GOOD;
 };
 
 class potion {
 public:
+	string BarterItems[MAX_MATERIALS];
+	int BarterItemsNum[MAX_MATERIALS];
 };
 
 class spell {
@@ -69,43 +78,29 @@ public:
 	int ItemCount[MAX_ITEMS]; // number of items carried lines up with each array item at index
 };
 
-class user {
+class entity {
 public:
 	string name;
 	string race;
 	weapon Weapon;
 	defence Shield;
-	inventory InBattleINV;
-	inventory outBattleINV;
+	inventory* INV; // items an enemy could drop in combat
 	ErrorType failed = GOOD;
-	int defence = 0, health = 0, level = 1, exp = 0, gold = 0;
-
+	int defence = 0, health = 0, level = 1, damage = 0, currentexp = 0, gold = 0;
 };
-
-class enemy {
+class user:public entity {
 public:
-	string name;
-	string race;
-	weapon Weapon;
-	defence Shield;
-	inventory* Droppables; // items an enemy could drop in combat
-	ErrorType failed = GOOD;
-	int defence = 0, health = 0, level = 0, exp = 0;
-	int GetDefence() {
 
-	}
-	int GetArmour() {
-
-	}
-	int GetHealth() {
-
-	}
-	int GetLevel() {
-
-	}
-	int GetWeapon() {
-
-	}
+	int lvlexp = 600;
 
 };
 
+class enemy:public entity {
+public:
+
+};
+
+class list {
+public:
+	string names[MAX_NUM_FILES];
+};

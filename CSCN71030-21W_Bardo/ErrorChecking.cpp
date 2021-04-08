@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <fstream>
 #include "ErrorChecking.h"
@@ -29,6 +30,7 @@ using namespace std;
 
 #ifdef _WIN32
 #include <Windows.h>
+
 bool VerifyHiddenFile(char* name) { // verifies the file is hidden to the user
 	DWORD word = GetFileAttributesA((LPCSTR)name);
 	switch (word & FILE_ATTRIBUTE_HIDDEN) {
@@ -39,6 +41,7 @@ bool VerifyHiddenFile(char* name) { // verifies the file is hidden to the user
 		return true;
 		break;
 	default:
+		
 		return false;
 	}
 }
@@ -125,10 +128,17 @@ int getCheckSum(string name) {
 }
 
 bool VerifyAllFiles() { // runs CheckSum on all files to verify they are the proper size also verifies all files exist
-
-	int checkSums[] = { 3, 5, 5 };
-	string checkSumNames[] = { "IronSword.BWPF", "WoodBow.BWPF","IronShield.BAMF" };
-	string Directories[] = { "./GameFiles/Weapons/","./GameFiles/Weapons/","./GameFiles/Armour/" };
+#define SPELLSDIR "./GameFiles/Potions/"
+#define POTIONSDIR "./GameFiles/Spells/"
+#define WEAPONDIR "./GameFiles/Weapons/"
+#define DEFENCEDIR "./GameFiles/Armour/"
+#define ITEMDIR "./GameFiles/Items/"
+#define INVENTORYDIR "./GameFiles/Inventory/"
+#define ENEMYDIR "./GameFiles/Enemy/"
+#define USERDIR "./GameFiles/UserFiles/"
+	int checkSums[] = { 16,16,16,16,14,14,14,14,26,26,26,26,16,1,1,1,1,1,0,1,1,0,0,0,1,0,0,5,679,45,30,1249,18,2,24,33,27,22,45,19 };
+	string checkSumNames[] = { "WoodSword","WoodAxe","WoodMace","WoodBow","IronSword","IronAxe","IronMace","IronBow","GoldSword","GoldAxe","GoldMace","GoldBow","PlatinumStaff","BabyDragon","DarkElf","Drough","Elliott","Orc","Copper","Gold","Iron","Leather","Magnesium","Paper","Platinum","Silver","Water","BabyDragon","DarkElf","Drough","Elliott","Orc","GoldArmour","GoldShield","IronArmour","IronShield","WoodShield","WoodArmour","PlatinumShield","PlatinumArmour" };
+	string Directories[] = { WEAPONDIR,WEAPONDIR,WEAPONDIR ,WEAPONDIR ,WEAPONDIR ,WEAPONDIR ,WEAPONDIR ,WEAPONDIR ,WEAPONDIR ,WEAPONDIR ,WEAPONDIR ,WEAPONDIR ,WEAPONDIR,INVENTORYDIR ,INVENTORYDIR ,INVENTORYDIR ,INVENTORYDIR ,INVENTORYDIR,ITEMDIR,ITEMDIR,ITEMDIR,ITEMDIR,ITEMDIR,ITEMDIR,ITEMDIR,ITEMDIR,ITEMDIR,ENEMYDIR,ENEMYDIR,ENEMYDIR,ENEMYDIR,ENEMYDIR,DEFENCEDIR,DEFENCEDIR,DEFENCEDIR,DEFENCEDIR,DEFENCEDIR,DEFENCEDIR,DEFENCEDIR,DEFENCEDIR };
 
 
 	string ProtectedDir = { "ProtectedGameFiles" };
@@ -186,7 +196,6 @@ bool VerifyAllFiles() { // runs CheckSum on all files to verify they are the pro
 
 	return failed;
 }
-
 #ifdef _WIN32 // only run in windows OS
 #include <Windows.h>
 void HideFile(string name, int system_Yes_No) { // hides a file from the user so its only visible to the system

@@ -3,8 +3,7 @@
 #include <fstream>
 #include <iostream>
 #include <direct.h>
-
-
+#include <ctime>
 
 using namespace std;
 
@@ -32,18 +31,23 @@ using namespace std;
 *   get_Weapon version 1.1 finished without comments
 */
 
-
+#define SPELLSDIR "./GameFiles/Potions/"
+#define POTIONSDIR "./GameFiles/Spells/"
 #define WEAPONDIR "./GameFiles/Weapons/"
 #define DEFENCEDIR "./GameFiles/Armour/"
 #define ITEMDIR "./GameFiles/Items/"
 #define INVENTORYDIR "./GameFiles/Inventory/"
 #define ENEMYDIR "./GameFiles/Enemy/"
+#define USERDIR "./GameFiles/UserFiles/"
 #define WORD_SIZE 15
+string ERRORLOG ="./GameFiles/ErrorLog.txt";
+
+
 
 // used in file verification
-int checkSums[] = { 3, 5, 5, 0,0,1,1,2 };
-string checkSumNames[] = { "IronSword.BWPF", "WoodBow.BWPF","IronShield.BAMF", "Copper.BITMF", "Leather.BITMF","Iron.BITMF", "Orc.BINVF","Orc.BENF" };
-string Directories[] = { WEAPONDIR,WEAPONDIR,DEFENCEDIR, ITEMDIR,ITEMDIR ,ITEMDIR, INVENTORYDIR,ENEMYDIR };
+int checkSums[] = { 16,16,16,16,14,14,14,14,26,26,26,26,16,1,1,1,1,1,0,1,1,0,0,0,1,0,0,5,679,45,30,1249,18,2,24,33,27,22,45,19 };
+string checkSumNames[] = { "WoodSword.BWPF","WoodAxe.BWPF","WoodMace.BWPF","WoodBow.BWPF","IronSword.BWPF","IronAxe.BWPF","IronMace.BWPF","IronBow.BWPF","GoldSword.BWPF","GoldAxe.BWPF","GoldMace.BWPF","GoldBow.BWPF","PlatinumStaff.BWPF","BabyDragon.BINVF","DarkElf.BINVF","Drough.BINVF","Elliott.BINVF","Orc.BINVF","Copper.BITMF","Gold.BITMF","Iron.BITMF","Leather.BITMF","Magnesium.BITMF","Paper.BITMF","Platinum.BITMF","Silver.BITMF","Water.BITMF","BabyDragon.BENF","DarkElf.BENF","Drough.BENF","Elliott.BENF","Orc.BENF","GoldArmour.BAMF","GoldShield.BAMF","IronArmour.BAMF","IronShield.BAMF","WoodShield.BAMF","WoodArmour.BAMF","PlatinumShield.BAMF","PlatinumArmour.BAMF"};
+string Directories[] = { WEAPONDIR,WEAPONDIR,WEAPONDIR ,WEAPONDIR ,WEAPONDIR ,WEAPONDIR ,WEAPONDIR ,WEAPONDIR ,WEAPONDIR ,WEAPONDIR ,WEAPONDIR ,WEAPONDIR ,WEAPONDIR,INVENTORYDIR ,INVENTORYDIR ,INVENTORYDIR ,INVENTORYDIR ,INVENTORYDIR,ITEMDIR,ITEMDIR,ITEMDIR,ITEMDIR,ITEMDIR,ITEMDIR,ITEMDIR,ITEMDIR,ITEMDIR,ENEMYDIR,ENEMYDIR,ENEMYDIR,ENEMYDIR,ENEMYDIR,DEFENCEDIR,DEFENCEDIR,DEFENCEDIR,DEFENCEDIR,DEFENCEDIR,DEFENCEDIR,DEFENCEDIR,DEFENCEDIR };
 
 // used in file reading
 fstream file;
@@ -65,18 +69,22 @@ weapon get_Weapon(string name) { // retrieves a weapon from a file and returns i
 	int retrieval = 0;
 	char word[WORD_SIZE];
 	fstream file;
+
 	int counter = 0;
 	weapon Weapon;
 	Weapon.name = name;
-
+	int SWITCH = 0;
+	int barterPosition = 0;
 	name = name + ".BWPF";
 
 	switch (isFileGood((char*)name.c_str())) { // is the file passed usable
 	case CHK_FAIL: // weapon fail state set to checksum fail
 		Weapon.failed = CHK_FAIL;
+		ErrorLog("Checksum Fail", "Low");
 		break;
 	case EXISTS_FAIL: // weapon fail state set to file not exists fail
 		Weapon.failed = EXISTS_FAIL;
+		ErrorLog("Exists Fail", "Average");
 		break;
 	case GOOD: // file is usable start reading
 
@@ -112,15 +120,29 @@ weapon get_Weapon(string name) { // retrieves a weapon from a file and returns i
 					break;
 
 				case (CRAFTING_MATERIAL_START + 1):
-
-					Weapon.craftingItemsNum[itemPosition] = atoi(word);
-					itemPosition++;
-					retrieval = CRAFTING_MATERIAL_START - 1;
+					if (SWITCH == 0) {
+						Weapon.craftingItemsNum[itemPosition] = atoi(word);
+						itemPosition++;
+						SWITCH++;
+					}
+					else {
+						Weapon.BarterItemsNum[barterPosition] = atoi(word);
+						retrieval = CRAFTING_MATERIAL_START - 1;
+						SWITCH--;
+					}
 					break;
 				default:
 
 					if (atoi(word) == 0) {
-						Weapon.craftingItems[itemPosition] = word;
+						if (SWITCH == 0) {
+							Weapon.craftingItems[itemPosition] = word;
+							retrieval--;
+							SWITCH++;
+						}
+						else {
+							Weapon.BarterItems[barterPosition] = word;
+							SWITCH--;
+						}
 					}
 					else {
 						Weapon.failed = COMMON_FAIL;
@@ -144,13 +166,14 @@ weapon get_Weapon(string name) { // retrieves a weapon from a file and returns i
 		break;
 	default: // all other fails
 		Weapon.failed = COMMON_FAIL;
+		ErrorLog("Unkown Fail", "High");
 		break;
 	}
 
 	file.close();
 	return Weapon;
 } // just takes in name of file not the dir
-
+// been updated for bartering ^
 
 
 defence get_Defence(string name) { // retrieves a defence item from a file and returns it as an object
@@ -162,16 +185,18 @@ defence get_Defence(string name) { // retrieves a defence item from a file and r
 	fstream file;
 	int counter = 0;
 	defence Defence;
-#define CRAFTING_MATERIAL_START 4
+#define CRAFTING_MATERIAL_START 3
 	Defence.name = name;
 	name = name + ".BAMF";
 
 	switch (isFileGood((char*)name.c_str())) { // is the file passed usable
 	case CHK_FAIL: // weapon fail state set to checksum fail
 		Defence.failed = CHK_FAIL;
+		ErrorLog("Checksum Fail", "Low");
 		break;
 	case EXISTS_FAIL: // weapon fail state set to file not exists fail
 		Defence.failed = EXISTS_FAIL;
+		ErrorLog("Exists Fail", "Average");
 		break;
 	case GOOD: // file is usable start reading
 
@@ -240,6 +265,7 @@ defence get_Defence(string name) { // retrieves a defence item from a file and r
 		break;
 	default: // all other fails
 		Defence.failed = COMMON_FAIL;
+		ErrorLog("Unknown Fail", "High");
 		break;
 	}
 
@@ -247,6 +273,7 @@ defence get_Defence(string name) { // retrieves a defence item from a file and r
 	return Defence;
 }
 
+// Needs updating for bartering ^
 item get_Item(string name) {
 	int length = 0;
 	char input;
@@ -270,9 +297,11 @@ item get_Item(string name) {
 	switch (isFileGood((char*)name.c_str())) { // is the file passed usable
 	case CHK_FAIL: // weapon fail state set to checksum fail
 		ITEM.failed = CHK_FAIL;
+		ErrorLog("Checksum Fail", "Low");
 		break;
 	case EXISTS_FAIL: // weapon fail state set to file not exists fail
 		ITEM.failed = EXISTS_FAIL;
+		ErrorLog("File Exists Fail", "Average");
 		break;
 	case GOOD: // file is usable start reading
 
@@ -320,6 +349,7 @@ item get_Item(string name) {
 		break;
 	default: // all other fails
 		ITEM.failed = COMMON_FAIL;
+		ErrorLog("Unknown Fail", "High");
 		break;
 	}
 	// Reset variables without resetting item count
@@ -341,6 +371,18 @@ potion get_Potion(string name) { // retrieves a potion from a file and returns i
 }
 
 
+
+
+void ErrorLog(string message, string Severity) {
+	
+		fstream f;
+		time_t now = time(0);
+		tm* time = gmtime(&now);
+		f.open(ERRORLOG, ios::app);
+		f << message <<  " | Severity : "<< Severity <<" 2021" << "/" << time->tm_mon << "/" << time->tm_mday << " " << (time->tm_hour) - 4 << ":" << time->tm_min << ":" << time->tm_sec << "EST" << endl;
+		f.close();
+	
+}
 
 spell get_Spell(string name) { // retrieves a spell from a file and returns it as an object
 	spell Spell;
@@ -369,9 +411,11 @@ inventory* get_Inventory(string name) { // retrieves inventory from a file and r
 	switch (isFileGood((char*)name.c_str())) { // is the file passed usable
 	case CHK_FAIL: // weapon fail state set to checksum fail
 		Inventory->failed = CHK_FAIL;
+		ErrorLog("Checksum Fail", "Low");
 		break;
 	case EXISTS_FAIL: // weapon fail state set to file not exists fail
 		Inventory->failed = EXISTS_FAIL;
+		ErrorLog("Exists Fail", "Average");
 		break;
 	case GOOD: // file is usable start reading
 
@@ -446,8 +490,12 @@ inventory* get_Inventory(string name) { // retrieves inventory from a file and r
 					}
 					else {
 						Inventory->failed = COMMON_FAIL;
+						ErrorLog("Unknown Inventory type", "Average");
 						return Inventory;
 					}
+					break;
+				default:
+					ErrorLog("Default Triggered in Inventory", "High");
 					break;
 				}
 				retrieval++;
@@ -466,6 +514,7 @@ inventory* get_Inventory(string name) { // retrieves inventory from a file and r
 		break;
 	default: // all other fails
 		Inventory->failed = COMMON_FAIL;
+		ErrorLog("Unknown Fail", "High");
 		break;
 	}
 	file.close();
@@ -475,81 +524,90 @@ inventory* get_Inventory(string name) { // retrieves inventory from a file and r
 
 
 user* get_User(string name) { // retrieves user information from a file and returns it as an object
+	
 	user* User = new user;
-	int length = 0;
-	char input;
-	int itemPosition = 0;
-	int retrieval = 0;
-	char word[WORD_SIZE];
-	fstream file;
-	int counter = 0;
-
-
+	
+	fstream userFile;
+	User->race = name;
+	User->INV = get_Inventory(name);
 	name = name + ".BSURF";
+	char WORD[WORD_SIZE];
+	int caseNumber = 0;
+	char readInput = '\0';
+	int NEWCOUNTER = 0;
 
+	for (int emptyCounter = 0; emptyCounter < WORD_SIZE; emptyCounter++) {
+		WORD[emptyCounter] = '\0';
+	}
 	switch (isFileGood((char*)name.c_str())) { // is the file passed usable
 	case CHK_FAIL: // weapon fail state set to checksum fail
 		User->failed = CHK_FAIL;
+		ErrorLog("Checksum Fail", "Low");
 		break;
 	case EXISTS_FAIL: // weapon fail state set to file not exists fail
 		User->failed = EXISTS_FAIL;
+		ErrorLog("File Exists Fail", "Average");
 		break;
 	case GOOD: // file is usable start reading
 
 		User->failed = GOOD;
-		file.open(WEAPONDIR + (string)name, ios::in);
-		if (file.is_open()) {
+		userFile.open(USERDIR + (string)name, ios::in);
+		if (userFile.is_open()) {
 
 
-			file >> input;
+			userFile >> readInput;
 
 			// get info ->
-			while (input != 38) {
+			while (readInput != 38) {
 
-				while (input != 59 && input != 38) {
-					word[counter] = input;
-					counter++;
+				while (readInput != 59 && readInput != 38) {
+					WORD[NEWCOUNTER] = readInput;
+					NEWCOUNTER++;
 
-					file >> input;
+					userFile >> readInput;
 				}
 				// debugging and seeing each word >
-				//cout << "WORD : " << word << "\n";
+				//cout << "WORD : " << WORD << "\n";
 
-				switch (retrieval) {
+				switch (caseNumber) {
 				case 0:
+					User->name = WORD;
 					break;
 				case 1:
+					User->Weapon = get_Weapon(WORD);
 					break;
 				case 2:
+					//defence health level exp
+					User->defence = atoi(WORD);
 					break;
 				case 3:
+					User->health = atoi(WORD);
 					break;
 				case 4:
+					User->level = atoi(WORD);
 					break;
 				case 5:
+					User->currentexp = atoi(WORD);
 					break;
 				case 6:
+					User->lvlexp = atoi(WORD);
 					break;
 				case 7:
+					User->gold = atoi(WORD);
 					break;
 				case 8:
+					User->Shield = get_Defence(WORD);
 					break;
-				case 9:
-					break;
-				case 10:
-					break;
-				case 11:
+				default:
+					ErrorLog("Default triggered in get User", "High");
 					break;
 				}
-				retrieval++;
-				counter = 0;
-
 				for (int emptyCounter = 0; emptyCounter < WORD_SIZE; emptyCounter++) {
-					word[emptyCounter] = '\0';
+					WORD[emptyCounter] = '\0';
 				}
-
-				file >> input;
-
+				caseNumber++;
+				NEWCOUNTER = 0;
+				userFile >> readInput;
 			}
 			// get info  < -
 
@@ -559,25 +617,30 @@ user* get_User(string name) { // retrieves user information from a file and retu
 		User->failed = COMMON_FAIL;
 		break;
 	}
+	for (int emptyCounter = 0; emptyCounter < WORD_SIZE; emptyCounter++) {
+		WORD[emptyCounter] = '\0';
+	}
+	userFile.close();
 
-	file.close();
 	return User;
 }
-void remove_Enemy(enemy* orc) { // removes an enemy and its inventory from heap
 
-	delete(orc->Droppables);
-
-	delete(orc);
-
-}
 // data structures were getting so large that enemies and inventory need to be kept on the heap.
 // Stress testing 50 enemies created made a memory increase from 920KB to 4MB then deleting them reduced memory back to 1.5MB
-enemy* get_Enemy(string name) { // retrieves an enemy from a file and returns it as an object
+void cleanObj(entity* obj) { // removes an entity and its inventory from heap
+	delete(obj->INV);
+	delete(obj);
+}
+void cleanObj(list* list) {
+	delete(list->names);
+	delete(list);
+}
+enemy* get_Enemy(string name, int level) { // retrieves an enemy from a file and returns it as an object
 
 	enemy* Enemy = new enemy;
 	fstream enemy_File;
 	Enemy->race = name;
-	Enemy->Droppables = get_Inventory(name);
+	Enemy->INV = get_Inventory(name);
 	name = name + ".BENF";
 	char WORD[WORD_SIZE];
 	int caseNumber = 0;
@@ -590,9 +653,11 @@ enemy* get_Enemy(string name) { // retrieves an enemy from a file and returns it
 	switch (isFileGood((char*)name.c_str())) { // is the file passed usable
 	case CHK_FAIL: // weapon fail state set to checksum fail
 		Enemy->failed = CHK_FAIL;
+		ErrorLog("Checksum Fail", "Low");
 		break;
 	case EXISTS_FAIL: // weapon fail state set to file not exists fail
 		Enemy->failed = EXISTS_FAIL;
+		ErrorLog("File Exists Fail", "Average");
 		break;
 	case GOOD: // file is usable start reading
 
@@ -624,21 +689,25 @@ enemy* get_Enemy(string name) { // retrieves an enemy from a file and returns it
 					break;
 				case 2:
 					//defence health level exp
-					Enemy->defence = atoi(WORD);
+					Enemy->defence = (atoi(WORD)*level)/2;
 					break;
 				case 3:
-					Enemy->health = atoi(WORD);
+					Enemy->health = (atoi(WORD) * level) / 2;
 					break;
 				case 4:
-					Enemy->level = atoi(WORD);
+					Enemy->level = level;
 					break;
 				case 5:
-					Enemy->exp = atoi(WORD);
+					Enemy->currentexp = (atoi(WORD) * level) / 2;
 					break;
 				case 6:
+					Enemy->gold = (atoi(WORD) * level) / 2;
+					break;
+				case 7:
 					Enemy->Shield = get_Defence(WORD);
 					break;
 				default:
+					ErrorLog("Default Triggered in get enemy", "High");
 					break;
 				}
 				for (int emptyCounter = 0; emptyCounter < WORD_SIZE; emptyCounter++) {
@@ -654,6 +723,7 @@ enemy* get_Enemy(string name) { // retrieves an enemy from a file and returns it
 		break;
 	default: // all other fails
 		Enemy->failed = COMMON_FAIL;
+		ErrorLog("Unknown Fail", "High");
 		break;
 	}
 	for (int emptyCounter = 0; emptyCounter < WORD_SIZE; emptyCounter++) {
@@ -665,18 +735,13 @@ enemy* get_Enemy(string name) { // retrieves an enemy from a file and returns it
 }
 
 
-
-void write_User_To_File(string name) { // writes user information to their files
-
-}
-
-
 bool FileExists(string name) { // checks if file exists
 	fstream f;
 	f.open(name, ios::in);
 	f.close();
 	if (!file) {
 		return false;
+		ErrorLog("File Doesnt Exist (FileExists)", "Unknown");
 	}
 	else {
 		return true;
@@ -716,22 +781,47 @@ bool createDirectory(char* name) { // create directory
 		return true;
 		break;
 	default:
+		ErrorLog("Could not create Directory", "Unknown");
 		return false;
 	}
 }
 
-ErrorType isFileGood(char* name) { // does checking if file is good
+ErrorType isFileGood(char* name) { // does checking if file is good							NEEDS REVISION
 	return GOOD;
-	string exemptDirectories[] = { "./GameFiles/Inventory/","./GameFiles/Inventory/","./GameFiles/UserFiles/","./GameFiles/UserFiles/","./GameFiles/UserFiles/" };
-	string exemptFiles[] = { "UserIN.BINVF","UserOUT.BINVF","Settings.BSET","USER.BSURF","UserData.BDF" };
+#define INVENTORYDIR "./GameFiles/Inventory/"
+#define USERDIR "./GameFiles/UserFiles/"
+	int flag = 0;
+	string exemptDirectories[] = { USERDIR,INVENTORYDIR,INVENTORYDIR,INVENTORYDIR,INVENTORYDIR,INVENTORYDIR,INVENTORYDIR };
+	string exemptFiles[] = { "User.BSURF","DarkElf.BINVF","User.BINVF","BabyDragon.BINVF","Drough.BINVF","Elliott.BINVF","Orc.BINVF" };
+	
 	for (int exempt = 0; exempt < sizeof(exemptFiles) / sizeof(string); exempt++) { // temporary exempt files from checksum ( files that change frequently ) until i get a better method of doing checksum
 		if (exemptFiles[exempt] == name) {
+		
+			flag = 1;
 			string path = exemptDirectories[exempt] + name;
 			if (FileExists(path) == 0) {
 				return EXISTS_FAIL; // directory not exist fail
+				ErrorLog("Exist Fail Triggered in isFileGood", "Unknown");
 			}
 			else {
+		
 				return GOOD;
+			}
+		}
+	}
+	if (flag != 1) {
+		
+		for (int i = 0; i < sizeof(checkSumNames) / sizeof(string); i++) {
+			
+			if (name == checkSumNames[i]) {
+				if (getCheckSum(Directories[i] + checkSumNames[i]) == checkSums[i]) {
+					
+					return GOOD;
+				}
+				else {
+					return CHK_FAIL;
+					ErrorLog("Checksum Triggered in isFileGood "+checkSumNames[i]+" ", "Low");
+				}
 			}
 		}
 	}
@@ -746,9 +836,11 @@ ErrorType isFileGood(char* name) { // does checking if file is good
 			string path = Directories[counter] + name;
 			if (FileExists(path) == 0) {
 				return EXISTS_FAIL; // directory not exist fail
+				ErrorLog("Exists Fail triggered in isFileGood", "Unknown");
 			}
 			else if (Checksum(path, checkSums[counter]) == 0) { // if checksum is wrong from that identified at the top of the file
 				return CHK_FAIL;
+				ErrorLog("Checksum Fail triggerd in isFileGood", "Unknown");
 			}
 
 		}
@@ -772,10 +864,275 @@ bool removeDirectory(char* name) { // remove directory
 		return true;
 		break;
 	default:
+		ErrorLog("Remove Directory Fail", "Unknown");
 		return false;
 	}
 }
 
 
+void printList(list* list,int type) {
+	for (int i = 0; i < MAX_NUM_FILES; i++) {
+
+		if (list->names[i] == "") {
+			return;
+		}
+		else {
+			if (type == 0) {
+				cout << list->names[i] << endl;
+			}
+			else {
+				cout << i+1 << ". " << list->names[i] << endl;
+			}
+		}
+
+	}
+}
+list* getListWeapons() {
+	list* names = new list;
+	fstream file;
+	char input;
+	int location = 0;
+	int counter = 0;
+	char word[WORD_SIZE];
+	for (int emptyCounter = 0; emptyCounter < WORD_SIZE; emptyCounter++) {
+		word[emptyCounter] = '\0';
+	}
+	file.open(WEAPONDIR + (string)"list.txt", ios::in);
+	if (file.is_open()) {
 
 
+		file >> input;
+
+		// get info ->
+		while (input != 38) {
+
+			while (input != 59 && input != 38) {
+			
+				word[counter] = input;
+				counter++;
+
+				file >> input;
+			}
+			names->names[location] = word;
+			location++;
+			for (int emptyCounter = 0; emptyCounter < WORD_SIZE; emptyCounter++) {
+				word[emptyCounter] = '\0';
+			}
+			counter = 0;
+
+			file >> input;
+		}
+	}
+	return names;
+}
+list* getListDefences() {
+	list* names = new list;
+	fstream file;
+	char input;
+	int location = 0;
+	int counter = 0;
+	char word[WORD_SIZE];
+	for (int emptyCounter = 0; emptyCounter < WORD_SIZE; emptyCounter++) {
+		word[emptyCounter] = '\0';
+	}
+	file.open(DEFENCEDIR + (string)"list.txt", ios::in);
+	if (file.is_open()) {
+
+
+		file >> input;
+
+		// get info ->
+		while (input != 38) {
+
+			while (input != 59 && input != 38) {
+
+				word[counter] = input;
+				counter++;
+
+				file >> input;
+			}
+			names->names[location] = word;
+			location++;
+			for (int emptyCounter = 0; emptyCounter < WORD_SIZE; emptyCounter++) {
+				word[emptyCounter] = '\0';
+			}
+			counter = 0;
+
+			file >> input;
+		}
+	}
+	return names;
+}
+list* getListItems() {
+	list* names = new list;
+	fstream file;
+	char input;
+	int location = 0;
+	int counter = 0;
+	char word[WORD_SIZE];
+	for (int emptyCounter = 0; emptyCounter < WORD_SIZE; emptyCounter++) {
+		word[emptyCounter] = '\0';
+	}
+	file.open(ITEMDIR + (string)"list.txt", ios::in);
+	if (file.is_open()) {
+
+
+		file >> input;
+
+		// get info ->
+		while (input != 38) {
+
+			while (input != 59 && input != 38) {
+
+				word[counter] = input;
+				counter++;
+
+				file >> input;
+			}
+			names->names[location] = word;
+			location++;
+			for (int emptyCounter = 0; emptyCounter < WORD_SIZE; emptyCounter++) {
+				word[emptyCounter] = '\0';
+			}
+			counter = 0;
+
+			file >> input;
+		}
+	}
+	return names;
+}
+list* getListPotions() {
+	list* names = new list;
+	fstream file;
+	char input;
+	int location = 0;
+	int counter = 0;
+	char word[WORD_SIZE];
+	for (int emptyCounter = 0; emptyCounter < WORD_SIZE; emptyCounter++) {
+		word[emptyCounter] = '\0';
+	}
+	file.open(POTIONSDIR + (string)"list.txt", ios::in);
+	if (file.is_open()) {
+
+
+		file >> input;
+
+		// get info ->
+		while (input != 38) {
+
+			while (input != 59 && input != 38) {
+
+				word[counter] = input;
+				counter++;
+
+				file >> input;
+			}
+			names->names[location] = word;
+			location++;
+			for (int emptyCounter = 0; emptyCounter < WORD_SIZE; emptyCounter++) {
+				word[emptyCounter] = '\0';
+			}
+			counter = 0;
+
+			file >> input;
+		}
+	}
+	return names;
+}
+list* getListSpells() {
+	list* names = new list;
+	fstream file;
+	char input;
+	int location = 0;
+	int counter = 0;
+	char word[WORD_SIZE];
+	for (int emptyCounter = 0; emptyCounter < WORD_SIZE; emptyCounter++) {
+		word[emptyCounter] = '\0';
+	}
+	file.open(SPELLSDIR + (string)"list.txt", ios::in);
+	if (file.is_open()) {
+
+
+		file >> input;
+
+		// get info ->
+		while (input != 38) {
+
+			while (input != 59 && input != 38) {
+
+				word[counter] = input;
+				counter++;
+
+				file >> input;
+			}
+			names->names[location] = word;
+			location++;
+			for (int emptyCounter = 0; emptyCounter < WORD_SIZE; emptyCounter++) {
+				word[emptyCounter] = '\0';
+			}
+			counter = 0;
+
+			file >> input;
+		}
+	}
+	return names;
+}
+list* getListEnemy() {
+	list* names = new list;
+	fstream file;
+	char input;
+	int location = 0;
+	int counter = 0;
+	char word[WORD_SIZE];
+	for (int emptyCounter = 0; emptyCounter < WORD_SIZE; emptyCounter++) {
+		word[emptyCounter] = '\0';
+	}
+	file.open(ENEMYDIR + (string)"list.txt", ios::in);
+	if (file.is_open()) {
+
+
+		file >> input;
+
+		// get info ->
+		while (input != 38) {
+
+			while (input != 59 && input != 38) {
+
+				word[counter] = input;
+				counter++;
+
+				file >> input;
+			}
+			names->names[location] = word;
+			location++;
+			for (int emptyCounter = 0; emptyCounter < WORD_SIZE; emptyCounter++) {
+				word[emptyCounter] = '\0';
+			}
+			counter = 0;
+
+			file >> input;
+		}
+	}
+	return names;
+}
+bool Save(user* Player) {
+	fstream file;
+	file.open(USERDIR+(string)"USER.BSURF", ios::out);
+	if (file.is_open()) {
+		file << Player->name << ";" << endl;
+		file << Player->Weapon.name << ";" << endl;
+		file << Player->defence << ";" << endl;
+		file << Player->health << ";" << endl;
+		file << Player->level << ";" << endl;
+		file << Player->currentexp << ";" << endl;
+		file << Player->lvlexp << ";" << endl;
+		file << Player->gold << ";" << endl;
+		file << Player->Shield.name << "&";
+		file.close();
+		return true;
+	}
+	else {
+		ErrorLog("File Did not open to save", "Severe");
+		return false;
+	}
+}
