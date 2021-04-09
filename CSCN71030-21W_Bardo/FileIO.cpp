@@ -36,10 +36,11 @@ using namespace std;
 #define WEAPONDIR "./GameFiles/Weapons/"
 #define DEFENCEDIR "./GameFiles/Armour/"
 #define ITEMDIR "./GameFiles/Items/"
-#define INVENTORYDIR "./GameFiles/Inventory/"--	 
+#define INVENTORYDIR "./GameFiles/Inventory/"
 #define ENEMYDIR "./GameFiles/Enemy/"
 #define USERDIR "./GameFiles/UserFiles/"
 #define WORD_SIZE 15
+#define Empty 0x00000000CDCDCDCD
 string ERRORLOG ="./GameFiles/ErrorLog.txt";
 
 
@@ -62,6 +63,7 @@ fstream file;
 * change the checksum value of the encrypted version of the file in the checksums[] in comparison to that file in the checkSumNames[]
 */
 weapon get_Weapon(string name) { // retrieves a weapon from a file and returns it as an object
+
 #define CRAFTING_MATERIAL_START 3
 	int length = 0;
 	char input;
@@ -87,7 +89,11 @@ weapon get_Weapon(string name) { // retrieves a weapon from a file and returns i
 		ErrorLog("Exists Fail", "Average");
 		break;
 	case GOOD: // file is usable start reading
-
+		for (int i = 0; i < MAX_MATERIALS; i++) {
+			Weapon.BarterItemsNum[i] = 0;
+			Weapon.craftingItemsNum[i] = 0;
+		}
+		
 		Weapon.failed = GOOD;
 		file.open(WEAPONDIR + (string)name, ios::in);
 		if (file.is_open()) {
@@ -202,7 +208,10 @@ defence get_Defence(string name) { // retrieves a defence item from a file and r
 		ErrorLog("Exists Fail", "Average");
 		break;
 	case GOOD: // file is usable start reading
-
+		for (int i = 0; i < MAX_MATERIALS; i++) {
+			Defence.BarterItemsNum[i] = 0;
+			Defence.craftingItemsNum[i] = 0;
+		}
 		Defence.failed = GOOD;
 		file.open(DEFENCEDIR + (string)name, ios::in);
 		if (file.is_open()) {
@@ -309,6 +318,9 @@ item get_Item(string name) {
 	item ITEM;
 	fstream FILE;
 
+	
+
+
 	ITEM.name = name;
 	name = name + ".BITMF";
 
@@ -329,7 +341,10 @@ item get_Item(string name) {
 		ErrorLog("File Exists Fail", "Average");
 		break;
 	case GOOD: // file is usable start reading
-
+		for (int i = 0; i < MAX_MATERIALS; i++) {
+			ITEM.BarterItemsNum[i] = 0;
+		
+		}
 		ITEM.failed = GOOD;
 		FILE.open(ITEMDIR + (string)name, ios::in);
 		if (FILE.is_open()) {
