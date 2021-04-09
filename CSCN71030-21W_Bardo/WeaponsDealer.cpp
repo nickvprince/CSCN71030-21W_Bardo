@@ -46,7 +46,13 @@ void WeaponDealer::buy(user* user) {
 	bool exists = false;
 
 	string strWeap = getDealerBuyChoice();
-	// weapon weap = getWeapon(strWeap);
+
+	if (strWeap == "No") {
+		pressAnyButtonToContinue("");
+		return;
+	} else {
+		// weapon weap = getWeapon(strWeap);
+	}
 
 	// If the weapon condition fails, errorlog, return.
 	if (weap.failed != GOOD) {
@@ -85,13 +91,14 @@ void WeaponDealer::buy(user* user) {
 			user->inv->itemCount[i]++;
 			user->inv->itemsUsed++;
 			exists = true;
+			break;
 		}
 	}
 
 	// If the item does not exist already.
 	if (exists == false) {
 		for (int i = 0; i < MAX_ITEMS; i++) {
-			if (user->inv->itemCount[i] == NULL || user->inv->itemCount[i] == 0) {
+			if (user->inv->itemCount[i] == NULL) {
 				user->inv->Weapons[i] = weap;
 				user->inv->itemCount[i]++;
 				user->inv->itemsUsed++;
@@ -99,6 +106,8 @@ void WeaponDealer::buy(user* user) {
 			}
 		}
 	}
+
+	system("cls");
 
 	cout << "Weapon: " << weap.name
 		<< " has been purchased for "
@@ -149,6 +158,8 @@ void WeaponDealer::sell(user* user) {
 			user->gold += user->inv->Weapons[choice].value;
 			this->balance -= user->inv->Weapons[choice].value;
 
+			system("cls");
+
 			cout << "Weapon: " << user->inv->Weapons[choice].name
 				<< " has been sold for "
 				<< user->inv->Weapons[choice].value
@@ -192,7 +203,13 @@ void WeaponDealer::barter(user* user) {
 	bool allValid = true;
 
 	string strWeap = getDealerBuyChoice();
-	// weapon weap = getWeapon(strWeap);
+
+	if (strWeap == "No") {
+		pressAnyButtonToContinue("");
+		return;
+	} else {
+		// weapon weap = getWeapon(strWeap);
+	}
 
 	// If the weapon condition fails, errorlog, return.
 	if (weap.failed != GOOD) {
@@ -287,7 +304,7 @@ void WeaponDealer::barter(user* user) {
 
 	}
 	
-	// ----- Remove item quanitites -----
+	// ----- Remove item quantites -----
 	for (int i = 0; i < MAX_ITEMS; i++) {
 		for (int j = 0; j < sizeof(weap.BarterItems) / sizeof(string); j++) {
 			if (weap.BarterItems[i] == user->inv->Items[j].name && weap.BarterItems[i] != "") {
@@ -306,6 +323,7 @@ void WeaponDealer::barter(user* user) {
 		}
 	}
 
+
 	// Find the next available slot for a weapon and put it there.
 
 	// If the item exists already.
@@ -314,13 +332,14 @@ void WeaponDealer::barter(user* user) {
 			user->inv->itemCount[i]++;
 			user->inv->itemsUsed++;
 			exists = true;
+			break;
 		}
 	}
 
 	// If the item does not exist already.
 	if (exists == false) {
 		for (int i = 0; i < MAX_ITEMS; i++) {
-			if (user->inv->itemCount[i] == NULL || user->inv->itemCount[i] == 0) {
+			if (user->inv->itemCount[i] == NULL) {
 				user->inv->Weapons[i] = weap;
 				user->inv->itemCount[i]++;
 				user->inv->itemsUsed++;
@@ -328,6 +347,8 @@ void WeaponDealer::barter(user* user) {
 			}
 		}
 	}
+
+	system("cls");
 
 	cout << "You have successfully bartered the following materials for:" << endl
 		<< "Weapon: " << weap.name << endl;
@@ -346,20 +367,48 @@ void WeaponDealer::barter(user* user) {
 
 string WeaponDealer::getDealerBuyChoice() {
 
+
 	int itemChoice = 0;
+	int yesNo = 0;
+	bool valid = false;
 	string strWeap = "";
 
-	cout << "Select an item to barter/purchase: " << endl;
+	cout << "Select an item to barter/purchase: " << endl << endl;
 
-	/*string weapArray = getListWeapons();
-
-	for (int i = 0; i < sizeof(weapArray) / sizeof(string); i++) {
-		cout << i << ". " << weapArray[i] << endl;
-	}
+	
+	/*list* weapons = getListWeapons();
+	printList(weapons, 1);
 
 	cin >> itemChoice;
 
-	return weapArray[itemChoice];*/
+	cleanObj(weapons);
+
+	getItemStats(weapons->names[choice]);
+
+	cout << endl << "Are you sure you want to purchase/barter for " << weapons->names[choice] << "?" << endl
+		 << "1. Yes" << endl
+		 << "2. No" << endl;
+
+	do {
+		cin >> yesNo;
+		checkUserInput();
+		switch (yesNo) {
+		case 1:
+			valid = true;
+			return weapons->names[choice];
+			break;
+		case 2:
+			valid = true;
+			return "No";
+			break;
+		default:
+			valid = false;
+			break;
+
+		}
+	} while (!valid);*/
+
+	
 
 	cout << "1. Sword" << endl
 		 << "2. Bow" << endl
@@ -392,5 +441,46 @@ void WeaponDealer::printDealerOptions() {
 		<< "1. Buy" << endl
 		<< "2. Sell" << endl
 		<< "3. Barter" << endl
-		<< "4. Back" << endl;
+		<< "4. Display Inventory" << endl
+		<< "5. Back" << endl;
+}
+
+void WeaponDealer::getItemStats(string strWeap) {
+	
+	int barterCost = 0;
+	weapon weap;
+	//weap = getWeapon(strWeap);
+
+	if (weap.failed != GOOD) {
+		//ErrorLog("Failed to get weapon stats", "Medium");
+		cout << "Failed to get weapon stats." << endl << endl;
+		return;
+	} else {
+		cout << "Weapon: " << strWeap << endl
+			<< "Damage: " << weap.damage << endl
+			<< "Level: " << weap.level << endl
+			<< "Value: " << weap.value << endl << endl;
+
+		cout << "Items to barter: " << endl;
+		
+		for (int i = 0; i < MAX_MATERIALS; i++) {
+			if (weap.BarterItems[i] != "") {
+				item bItem;
+				//bItem = getItem(weap.BarterItems[i]);
+
+				if (bItem.failed != GOOD) {
+					//ErrorLog("Failed to get item for stats - Module: Economy", "Critical")
+					cout << "Error retrieving barter Item(s)" << endl;
+					pressAnyButtonToContinue("");
+					return;
+				}
+				cout << "Item: " << weap.BarterItems[i] << "\tValue: " << bItem.value << endl;
+				barterCost += bItem.value;
+			}
+		}
+
+		cout << endl << "Total cost to barter: " << barterCost << endl;
+
+	}
+
 }

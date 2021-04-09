@@ -71,7 +71,7 @@ int main() {
 	character->inv->Items[0] = iron;
 	character->inv->itemCount[0] = 3;
 	character->inv->Items[1] = wood;
-	character->inv->itemCount[1] = 1;
+	character->inv->itemCount[1] = 6;
 
 	weapon sword;
 	sword.value = 100;
@@ -79,9 +79,9 @@ int main() {
 	//sword.BarterItems[0] = "wood";
 
 	character->inv->itemCount[2] = 1;
-	character->inv->Weapons[0] = sword;
+	character->inv->Weapons[2] = sword;
 
-	character->inv->itemsUsed = 3;
+	character->inv->itemsUsed = 7;
 
 
     int choice = 0;
@@ -107,6 +107,6 @@ int main() {
             break;
 
         }
-       // while ((getchar()) != '\n');
+       while ((getchar()) != '\n');
     }
 }

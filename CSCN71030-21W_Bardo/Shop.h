@@ -13,13 +13,13 @@
 
 #pragma once
 
+#include "WeaponsDealer.h"
+
 #include <stdlib.h>
 #include <iostream>
 #include <stdio.h>
 #include <string>
 #include <stdbool.h>
-
-#include "WeaponsDealer.h"
 
 using namespace std;
 

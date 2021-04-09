@@ -33,4 +33,5 @@ public:
 	void barter(user*)override;
 	string getDealerBuyChoice()override;
 	void printDealerOptions()override;
+	void getItemStats(string)override;
 };

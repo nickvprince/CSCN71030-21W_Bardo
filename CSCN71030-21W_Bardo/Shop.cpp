@@ -30,7 +30,7 @@ bool shopMain(user* character) {
 		cin >> choice;
 		switch (choice) {
 		case 1:
-			//system("cls");
+			system("cls");
 			weaponDealer->printDealerHeader(character);
 			weaponDealer->printDealerOptions();
 			weaponDealer->getOptionChoice(weaponDealer, character);
@@ -42,7 +42,7 @@ bool shopMain(user* character) {
 		case 4:
 			break;
 		case 5:
-			exit(0);
+			return true;
 			break;
 		default:
 			break;

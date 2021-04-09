@@ -27,9 +27,8 @@ void Dealer::printDealerOptions() {
 }
 
 void Dealer::printDealerHeader(user* character) {
-	cout << endl
-		<< "Dealer Name: " << this->name << " || Dealer Balance: " << this->balance << "|| User Balance: " << character->gold << endl
-		<< "-----------------------------------------------------------------" << endl << endl;
+	cout << "Dealer Name: " << this->name << " || Dealer Balance: " << this->balance << "|| User Balance: " << character->gold << endl
+		 << "-----------------------------------------------------------------" << endl << endl;
 }
 
 void Dealer::getOptionChoice(Dealer* dealer, user* character) {
@@ -55,29 +54,13 @@ void Dealer::getOptionChoice(Dealer* dealer, user* character) {
 			dealer->barter(character);
 			break;
 		case 4:
+			printInventory(character);
+			break;
+		case 5:
 			break;
 		default:
 			break;
 
 		}
 	} while ((getchar()) != '\n');
-}
-
-void checkUserInput() {
-
-	string enter;
-	cin >> enter;
-
-	if (cin.fail()) {
-		cin.clear();
-		cin.ignore(numeric_limits<streamsize>::max(), '\n');
-	}
-}
-
-void pressAnyButtonToContinue(string str) {
-
-	if (str != "") {
-		cout << str;
-	}
-	system("pause >nul");
 }

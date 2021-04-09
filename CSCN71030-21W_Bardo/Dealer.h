@@ -13,7 +13,7 @@
 
 #pragma once
 
-#include "Objects.h"
+#include "OtherFuntions.h"
 
 #include <stdlib.h>
 #include <iostream>
@@ -39,8 +39,5 @@ public:
 	virtual void printDealerOptions();
 	virtual void printDealerHeader(user*);
 	virtual void getOptionChoice(Dealer*, user*);
+	virtual void getItemStats(string) = 0;
 };
-
-void checkUserInput();
-void pressAnyButtonToContinue(string);
- 
