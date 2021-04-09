@@ -36,7 +36,7 @@ using namespace std;
 #define WEAPONDIR "./GameFiles/Weapons/"
 #define DEFENCEDIR "./GameFiles/Armour/"
 #define ITEMDIR "./GameFiles/Items/"
-#define INVENTORYDIR "./GameFiles/Inventory/"
+#define INVENTORYDIR "./GameFiles/Inventory/"--	 
 #define ENEMYDIR "./GameFiles/Enemy/"
 #define USERDIR "./GameFiles/UserFiles/"
 #define WORD_SIZE 15
@@ -123,6 +123,7 @@ weapon get_Weapon(string name) { // retrieves a weapon from a file and returns i
 					if (SWITCH == 0) {
 						Weapon.craftingItemsNum[itemPosition] = atoi(word);
 						itemPosition++;
+						retrieval--;
 						SWITCH++;
 					}
 					else {
