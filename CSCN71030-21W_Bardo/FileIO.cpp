@@ -187,6 +187,8 @@ defence get_Defence(string name) { // retrieves a defence item from a file and r
 	int counter = 0;
 	defence Defence;
 #define CRAFTING_MATERIAL_START 3
+	int SWITCH = 0;
+	int barterPosition = 0;
 	Defence.name = name;
 	name = name + ".BAMF";
 
@@ -234,15 +236,36 @@ defence get_Defence(string name) { // retrieves a defence item from a file and r
 					Defence.level = atoi(word);
 					break;
 				case (CRAFTING_MATERIAL_START + 1):
+					if (SWITCH == 0) {
+						Defence.craftingItemsNum[itemPosition] = atoi(word);
+						SWITCH++;
+						retrieval--;
+						itemPosition++;
 
-					Defence.craftingItemsNum[itemPosition] = atoi(word);
-					itemPosition++;
-					retrieval = CRAFTING_MATERIAL_START - 1;
+					}
+					else {
+						Defence.BarterItemsNum[barterPosition] = atoi(word);
+						SWITCH--;
+						barterPosition++;
+						retrieval = CRAFTING_MATERIAL_START - 1;
+					}
+					
+					
 					break;
 				default:
 
 					if (atoi(word) == 0) {
-						Defence.craftingItems[itemPosition] = word;
+						if (SWITCH == 0) {
+							Defence.craftingItems[itemPosition] = word;
+							retrieval--;
+							
+							SWITCH++;
+						}
+						else {
+							Defence.BarterItems[barterPosition++] = word;
+						
+							SWITCH--;
+						}
 					}
 					else {
 						Defence.failed = COMMON_FAIL;
@@ -285,6 +308,7 @@ item get_Item(string name) {
 	int counter = 0;
 	item ITEM;
 	fstream FILE;
+
 	ITEM.name = name;
 	name = name + ".BITMF";
 
