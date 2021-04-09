@@ -1,5 +1,8 @@
-/* Date : February 6, 2021
-* Teacher : Dr.Elliot Coleshill
+/*
+* Programmer : Danny Smith
+* Class : Team Based Software Development CSCN71030 - 21W - SEC1 - PROJECT 2
+* Date : February 6, 2021
+* Teacher : Dr.Elliott Coleshill
 * Team : Dominic Pham, Thomas Horvath, Nicholas, Prince, Ali Syed
 *
 * Description :

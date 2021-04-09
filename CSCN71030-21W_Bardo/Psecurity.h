@@ -4,7 +4,7 @@
 * Programmer : Danny Smith
 * Class : Team Based Software Development CSCN71030-21W-SEC1-PROJECT 2
 * Date : February 6, 2021
-* Teacher : Dr. Elliot Coleshill
+* Teacher : Dr. Elliott Coleshill
 * Team : Dominic Pham, Thomas Horvath, Nicholas, Prince, Ali Syed
 *
 * Description : Used for security purposes of data storage and retrieval including an encryption and decryption protocol
