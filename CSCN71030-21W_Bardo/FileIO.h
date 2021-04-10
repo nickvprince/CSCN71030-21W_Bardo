@@ -13,7 +13,7 @@
 	*
 	*History :
 	*Functionality created but left empty
-	* new file creation, length of file, file exists, and create directory functionality addedand completed
+	* new file creation, length of file, file exists, and create directory functionality added and completed
 	* Testing Void pointer | FAILED
 	* isFileGood added
 */

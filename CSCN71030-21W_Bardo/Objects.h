@@ -92,6 +92,8 @@ class user:public entity {
 public:
 
 	int lvlexp = 600;
+	int skillpoints = 0;
+	int Skills[3] = { 0,0,0 }; // health = 0, armour = 1, damage = 2
 
 };
 
