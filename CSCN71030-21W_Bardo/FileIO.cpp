@@ -433,6 +433,10 @@ spell get_Spell(string name) { // retrieves a spell from a file and returns it a
 
 inventory* get_Inventory(string name) { // retrieves inventory from a file and returns it as an object
 	inventory* Inventory = new inventory;
+	for (int i = 0; i < MAX_ITEMS; i++) {
+		Inventory->ItemCount[i] = 0;
+	
+	}
 	int length = 0;
 	char input;
 	int itemPosition = 0;
