@@ -11,13 +11,14 @@ int main() {
     int choice = 0;
 
     // INIT ->
-
-
+    user* Player = new user();
+    Player->health = 1000;
+    Player->skillpoints = 4;
+    Skilltree(Player);
     // <- INIT
     while (true) {
-        //system("cls");
-        user* Player = new user();
-        Skilltree(*Player);
+        system("cls");
+        
         printOptions();
         choice = getc(stdin);
      
@@ -43,6 +44,7 @@ int main() {
             break;
 
         }
+        while ((getchar()) != '\n');
     }
 }
 void printOptions() {
