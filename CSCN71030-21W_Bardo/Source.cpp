@@ -5,7 +5,7 @@ using namespace std;
 #include <stdio.h>
 #include <fstream>
 #include <string>
-
+#include "SkillTree.h"
 void printOptions();
 int main() {
     int choice = 0;
@@ -16,8 +16,11 @@ int main() {
     // <- INIT
     while (true) {
         //system("cls");
+        user* Player = new user();
+        Skilltree(*Player);
         printOptions();
         choice = getc(stdin);
+     
         switch (choice) {
         case 48: // = int 0
             break;
