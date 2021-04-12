@@ -5,7 +5,7 @@
 * Class : Team Based Software Development CSCN71030-21W-SEC1-PROJECT 2
 * Date : February 6, 2021
 * Teacher : Dr. Elliott Coleshill
-* Team : Dominic Pham, Thomas Horvath, Nicholas Prince, Ali Syed
+* Team : Dominic Pham, Thomas Horvath, Nicholas, Prince, Ali Syed
 *
 * Description :
 *
@@ -92,6 +92,8 @@ class user:public entity {
 public:
 
 	int lvlexp = 600;
+	int skillpoints = 0;
+	int Skills[3] = { 0,0,0 }; // health = 0, armour = 1, damage = 2
 
 };
 

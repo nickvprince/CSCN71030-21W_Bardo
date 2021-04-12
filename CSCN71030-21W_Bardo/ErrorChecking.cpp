@@ -5,8 +5,6 @@
 
 using namespace std;
 /*
-* File Name : ErrorChecking.cpp
-*
 * Programmer : Danny Smith
 * Class : Team Based Software Development CSCN71030-21W-SEC1-PROJECT 2
 * Date : February 6, 2021
