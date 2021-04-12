@@ -1121,6 +1121,7 @@ bool Save(user* Player) {
 	if (file.is_open()) {
 		file << Player->name << ";" << endl;
 		file << Player->Weapon.name << ";" << endl;
+		//file << Player->damage << ";" << endl;
 		file << Player->defence << ";" << endl;
 		file << Player->health << ";" << endl;
 		file << Player->level << ";" << endl;

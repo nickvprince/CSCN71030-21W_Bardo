@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Character.cpp" />
     <ClCompile Include="ErrorChecking.cpp" />
     <ClCompile Include="FileIO.cpp" />
     <ClCompile Include="Objects.h" />
@@ -146,6 +147,7 @@
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Character.h" />
     <ClInclude Include="ErrorChecking.h" />
     <ClInclude Include="FileIO.h" />
     <ClInclude Include="Psecurity.h" />

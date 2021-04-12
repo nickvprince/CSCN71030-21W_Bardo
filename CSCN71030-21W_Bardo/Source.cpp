@@ -30,7 +30,7 @@ using namespace std;
 #include <fstream>
 #include <string>
 #include "Psecurity.h"
-
+#include "Character.h"
 
 
 // temp
@@ -57,16 +57,39 @@ bool skillMain(entity* Player) {
 
 
 void printOptions();
-int main() { 
-   
+int main(int argc, char* argv[]) { 
 
-    user* Player = get_User("User");
+    user* Player = new user;
+    if (argc == 1) {
+        Player = startIO(Player);
+    }
+    if (argc >= 2 )
+    {
+        string cmdInput = argv[1];
+        if (cmdInput == "0") {
+            Player = newGame();
+        }
+        else if (cmdInput == "1")
+        {
+            Player = get_User("User");
 
+            bool checkLoader = loadScreen(Player);
+            if (checkLoader == false)
+            {
+               Player = newGame();
+            }
+            
+           
+        }
+    }
+    
+    
     int choice = 0;
     // <- INIT
-
+    
     while (true) {
         system("cls");
+        printStats(Player);
         printOptions();
         choice = getc(stdin);
         switch (choice) {
@@ -107,6 +130,7 @@ int main() {
         }
         while ((getchar()) != '\n');
     }
+    
 }
 void printOptions() {
     cout << "Welcome to the Bardo home town please choose an option\n";
