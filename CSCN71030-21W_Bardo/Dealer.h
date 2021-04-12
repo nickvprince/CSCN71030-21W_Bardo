@@ -13,6 +13,8 @@
 
 #pragma once
 
+#define EMPTY 0x00000000CDCDCDCD
+
 #include "OtherFuntions.h"
 
 #include <stdlib.h>
@@ -32,12 +34,12 @@ public:
 	virtual void printDealerInfo() = 0;
 	virtual string getName() = 0;
 	virtual int getDealerBalance() = 0;
-	virtual void buy(user*) = 0;
-	virtual void sell(user*) = 0;
-	virtual void barter(user*) = 0;
-	virtual string getDealerBuyChoice() = 0;
+	virtual void buy(entity*) = 0;
+	virtual void sell(entity*) = 0;
+	virtual void barter(entity*) = 0;
+	virtual string getDealerBuyChoice(entity*) = 0;
 	virtual void printDealerOptions();
-	virtual void printDealerHeader(user*);
-	virtual void getOptionChoice(Dealer*, user*);
-	virtual void getItemStats(string) = 0;
+	virtual void printDealerHeader(entity*);
+	virtual void getOptionChoice(Dealer*, entity*);
+	virtual bool getItemStats(string, entity*) = 0;
 };

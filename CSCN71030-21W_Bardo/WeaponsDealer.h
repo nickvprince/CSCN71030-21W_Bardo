@@ -28,10 +28,10 @@ public:
 	void printDealerInfo()override;
 	string getName()override;
 	int getDealerBalance()override;
-	void buy(user*)override;
-	void sell(user*)override;
-	void barter(user*)override;
-	string getDealerBuyChoice()override;
+	void buy(entity*)override;
+	void sell(entity*)override;
+	void barter(entity*)override;
+	string getDealerBuyChoice(entity*)override;
 	void printDealerOptions()override;
-	void getItemStats(string)override;
+	bool getItemStats(string, entity*)override;
 };

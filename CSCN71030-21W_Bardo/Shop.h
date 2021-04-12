@@ -13,7 +13,7 @@
 
 #pragma once
 
-#include "WeaponsDealer.h"
+#include "Dealer.h"
 
 #include <stdlib.h>
 #include <iostream>
@@ -23,5 +23,5 @@
 
 using namespace std;
 
-bool shopMain(user*);
+bool shopMain(entity*);
 void printShops();

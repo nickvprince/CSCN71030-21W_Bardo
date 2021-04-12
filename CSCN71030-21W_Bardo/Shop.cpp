@@ -11,10 +11,11 @@
 *
 */
 
+#include "WeaponsDealer.h"
 #include "Shop.h"
 
 
-bool shopMain(user* character) {
+bool shopMain(entity* character) {
 
 	Dealer* weaponDealer = new WeaponDealer;
 	/*Dealer* defenceDealer = new DefenceDealer;
@@ -28,6 +29,7 @@ bool shopMain(user* character) {
 		system("cls");
 		printShops();
 		cin >> choice;
+		checkUserInput();
 		switch (choice) {
 		case 1:
 			system("cls");
@@ -60,7 +62,7 @@ void printShops() {
 	cout << "2. Ilyon\n"; // Defence
 	cout << "3. Daemon\n"; // Potions
 	cout << "4. Sterling\n"; // Items
-	cout << "5. Exit\n";
+	cout << "5. Exit Shop\n";
 	cout << "Enter : ";
 }
 

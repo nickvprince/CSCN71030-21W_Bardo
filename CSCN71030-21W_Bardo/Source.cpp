@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 /*
 * File Name : Main.cpp
 *
@@ -14,10 +15,10 @@
 *
 *
 * History :
-*	ReadMe File Created, IronSword weapon test file created
+*    ReadMe File Created, IronSword weapon test file created
 *
 * Revision Ideas -
-*	FileIO as threads to do the workload while other operations are running
+*    FileIO as threads to do the workload while other operations are running
 */
 
 #include <stdlib.h>
@@ -25,66 +26,36 @@
 #include <stdio.h>
 #include <fstream>
 #include <string>
-
 #include "Shop.h"
 
-using namespace std;
+// temp
+bool skillMain(entity* Player);
+bool crafting(entity* player);
+bool menu(entity* Player);
 
-void printOptions() {
-	cout << "Welcome to the Bardo home town please choose an option\n";
-	cout << "-------------------------------------------------------\n";
-	cout << endl;
-	cout << "1. Battle\n";
-	cout << "2. Shop\n";
-	cout << "3. Forge\n";
-	cout << "4. Skill tree\n";
-	cout << "5. Exit\n";
-	cout << "Enter : ";
+bool menu(entity* Player) {
+    return false;
 }
+bool crafting(entity* player) {
+    return false;
+}
+bool skillMain(entity* Player) {
+    return false;
+}
+// temp
 
-int main() {
+void printOptions();
+int main() { 
+   
 
-	defence shield;
-	shield.value = 250;
+    user* Player = get_User("User");
 
-	potion hPot;
-	hPot.value = 450;
-
-	user* character = new user;
-	character->gold = 7500;
-
-	inventory* inv = new inventory;
-	character->inv = inv;
-
-	for (int i = 0; i < MAX_ITEMS; i++) {
-		character->inv->itemCount[i] = 0;
-	}
-
-	item wood;
-	wood.name = "wood";
-	wood.value = 10;
-
-	item iron;
-	iron.name = "iron";
-	iron.value = 10;
-
-	character->inv->Items[0] = iron;
-	character->inv->itemCount[0] = 3;
-	character->inv->Items[1] = wood;
-	character->inv->itemCount[1] = 6;
-
-	weapon sword;
-	sword.value = 100;
-	sword.name = "sword";
-	//sword.BarterItems[0] = "wood";
-
-	character->inv->itemCount[2] = 1;
-	character->inv->Weapons[2] = sword;
-
-	character->inv->itemsUsed = 7;
-
+	Player->INV->Items[6].name = "Water";
+	Player->INV->ItemCount[6] = 2;
+	Player->INV->itemsUsed += 2;
 
     int choice = 0;
+    // <- INIT
 
     while (true) {
         system("cls");
@@ -92,15 +63,34 @@ int main() {
         choice = getc(stdin);
         switch (choice) {
         case 49: // 1
+            if (menu(Player) == false) {
+                ErrorLog("Battle Fail", "Severe");
+            }
             break;
         case 50: // 2
-			shopMain(character);
+            if (shopMain(Player) == false) {
+                ErrorLog("Shop failed", "Severe");
+            }
             break;
         case 51: // 3
+            if (crafting(Player) == false) {
+                ErrorLog("Crafting failed", "Severe");
+            }
             break;
         case 52: // 4
+            if (skillMain(Player) == false) {
+                ErrorLog("Skill Main failed", "Severe");
+            }
             break;
-        case 53: // 5
+        case 53:
+            if (Save(Player) == false) {
+                ErrorLog("Save Error", "Severe");
+            }
+            break;
+        case 54: // 5
+            if (Save(Player) == false) {
+                ErrorLog("Save Error", "Severe");
+            }
             exit(0);
             break;
         default:
@@ -110,3 +100,16 @@ int main() {
        while ((getchar()) != '\n');
     }
 }
+void printOptions() {
+    cout << "Welcome to the Bardo home town please choose an option\n";
+    cout << "-------------------------------------------------------\n";
+    cout << endl;
+    cout << "1. Battle\n";
+    cout << "2. Shop\n";
+    cout << "3. Forge\n";
+    cout << "4. Skill tree\n";
+    cout << "5. Save Game\n";
+    cout << "6. Exit\n";
+    cout << "Enter : ";
+}
+

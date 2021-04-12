@@ -26,12 +26,12 @@ void Dealer::printDealerOptions() {
 		<< "4. Back" << endl;
 }
 
-void Dealer::printDealerHeader(user* character) {
-	cout << "Dealer Name: " << this->name << " || Dealer Balance: " << this->balance << "|| User Balance: " << character->gold << endl
+void Dealer::printDealerHeader(entity* character) {
+	cout << "Dealer Name: " << this->name << " || Dealer Balance: " << this->balance << " || User Balance: " << character->gold << endl
 		 << "-----------------------------------------------------------------" << endl << endl;
 }
 
-void Dealer::getOptionChoice(Dealer* dealer, user* character) {
+void Dealer::getOptionChoice(Dealer* dealer, entity* character) {
 
 	int choice = 0;
 	int itemChoice = 0;

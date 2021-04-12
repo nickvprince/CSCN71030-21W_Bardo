@@ -1,6 +1,19 @@
+/*
+* File Name: WeaponsDealer.h
+*
+* Programmer: Nicholas Prince
+* Class: Team Based Software Development CSCN71030-21W-SEC1-PROJECT 2
+* Date: March 22, 2021
+* Teacher: Dr. Elliott Coleshill
+* Team: Dominic Pham, Thomas Horvath, Danny Smith, Ali Syed
+*
+* Module: Economy
+*
+*/
+
 #pragma once
 
-#include "Objects.h"
+#include "FileIO.h"
 
 #include <stdlib.h>
 #include <iostream>
@@ -11,4 +24,4 @@ using namespace std;
 
 void checkUserInput();
 void pressAnyButtonToContinue(string);
-void printInventory(user* user);
+void printInventory(entity* user);

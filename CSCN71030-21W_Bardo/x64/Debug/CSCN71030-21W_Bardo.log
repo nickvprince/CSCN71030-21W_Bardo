@@ -1,2 +1,4 @@
-﻿  WeaponsDealer.cpp
+﻿  FileIO.cpp
+C:\Users\nickv\Desktop\New folder\CSCN71030-21W_Bardo\FileIO.cpp(664,21): warning C4156: deletion of an array expression without using the array form of 'delete'; array form substituted
+C:\Users\nickv\Desktop\New folder\CSCN71030-21W_Bardo\FileIO.cpp(664,21): warning C4154: deletion of an array expression; conversion to pointer supplied
   CSCN71030-21W_Bardo.vcxproj -> C:\Users\nickv\Desktop\New folder\x64\Debug\CSCN71030-21W_Bardo.exe

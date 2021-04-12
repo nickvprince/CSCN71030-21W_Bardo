@@ -1,0 +1,18 @@
+Default triggered in get User | Severity : High 2021/3/7 17:1:4EST
+Failed to get weapon stats | Severity : Severe 2021/3/9 12:39:41EST
+Battle Fail | Severity : Severe 2021/3/9 13:59:53EST
+Battle Fail | Severity : Severe 2021/3/9 14:2:21EST
+Battle Fail | Severity : Severe 2021/3/10 16:42:45EST
+Battle Fail | Severity : Severe 2021/3/11 -4:48:15EST
+Battle Fail | Severity : Severe 2021/3/11 -4:55:53EST
+Battle Fail | Severity : Severe 2021/3/11 -4:59:9EST
+Battle Fail | Severity : Severe 2021/3/11 -3:5:2EST
+Battle Fail | Severity : Severe 2021/3/11 -3:26:39EST
+Battle Fail | Severity : Severe 2021/3/11 -2:11:19EST
+Battle Fail | Severity : Severe 2021/3/11 -2:13:26EST
+Battle Fail | Severity : Severe 2021/3/11 4:36:10EST
+Battle Fail | Severity : Severe 2021/3/12 17:51:27EST
+Battle Fail | Severity : Severe 2021/3/12 18:37:53EST
+Battle Fail | Severity : Severe 2021/3/12 18:39:44EST
+Battle Fail | Severity : Severe 2021/3/12 18:53:37EST
+Crafting failed | Severity : Severe 2021/3/12 18:57:30EST

@@ -139,10 +139,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ErrorChecking.cpp" />
+    <ClCompile Include="FileIO.cpp" />
     <ClCompile Include="Dealer.cpp" />
     <ClCompile Include="Objects.h" />
     <ClCompile Include="OtherFunctions.cpp" />
     <ClCompile Include="Shop.cpp" />
+    <ClCompile Include="Psecurity.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="WeaponsDealer.cpp" />
   </ItemGroup>
@@ -151,6 +154,11 @@
     <ClInclude Include="OtherFuntions.h" />
     <ClInclude Include="Shop.h" />
     <ClInclude Include="WeaponsDealer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ErrorChecking.h" />
+    <ClInclude Include="FileIO.h" />
+    <ClInclude Include="Psecurity.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
