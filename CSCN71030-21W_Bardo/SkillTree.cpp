@@ -22,13 +22,13 @@ bool Skilltree(user* player) {
 	cout << "--- Welcome to the Skill Tree ---" << endl << endl;
 
 	while (true) {
-
+		printSkills(player);
 		cout << "Would you like to: " << endl
 			<< "1. Allocate Skill Points" << endl
 			<< "2. Discard a Skill" << endl
 			<< "3. Reset All Skills" << endl
-			<< "4. View Skills" << endl
-			<< "5. Exit." << endl
+		//	<< "4. View Skills" << endl
+			<< "4. Exit." << endl
 			<< "Enter : ";
 		cin >> input;
 		//checkUserInput();
@@ -42,10 +42,10 @@ bool Skilltree(user* player) {
 		case 3:
 			resetAllSkills(player);
 			break;
+	//	case 4:
+	//		printSkills(player);
+	//		break;
 		case 4:
-			printSkills(player);
-			break;
-		case 5:
 			return true;
 			break;
 		default:
@@ -71,7 +71,7 @@ void buySkill(user* player) {
 	int input = 0;
 
 	while (true) {
-
+		system("cls");
 		printSkills(player);
 
 		if (player->skillpoints <= 0) { // if player has no skill points to spend
@@ -163,6 +163,7 @@ void resetSkill(user* player) {
 				break;
 			}
 		} else {
+			printSkills(player);
 			cout << "You have no skill points allocated. Press any button to return to main menu. . ."; // Replace this with the press button to continue helper function
 			return;
 		}
