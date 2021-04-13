@@ -75,7 +75,6 @@ void ItemDealer::buy(entity* user) {
 	for (int i = 0; i < MAX_ITEMS; i++) {
 		if (user->INV->Items[i].name == item.name) {
 			user->INV->ItemCount[i]++;
-			user->INV->itemsUsed++;
 			exists = true;
 			break;
 		}
@@ -164,10 +163,10 @@ void ItemDealer::sell(entity* user) {
 				<< " gold." << endl << endl;
 
 
-			user->INV->itemsUsed -= 1;
 			user->INV->ItemCount[choice] -= 1;
 
 			if (user->INV->ItemCount[choice] == 0) {
+				user->INV->itemsUsed -= 1;
 				user->INV->Items[choice] = nullItem;
 			}
 
@@ -296,10 +295,10 @@ void ItemDealer::barter(entity* user) {
 
 				// Take away item count
 				user->INV->ItemCount[i] -= item.BarterItemsNum[j];
-				user->INV->itemsUsed -= item.BarterItemsNum[j];
 
 				// If the item count is 0, make the item null (free the slot).
 				if (user->INV->ItemCount[i] < 1) {
+					user->INV->itemsUsed -= 1;
 					user->INV->Items[i] = nullItem;
 					break;
 				}
@@ -314,7 +313,6 @@ void ItemDealer::barter(entity* user) {
 	for (int i = 0; i < MAX_ITEMS; i++) {
 		if (user->INV->Items[i].name == item.name) {
 			user->INV->ItemCount[i]++;
-			user->INV->itemsUsed++;
 			exists = true;
 			complete = true;
 			break;

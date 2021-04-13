@@ -75,7 +75,6 @@ void DefenceDealer::buy(entity* user) {
 	for (int i = 0; i < MAX_ITEMS; i++) {
 		if (user->INV->Shields[i].name == def.name) {
 			user->INV->ItemCount[i]++;
-			user->INV->itemsUsed++;
 			exists = true;
 			break;
 		}
@@ -166,10 +165,10 @@ void DefenceDealer::sell(entity* user) {
 				<< " gold." << endl << endl;
 
 
-			user->INV->itemsUsed -= 1;
 			user->INV->ItemCount[choice] -= 1;
 
 			if (user->INV->ItemCount[choice] == 0) {
+				user->INV->itemsUsed -= 1;
 				user->INV->Shields[choice] = nullDef;
 			}
 
@@ -298,10 +297,10 @@ void DefenceDealer::barter(entity* user) {
 
 				// Take away item count
 				user->INV->ItemCount[i] -= def.BarterItemsNum[j];
-				user->INV->itemsUsed -= def.BarterItemsNum[j];
 
 				// If the item count is 0, make the item null (free the slot).
 				if (user->INV->ItemCount[i] < 1) {
+					user->INV->itemsUsed -= 1;
 					user->INV->Items[i] = nullItem;
 					break;
 				}
@@ -316,7 +315,6 @@ void DefenceDealer::barter(entity* user) {
 	for (int i = 0; i < MAX_ITEMS; i++) {
 		if (user->INV->Shields[i].name == def.name) {
 			user->INV->ItemCount[i]++;
-			user->INV->itemsUsed++;
 			exists = true;
 			complete = true;
 			break;
