@@ -1,4 +1,6 @@
 ﻿  FileIO.cpp
-C:\Users\User\source\repos\Bardo5\CSCN71030-21W_Bardo\FileIO.cpp(672,21): warning C4156: deletion of an array expression without using the array form of 'delete'; array form substituted
-C:\Users\User\source\repos\Bardo5\CSCN71030-21W_Bardo\FileIO.cpp(672,21): warning C4154: deletion of an array expression; conversion to pointer supplied
+C:\Users\User\source\repos\Bardo5\CSCN71030-21W_Bardo\FileIO.cpp(196,1): warning C4005: 'CRAFTING_MATERIAL_START': macro redefinition
+C:\Users\User\source\repos\Bardo5\CSCN71030-21W_Bardo\FileIO.cpp(67): message : see previous definition of 'CRAFTING_MATERIAL_START'
+C:\Users\User\source\repos\Bardo5\CSCN71030-21W_Bardo\FileIO.cpp(680,21): warning C4156: deletion of an array expression without using the array form of 'delete'; array form substituted
+C:\Users\User\source\repos\Bardo5\CSCN71030-21W_Bardo\FileIO.cpp(680,21): warning C4154: deletion of an array expression; conversion to pointer supplied
   CSCN71030-21W_Bardo.vcxproj -> C:\Users\User\source\repos\Bardo5\x64\Debug\CSCN71030-21W_Bardo.exe

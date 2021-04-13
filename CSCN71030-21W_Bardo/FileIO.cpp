@@ -135,6 +135,7 @@ weapon get_Weapon(string name) { // retrieves a weapon from a file and returns i
 					else {
 						Weapon.BarterItemsNum[barterPosition] = atoi(word);
 						retrieval = CRAFTING_MATERIAL_START - 1;
+						barterPosition++;
 						SWITCH--;
 					}
 					break;
@@ -192,7 +193,7 @@ defence get_Defence(string name) { // retrieves a defence item from a file and r
 	fstream file;
 	int counter = 0;
 	defence Defence;
-#define CRAFTING_MATERIAL_START 3
+#define CRAFTING_MATERIAL_START 4
 	int SWITCH = 0;
 	int barterPosition = 0;
 	Defence.name = name;
@@ -271,7 +272,7 @@ defence get_Defence(string name) { // retrieves a defence item from a file and r
 							SWITCH++;
 						}
 						else {
-							Defence.BarterItems[barterPosition++] = word;
+							Defence.BarterItems[barterPosition] = word;
 						
 							SWITCH--;
 						}

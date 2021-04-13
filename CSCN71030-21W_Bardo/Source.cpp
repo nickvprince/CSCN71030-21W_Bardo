@@ -61,7 +61,7 @@ int main() {
    
 
     user* Player = get_User("User");
-
+    cout <<Player->INV[0].Shields[0].BarterItems[0];
     int choice = 0;
     // <- INIT
 
