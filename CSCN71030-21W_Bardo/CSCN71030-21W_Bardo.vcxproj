@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\..\Desktop\New folder\CSCN71030-21W_Bardo\Character.cpp" />
     <ClCompile Include="ErrorChecking.cpp" />
     <ClCompile Include="FileIO.cpp" />
     <ClCompile Include="Objects.h" />
@@ -146,6 +147,7 @@
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\..\Desktop\New folder\CSCN71030-21W_Bardo\Character.h" />
     <ClInclude Include="ErrorChecking.h" />
     <ClInclude Include="FileIO.h" />
     <ClInclude Include="Psecurity.h" />
