@@ -1,4 +1,5 @@
 #define _CRT_SECURE_NO_WARNINGS
+
 #include "FileIO.h"
 #include <fstream>
 #include <iostream>
@@ -19,7 +20,7 @@ using namespace std;
 * Description :
 *
 *
-* Version : 1.1
+* Version : 1.2
 *
 *
 * History :
@@ -42,7 +43,6 @@ using namespace std;
 #define WORD_SIZE 15
 #define Empty 0x00000000CDCDCDCD
 string ERRORLOG ="./GameFiles/ErrorLog.txt";
-
 
 
 // used in file verification
@@ -78,7 +78,7 @@ weapon get_Weapon(string name) { // retrieves a weapon from a file and returns i
 	int SWITCH = 0;
 	int barterPosition = 0;
 	name = name + ".BWPF";
-
+	DECRYPT(WEAPONDIR+name);
 	switch (isFileGood((char*)name.c_str())) { // is the file passed usable
 	case CHK_FAIL: // weapon fail state set to checksum fail
 		Weapon.failed = CHK_FAIL;
@@ -135,6 +135,7 @@ weapon get_Weapon(string name) { // retrieves a weapon from a file and returns i
 					else {
 						Weapon.BarterItemsNum[barterPosition] = atoi(word);
 						retrieval = CRAFTING_MATERIAL_START - 1;
+						barterPosition++;
 						SWITCH--;
 					}
 					break;
@@ -153,6 +154,7 @@ weapon get_Weapon(string name) { // retrieves a weapon from a file and returns i
 					}
 					else {
 						Weapon.failed = COMMON_FAIL;
+						ENCRYPT(WEAPONDIR + name);
 						return Weapon;
 					}
 
@@ -178,6 +180,7 @@ weapon get_Weapon(string name) { // retrieves a weapon from a file and returns i
 	}
 
 	file.close();
+	ENCRYPT(WEAPONDIR + name);
 	return Weapon;
 } // just takes in name of file not the dir
 // been updated for bartering ^
@@ -192,12 +195,12 @@ defence get_Defence(string name) { // retrieves a defence item from a file and r
 	fstream file;
 	int counter = 0;
 	defence Defence;
-#define CRAFTING_MATERIAL_START 3
+#define CRAFTING_MATERIAL_START 4
 	int SWITCH = 0;
 	int barterPosition = 0;
 	Defence.name = name;
 	name = name + ".BAMF";
-
+	DECRYPT(DEFENCEDIR + name);
 	switch (isFileGood((char*)name.c_str())) { // is the file passed usable
 	case CHK_FAIL: // weapon fail state set to checksum fail
 		Defence.failed = CHK_FAIL;
@@ -271,13 +274,14 @@ defence get_Defence(string name) { // retrieves a defence item from a file and r
 							SWITCH++;
 						}
 						else {
-							Defence.BarterItems[barterPosition++] = word;
+							Defence.BarterItems[barterPosition] = word;
 						
 							SWITCH--;
 						}
 					}
 					else {
 						Defence.failed = COMMON_FAIL;
+						ENCRYPT(DEFENCEDIR + name);
 						return Defence;
 					}
 
@@ -303,6 +307,7 @@ defence get_Defence(string name) { // retrieves a defence item from a file and r
 	}
 
 	file.close();
+	ENCRYPT(DEFENCEDIR + name);
 	return Defence;
 }
 
@@ -583,6 +588,7 @@ user* get_User(string name) { // retrieves user information from a file and retu
 	for (int emptyCounter = 0; emptyCounter < WORD_SIZE; emptyCounter++) {
 		WORD[emptyCounter] = '\0';
 	}
+	DECRYPT(USERDIR + name);
 	switch (isFileGood((char*)name.c_str())) { // is the file passed usable
 	case CHK_FAIL: // weapon fail state set to checksum fail
 		User->failed = CHK_FAIL;
@@ -665,7 +671,7 @@ user* get_User(string name) { // retrieves user information from a file and retu
 		WORD[emptyCounter] = '\0';
 	}
 	userFile.close();
-
+	ENCRYPT(USERDIR + name);
 	return User;
 }
 
