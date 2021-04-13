@@ -4,7 +4,7 @@
 * Programmer : Danny Smith
 * Class : Team Based Software Development CSCN71030-21W-SEC1-PROJECT 2
 * Date : February 6, 2021
-* Teacher : Dr. Elliot Coleshill
+* Teacher : Dr. Elliott Coleshill
 * Team : Dominic Pham, Thomas Horvath, Nicholas, Prince, Ali Syed
 *
 * Description : Used for security purposes of data storage and retrieval including an encryption and decryption protocol
@@ -29,7 +29,6 @@
 #include <stdlib.h>
 #include <string>
 #include <fstream>
-#include "FileIO.h"
 
 using namespace std;
 
@@ -142,62 +141,58 @@ public:
 	void encryptFile(string name) { // encrypt / decrypt files are only function left public so single chars cant be encrypted and decypted reducing the likelihood of a brute force attack
 		fstream file;
 		fstream File2;
+		int COUNT = 0;
 
-		if (!FileExists(name)) {
-			ErrorLog("File Does not exist in encrypt", "Average");
-			return;
-		}
 		string name2 = name + "2";
 		File2.open(name2, ios::out);
 		file.open(name, ios::in);
 		char input;
 		char encryptedChar;
 		file >> input;
-		while (input != '&') {
+		while (input != '&' && COUNT < 200) {
 			encryptedChar = Encrypt(input);
 			File2 << encryptedChar;
 			file >> input;
+			COUNT++;
 		}
 		file.close();
 		File2 << '&';
 		File2.close();
 		remove((const char*)name.c_str());
 		rename((const char*)name2.c_str(), (const char*)name.c_str());
-#ifdef _WIN32
-		HideFile(name, 1);
-#endif
-	}
 
-	void decryptFile(string name) { // encrypt / decrypt files are only function left public so single chars cant be encrypted and decypted reducing the likelihood of a brute force attack
-		resetLocation();
-		fstream file;
-		fstream File2;
-		string name2 = name + "2";
-		file.open(name, ios::in);
-		File2.open(name2, ios::out);
-		char input;
-		char decryptedChar;
-		file >> input;
-		while (input != '&') {
-			decryptedChar = Decrypt(input);
-			if (decryptedChar == ';') {
-				File2 << ';' << '\n';
-			}
-			else {
-				File2 << decryptedChar;
-			}
+	}
+		void decryptFile(string name) { // encrypt / decrypt files are only function left public so single chars cant be encrypted and decypted reducing the likelihood of a brute force attack
+			resetLocation();
+			fstream file;
+			fstream File2;
+			int COUNT = 0;
+			string name2 = name + "2";
+			file.open(name, ios::in);
+			File2.open(name2, ios::out);
+			char input;
+			char decryptedChar;
 			file >> input;
+			decryptedChar = Decrypt(input);
+			while (decryptedChar != '&' && COUNT < 200) {
+				
+				if (decryptedChar == ';') {
+					File2 << ';' << '\n';
+				}
+				else {
+					File2 << decryptedChar;
+				}
+				file >> input;
+				COUNT++;
+				decryptedChar = Decrypt(input);
+			}
+			file.close();
+			File2 << '&';
+			File2.close();
+			remove((const char*)name.c_str());
+			rename((const char*)name2.c_str(), (const char*)name.c_str());
+
 		}
-		file.close();
-		File2 << '&';
-		File2.close();
-		remove((const char*)name.c_str());
-		rename((const char*)name2.c_str(), (const char*)name.c_str());
-		#ifdef _WIN32
-		HideFile(name, 1);
-		#endif
-	}
-
-}; // encrypt class
 
 
+};

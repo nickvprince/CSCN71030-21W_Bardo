@@ -1,4 +1,5 @@
 #define _CRT_SECURE_NO_WARNINGS
+
 #include "FileIO.h"
 #include <fstream>
 #include <iostream>
@@ -19,7 +20,7 @@ using namespace std;
 * Description :
 *
 *
-* Version : 1.1
+* Version : 1.2
 *
 *
 * History :
@@ -40,8 +41,8 @@ using namespace std;
 #define ENEMYDIR "./GameFiles/Enemy/"
 #define USERDIR "./GameFiles/UserFiles/"
 #define WORD_SIZE 15
+#define Empty 0x00000000CDCDCDCD
 string ERRORLOG ="./GameFiles/ErrorLog.txt";
-
 
 
 // used in file verification
@@ -62,6 +63,7 @@ fstream file;
 * change the checksum value of the encrypted version of the file in the checksums[] in comparison to that file in the checkSumNames[]
 */
 weapon get_Weapon(string name) { // retrieves a weapon from a file and returns it as an object
+
 #define CRAFTING_MATERIAL_START 3
 	int length = 0;
 	char input;
@@ -76,7 +78,7 @@ weapon get_Weapon(string name) { // retrieves a weapon from a file and returns i
 	int SWITCH = 0;
 	int barterPosition = 0;
 	name = name + ".BWPF";
-
+	DECRYPT(WEAPONDIR+name);
 	switch (isFileGood((char*)name.c_str())) { // is the file passed usable
 	case CHK_FAIL: // weapon fail state set to checksum fail
 		Weapon.failed = CHK_FAIL;
@@ -87,7 +89,11 @@ weapon get_Weapon(string name) { // retrieves a weapon from a file and returns i
 		ErrorLog("Exists Fail", "Average");
 		break;
 	case GOOD: // file is usable start reading
-
+		for (int i = 0; i < MAX_MATERIALS; i++) {
+			Weapon.BarterItemsNum[i] = 0;
+			Weapon.craftingItemsNum[i] = 0;
+		}
+		
 		Weapon.failed = GOOD;
 		file.open(WEAPONDIR + (string)name, ios::in);
 		if (file.is_open()) {
@@ -123,11 +129,13 @@ weapon get_Weapon(string name) { // retrieves a weapon from a file and returns i
 					if (SWITCH == 0) {
 						Weapon.craftingItemsNum[itemPosition] = atoi(word);
 						itemPosition++;
+						retrieval--;
 						SWITCH++;
 					}
 					else {
 						Weapon.BarterItemsNum[barterPosition] = atoi(word);
 						retrieval = CRAFTING_MATERIAL_START - 1;
+						barterPosition++;
 						SWITCH--;
 					}
 					break;
@@ -146,6 +154,7 @@ weapon get_Weapon(string name) { // retrieves a weapon from a file and returns i
 					}
 					else {
 						Weapon.failed = COMMON_FAIL;
+						ENCRYPT(WEAPONDIR + name);
 						return Weapon;
 					}
 
@@ -171,6 +180,7 @@ weapon get_Weapon(string name) { // retrieves a weapon from a file and returns i
 	}
 
 	file.close();
+	ENCRYPT(WEAPONDIR + name);
 	return Weapon;
 } // just takes in name of file not the dir
 // been updated for bartering ^
@@ -185,10 +195,12 @@ defence get_Defence(string name) { // retrieves a defence item from a file and r
 	fstream file;
 	int counter = 0;
 	defence Defence;
-#define CRAFTING_MATERIAL_START 3
+#define CRAFTING_MATERIAL_START 4
+	int SWITCH = 0;
+	int barterPosition = 0;
 	Defence.name = name;
 	name = name + ".BAMF";
-
+	DECRYPT(DEFENCEDIR + name);
 	switch (isFileGood((char*)name.c_str())) { // is the file passed usable
 	case CHK_FAIL: // weapon fail state set to checksum fail
 		Defence.failed = CHK_FAIL;
@@ -199,7 +211,10 @@ defence get_Defence(string name) { // retrieves a defence item from a file and r
 		ErrorLog("Exists Fail", "Average");
 		break;
 	case GOOD: // file is usable start reading
-
+		for (int i = 0; i < MAX_MATERIALS; i++) {
+			Defence.BarterItemsNum[i] = 0;
+			Defence.craftingItemsNum[i] = 0;
+		}
 		Defence.failed = GOOD;
 		file.open(DEFENCEDIR + (string)name, ios::in);
 		if (file.is_open()) {
@@ -233,18 +248,40 @@ defence get_Defence(string name) { // retrieves a defence item from a file and r
 					Defence.level = atoi(word);
 					break;
 				case (CRAFTING_MATERIAL_START + 1):
+					if (SWITCH == 0) {
+						Defence.craftingItemsNum[itemPosition] = atoi(word);
+						SWITCH++;
+						retrieval--;
+						itemPosition++;
 
-					Defence.craftingItemsNum[itemPosition] = atoi(word);
-					itemPosition++;
-					retrieval = CRAFTING_MATERIAL_START - 1;
+					}
+					else {
+						Defence.BarterItemsNum[barterPosition] = atoi(word);
+						SWITCH--;
+						barterPosition++;
+						retrieval = CRAFTING_MATERIAL_START - 1;
+					}
+					
+					
 					break;
 				default:
 
 					if (atoi(word) == 0) {
-						Defence.craftingItems[itemPosition] = word;
+						if (SWITCH == 0) {
+							Defence.craftingItems[itemPosition] = word;
+							retrieval--;
+							
+							SWITCH++;
+						}
+						else {
+							Defence.BarterItems[barterPosition] = word;
+						
+							SWITCH--;
+						}
 					}
 					else {
 						Defence.failed = COMMON_FAIL;
+						ENCRYPT(DEFENCEDIR + name);
 						return Defence;
 					}
 
@@ -270,6 +307,7 @@ defence get_Defence(string name) { // retrieves a defence item from a file and r
 	}
 
 	file.close();
+	ENCRYPT(DEFENCEDIR + name);
 	return Defence;
 }
 
@@ -284,6 +322,10 @@ item get_Item(string name) {
 	int counter = 0;
 	item ITEM;
 	fstream FILE;
+
+	
+
+
 	ITEM.name = name;
 	name = name + ".BITMF";
 
@@ -304,7 +346,10 @@ item get_Item(string name) {
 		ErrorLog("File Exists Fail", "Average");
 		break;
 	case GOOD: // file is usable start reading
-
+		for (int i = 0; i < MAX_MATERIALS; i++) {
+			ITEM.BarterItemsNum[i] = 0;
+		
+		}
 		ITEM.failed = GOOD;
 		FILE.open(ITEMDIR + (string)name, ios::in);
 		if (FILE.is_open()) {
@@ -393,6 +438,10 @@ spell get_Spell(string name) { // retrieves a spell from a file and returns it a
 
 inventory* get_Inventory(string name) { // retrieves inventory from a file and returns it as an object
 	inventory* Inventory = new inventory;
+	for (int i = 0; i < MAX_ITEMS; i++) {
+		Inventory->ItemCount[i] = 0;
+	
+	}
 	int length = 0;
 	char input;
 	int itemPosition = 0;
@@ -539,6 +588,7 @@ user* get_User(string name) { // retrieves user information from a file and retu
 	for (int emptyCounter = 0; emptyCounter < WORD_SIZE; emptyCounter++) {
 		WORD[emptyCounter] = '\0';
 	}
+	DECRYPT(USERDIR + name);
 	switch (isFileGood((char*)name.c_str())) { // is the file passed usable
 	case CHK_FAIL: // weapon fail state set to checksum fail
 		User->failed = CHK_FAIL;
@@ -621,7 +671,7 @@ user* get_User(string name) { // retrieves user information from a file and retu
 		WORD[emptyCounter] = '\0';
 	}
 	userFile.close();
-
+	ENCRYPT(USERDIR + name);
 	return User;
 }
 

@@ -132,6 +132,8 @@ int main(int argc, char* argv[]) {
     }
     
 }
+
+
 void printOptions() {
     cout << "Welcome to the Bardo home town please choose an option\n";
     cout << "-------------------------------------------------------\n";

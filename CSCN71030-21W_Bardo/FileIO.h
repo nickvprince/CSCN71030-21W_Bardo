@@ -1,5 +1,8 @@
-/* Date : February 6, 2021
-* Teacher : Dr.Elliot Coleshill
+/*
+* Programmer : Danny Smith
+* Class : Team Based Software Development CSCN71030 - 21W - SEC1 - PROJECT 2
+* Date : February 6, 2021
+* Teacher : Dr.Elliott Coleshill
 * Team : Dominic Pham, Thomas Horvath, Nicholas, Prince, Ali Syed
 *
 * Description :
@@ -10,13 +13,14 @@
 	*
 	*History :
 	*Functionality created but left empty
-	* new file creation, length of file, file exists, and create directory functionality addedand completed
+	* new file creation, length of file, file exists, and create directory functionality added and completed
 	* Testing Void pointer | FAILED
 	* isFileGood added
 */
 
 #include "Objects.h"
 #include "ErrorChecking.h"
+#include "Psecurity.h"
 weapon get_Weapon(string name); // retrieves a weapon from a file and returns it as an object
 defence get_Defence(string name); // retrieves a defence item from a file and returns it as an object
 potion get_Potion(string name); // retrieves a potion from a file and returns it as an object
