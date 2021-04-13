@@ -29,8 +29,8 @@ using namespace std;
 #include <stdio.h>
 #include <fstream>
 #include <string>
-#include "Psecurity.h"
 
+#include "FileIO.h"
 
 
 // temp
@@ -55,11 +55,26 @@ bool skillMain(entity* Player) {
 
 
 
-
+#define SPELLSDIR "./GameFiles/Potions/"
+#define POTIONSDIR "./GameFiles/Spells/"
+#define WEAPONDIR "./GameFiles/Weapons/"
+#define DEFENCEDIR "./GameFiles/Armour/"
+#define ITEMDIR "./GameFiles/Items/"
+#define INVENTORYDIR "./GameFiles/Inventory/"
+#define ENEMYDIR "./GameFiles/Enemy/"
+#define USERDIR "./GameFiles/UserFiles/"
+#define WORD_SIZE 15
 void printOptions();
 int main() { 
+   /* THIS IS USED TO BULK ENCRYPT AND DECRYPT FILES
+    string checkSumNames[] = { "WoodSword.BWPF","WoodAxe.BWPF","WoodMace.BWPF","WoodBow.BWPF","IronSword.BWPF","IronAxe.BWPF","IronMace.BWPF","IronBow.BWPF","GoldSword.BWPF","GoldAxe.BWPF","GoldMace.BWPF","GoldBow.BWPF","PlatinumStaff.BWPF","BabyDragon.BINVF","DarkElf.BINVF","Drough.BINVF","Elliott.BINVF","Orc.BINVF","Copper.BITMF","Gold.BITMF","Iron.BITMF","Leather.BITMF","Magnesium.BITMF","Paper.BITMF","Platinum.BITMF","Silver.BITMF","Water.BITMF","BabyDragon.BENF","DarkElf.BENF","Drough.BENF","Elliott.BENF","Orc.BENF","GoldArmour.BAMF","GoldShield.BAMF","IronArmour.BAMF","IronShield.BAMF","WoodShield.BAMF","WoodArmour.BAMF","PlatinumShield.BAMF","PlatinumArmour.BAMF" };
+    string Directories[] = { WEAPONDIR,WEAPONDIR,WEAPONDIR ,WEAPONDIR ,WEAPONDIR ,WEAPONDIR ,WEAPONDIR ,WEAPONDIR ,WEAPONDIR ,WEAPONDIR ,WEAPONDIR ,WEAPONDIR ,WEAPONDIR,INVENTORYDIR ,INVENTORYDIR ,INVENTORYDIR ,INVENTORYDIR ,INVENTORYDIR,ITEMDIR,ITEMDIR,ITEMDIR,ITEMDIR,ITEMDIR,ITEMDIR,ITEMDIR,ITEMDIR,ITEMDIR,ENEMYDIR,ENEMYDIR,ENEMYDIR,ENEMYDIR,ENEMYDIR,DEFENCEDIR,DEFENCEDIR,DEFENCEDIR,DEFENCEDIR,DEFENCEDIR,DEFENCEDIR,DEFENCEDIR,DEFENCEDIR };
+    for (int i = 0; i < sizeof(Directories) / sizeof(string); i++) {
+        string name = Directories[i] + checkSumNames[i];
+        ENCRYPT(name);
+    }
+    */
    
-
     user* Player = get_User("User");
     cout <<Player->INV[0].Shields[0].BarterItems[0];
     int choice = 0;
