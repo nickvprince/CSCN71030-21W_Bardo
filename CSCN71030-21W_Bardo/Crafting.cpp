@@ -42,6 +42,12 @@ int Crafting(void) {
 		StarterMenu();
 		cin >> userInput;
 		system("cls");
+
+		if (cin.fail()) { // input verification check
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		}
+
 		switch (userInput) {
 		case 1: // Craft
 			craftItem(&i);

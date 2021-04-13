@@ -13,9 +13,14 @@ void By_Type(inventory i) {
 		cout << "2 - Weapon" << endl;
 		cout << "3 - Spell" << endl;
 		cout << "4 - Exit" << endl << endl;
-
 		cin >> type_choice;
 		system("cls");
+
+		if (cin.fail()) { // input verification check
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+			system("cls");
+		}
 
 		switch (type_choice) {  
 		case 1:

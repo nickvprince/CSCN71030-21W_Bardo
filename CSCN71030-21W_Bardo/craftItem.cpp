@@ -16,6 +16,12 @@ void craftItem(inventory* i) {		// Function asks user what type of item to craft
 		cout << "3 - Spell" << endl;
 		cout << "4 - Exit" << endl << endl;
 		cin >> item_type;
+		system("cls");
+
+		if (cin.fail()) { // input verification check
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		}
 
 		switch (item_type) {
 		case 1:
@@ -26,6 +32,12 @@ void craftItem(inventory* i) {		// Function asks user what type of item to craft
 				cout << "3 - Exit" << endl << endl;
 				cin >> item_craft;
 				system("cls");
+
+				if (cin.fail()) { // input verification check
+					cin.clear();
+					cin.ignore(numeric_limits<streamsize>::max(), '\n');
+				}
+
 				switch (item_craft) {
 				case 1:
 					if ((BLACK_POWDER(i->material[2].getQuantity(), i->material[3].getQuantity(), i->material[4].getQuantity())) == 1) {
@@ -65,6 +77,13 @@ void craftItem(inventory* i) {		// Function asks user what type of item to craft
 				cout << "4 - Exit" << endl << endl;
 				cin >> item_craft;
 				system("cls");
+
+				if (cin.fail()) { // input verification check
+					cin.clear();
+					cin.ignore(numeric_limits<streamsize>::max(), '\n');
+					system("cls");
+				}
+
 				switch (item_craft) {
 				case 1:
 					if ((SWORD(i->material[0].getQuantity(), i->material[1].getQuantity())) == 1) {
@@ -111,6 +130,13 @@ void craftItem(inventory* i) {		// Function asks user what type of item to craft
 				cout << "2 - Exit" << endl << endl;
 				cin >> item_craft;
 				system("cls");
+
+				if (cin.fail()) { // input verification check
+					cin.clear();
+					cin.ignore(numeric_limits<streamsize>::max(), '\n');
+					system("cls");
+				}
+
 				switch (item_craft) {
 				case 1:
 					if ((FLASH_SPELL(i->material[6].getQuantity(), i->material[5].getQuantity())) == 1) {

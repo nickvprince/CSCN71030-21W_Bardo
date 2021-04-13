@@ -16,6 +16,11 @@ void seeInventory(inventory i) {
 		cin >> inventory_choice;
 		system("cls");
 
+		if (cin.fail()) { // input verification check
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		}
+
 		switch (inventory_choice) {
 		case 1:
 			By_Type(i);   // Displays all items of a specific type that exists in inventory
