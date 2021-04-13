@@ -1,0 +1,5 @@
+Default triggered in get User | Severity : High 2021/3/7 17:1:4EST
+Battle Fail | Severity : Severe 2021/3/9 12:32:43EST
+Shop failed | Severity : Severe 2021/3/9 12:32:43EST
+Crafting failed | Severity : Severe 2021/3/9 12:32:44EST
+Skill Main failed | Severity : Severe 2021/3/9 12:32:45EST
