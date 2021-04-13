@@ -125,22 +125,31 @@ void resetSkill(user* player) {
 			printSkills(player);
 
 			cout << "Each skill point decreases a stat by one." << endl
-				<< "However, for health it increases by " << (HEALTH_PERCENT * 100) << "%... Choose wisely." << endl << endl;
+				<< "However, for health it decreases by " << (HEALTH_PERCENT * 100) << "%... Choose wisely." << endl << endl;
 
 			cin >> input;
 			//checkUserInput();
 			switch (input) {
 			case 1:
+				if (player->Skills[0] == 0) {
+					break;
+				}
 				player->Skills[0]--;
 				player->health = player->health / (1 + HEALTH_PERCENT);
 				player->skillpoints++;
 				break;
 			case 2:
+				if (player->Skills[1] == 0) {
+					break;
+				}
 				player->Skills[1]--;
 				player->defence--;
 				player->skillpoints++;
 				break;
 			case 3:
+				if (player->Skills[2] == 0) {
+					break;
+				}
 				player->Skills[2]--;
 				player->damage--;
 				player->skillpoints++;
