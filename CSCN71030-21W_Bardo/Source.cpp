@@ -1,23 +1,15 @@
 /*
 * File Name : Main.cpp
 *
-* Programmer : Danny Smith
+* Programmer : Thomas Horvath
 * Class : Team Based Software Development CSCN71030-21W-SEC1-PROJECT 2
-* Date : February 6, 2021
+* Date : April 1, 2021
 * Teacher : Dr. Elliott Coleshill
-* Team : Dominic Pham, Thomas Horvath, Nicholas, Prince, Ali Syed
+* Team : Dominic Pham, Danny Smith, Nicholas, Prince, Ali Syed
 *
-* Description : Main.cpp used to test the functionality of file IO
-*
+* Description : Main.cpp used to test the functionality of the Battle Module
 *
 * Version : 1.0
-*
-*
-* History :
-*	ReadMe File Created, IronSword weapon test file created
-*
-* Revision Ideas -
-*	FileIO as threads to do the workload while other operations are running
 */
 
 

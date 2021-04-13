@@ -1,1 +1,14 @@
-﻿  CSCN71030-21W_Bardo.vcxproj -> C:\Users\thorc\source\repos\BARDO\Debug\CSCN71030-21W_Bardo.exe
+﻿  battle.cpp
+C:\Users\hdfat\source\repos\CSCN71030-21W_Bardo\CSCN71030-21W_Bardo\player.h(85,11): warning C4473: 'scanf_s' : not enough arguments passed for format string
+C:\Users\hdfat\source\repos\CSCN71030-21W_Bardo\CSCN71030-21W_Bardo\player.h(85,11): message : placeholders and their parameters expect 2 variadic arguments, but 1 were provided
+C:\Users\hdfat\source\repos\CSCN71030-21W_Bardo\CSCN71030-21W_Bardo\player.h(85,11): message : the missing variadic argument 2 is required by format string '%c'
+C:\Users\hdfat\source\repos\CSCN71030-21W_Bardo\CSCN71030-21W_Bardo\player.h(85,11): message : this argument is used as a buffer size
+C:\Users\hdfat\source\repos\CSCN71030-21W_Bardo\CSCN71030-21W_Bardo\player.h(167,11): warning C4473: 'scanf_s' : not enough arguments passed for format string
+C:\Users\hdfat\source\repos\CSCN71030-21W_Bardo\CSCN71030-21W_Bardo\player.h(167,11): message : placeholders and their parameters expect 2 variadic arguments, but 1 were provided
+C:\Users\hdfat\source\repos\CSCN71030-21W_Bardo\CSCN71030-21W_Bardo\player.h(167,11): message : the missing variadic argument 2 is required by format string '%c'
+C:\Users\hdfat\source\repos\CSCN71030-21W_Bardo\CSCN71030-21W_Bardo\player.h(167,11): message : this argument is used as a buffer size
+C:\Users\hdfat\source\repos\CSCN71030-21W_Bardo\CSCN71030-21W_Bardo\battle.cpp(20,12): warning C4473: 'scanf_s' : not enough arguments passed for format string
+C:\Users\hdfat\source\repos\CSCN71030-21W_Bardo\CSCN71030-21W_Bardo\battle.cpp(20,12): message : placeholders and their parameters expect 2 variadic arguments, but 1 were provided
+C:\Users\hdfat\source\repos\CSCN71030-21W_Bardo\CSCN71030-21W_Bardo\battle.cpp(20,12): message : the missing variadic argument 2 is required by format string '%c'
+C:\Users\hdfat\source\repos\CSCN71030-21W_Bardo\CSCN71030-21W_Bardo\battle.cpp(20,12): message : this argument is used as a buffer size
+  CSCN71030-21W_Bardo.vcxproj -> C:\Users\hdfat\source\repos\CSCN71030-21W_Bardo\Debug\CSCN71030-21W_Bardo.exe

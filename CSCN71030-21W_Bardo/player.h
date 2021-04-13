@@ -67,7 +67,7 @@ public:
 	}
 	void displayEnemy(entity& enemy)
 	{
-		cout << "\n*****************************************";
+		cout << "\n";
 		cout << endl;
 		cout << enemy.name << " is level " << enemy.level << endl;
 		cout << enemy.name << " has " << enemy.damage << " damage" << endl;
@@ -88,27 +88,28 @@ public:
 			switch (spell)
 			{
 			case 'a':
-				cout << "\n*****************************************";
+				cout << "\n------------------------------------------";
 				cout << endl << "You choose to use fire. " << endl;
-				cout << "*****************************************\n";
+				cout << "------------------------------------------\n";
 				fire(enemy);
 				break;
 			case 'b':
-				cout << "\n*****************************************";
+				cout << "\n------------------------------------------";
 				cout << endl << "You choose to use ice. " << endl;
-				cout << "*****************************************\n";
+				cout << "------------------------------------------\n";
 				ice(enemy, player);
 				break;
 			case 'c':
-				cout << "\n*****************************************";
+				cout << "\n------------------------------------------";
 				cout << endl << "You choose to use lightning. " << endl;
-				cout << "*****************************************\n";
+				cout << "------------------------------------------\n";
 				lightning(enemy, player);
 				break;
 			}
 		}
 		else
 		{
+			system("cls");
 			cout << "Please enter a valid input";
 			spellmenu(player, enemy);
 		}
@@ -117,9 +118,9 @@ public:
 	{
 		if (enemy.burnCon != 0)
 		{
-			cout << "\n*******************************";
+			cout << "\n-------------------------------";
 			cout << "\nThe enemy is already burning!\n";
-			cout << "*******************************\n";
+			cout << "-------------------------------\n";
 			return enemy.burnCon;
 		}
 		else
@@ -129,23 +130,23 @@ public:
 	void ice(entity& enemy, entity& player)
 	{
 		cout << "You freeze the enemy skipping their turn!" << endl;
-		cout << "*****************************************\n";
+		cout << "------------------------------------------\n";
 		player.choice(enemy, player);
 	}
 	void lightning(entity& enemy, entity& player)
 	{
-		cout << "\n*****************************************";
+		cout << "\n------------------------------------------";
 		cout << endl << "You shock " << enemy.name << " dealing " << 3 * player.level << " damage with a chance to stun them!" << endl;
-		cout << "*****************************************\n";
+		cout << "------------------------------------------\n";
 		int randval;
 		randval = rand() % 2 + 1;
 		enemy.health -= 3 * player.level;
 		
 		if (randval == 1)
 		{
-			cout << "\n*****************************************";
+			cout << "\n------------------------------------------";
 			cout << endl << enemy.name << " is stunned! \n";
-			cout << "*****************************************\n";
+			cout << "------------------------------------------\n";
 			player.choice(enemy, player);
 		}
 	}
@@ -158,9 +159,9 @@ public:
 	{
 		int input = 0; 
 		char asd;
-		cout << "\n**************";
+		cout << "\n--------------";
 		cout << "\n YOUR TURN \n";
-		cout << "**************\n";
+		cout << "--------------\n";
 		cout << "1. Attack " << endl << "2. Block" << endl << "3. Run" << endl << "4. Heal" << endl << "5. Use Spell" << endl << endl;
 		scanf_s("%d", &input);
 		scanf_s("%c", &asd);
@@ -168,6 +169,7 @@ public:
 		{
 			if (input > 6)
 			{
+				system("cls");
 				cout << "Please enter a valid input";
 				choice(player, enemy);
 			}
@@ -177,31 +179,31 @@ public:
 				switch (input)
 				{
 				case 1:
-					cout << "\n*****************************************";
+					cout << "\n-------------------------------------------";
 					cout << endl << "You choose to attack the enemy. " << endl;
 					attack(enemy, player.damage);
-					cout << "*****************************************\n";
+					cout << "-------------------------------------------\n";
 					break;
 				case 2:
-					cout << "\n*****************************************";
+					cout << "\n-------------------------------------------";
 					cout << endl << "You choose to block the enemy. " << endl;
 					block(player);
-					cout << "*****************************************\n";
+					cout << "-------------------------------------------\n";
 					break;
 				case 3:
-					cout << "\n*****************************************";
+					cout << "\n-------------------------------------------";
 					cout << endl << "You choose to run from the enemy. " << endl;
 					run();
-					cout << "*****************************************\n";
+					cout << "-------------------------------------------\n";
 					break;
 				case 4:
-					cout << "\n*****************************************";
+					cout << "\n-------------------------------------------";
 					cout << endl << "You choose to heal. " << endl;
 					heal(player);
-					cout << "*****************************************\n";
+					cout << "-------------------------------------------\n";
 					break;
 				case 5:
-					cout << "\n*****************************************";
+					cout << "\n-------------------------------------------";
 					spellmenu(enemy, player);
 					break;
 				default:
