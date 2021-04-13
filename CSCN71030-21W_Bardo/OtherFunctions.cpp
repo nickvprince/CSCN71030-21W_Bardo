@@ -76,7 +76,7 @@ void printInventory(entity* user) {
 	cout << endl << "Defence: " << endl;
 	for (int i = 0; i < MAX_ITEMS; i++) {
 		if (user->INV->Shields[i].name != "") {
-			cout << "Name: " << user->INV->Shields[i].name << "\tQuantity: " << user->INV->ItemCount[i] << "\tValue/Defence: " << user->INV->Shields[i].value<< endl;
+			cout << "Name: " << user->INV->Shields[i].name << "\tQuantity: " << user->INV->ItemCount[i] << "\tValue/Defence: " << user->INV->Shields[i].value << endl;
 			totalValue += user->INV->Shields[i].value * user->INV->ItemCount[i];
 			itemHere = true;
 		}

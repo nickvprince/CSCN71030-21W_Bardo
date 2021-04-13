@@ -12,15 +12,18 @@
 */
 
 #include "WeaponsDealer.h"
+#include "DefenceDealer.h"
+#include "PotionDealer.h"
+#include "ItemDealer.h"
 #include "Shop.h"
 
 
 bool shopMain(entity* character) {
 
 	Dealer* weaponDealer = new WeaponDealer;
-	/*Dealer* defenceDealer = new DefenceDealer;
-	Dealer* potionDealer = new PotionDealer;
-	Dealer* itemDealer = new ItemDealer;*/
+	Dealer* defenceDealer = new DefenceDealer;
+	//Dealer* potionDealer = new PotionDealer;
+	Dealer* itemDealer = new ItemDealer;
 
 	int choice = 0;
 	int optionChoice = 0;
@@ -38,10 +41,22 @@ bool shopMain(entity* character) {
 			weaponDealer->getOptionChoice(weaponDealer, character);
 			break;
 		case 2:
+			system("cls");
+			defenceDealer->printDealerHeader(character);
+			defenceDealer->printDealerOptions();
+			defenceDealer->getOptionChoice(defenceDealer, character);
 			break;
 		case 3:
+			/*system("cls");
+			potionDealer->printDealerHeader(character);
+			potionDealer->printDealerOptions();
+			potionDealer->getOptionChoice(potionDealer, character);*/
 			break;
 		case 4:
+			system("cls");
+			itemDealer->printDealerHeader(character);
+			itemDealer->printDealerOptions();
+			itemDealer->getOptionChoice(itemDealer, character);
 			break;
 		case 5:
 			return true;

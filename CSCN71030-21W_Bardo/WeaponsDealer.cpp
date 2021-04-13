@@ -56,7 +56,7 @@ void WeaponDealer::buy(entity* user) {
 
 	// If the weapon condition fails, errorlog, return.
 	if (weap.failed != GOOD) {
-		ErrorLog("An error has occured while getting a weapon", "Medium");
+		ErrorLog("An error has occured while getting a weapon - Module: Economy", "Medium");
 		cout << "An error has occured while getting a weapon" << endl;
 		pressAnyButtonToContinue("Press any key to return to the dealer menu...");
 		return;
@@ -226,7 +226,7 @@ void WeaponDealer::barter(entity* user) {
 
 	// If the weapon condition fails, errorlog, return.
 	if (weap.failed != GOOD) {
-		ErrorLog("An error has occured while getting a weapon", "Medium");
+		ErrorLog("An error has occured while getting a weapon - Module: Economy", "Medium");
 		cout << "An error has occured while getting a weapon" << endl;
 		pressAnyButtonToContinue("Press any key to return to the dealer menu...");
 		return;
@@ -455,7 +455,7 @@ bool WeaponDealer::getItemStats(string strWeap, entity* user) {
 	weap = get_Weapon(strWeap);
 
 	if (weap.failed != GOOD) {
-		ErrorLog("Failed to get weapon stats", "Severe");
+		ErrorLog("Failed to get weapon stats - Module: Economy", "Severe");
 		cout << "Failed to get weapon stats." << endl << endl;
 		return false;
 	} else {

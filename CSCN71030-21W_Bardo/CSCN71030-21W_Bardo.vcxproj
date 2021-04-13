@@ -139,11 +139,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="DefenceDealer.cpp" />
     <ClCompile Include="ErrorChecking.cpp" />
     <ClCompile Include="FileIO.cpp" />
     <ClCompile Include="Dealer.cpp" />
+    <ClCompile Include="ItemDealer.cpp" />
     <ClCompile Include="Objects.h" />
     <ClCompile Include="OtherFunctions.cpp" />
+    <ClCompile Include="PotionDealer.cpp" />
     <ClCompile Include="Shop.cpp" />
     <ClCompile Include="Psecurity.cpp" />
     <ClCompile Include="Source.cpp" />
@@ -151,7 +154,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Dealer.h" />
+    <ClInclude Include="DefenceDealer.h" />
+    <ClInclude Include="ItemDealer.h" />
     <ClInclude Include="OtherFuntions.h" />
+    <ClInclude Include="PotionDealer.h" />
     <ClInclude Include="Shop.h" />
     <ClInclude Include="WeaponsDealer.h" />
   </ItemGroup>

@@ -100,6 +100,8 @@ int main() {
        while ((getchar()) != '\n');
     }
 }
+
+
 void printOptions() {
     cout << "Welcome to the Bardo home town please choose an option\n";
     cout << "-------------------------------------------------------\n";

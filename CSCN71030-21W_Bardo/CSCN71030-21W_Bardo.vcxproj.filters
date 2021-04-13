@@ -42,6 +42,15 @@
     <ClCompile Include="Psecurity.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="DefenceDealer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PotionDealer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemDealer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Shop.h">
@@ -55,7 +64,7 @@
     </ClInclude>
     <ClInclude Include="OtherFuntions.h">
       <Filter>Header Files</Filter>
-     </ClInclude>
+    </ClInclude>
     <ClInclude Include="ErrorChecking.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -63,6 +72,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Psecurity.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DefenceDealer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PotionDealer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemDealer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
