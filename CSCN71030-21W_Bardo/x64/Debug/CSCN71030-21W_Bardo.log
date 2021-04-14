@@ -1,5 +1,7 @@
 ﻿  SkillTree.cpp
-C:\Users\User\source\repos\Bardo5\CSCN71030-21W_Bardo\SkillTree.cpp(91,36): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\source\repos\Bardo5\CSCN71030-21W_Bardo\SkillTree.cpp(138,37): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\source\repos\Bardo5\CSCN71030-21W_Bardo\SkillTree.cpp(199,37): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-  CSCN71030-21W_Bardo.vcxproj -> C:\Users\User\source\repos\Bardo5\x64\Debug\CSCN71030-21W_Bardo.exe
+C:\Users\nickv\Desktop\CSCN71030-21W_Bardo\CSCN71030-21W_Bardo\SkillTree.cpp(91,36): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\nickv\Desktop\CSCN71030-21W_Bardo\CSCN71030-21W_Bardo\SkillTree.cpp(138,37): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\nickv\Desktop\CSCN71030-21W_Bardo\CSCN71030-21W_Bardo\SkillTree.cpp(199,37): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  Source.cpp
+  Generating Code...
+  CSCN71030-21W_Bardo.vcxproj -> C:\Users\nickv\Desktop\CSCN71030-21W_Bardo\x64\Debug\CSCN71030-21W_Bardo.exe
