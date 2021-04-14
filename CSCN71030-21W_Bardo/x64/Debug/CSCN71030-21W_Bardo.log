@@ -1,2 +1,5 @@
-﻿  Source.cpp
+﻿  ItemDealer.cpp
+C:\Users\nickv\Desktop\CSCN71030-21W_Bardo\CSCN71030-21W_Bardo\ItemDealer.cpp(428,12): warning C4102: 'itemault': unreferenced label
+C:\Users\nickv\Desktop\CSCN71030-21W_Bardo\CSCN71030-21W_Bardo\ItemDealer.cpp(438): warning C4715: 'ItemDealer::getDealerBuyChoice': not all control paths return a value
+C:\Users\nickv\Desktop\CSCN71030-21W_Bardo\CSCN71030-21W_Bardo\ItemDealer.cpp(492): warning C4715: 'ItemDealer::getItemStats': not all control paths return a value
   CSCN71030-21W_Bardo.vcxproj -> C:\Users\nickv\Desktop\CSCN71030-21W_Bardo\x64\Debug\CSCN71030-21W_Bardo.exe

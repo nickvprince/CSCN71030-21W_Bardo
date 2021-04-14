@@ -35,10 +35,10 @@ bool shopMain(entity* character) {
 		checkUserInput();
 		switch (choice) {
 		case 1:
-			system("cls");
-			weaponDealer->printDealerHeader(character);
-			weaponDealer->printDealerOptions();
-			weaponDealer->getOptionChoice(weaponDealer, character);
+				system("cls");
+				weaponDealer->printDealerHeader(character);
+				weaponDealer->printDealerOptions();
+				weaponDealer->getOptionChoice(weaponDealer, character);
 			break;
 		case 2:
 			system("cls");

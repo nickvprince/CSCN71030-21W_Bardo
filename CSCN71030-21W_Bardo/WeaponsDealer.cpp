@@ -62,6 +62,12 @@ void WeaponDealer::buy(entity* user) {
 		return;
 	}
 
+	if (user->level < weap.level) {
+		pressAnyButtonToContinue("\nYou are not a high enough level to purchase that item.");
+		return;
+	}
+
+
 	if (user->gold < weap.value) {
 		cout << "You do not have enough gold to purchase that item." << endl;
 		pressAnyButtonToContinue("Press any key to return to the dealer menu...");
@@ -231,6 +237,11 @@ void WeaponDealer::barter(entity* user) {
 		return;
 	}
 
+	if (user->level < weap.level) {
+		pressAnyButtonToContinue("\nYou are not a high enough level to barter for that item.");
+		return;
+	}
+
 	// If the user doesn't have any items
 	for (int i = 0; i < MAX_ITEMS; i++) {
 		if (user->INV->Items[i].name == "") {
@@ -249,7 +260,7 @@ void WeaponDealer::barter(entity* user) {
 	// ----- Check if user has correct amount of items -----
 	for (int i = 0; i < MAX_ITEMS; i++) {
 		for (int j = 0; j < sizeof(weap.BarterItems) / sizeof(string); j++) {
-			if (weap.BarterItems[i] == user->INV->Items[j].name) {
+			if (weap.BarterItems[j] == user->INV->Items[i].name) {
 				// If they have more or equal to the amount || if the item is null (user needs none)
 				if (user->INV->ItemCount[i] >= weap.BarterItemsNum[j] || weap.BarterItemsNum[j] == NULL) {
 					validAmountItems[j] = true;

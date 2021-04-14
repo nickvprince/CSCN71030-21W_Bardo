@@ -50,10 +50,6 @@ int main() {
 
     user* Player = get_User("User");
 
-	Player->INV->Items[6].name = "Water";
-	Player->INV->ItemCount[6] = 2;
-	Player->INV->itemsUsed += 2;
-
     int choice = 0;
     // <- INIT
 

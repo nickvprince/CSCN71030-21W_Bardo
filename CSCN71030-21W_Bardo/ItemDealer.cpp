@@ -52,8 +52,7 @@ void ItemDealer::buy(entity* user) {
 	}
 
 	item item = get_Item(strItem);
-
-
+	
 	// If the weapon condition fails, errorlog, return.
 	if (item.failed != GOOD) {
 		ErrorLog("An error has occured while getting an item - Module: Economy", "Medium");
@@ -62,41 +61,51 @@ void ItemDealer::buy(entity* user) {
 		return;
 	}
 
-	if (user->gold < item.value) {
-		cout << "You do not have enough gold to purchase that item." << endl;
+	int quant = 0;
+	cout << endl << "Please enter a quantity: " << endl;
+	cin >> quant;
+	checkUserInput();
+
+
+	if (user->gold < item.value * quant) {
+		cout << "You do not have enough gold to purchase " << quant << " " << item.name << "." << endl;
 		pressAnyButtonToContinue("Press any key to return to the dealer menu...");
 		return;
 	}
 
-	user->gold -= item.value;
-	this->balance += item.value;
+	for (int i = 0; i < quant; i++) {
+	
+		user->gold -= item.value;
+		this->balance += item.value;
 
-	// If the item exists already.
-	for (int i = 0; i < MAX_ITEMS; i++) {
-		if (user->INV->Items[i].name == item.name) {
-			user->INV->ItemCount[i]++;
-			exists = true;
-			break;
-		}
-	}
-
-	// If the item does not exist already.
-	if (exists == false) {
+		// If the item exists already.
 		for (int i = 0; i < MAX_ITEMS; i++) {
-			if (user->INV->ItemCount[i] == NULL || user->INV->ItemCount[i] == EMPTY) {
-				user->INV->Items[i] = item;
+			if (user->INV->Items[i].name == item.name) {
 				user->INV->ItemCount[i]++;
-				user->INV->itemsUsed++;
+				exists = true;
 				break;
 			}
 		}
+
+		// If the item does not exist already.
+		if (exists == false) {
+			for (int i = 0; i < MAX_ITEMS; i++) {
+				if (user->INV->ItemCount[i] == NULL || user->INV->ItemCount[i] == EMPTY) {
+					user->INV->Items[i] = item;
+					user->INV->ItemCount[i]++;
+					user->INV->itemsUsed++;
+					break;
+				}
+			}
+		}
+
 	}
 
 	system("cls");
 
-	cout << "Item: " << item.name
+	cout << quant << " " << item.name << "(s)"
 		<< " has been purchased for "
-		<< item.value << " gold." << endl << endl;
+		<< item.value * quant << " gold." << endl << endl;
 
 
 	exists = false;
@@ -247,7 +256,7 @@ void ItemDealer::barter(entity* user) {
 	// ----- Check if user has correct amount of items -----
 	for (int i = 0; i < MAX_ITEMS; i++) {
 		for (int j = 0; j < sizeof(item.BarterItems) / sizeof(string); j++) {
-			if (item.BarterItems[i] == user->INV->Items[j].name) {
+			if (item.BarterItems[j] == user->INV->Items[i].name) {
 				// If they have more or equal to the amount || if the item is null (user needs none)
 				if (user->INV->ItemCount[i] >= item.BarterItemsNum[j] || item.BarterItemsNum[j] == NULL) {
 					validAmountItems[j] = true;

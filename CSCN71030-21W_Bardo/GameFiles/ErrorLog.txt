@@ -28,3 +28,7 @@ Battle Fail | Severity : Severe 2021/3/13 -4:47:5EST
 Battle Fail | Severity : Severe 2021/3/13 -3:15:43EST
 Battle Fail | Severity : Severe 2021/3/13 -3:28:3EST
 Battle Fail | Severity : Severe 2021/3/13 -3:28:5EST
+Battle Fail | Severity : Severe 2021/3/14 -3:35:59EST
+Battle Fail | Severity : Severe 2021/3/14 -3:39:41EST
+Battle Fail | Severity : Severe 2021/3/14 -3:42:32EST
+Battle Fail | Severity : Severe 2021/3/14 -3:57:6EST
