@@ -21,33 +21,23 @@
 *    FileIO as threads to do the workload while other operations are running
 */
 
-
-
-using namespace std;
 #include <stdlib.h>
 #include <iostream>
 #include <stdio.h>
 #include <fstream>
 #include <string>
-#include "BattleModule.h"
-
+#include "Shop.h"
 
 // temp
-bool skillMain(entity* Player);
 bool crafting(entity* player);
-bool shopMain(entity* Player);
+bool skillMain(entity* Player);
 
-bool shopMain(entity* Player) {
-	return false;
-}
 bool crafting(entity* player) {
 	return false;
 }
 bool skillMain(entity* Player) {
 	return false;
 }
-// temp
-
 
 void printOptions();
 int main(int argc, char* argv[]) {
@@ -61,7 +51,7 @@ int main(int argc, char* argv[]) {
 		string cmdInput = argv[1];
 		if (cmdInput == "0") {
 			Player = newGame();
-		}         else if (cmdInput == "1")
+		} else if (cmdInput == "1")
 		{
 			Player = get_User("USER");
 
@@ -120,10 +110,9 @@ int main(int argc, char* argv[]) {
 		default:
 			break;
 
-		}
-		while ((getchar()) != '\n');
-	}
-
+        }
+       while ((getchar()) != '\n');
+    }
 }
 
 

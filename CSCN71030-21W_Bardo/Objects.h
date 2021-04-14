@@ -25,9 +25,9 @@ using namespace std;
 #include <iostream>
 #include <stdio.h>
 #include <string>
+#include <stdlib.h>
 typedef enum ErrorType { CHK_FAIL, EXISTS_FAIL, COMMON_FAIL, GOOD }ErrorType; // used to identify file errors
 class item {
-
 public:
 	string name;
 	int value = 0;
@@ -63,22 +63,26 @@ class potion {
 public:
 	string BarterItems[MAX_MATERIALS];
 	int BarterItemsNum[MAX_MATERIALS];
+	string name;
+	int value = 0;
 };
 
 class spell {
 public:
+	string name;
 };
 
 class inventory {
 public:
 	ErrorType failed = GOOD;
 	int itemsUsed = 0; // how many items in inventory
+	int ItemCount[MAX_ITEMS]; // number of items carried lines up with each array item at index
 	item Items[MAX_ITEMS];
 	weapon Weapons[MAX_ITEMS];
 	defence Shields[MAX_ITEMS];
 	potion Potions[MAX_ITEMS];
 	spell Spells[MAX_ITEMS];
-	int ItemCount[MAX_ITEMS]; // number of items carried lines up with each array item at index
+	
 };
 
 class entity {

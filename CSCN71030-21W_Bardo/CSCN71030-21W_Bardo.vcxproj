@@ -144,10 +144,26 @@
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="enemy.cpp" />
     <ClCompile Include="ErrorChecking.cpp" />
-    <ClCompile Include="FileIO.cpp" />
     <ClCompile Include="player.cpp" />
+    <ClCompile Include="DefenceDealer.cpp" />
+    <ClCompile Include="FileIO.cpp" />
+    <ClCompile Include="Dealer.cpp" />
+    <ClCompile Include="ItemDealer.cpp" />
+    <ClCompile Include="OtherFunctions.cpp" />
+    <ClCompile Include="PotionDealer.cpp" />
+    <ClCompile Include="Shop.cpp" />
     <ClCompile Include="Psecurity.cpp" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="WeaponsDealer.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Dealer.h" />
+    <ClInclude Include="DefenceDealer.h" />
+    <ClInclude Include="ItemDealer.h" />
+    <ClInclude Include="OtherFuntions.h" />
+    <ClInclude Include="PotionDealer.h" />
+    <ClInclude Include="Shop.h" />
+    <ClInclude Include="WeaponsDealer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="battle.h" />

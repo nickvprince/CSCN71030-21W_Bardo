@@ -1,5 +1,7 @@
-Default triggered in get User | Severity : High 2021/3/7 17:1:4EST
-Battle Fail | Severity : Severe 2021/3/9 12:32:43EST
-Shop failed | Severity : Severe 2021/3/9 12:32:43EST
-Crafting failed | Severity : Severe 2021/3/9 12:32:44EST
-Skill Main failed | Severity : Severe 2021/3/9 12:32:45EST
+Failed to get weapon stats - Module: Economy | Severity : Severe 2021/3/14 -2:49:54EST
+Failed to get weapon stats - Module: Economy | Severity : Severe 2021/3/14 -2:52:40EST
+Failed to get weapon stats - Module: Economy | Severity : Severe 2021/3/14 -2:53:43EST
+Failed to get weapon stats - Module: Economy | Severity : Severe 2021/3/14 -2:54:9EST
+Failed to get weapon stats - Module: Economy | Severity : Severe 2021/3/14 -1:0:58EST
+Failed to get weapon stats - Module: Economy | Severity : Severe 2021/3/14 -1:1:49EST
+Failed to get weapon stats - Module: Economy | Severity : Severe 2021/3/14 -1:3:57EST
