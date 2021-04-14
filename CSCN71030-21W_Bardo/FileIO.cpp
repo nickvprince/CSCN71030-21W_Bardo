@@ -32,8 +32,8 @@ using namespace std;
 *   get_Weapon version 1.1 finished without comments
 */
 
-#define SPELLSDIR "./GameFiles/Potions/"
-#define POTIONSDIR "./GameFiles/Spells/"
+#define SPELLSDIR "./GameFiles/Spells/"
+#define POTIONSDIR "./GameFiles/Potions/"
 #define WEAPONDIR "./GameFiles/Weapons/"
 #define DEFENCEDIR "./GameFiles/Armour/"
 #define ITEMDIR "./GameFiles/Items/"
@@ -269,12 +269,14 @@ defence get_Defence(string name) { // retrieves a defence item from a file and r
 							retrieval--;
 							
 							SWITCH++;
-						} 						else {
+						} 					
+						else {
 							Defence.BarterItems[barterPosition] = word;
 						
 							SWITCH--;
 						}
-					} 					else {
+					} 					
+					else {
 						Defence.failed = COMMON_FAIL;
 						//ENCRYPT(DEFENCEDIR + name);
 						return Defence;
@@ -406,8 +408,141 @@ item get_Item(string name) {
 }
 
 potion get_Potion(string name) { // retrieves a potion from a file and returns it as an object
-	potion Potion;
-	return Potion;
+
+	int length = 0;
+	char input;
+	int itemPosition = 0;
+	int retrieval = 0;
+	char word[WORD_SIZE];
+	fstream FILE;
+	int counter = 0;
+	potion ITEM;
+#define CRAFTING_MATERIAL_START 2
+
+	int barterPosition = 0;
+	int SWITCH = 0;
+
+	ITEM.name = name;
+	name = name + ".BPTN";
+
+	// reset word
+	for (int emptyCounter = 0; emptyCounter < WORD_SIZE; emptyCounter++) {
+		word[emptyCounter] = '\0';
+	}
+	counter = 0;
+	// reset word before reading item
+
+	switch (isFileGood((char*)name.c_str())) { // is the file passed usable
+	case CHK_FAIL: // weapon fail state set to checksum fail
+		ITEM.failed = CHK_FAIL;
+		ErrorLog("Checksum Fail", "Low");
+		break;
+	case EXISTS_FAIL: // weapon fail state set to file not exists fail
+		ITEM.failed = EXISTS_FAIL;
+		ErrorLog("File Exists Fail", "Average");
+		break;
+	case GOOD: // file is usable start reading
+		for (int i = 0; i < MAX_MATERIALS; i++) {
+			ITEM.BarterItemsNum[i] = 0;
+
+		}
+		
+		ITEM.failed = GOOD;
+		FILE.open(POTIONSDIR + (string)name, ios::in);
+		if (FILE.is_open()) {
+			
+
+			FILE >> input;
+
+			// get info ->
+			while (input != 38) {
+
+				while (input != 59 && input != 38) {
+					word[counter] = input;
+					counter++;
+					
+					FILE >> input;
+				}
+				// debugging and seeing each word >
+				cout << "WORD : " << word << "\n";
+				cout << "Retreival : " << retrieval << "\n";
+				switch (retrieval) {
+				case 0:
+					ITEM.value = atoi(word);
+					break;
+				case 1:
+					ITEM.Power = atoi(word);
+					break;
+				case (CRAFTING_MATERIAL_START + 1):
+					if (SWITCH == 0) {
+						ITEM.craftingItemsNum[itemPosition] = atoi(word);
+						SWITCH++;
+						retrieval--;
+						itemPosition++;
+
+					}
+					else {
+						ITEM.BarterItemsNum[barterPosition] = atoi(word);
+						SWITCH--;
+						barterPosition++;
+						retrieval = CRAFTING_MATERIAL_START - 1;
+					}
+
+
+					break;
+				default:
+
+					if (atoi(word) == 0) {
+						if (SWITCH == 0) {
+							ITEM.craftingItems[itemPosition] = word;
+							retrieval--;
+
+							SWITCH++;
+						}
+						else {
+							ITEM.BarterItems[barterPosition] = word;
+
+							SWITCH--;
+						}
+					}
+					else {
+						ITEM.failed = COMMON_FAIL;
+						//ENCRYPT(DEFENCEDIR + name);
+						return ITEM;
+					}
+					break;
+				}
+					retrieval++;
+					counter = 0;
+
+					for (int emptyCounter = 0; emptyCounter < WORD_SIZE; emptyCounter++) {
+						word[emptyCounter] = '\0';
+					}
+
+					FILE >> input;
+
+				}
+				// get info  < -
+
+			} // if is open
+			break;
+	default: // all other fails
+		ITEM.failed = COMMON_FAIL;
+		ErrorLog("Unknown Fail", "High");
+		break;
+		}
+		// Reset variables without resetting item count
+		length = 0;
+		input = ' ';
+		retrieval = 0;
+		word[WORD_SIZE];
+		counter = 0;
+		// Reset variables without resetting item count
+		FILE.close();
+
+
+		return ITEM;
+
 }
 
 
@@ -635,6 +770,15 @@ entity* get_User(string name) { // retrieves user information from a file and re
 					break;
 				case 8:
 					User->Shield = get_Defence(WORD);
+					break;
+				case 9:
+					User->Skills[0] = atoi(WORD);
+					break;
+				case 10:
+					User->Skills[1] = atoi(WORD);
+					break;
+				case 11:
+					User->Skills[2] = atoi(WORD);
 					break;
 				default:
 					ErrorLog("Default triggered in get User", "High");
@@ -1158,7 +1302,10 @@ bool Save(entity* Player) {
 		file << Player->currentexp << ";" << endl;
 		file << Player->expmax << ";" << endl;
 		file << Player->gold << ";" << endl;
-		file << Player->Shield.name << "&";
+		file << Player->Shield.name << ";";
+		file << Player->Skills[0] << ";";
+		file << Player->Skills[1] << ";";
+		file << Player->Skills[2] << "&";
 		file.close();
 		return true;
 	} 	else {

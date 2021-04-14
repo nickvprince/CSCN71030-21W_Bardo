@@ -37,6 +37,7 @@ bool crafting(entity* player) {
 
 void printOptions();
 int main(int argc, char* argv[]) {
+	potion temp =get_Potion("AttackPotion");
 
 	entity* Player = new user;
 	if (argc == 1) {
