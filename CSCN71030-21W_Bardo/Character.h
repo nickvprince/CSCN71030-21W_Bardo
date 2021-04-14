@@ -8,22 +8,22 @@
 * Team : Dominic Pham, Thomas Horvath, Nicholas, Prince, Danny Smith
 
 */
-#include "FileIO.h"
+#include "Psecurity.h"
 #pragma once
 
 int startMenu();
-user* newGame();
-void printStats(user* Player);
-void setStats(user* Player);
-user* manualSetStats(user* Player);
-user* selectStarterWeapon(user* Player);
-user* selectStarterShield(user* Player);
-void setRace(user* Player);
-bool loadScreen(user* Player);
-bool defaultStat(user* Player);
+entity* newGame();
+void printStats(entity* Player);
+entity* setStats(entity* Player);
+entity* manualSetStats(entity* Player);
+entity* selectStarterWeapon(entity* Player);
+entity* selectStarterShield(entity* Player);
+void setRace(entity* Player);
+bool loadScreen(entity* Player);
+bool defaultStat(entity* Player);
 bool defaultConfirmation();
 void humanStats();
 void elfStats();
 void dwarfStats();
-user* startIO(user* Player);
+entity* startIO(entity* Player);
 bool valueCheck(const string& value);

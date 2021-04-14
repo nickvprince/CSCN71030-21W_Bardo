@@ -1,5 +1,4 @@
 #define _CRT_SECURE_NO_WARNINGS
-
 #include "FileIO.h"
 #include <fstream>
 #include <iostream>
@@ -20,7 +19,7 @@ using namespace std;
 * Description :
 *
 *
-* Version : 1.2
+* Version : 1.1
 *
 *
 * History :
@@ -41,13 +40,13 @@ using namespace std;
 #define ENEMYDIR "./GameFiles/Enemy/"
 #define USERDIR "./GameFiles/UserFiles/"
 #define WORD_SIZE 15
-#define Empty 0x00000000CDCDCDCD
-string ERRORLOG ="./GameFiles/ErrorLog.txt";
+string ERRORLOG = "./GameFiles/ErrorLog.txt";
+
 
 
 // used in file verification
 int checkSums[] = { 16,16,16,16,14,14,14,14,26,26,26,26,16,1,1,1,1,1,0,1,1,0,0,0,1,0,0,5,679,45,30,1249,18,2,24,33,27,22,45,19 };
-string checkSumNames[] = { "WoodSword.BWPF","WoodAxe.BWPF","WoodMace.BWPF","WoodBow.BWPF","IronSword.BWPF","IronAxe.BWPF","IronMace.BWPF","IronBow.BWPF","GoldSword.BWPF","GoldAxe.BWPF","GoldMace.BWPF","GoldBow.BWPF","PlatinumStaff.BWPF","BabyDragon.BINVF","DarkElf.BINVF","Drough.BINVF","Elliott.BINVF","Orc.BINVF","Copper.BITMF","Gold.BITMF","Iron.BITMF","Leather.BITMF","Magnesium.BITMF","Paper.BITMF","Platinum.BITMF","Silver.BITMF","Water.BITMF","BabyDragon.BENF","DarkElf.BENF","Drough.BENF","Elliott.BENF","Orc.BENF","GoldArmour.BAMF","GoldShield.BAMF","IronArmour.BAMF","IronShield.BAMF","WoodShield.BAMF","WoodArmour.BAMF","PlatinumShield.BAMF","PlatinumArmour.BAMF"};
+string checkSumNames[] = { "WoodSword.BWPF","WoodAxe.BWPF","WoodMace.BWPF","WoodBow.BWPF","IronSword.BWPF","IronAxe.BWPF","IronMace.BWPF","IronBow.BWPF","GoldSword.BWPF","GoldAxe.BWPF","GoldMace.BWPF","GoldBow.BWPF","PlatinumStaff.BWPF","BabyDragon.BINVF","DarkElf.BINVF","Drough.BINVF","Elliott.BINVF","Orc.BINVF","Copper.BITMF","Gold.BITMF","Iron.BITMF","Leather.BITMF","Magnesium.BITMF","Paper.BITMF","Platinum.BITMF","Silver.BITMF","Water.BITMF","BabyDragon.BENF","DarkElf.BENF","Drough.BENF","Elliott.BENF","Orc.BENF","GoldArmour.BAMF","GoldShield.BAMF","IronArmour.BAMF","IronShield.BAMF","WoodShield.BAMF","WoodArmour.BAMF","PlatinumShield.BAMF","PlatinumArmour.BAMF" };
 string Directories[] = { WEAPONDIR,WEAPONDIR,WEAPONDIR ,WEAPONDIR ,WEAPONDIR ,WEAPONDIR ,WEAPONDIR ,WEAPONDIR ,WEAPONDIR ,WEAPONDIR ,WEAPONDIR ,WEAPONDIR ,WEAPONDIR,INVENTORYDIR ,INVENTORYDIR ,INVENTORYDIR ,INVENTORYDIR ,INVENTORYDIR,ITEMDIR,ITEMDIR,ITEMDIR,ITEMDIR,ITEMDIR,ITEMDIR,ITEMDIR,ITEMDIR,ITEMDIR,ENEMYDIR,ENEMYDIR,ENEMYDIR,ENEMYDIR,ENEMYDIR,DEFENCEDIR,DEFENCEDIR,DEFENCEDIR,DEFENCEDIR,DEFENCEDIR,DEFENCEDIR,DEFENCEDIR,DEFENCEDIR };
 
 // used in file reading
@@ -63,7 +62,6 @@ fstream file;
 * change the checksum value of the encrypted version of the file in the checksums[] in comparison to that file in the checkSumNames[]
 */
 weapon get_Weapon(string name) { // retrieves a weapon from a file and returns it as an object
-
 #define CRAFTING_MATERIAL_START 3
 	int length = 0;
 	char input;
@@ -78,7 +76,7 @@ weapon get_Weapon(string name) { // retrieves a weapon from a file and returns i
 	int SWITCH = 0;
 	int barterPosition = 0;
 	name = name + ".BWPF";
-	DECRYPT(WEAPONDIR+name);
+
 	switch (isFileGood((char*)name.c_str())) { // is the file passed usable
 	case CHK_FAIL: // weapon fail state set to checksum fail
 		Weapon.failed = CHK_FAIL;
@@ -89,11 +87,7 @@ weapon get_Weapon(string name) { // retrieves a weapon from a file and returns i
 		ErrorLog("Exists Fail", "Average");
 		break;
 	case GOOD: // file is usable start reading
-		for (int i = 0; i < MAX_MATERIALS; i++) {
-			Weapon.BarterItemsNum[i] = 0;
-			Weapon.craftingItemsNum[i] = 0;
-		}
-		
+
 		Weapon.failed = GOOD;
 		file.open(WEAPONDIR + (string)name, ios::in);
 		if (file.is_open()) {
@@ -129,13 +123,10 @@ weapon get_Weapon(string name) { // retrieves a weapon from a file and returns i
 					if (SWITCH == 0) {
 						Weapon.craftingItemsNum[itemPosition] = atoi(word);
 						itemPosition++;
-						retrieval--;
 						SWITCH++;
-					}
-					else {
+					} 					else {
 						Weapon.BarterItemsNum[barterPosition] = atoi(word);
 						retrieval = CRAFTING_MATERIAL_START - 1;
-						barterPosition++;
 						SWITCH--;
 					}
 					break;
@@ -146,15 +137,12 @@ weapon get_Weapon(string name) { // retrieves a weapon from a file and returns i
 							Weapon.craftingItems[itemPosition] = word;
 							retrieval--;
 							SWITCH++;
-						}
-						else {
+						} 						else {
 							Weapon.BarterItems[barterPosition] = word;
 							SWITCH--;
 						}
-					}
-					else {
+					} 					else {
 						Weapon.failed = COMMON_FAIL;
-						ENCRYPT(WEAPONDIR + name);
 						return Weapon;
 					}
 
@@ -180,7 +168,6 @@ weapon get_Weapon(string name) { // retrieves a weapon from a file and returns i
 	}
 
 	file.close();
-	ENCRYPT(WEAPONDIR + name);
 	return Weapon;
 } // just takes in name of file not the dir
 // been updated for bartering ^
@@ -195,12 +182,10 @@ defence get_Defence(string name) { // retrieves a defence item from a file and r
 	fstream file;
 	int counter = 0;
 	defence Defence;
-#define CRAFTING_MATERIAL_START 4
-	int SWITCH = 0;
-	int barterPosition = 0;
+#define CRAFTING_MATERIAL_START 3
 	Defence.name = name;
 	name = name + ".BAMF";
-	DECRYPT(DEFENCEDIR + name);
+
 	switch (isFileGood((char*)name.c_str())) { // is the file passed usable
 	case CHK_FAIL: // weapon fail state set to checksum fail
 		Defence.failed = CHK_FAIL;
@@ -211,10 +196,7 @@ defence get_Defence(string name) { // retrieves a defence item from a file and r
 		ErrorLog("Exists Fail", "Average");
 		break;
 	case GOOD: // file is usable start reading
-		for (int i = 0; i < MAX_MATERIALS; i++) {
-			Defence.BarterItemsNum[i] = 0;
-			Defence.craftingItemsNum[i] = 0;
-		}
+
 		Defence.failed = GOOD;
 		file.open(DEFENCEDIR + (string)name, ios::in);
 		if (file.is_open()) {
@@ -248,40 +230,17 @@ defence get_Defence(string name) { // retrieves a defence item from a file and r
 					Defence.level = atoi(word);
 					break;
 				case (CRAFTING_MATERIAL_START + 1):
-					if (SWITCH == 0) {
-						Defence.craftingItemsNum[itemPosition] = atoi(word);
-						SWITCH++;
-						retrieval--;
-						itemPosition++;
 
-					}
-					else {
-						Defence.BarterItemsNum[barterPosition] = atoi(word);
-						SWITCH--;
-						barterPosition++;
-						retrieval = CRAFTING_MATERIAL_START - 1;
-					}
-					
-					
+					Defence.craftingItemsNum[itemPosition] = atoi(word);
+					itemPosition++;
+					retrieval = CRAFTING_MATERIAL_START - 1;
 					break;
 				default:
 
 					if (atoi(word) == 0) {
-						if (SWITCH == 0) {
-							Defence.craftingItems[itemPosition] = word;
-							retrieval--;
-							
-							SWITCH++;
-						}
-						else {
-							Defence.BarterItems[barterPosition] = word;
-						
-							SWITCH--;
-						}
-					}
-					else {
+						Defence.craftingItems[itemPosition] = word;
+					} 					else {
 						Defence.failed = COMMON_FAIL;
-						ENCRYPT(DEFENCEDIR + name);
 						return Defence;
 					}
 
@@ -307,7 +266,6 @@ defence get_Defence(string name) { // retrieves a defence item from a file and r
 	}
 
 	file.close();
-	ENCRYPT(DEFENCEDIR + name);
 	return Defence;
 }
 
@@ -322,10 +280,6 @@ item get_Item(string name) {
 	int counter = 0;
 	item ITEM;
 	fstream FILE;
-
-	
-
-
 	ITEM.name = name;
 	name = name + ".BITMF";
 
@@ -346,10 +300,7 @@ item get_Item(string name) {
 		ErrorLog("File Exists Fail", "Average");
 		break;
 	case GOOD: // file is usable start reading
-		for (int i = 0; i < MAX_MATERIALS; i++) {
-			ITEM.BarterItemsNum[i] = 0;
-		
-		}
+
 		ITEM.failed = GOOD;
 		FILE.open(ITEMDIR + (string)name, ios::in);
 		if (FILE.is_open()) {
@@ -419,14 +370,14 @@ potion get_Potion(string name) { // retrieves a potion from a file and returns i
 
 
 void ErrorLog(string message, string Severity) {
-	
-		fstream f;
-		time_t now = time(0);
-		tm* time = gmtime(&now);
-		f.open(ERRORLOG, ios::app);
-		f << message <<  " | Severity : "<< Severity <<" 2021" << "/" << time->tm_mon << "/" << time->tm_mday << " " << (time->tm_hour) - 4 << ":" << time->tm_min << ":" << time->tm_sec << "EST" << endl;
-		f.close();
-	
+
+	fstream f;
+	time_t now = time(0);
+	tm* time = gmtime(&now);
+	f.open(ERRORLOG, ios::app);
+	f << message << " | Severity : " << Severity << " 2021" << "/" << time->tm_mon << "/" << time->tm_mday << " " << (time->tm_hour) - 4 << ":" << time->tm_min << ":" << time->tm_sec << "EST" << endl;
+	f.close();
+
 }
 
 spell get_Spell(string name) { // retrieves a spell from a file and returns it as an object
@@ -438,10 +389,6 @@ spell get_Spell(string name) { // retrieves a spell from a file and returns it a
 
 inventory* get_Inventory(string name) { // retrieves inventory from a file and returns it as an object
 	inventory* Inventory = new inventory;
-	for (int i = 0; i < MAX_ITEMS; i++) {
-		Inventory->ItemCount[i] = 0;
-	
-	}
 	int length = 0;
 	char input;
 	int itemPosition = 0;
@@ -493,14 +440,11 @@ inventory* get_Inventory(string name) { // retrieves inventory from a file and r
 
 					if (strcmp(word, "Item") == 0) {
 						type = 'I';
-					}
-					else if (strcmp(word, "Weapon") == 0) {
+					} 					else if (strcmp(word, "Weapon") == 0) {
 						type = 'W';
-					}
-					else if (strcmp(word, "Defence") == 0) {
+					} 					else if (strcmp(word, "Defence") == 0) {
 						type = 'D';
-					}
-					else if (strcmp(word, "Potion") == 0) {
+					} 					else if (strcmp(word, "Potion") == 0) {
 						type = 'P';
 					}
 					break;
@@ -519,25 +463,21 @@ inventory* get_Inventory(string name) { // retrieves inventory from a file and r
 							item ITEM = get_Item(word);
 							Inventory->Items[itemPosition] = ITEM;
 							Inventory->itemsUsed++;
-						}
-						else if (type == 'W') {
+						} 						else if (type == 'W') {
 							weapon Weapon = get_Weapon(word);
 							Inventory->Weapons[itemPosition] = Weapon;
 							Inventory->itemsUsed++;
-						}
-						else if (type == 'D') {
+						} 						else if (type == 'D') {
 							defence shield = get_Defence(word);
 							Inventory->Shields[itemPosition] = shield;
 							Inventory->itemsUsed++;
-						}
-						else if (type == 'P') {
+						} 						else if (type == 'P') {
 							potion POTION = get_Potion(word);
 							Inventory->Potions[itemPosition] = POTION;
 							Inventory->itemsUsed++;
 						}
 
-					}
-					else {
+					} 					else {
 						Inventory->failed = COMMON_FAIL;
 						ErrorLog("Unknown Inventory type", "Average");
 						return Inventory;
@@ -573,9 +513,9 @@ inventory* get_Inventory(string name) { // retrieves inventory from a file and r
 
 
 user* get_User(string name) { // retrieves user information from a file and returns it as an object
-	
+
 	user* User = new user;
-	
+
 	fstream userFile;
 	User->race = name;
 	User->INV = get_Inventory(name);
@@ -588,7 +528,6 @@ user* get_User(string name) { // retrieves user information from a file and retu
 	for (int emptyCounter = 0; emptyCounter < WORD_SIZE; emptyCounter++) {
 		WORD[emptyCounter] = '\0';
 	}
-	DECRYPT(USERDIR + name);
 	switch (isFileGood((char*)name.c_str())) { // is the file passed usable
 	case CHK_FAIL: // weapon fail state set to checksum fail
 		User->failed = CHK_FAIL;
@@ -640,7 +579,7 @@ user* get_User(string name) { // retrieves user information from a file and retu
 					User->currentexp = atoi(WORD);
 					break;
 				case 6:
-					User->lvlexp = atoi(WORD);
+					User->expmax = atoi(WORD);
 					break;
 				case 7:
 					User->gold = atoi(WORD);
@@ -671,7 +610,7 @@ user* get_User(string name) { // retrieves user information from a file and retu
 		WORD[emptyCounter] = '\0';
 	}
 	userFile.close();
-	ENCRYPT(USERDIR + name);
+
 	return User;
 }
 
@@ -739,7 +678,7 @@ enemy* get_Enemy(string name, int level) { // retrieves an enemy from a file and
 					break;
 				case 2:
 					//defence health level exp
-					Enemy->defence = (atoi(WORD)*level)/2;
+					Enemy->defence = (atoi(WORD) * level) / 2;
 					break;
 				case 3:
 					Enemy->health = (atoi(WORD) * level) / 2;
@@ -792,8 +731,7 @@ bool FileExists(string name) { // checks if file exists
 	if (!file) {
 		return false;
 		ErrorLog("File Doesnt Exist (FileExists)", "Unknown");
-	}
-	else {
+	} 	else {
 		return true;
 	}
 }
@@ -843,34 +781,32 @@ ErrorType isFileGood(char* name) { // does checking if file is good							NEEDS 
 	int flag = 0;
 	string exemptDirectories[] = { USERDIR,INVENTORYDIR,INVENTORYDIR,INVENTORYDIR,INVENTORYDIR,INVENTORYDIR,INVENTORYDIR };
 	string exemptFiles[] = { "User.BSURF","DarkElf.BINVF","User.BINVF","BabyDragon.BINVF","Drough.BINVF","Elliott.BINVF","Orc.BINVF" };
-	
+
 	for (int exempt = 0; exempt < sizeof(exemptFiles) / sizeof(string); exempt++) { // temporary exempt files from checksum ( files that change frequently ) until i get a better method of doing checksum
 		if (exemptFiles[exempt] == name) {
-		
+
 			flag = 1;
 			string path = exemptDirectories[exempt] + name;
 			if (FileExists(path) == 0) {
 				return EXISTS_FAIL; // directory not exist fail
 				ErrorLog("Exist Fail Triggered in isFileGood", "Unknown");
-			}
-			else {
-		
+			} 			else {
+
 				return GOOD;
 			}
 		}
 	}
 	if (flag != 1) {
-		
+
 		for (int i = 0; i < sizeof(checkSumNames) / sizeof(string); i++) {
-			
+
 			if (name == checkSumNames[i]) {
 				if (getCheckSum(Directories[i] + checkSumNames[i]) == checkSums[i]) {
-					
+
 					return GOOD;
-				}
-				else {
+				} 				else {
 					return CHK_FAIL;
-					ErrorLog("Checksum Triggered in isFileGood "+checkSumNames[i]+" ", "Low");
+					ErrorLog("Checksum Triggered in isFileGood " + checkSumNames[i] + " ", "Low");
 				}
 			}
 		}
@@ -887,8 +823,7 @@ ErrorType isFileGood(char* name) { // does checking if file is good							NEEDS 
 			if (FileExists(path) == 0) {
 				return EXISTS_FAIL; // directory not exist fail
 				ErrorLog("Exists Fail triggered in isFileGood", "Unknown");
-			}
-			else if (Checksum(path, checkSums[counter]) == 0) { // if checksum is wrong from that identified at the top of the file
+			} 			else if (Checksum(path, checkSums[counter]) == 0) { // if checksum is wrong from that identified at the top of the file
 				return CHK_FAIL;
 				ErrorLog("Checksum Fail triggerd in isFileGood", "Unknown");
 			}
@@ -898,11 +833,9 @@ ErrorType isFileGood(char* name) { // does checking if file is good							NEEDS 
 	}
 	if (found == 1) { // found the file and didnt fail
 		return GOOD;
-	}
-	else if (found == 0) { // didnt find the file
+	} 	else if (found == 0) { // didnt find the file
 		return EXISTS_FAIL;
-	}
-	else { // something went wrong return common error
+	} 	else { // something went wrong return common error
 		return COMMON_FAIL;
 	}
 	return COMMON_FAIL; // just in case code breaks
@@ -920,18 +853,16 @@ bool removeDirectory(char* name) { // remove directory
 }
 
 
-void printList(list* list,int type) {
+void printList(list* list, int type) {
 	for (int i = 0; i < MAX_NUM_FILES; i++) {
 
 		if (list->names[i] == "") {
 			return;
-		}
-		else {
+		} 		else {
 			if (type == 0) {
 				cout << list->names[i] << endl;
-			}
-			else {
-				cout << i+1 << ". " << list->names[i] << endl;
+			} 			else {
+				cout << i + 1 << ". " << list->names[i] << endl;
 			}
 		}
 
@@ -957,7 +888,7 @@ list* getListWeapons() {
 		while (input != 38) {
 
 			while (input != 59 && input != 38) {
-			
+
 				word[counter] = input;
 				counter++;
 
@@ -1165,9 +1096,9 @@ list* getListEnemy() {
 	}
 	return names;
 }
-bool Save(user* Player) {
+bool Save(entity* Player) {
 	fstream file;
-	file.open(USERDIR+(string)"USER.BSURF", ios::out);
+	file.open(USERDIR + (string)"USER.BSURF", ios::out);
 	if (file.is_open()) {
 		file << Player->name << ";" << endl;
 		file << Player->Weapon.name << ";" << endl;
@@ -1175,13 +1106,12 @@ bool Save(user* Player) {
 		file << Player->health << ";" << endl;
 		file << Player->level << ";" << endl;
 		file << Player->currentexp << ";" << endl;
-		file << Player->lvlexp << ";" << endl;
+		file << Player->expmax << ";" << endl;
 		file << Player->gold << ";" << endl;
 		file << Player->Shield.name << "&";
 		file.close();
 		return true;
-	}
-	else {
+	} 	else {
 		ErrorLog("File Did not open to save", "Severe");
 		return false;
 	}

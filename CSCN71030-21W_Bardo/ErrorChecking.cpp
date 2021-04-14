@@ -5,6 +5,8 @@
 
 using namespace std;
 /*
+* File Name : ErrorChecking.cpp
+*
 * Programmer : Danny Smith
 * Class : Team Based Software Development CSCN71030-21W-SEC1-PROJECT 2
 * Date : February 6, 2021
@@ -39,7 +41,7 @@ bool VerifyHiddenFile(char* name) { // verifies the file is hidden to the user
 		return true;
 		break;
 	default:
-		
+
 		return false;
 	}
 }
@@ -56,16 +58,13 @@ bool Checksum(string name, int size) { // verify size of file matches what its s
 			file >> input;
 			if (input == '&') {
 				break;
-			}
-			else if (input == ';') {
+			} 			else if (input == ';') {
 				//formatting printed doc
 				//printf_s("\n");
-			}
-			else if (input == '*') {
+			} 			else if (input == '*') {
 				// formatting printed doc
 				//printf_s(" ");
-			}
-			else {
+			} 			else {
 				// to see doc printed
 				//cout << input;
 				sum += (int)input;
@@ -77,12 +76,10 @@ bool Checksum(string name, int size) { // verify size of file matches what its s
 		//printf_s("%d", (int)(sum % length));
 		if (sum % length == size) {
 			return true;
-		}
-		else {
+		} 		else {
 			return false;
 		}
-	}
-	else {
+	} 	else {
 		return false;
 	}
 	return false; // incase fail unforseen
@@ -99,16 +96,13 @@ int getCheckSum(string name) {
 			file >> input;
 			if (input == '&') {
 				break;
-			}
-			else if (input == ';') {
+			} 			else if (input == ';') {
 				//formatting printed doc
 				//printf_s("\n");
-			}
-			else if (input == '*') {
+			} 			else if (input == '*') {
 				// formatting printed doc
 				//printf_s(" ");
-			}
-			else {
+			} 			else {
 				// to see doc printed
 				//cout << input;
 				sum += (int)input;
@@ -119,8 +113,7 @@ int getCheckSum(string name) {
 	}
 	if (length == 0) {
 		return 0;
-	}
-	else {
+	} 	else {
 		return sum % length;
 	}
 }
@@ -148,11 +141,9 @@ bool VerifyAllFiles() { // runs CheckSum on all files to verify they are the pro
 
 		if (getCheckSum(protectedName) == 0 || getCheckSum(fileName) == 0) { // one of the files doesnt exist
 			failed = true;
-		}
-		else if (getCheckSum(protectedName) == getCheckSum(fileName)) {
+		} 		else if (getCheckSum(protectedName) == getCheckSum(fileName)) {
 
-		}
-		else if (getCheckSum(protectedName) != getCheckSum(fileName)) { // if they dont match copt protected file to usable file
+		} 		else if (getCheckSum(protectedName) != getCheckSum(fileName)) { // if they dont match copt protected file to usable file
 			char input;
 			remove((const char*)fileName.c_str());
 			fstream outFile;
@@ -164,8 +155,7 @@ bool VerifyAllFiles() { // runs CheckSum on all files to verify they are the pro
 			while (input != '&') {
 				if (input == ';') {
 					outFile << ";\n";
-				}
-				else {
+				} 				else {
 					outFile << input;
 				}
 				count++; // if something goes wrong
@@ -174,20 +164,19 @@ bool VerifyAllFiles() { // runs CheckSum on all files to verify they are the pro
 			outFile << '&';
 			inFile.close();
 			outFile.close();
-		}
-		else {
+		} 		else {
 			failed = true;
 		}
 
 		// run hidden file afterwards incase a file needs to be re made
 		if (VerifyHiddenFile((char*)protectedName.c_str()) == 0) { // if not hidden
 
-		
+
 			HideFile((char*)protectedName.c_str(), 1);
 		}
 		if (VerifyHiddenFile((char*)fileName.c_str()) == 0) { // if hidden
 
-		
+
 			HideFile((char*)fileName.c_str(), 0);
 		}
 	}
@@ -200,8 +189,7 @@ void HideFile(string name, int system_Yes_No) { // hides a file from the user so
 	string new_Name;
 	if (system_Yes_No == 1) {
 		new_Name = "attrib +h +s ";
-	}
-	else if (system_Yes_No == 0) {
+	} 	else if (system_Yes_No == 0) {
 		ShowFile(name);
 		new_Name = "attrib +h ";
 	}

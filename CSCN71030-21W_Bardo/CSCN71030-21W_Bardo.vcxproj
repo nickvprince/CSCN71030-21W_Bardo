@@ -139,17 +139,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="battle.cpp" />
+    <ClCompile Include="BattleModule.cpp" />
     <ClCompile Include="Character.cpp" />
+    <ClCompile Include="enemy.cpp" />
     <ClCompile Include="ErrorChecking.cpp" />
     <ClCompile Include="FileIO.cpp" />
-    <ClCompile Include="Objects.h" />
+    <ClCompile Include="player.cpp" />
     <ClCompile Include="Psecurity.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="battle.h" />
+    <ClInclude Include="BattleModule.h" />
     <ClInclude Include="Character.h" />
     <ClInclude Include="ErrorChecking.h" />
     <ClInclude Include="FileIO.h" />
+    <ClInclude Include="Objects.h" />
     <ClInclude Include="Psecurity.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

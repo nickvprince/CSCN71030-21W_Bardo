@@ -12,29 +12,29 @@
 
 
 #include <iostream>
-#include "FileIO.h"
 #include <direct.h>
 #include <algorithm>
 #include <string>
+#include "Character.h"
 
 
 using namespace std;
 
-user* selectStarterShield(user* Player);
-user* selectStarterWeapon(user* Player);
-user* manualSetStats(user* Player);
-user* setStats(user* Player);
-void setRace(user* Player);
-bool defaultStat(user* Player);
+entity* selectStarterShield(entity* Player);
+entity* selectStarterWeapon(entity* Player);
+entity* manualSetStats(entity* Player);
+entity* setStats(entity* Player);
+void setRace(entity* Player);
+bool defaultStat(entity* Player);
 bool defaultConfirmation();
 void humanStats();
 void elfStats();
 void dwarfStats();
-user* startIO(user* Player);
+entity* startIO(entity* Player);
 bool valueCheck(const string& value);
 
 int startMenu() {
-	STARTMENU:
+STARTMENU:
 	system("cls");
 	char menuInput;
 	cout << "Welcome" << endl << "0.New Game" << endl << "1.Load Game" << endl;
@@ -42,44 +42,42 @@ int startMenu() {
 	cin >> menuInput;
 	if (menuInput == '0') {
 		return 0;
-	}
-	else if (menuInput == '1') {
+	} 	else if (menuInput == '1') {
 		return 1;
-	}
-	else if (((menuInput != '0') && (menuInput != '1')) || (isdigit(menuInput) == 0)) 
+	} 	else if (((menuInput != '0') && (menuInput != '1')) || (isdigit(menuInput) == 0))
 	{
 		cout << "Invalid Entry. Try Again" << endl;
 		//startMenu();
 		goto STARTMENU;
 	}
-	
+
 }
 
-user* newGame() {
+entity* newGame() {
 	system("cls");
 	string characterName;
-	
-	user* Player = new user;
+
+	entity* Player = new user;
 
 	cout << "Please enter character name: ";
 	cin >> characterName;
 	transform(characterName.begin(), characterName.end(), characterName.begin(), ::toupper);
 	Player->name = characterName;
 	setRace(Player);
-	Player->INV = get_Inventory("User");
+	Player->INV = get_Inventory("entity");
 	/*Player->Weapon = get_Weapon("WoodAxe");
 	Player->Shield = get_Defence("WoodShield");
 	Player->defence = 2 + Player->Shield.Defence;
 	Player->damage = 2 + Player->Weapon.damage;
 	Player->health = 250;*/
 	Player = setStats(Player);
-	
+
 	return Player;
 
 }
 
-void setRace(user* Player) {
-	CHARACTERRACE:
+void setRace(entity* Player) {
+CHARACTERRACE:
 	char characterRace;
 	system("cls");
 	cout << "Enter the corresponding number to pick a race" << endl;
@@ -99,8 +97,7 @@ void setRace(user* Player) {
 		if (defaultConfirmation() == true)
 		{
 			Player->race = "HUMAN";
-		}
-		else {
+		} 		else {
 			//setRace(Player);
 			goto CHARACTERRACE;
 		}
@@ -111,8 +108,7 @@ void setRace(user* Player) {
 		if (defaultConfirmation() == true)
 		{
 			Player->race = "ELF";
-		}
-		else {
+		} 		else {
 			//setRace(Player);
 			goto CHARACTERRACE;
 		}
@@ -122,18 +118,17 @@ void setRace(user* Player) {
 		if (defaultConfirmation() == true)
 		{
 			Player->race = "DWARF";
-		}
-		else {
+		} 		else {
 			//setRace(Player);
 			goto CHARACTERRACE;
 		}
 	}
-	
+
 }
 
-user* setStats(user* Player) {
+entity* setStats(entity* Player) {
 	char choice;
-	SETSTATS:
+SETSTATS:
 	cout << "To play with default character status enter 0, to build personalized character enter 1: ";
 	cin >> choice;
 	if (((choice != '0') && (choice != '1')) || (isdigit(choice) == 0)) {
@@ -141,34 +136,34 @@ user* setStats(user* Player) {
 		//setStats(Player);
 		goto SETSTATS;
 	}
-	if (choice == '0') 
+	if (choice == '0')
 	{
 		/*bool statCheck = defaultStat(Player);
 		if (statCheck == true) {*/
-			if (Player->race == "HUMAN") {
-				Player->health = 250;
-				Player->Weapon = get_Weapon("WoodSword");
-				Player->Shield = get_Defence("WoodShield");
-				Player->defence = 3 + Player->Shield.Defence;
-				Player->damage = 2 + Player->Weapon.damage;
+		if (Player->race == "HUMAN") {
+			Player->health = 250;
+			Player->Weapon = get_Weapon("WoodSword");
+			Player->Shield = get_Defence("WoodShield");
+			Player->defence = 3 + Player->Shield.Defence;
+			Player->damage = 2 + Player->Weapon.damage;
 
-			}
-			if (Player->race == "ELF") {
-				Player->health = 300;
-				Player->Weapon = get_Weapon("WoodBow");
-				Player->Shield = get_Defence("WoodShield");
-				Player->defence = 3 + Player->Shield.Defence;
-				Player->damage = 3 + Player->Weapon.damage;
+		}
+		if (Player->race == "ELF") {
+			Player->health = 300;
+			Player->Weapon = get_Weapon("WoodBow");
+			Player->Shield = get_Defence("WoodShield");
+			Player->defence = 3 + Player->Shield.Defence;
+			Player->damage = 3 + Player->Weapon.damage;
 
-			}
-			if (Player->race == "DWARF") {
-				Player->health = 275;
-				Player->Weapon = get_Weapon("WoodAxe");
-				Player->Shield = get_Defence("WoodArmour");
-				Player->defence = 6 + Player->Shield.Defence;
-				Player->damage = 4 + Player->Weapon.damage;
+		}
+		if (Player->race == "DWARF") {
+			Player->health = 275;
+			Player->Weapon = get_Weapon("WoodAxe");
+			Player->Shield = get_Defence("WoodArmour");
+			Player->defence = 6 + Player->Shield.Defence;
+			Player->damage = 4 + Player->Weapon.damage;
 
-			}
+		}
 		/*}
 		else {
 			setStats(Player);
@@ -180,7 +175,7 @@ user* setStats(user* Player) {
 	return Player;
 }
 
-user* manualSetStats(user* Player) {
+entity* manualSetStats(entity* Player) {
 	char option;
 	int beginnerAttPoints = 10;
 	char health[5];
@@ -189,7 +184,7 @@ user* manualSetStats(user* Player) {
 	int healthpoints = 0;
 	int attpoints = 0;
 	int defpoints = 0;
-	int hp = 0, ap = 0 , dp = 0;
+	int hp = 0, ap = 0, dp = 0;
 
 	if (Player->race == "HUMAN") {
 		Player->health = 250;
@@ -213,7 +208,7 @@ user* manualSetStats(user* Player) {
 
 		if (beginnerAttPoints > 0)
 		{
-			
+
 		defaultreturn:
 			system("cls");
 			cout << endl << "Character Builder" << endl;
@@ -224,8 +219,7 @@ user* manualSetStats(user* Player) {
 				cout << "1. Health" << "      Allocated Points: " << hp << endl;
 				cout << "2. Attack" << "      Allocated Points: " << ap << endl;
 				cout << "3. Defence" << "     Allocated Points: " << dp << endl;
-			}
-			else{ cout << "1. Health" << endl << "2. Attack" << endl << "3. Defence" << endl; }
+			} 			else { cout << "1. Health" << endl << "2. Attack" << endl << "3. Defence" << endl; }
 			cin >> option;
 			if (((option != '1') && (option != '2') && (option != '3')) || (isdigit(option) == 0)) {
 				cout << "Invalid Entry. Try Again" << endl;
@@ -234,7 +228,7 @@ user* manualSetStats(user* Player) {
 			switch (option)
 			{
 			case '1':
-				
+
 				cout << "For each attribute point, 10 health will increase" << endl;
 				cout << "Enter the number of attribute points to use: ";
 				cin >> health;
@@ -244,19 +238,18 @@ user* manualSetStats(user* Player) {
 				{
 					cout << "Invalid Entry. Try Again" << endl;
 					goto defaultreturn;
-				}
-				else if (beginnerAttPoints >= healthpoints)
+				} 				else if (beginnerAttPoints >= healthpoints)
 				{
 					int healthtemp = healthpoints * 10;
 					Player->health = Player->health + healthtemp;
 					beginnerAttPoints = beginnerAttPoints - healthpoints;
 					hp = hp + healthpoints;
-				
+
 				}
-				
+
 				break;
 			case '2':
-			
+
 				cout << "Enter the number of attribute points to use: ";
 				cin >> attack;
 				attpoints = atoi(attack);
@@ -265,17 +258,16 @@ user* manualSetStats(user* Player) {
 				{
 					cout << "Invalid Entry. Try Again" << endl;
 					goto defaultreturn;
-				}
-				else if (beginnerAttPoints >= attpoints)
+				} 				else if (beginnerAttPoints >= attpoints)
 				{
 					Player->damage = Player->damage + attpoints;
 					beginnerAttPoints = beginnerAttPoints - attpoints;
 					ap = ap + attpoints;
 				}
-				
+
 				break;
 			case '3':
-				
+
 				cout << "Enter the number of attribute points to use: ";
 				cin >> defpoints;
 				defpoints = atoi(defence);
@@ -284,14 +276,13 @@ user* manualSetStats(user* Player) {
 				{
 					cout << "Invalid Entry. Try Again" << endl;
 					goto defaultreturn;
-				}
-				else if (beginnerAttPoints >= defpoints)
+				} 				else if (beginnerAttPoints >= defpoints)
 				{
 					Player->defence = Player->defence + defpoints;
 					beginnerAttPoints = beginnerAttPoints - defpoints;
 					dp = dp + defpoints;
 				}
-				
+
 				break;
 			default:
 				cout << "Invalid Entry. Try Again" << endl;
@@ -311,42 +302,42 @@ user* manualSetStats(user* Player) {
 		dp = 0;
 		goto defaultreturn;
 	}
-	WEAPON:
+WEAPON:
 	Player = selectStarterWeapon(Player);
 	if (defaultConfirmation() == false) {
 		goto WEAPON;
 	}
-	SHIELD:
+SHIELD:
 	Player = selectStarterShield(Player);
 	if (defaultConfirmation() == false) {
 		goto SHIELD;
 	}
-	
+
 	return Player;
 
 }
 
-void printStats(user* Player) {
-	
+void printStats(entity* Player) {
+
 	cout << "Character Name: " << Player->name << endl;
 	cout << "Weapon: " << Player->Weapon.name << endl;
 	//cout << "Race: " << Player->race << endl;
 	//cout << "Attack: " << Player->damage << endl;
 	cout << "Defence: " << Player->defence << endl;
-	cout << "Health: " <<  Player->health << endl;
+	cout << "Health: " << Player->health << endl;
 	cout << "Level: " << Player->level << endl;
 	cout << "Current Experience: " << Player->currentexp << endl;
-	cout << "Level Experience: " << Player->lvlexp << endl;
+	cout << "Level Experience: " << Player->expmax << endl;
 	cout << "Gold: " << Player->gold << endl;
 	cout << "Shield: " << Player->Shield.name << endl;
 	cout << endl;
-	
-	
+
+
 }
 
-user* selectStarterWeapon(user* Player) {
+entity* selectStarterWeapon(entity* Player) {
 	char starterWeapon;
-	STARTERWEAPON:
+STARTERWEAPON:
 	cout << endl << "Please select a starter weapon from the list of available weapons" << endl;
 	cout << "1. Wood Axe" << endl << "2. Wood Bow" << endl << "3. Wood Mace" << endl << "4. Wood Sword" << endl;
 	cin >> starterWeapon;
@@ -373,17 +364,17 @@ user* selectStarterWeapon(user* Player) {
 		Player->damage = Player->damage + Player->Weapon.damage;
 	}
 	return Player;
-}  
+}
 
-user* selectStarterShield(user* Player) {
+entity* selectStarterShield(entity* Player) {
 	char starterShield;
-	STARTERSHIELD:
+STARTERSHIELD:
 	cout << endl << "Please select a starter shield from the list of available shields" << endl;
 	cout << "1. Wood Armour" << endl << "2. Wood Shield" << endl;
 	cin >> starterShield;
 
 	if (((starterShield != '1') && (starterShield != '2')) || (isdigit(starterShield) == 0)) {
-		
+
 		cout << "Invalid Selection. Try Again" << endl;
 		//return selectStarterShield(Player);
 		goto STARTERSHIELD;
@@ -399,7 +390,7 @@ user* selectStarterShield(user* Player) {
 	return Player;
 }
 
-bool loadScreen(user* Player) {
+bool loadScreen(entity* Player) {
 	system("cls");
 	if (Player->name == "")
 	{
@@ -407,13 +398,11 @@ bool loadScreen(user* Player) {
 		if (defaultConfirmation() == true)
 		{
 			return false;
-		}
-		else {
+		} 		else {
 			exit(0);
 		}
-	}
-	else {
-		LOAD:
+	} 	else {
+	LOAD:
 		char load;
 		cout << "Character: " << Player->name << " Level: " << Player->level << endl;
 		cout << "Enter 0 to load game " << endl;
@@ -429,12 +418,11 @@ bool loadScreen(user* Player) {
 			cout << "Invalid Entry. Try Again" << endl;
 			//loadScreen(Player);
 			goto LOAD;
-		}
-		else {
+		} 		else {
 			return true;
 		}
 	}
-	
+
 }
 
 void humanStats() {
@@ -464,7 +452,7 @@ void dwarfStats() {
 	cout << "Attack: 78" << endl;
 }
 
-bool defaultStat(user* Player)
+bool defaultStat(entity* Player)
 {
 	if (Player->race == "HUMAN") {
 		cout << "HUMAN_______________" << endl;
@@ -473,7 +461,7 @@ bool defaultStat(user* Player)
 		cout << "Shield: Wood Shield" << endl;
 		cout << "Defence: 6" << endl;
 		cout << "Attack: 76" << endl;
-		
+
 
 	}
 	if (Player->race == "ELF") {
@@ -492,33 +480,30 @@ bool defaultStat(user* Player)
 		cout << "Shield: Wood Armour" << endl;
 		cout << "Defence: 12" << endl;
 		cout << "Attack: 78" << endl;
-		
+
 
 	}
 	if (defaultConfirmation() == true)
 	{
 		return true;
-	}
-	else
+	} 	else
 	{
 		return false;
 	}
-	
+
 }
 
 bool defaultConfirmation() {
 	string confirm;
-	CONFIRM:
+CONFIRM:
 	cout << "Would you like to continue: YES/NO" << endl;
 	cin >> confirm;
 	transform(confirm.begin(), confirm.end(), confirm.begin(), ::toupper);
 	if (confirm == "YES") {
 		return true;
-	}
-	else if (confirm == "NO") {
+	} 	else if (confirm == "NO") {
 		return false;
-	}
-	else if ((confirm != "YES") && (confirm != "NO"))
+	} 	else if ((confirm != "YES") && (confirm != "NO"))
 	{
 		cout << "Invalid Input. Try Again" << endl;
 		goto CONFIRM;
@@ -526,21 +511,20 @@ bool defaultConfirmation() {
 	}
 }
 
-user* startIO(user* Player) {
+entity* startIO(entity* Player) {
 	int checkStart = startMenu();
 	if (checkStart == 0)
 	{
 		Player = newGame();
-		
-	}
-	else if (checkStart == 1)
+
+	} 	else if (checkStart == 1)
 	{
-		Player = get_User("User");
+		Player = get_User("USER");
 		bool checkLoad = loadScreen(Player);
 		if (checkLoad == false)
 		{
 			Player = newGame();
-			
+
 		}
 
 	}
