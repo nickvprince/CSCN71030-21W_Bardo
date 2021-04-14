@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string>
-#include "Objects.h"
 #include "craftItem.h"
 
 using namespace std;

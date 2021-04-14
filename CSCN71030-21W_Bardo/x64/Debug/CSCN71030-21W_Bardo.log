@@ -1,2 +1,14 @@
-﻿  Source.cpp
-  CSCN71030-21W_Bardo.vcxproj -> C:\Users\dom17\source\repos\CSCN71030-21W_Bardo\x64\Debug\CSCN71030-21W_Bardo.exe
+﻿  FileIO.cpp
+C:\Users\dom17\Desktop\New folder\CSCN71030-21W_Bardo\CSCN71030-21W_Bardo\Objects.h(183,11): warning C4473: 'scanf_s' : not enough arguments passed for format string
+C:\Users\dom17\Desktop\New folder\CSCN71030-21W_Bardo\CSCN71030-21W_Bardo\Objects.h(183,11): message : placeholders and their parameters expect 2 variadic arguments, but 1 were provided
+C:\Users\dom17\Desktop\New folder\CSCN71030-21W_Bardo\CSCN71030-21W_Bardo\Objects.h(183,11): message : the missing variadic argument 2 is required by format string '%c'
+C:\Users\dom17\Desktop\New folder\CSCN71030-21W_Bardo\CSCN71030-21W_Bardo\Objects.h(183,11): message : this argument is used as a buffer size
+C:\Users\dom17\Desktop\New folder\CSCN71030-21W_Bardo\CSCN71030-21W_Bardo\Objects.h(263,11): warning C4473: 'scanf_s' : not enough arguments passed for format string
+C:\Users\dom17\Desktop\New folder\CSCN71030-21W_Bardo\CSCN71030-21W_Bardo\Objects.h(263,11): message : placeholders and their parameters expect 2 variadic arguments, but 1 were provided
+C:\Users\dom17\Desktop\New folder\CSCN71030-21W_Bardo\CSCN71030-21W_Bardo\Objects.h(263,11): message : the missing variadic argument 2 is required by format string '%c'
+C:\Users\dom17\Desktop\New folder\CSCN71030-21W_Bardo\CSCN71030-21W_Bardo\Objects.h(263,11): message : this argument is used as a buffer size
+C:\Users\dom17\Desktop\New folder\CSCN71030-21W_Bardo\CSCN71030-21W_Bardo\FileIO.cpp(196,1): warning C4005: 'CRAFTING_MATERIAL_START': macro redefinition
+C:\Users\dom17\Desktop\New folder\CSCN71030-21W_Bardo\CSCN71030-21W_Bardo\FileIO.cpp(68): message : see previous definition of 'CRAFTING_MATERIAL_START'
+C:\Users\dom17\Desktop\New folder\CSCN71030-21W_Bardo\CSCN71030-21W_Bardo\FileIO.cpp(673,21): warning C4156: deletion of an array expression without using the array form of 'delete'; array form substituted
+C:\Users\dom17\Desktop\New folder\CSCN71030-21W_Bardo\CSCN71030-21W_Bardo\FileIO.cpp(673,21): warning C4154: deletion of an array expression; conversion to pointer supplied
+  CSCN71030-21W_Bardo.vcxproj -> C:\Users\dom17\Desktop\New folder\CSCN71030-21W_Bardo\x64\Debug\CSCN71030-21W_Bardo.exe

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Default triggered in get User | Severity : High 2021/3/7 17:1:4EST
 Battle Fail | Severity : Severe 2021/3/9 12:32:43EST
 Shop failed | Severity : Severe 2021/3/9 12:32:43EST
@@ -17,3 +18,28 @@ Error occured during weapon file retrieval, invalid item name - Module: Craft | 
 Error occured during weapon file retrieval, invalid item name - Module: Craft | Severity : Medium 2021/3/14 1:43:13EST
 Error occured during weapon file retrieval, invalid item name - Module: Craft | Severity : Medium 2021/3/14 1:44:21EST
 Error occured during weapon file retrieval, invalid item name - Module: Craft | Severity : Medium 2021/3/14 1:44:31EST
+=======
+Failed to get weapon stats - Module: Economy | Severity : Severe 2021/3/14 -2:49:54EST
+Failed to get weapon stats - Module: Economy | Severity : Severe 2021/3/14 -2:52:40EST
+Failed to get weapon stats - Module: Economy | Severity : Severe 2021/3/14 -2:53:43EST
+Failed to get weapon stats - Module: Economy | Severity : Severe 2021/3/14 -2:54:9EST
+Failed to get weapon stats - Module: Economy | Severity : Severe 2021/3/14 -1:0:58EST
+Failed to get weapon stats - Module: Economy | Severity : Severe 2021/3/14 -1:1:49EST
+Failed to get weapon stats - Module: Economy | Severity : Severe 2021/3/14 -1:3:57EST
+>>>>>>> master
+Default triggered in get User | Severity : High 2021/3/14 3:26:50EST
+Default triggered in get User | Severity : High 2021/3/14 3:26:50EST
+Default triggered in get User | Severity : High 2021/3/14 3:26:50EST
+Default triggered in get User | Severity : High 2021/3/14 3:26:50EST
+Default triggered in get User | Severity : High 2021/3/14 3:26:50EST
+Default triggered in get User | Severity : High 2021/3/14 3:26:50EST
+Default triggered in get User | Severity : High 2021/3/14 3:26:50EST
+Default triggered in get User | Severity : High 2021/3/14 3:26:50EST
+Default triggered in get User | Severity : High 2021/3/14 3:27:28EST
+Default triggered in get User | Severity : High 2021/3/14 3:27:28EST
+Default triggered in get User | Severity : High 2021/3/14 3:27:28EST
+Default triggered in get User | Severity : High 2021/3/14 3:27:28EST
+Default triggered in get User | Severity : High 2021/3/14 3:27:28EST
+Default triggered in get User | Severity : High 2021/3/14 3:27:28EST
+Default triggered in get User | Severity : High 2021/3/14 3:27:28EST
+Default triggered in get User | Severity : High 2021/3/14 3:27:28EST

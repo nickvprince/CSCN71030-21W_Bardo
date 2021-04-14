@@ -1,4 +1,24 @@
-#pragma once
+/*
+* File Name : ErrorChecking.h
+*
+* Programmer : Danny Smith
+* Class : Team Based Software Development CSCN71030-21W-SEC1-PROJECT 2
+* Date : February 6, 2021
+* Teacher : Dr. Elliott Coleshill
+* Team : Dominic Pham, Thomas Horvath, Nicholas Prince, Ali Syed
+*
+* Description :
+*
+*
+* Version : 1.0
+*
+*
+* History :
+*	Verify functions defined and left empty
+*	parityOnBlock renamed to Checksum
+* *	enum errortype added, checksum file list and amount started
+*	rebuildFiles removed and incorperated into verifyAllFiles
+*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <string>

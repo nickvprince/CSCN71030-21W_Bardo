@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 /*
 * File Name : Main.cpp
 *
@@ -14,75 +15,106 @@
 *
 *
 * History :
-*	ReadMe File Created, IronSword weapon test file created
+*    ReadMe File Created, IronSword weapon test file created
 *
 * Revision Ideas -
-*	FileIO as threads to do the workload while other operations are running
+*    FileIO as threads to do the workload while other operations are running
 */
 
-
-
-using namespace std;
 #include <stdlib.h>
 #include <iostream>
 #include <stdio.h>
 #include <fstream>
 #include <string>
-#include "Crafting.h"
-#include "Objects.h"
-//void printOptions();
-int main() {
-    int choice = 0;
-    entity* player = get_User("USER");
-    player->INV->Items[3].name = "Platinum";
-    player->INV->ItemCount[3] = 5;
-    player->INV->Items[4].name = "Wood";
-    player->INV->ItemCount[4] = 6;
-    player->INV->Items[5].name = "Leather";
-    player->INV->ItemCount[5] = 5;
-    player->INV->itemsUsed += 3;
-    
-    Crafting(player);
-    //
-    //    // INIT ->
-    //
-    //
-    //    // <- INIT
-    //   
-    //
-    //    while (true) {
-    //        system("cls");
-    //        printOptions();
-    //        choice = getc(stdin);
-    //        switch (choice) {
-    //        case 49: // 1
-    //            break;
-    //        case 50: // 2
-    //            break;
-    //        case 51: // 3
-    //            
-    //            break;
-    //        case 52: // 4
-    //            break;
-    //        case 53: // 5
-    //            exit(0);
-    //            break;
-    //        default:
-    //            break;
-    //
-    //        }
-    //        while ((getchar()) != '\n');
-    //    }
-    //}
-    //void printOptions() {
-    //    cout << "Welcome to the Bardo home town please choose an option\n";
-    //    cout << "-------------------------------------------------------\n";
-    //    cout << endl;
-    //    cout << "1. Battle\n";
-    //    cout << "2. Shop\n";
-    //    cout << "3. Forge\n";
-    //    cout << "4. Skill tree\n";
-    //    cout << "5. Exit\n";
-    //    cout << "Enter : ";
-    //
+#include "seeInventory.h"
+
+void printOptions();
+int main(int argc, char* argv[]) {
+
+	entity* Player = new user;
+	if (argc == 1) {
+		Player = startIO(Player);
+	}
+	if (argc >= 2)
+	{
+		string cmdInput = argv[1];
+		if (cmdInput == "0") {
+			Player = newGame();
+		} else if (cmdInput == "1")
+		{
+			Player = get_User("USER");
+
+			bool checkLoader = loadScreen(Player);
+			if (checkLoader == false)
+			{
+				Player = newGame();
+			}
+
+
+		}
+	}
+
+
+	int choice = 0;
+	// <- INIT
+
+	while (true) {
+		system("cls");
+		printStats(Player);
+		printOptions();
+		while ((getchar()) != '\n');
+		choice = getc(stdin);
+		switch (choice) {
+		case 49: // 1
+			if (battleMain(*Player) == false) {
+				ErrorLog("Battle Fail", "Severe");
+			}
+			break;
+		case 50: // 2
+			if (shopMain(Player) == false) {
+				ErrorLog("Shop failed", "Severe");
+			}
+			break;
+		case 51: // 3
+			if (Crafting(Player) == false) {
+				ErrorLog("Crafting failed", "Severe");
+			}
+			break;
+		case 52: // 4
+			if (Skilltree(Player) == false) {
+				ErrorLog("Skill Main failed", "Severe");
+			}
+			break;
+		case 53:
+			if (Save(Player) == false) {
+				ErrorLog("Save Error", "Severe");
+			}
+			break;
+		case 54: // 5
+			if (Save(Player) == false) {
+				ErrorLog("Save Error", "Severe");
+			}
+			exit(0);
+			break;
+		default:
+			break;
+
+        }
+       while ((getchar()) != '\n');
+    }
 }
+
+
+void printOptions() {
+	cout << "Welcome to the Bardo home town please choose an option\n";
+	cout << "-------------------------------------------------------\n";
+	cout << endl;
+	cout << "1. Battle\n";
+	cout << "2. Shop\n";
+	cout << "3. Forge\n";
+	cout << "4. Skill tree\n";
+	cout << "5. Save Game\n";
+	cout << "6. Exit\n";
+	cout << "Enter : ";
+}
+

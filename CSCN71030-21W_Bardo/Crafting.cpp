@@ -19,10 +19,9 @@
 
 #include <iostream>
 #include "Crafting.h"
-#include "Objects.h"
 #include "seeInventory.h"
 
-int Crafting(entity* player) {
+bool Crafting(entity* player) {
 
 	int userInput = 0;
 	while (userInput != 3) {
@@ -48,5 +47,5 @@ int Crafting(entity* player) {
 			break;
 		}
 	}
-	return 0;
+	return true;
 }

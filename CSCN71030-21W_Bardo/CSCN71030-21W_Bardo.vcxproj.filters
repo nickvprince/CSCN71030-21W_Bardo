@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source Files">
@@ -27,32 +27,62 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="enemy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="player.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="battle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleModule.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="Source.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Objects.h">
+    <ClCompile Include="Shop.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WeaponsDealer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Dealer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ErrorChecking.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FileIO.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OtherFunctions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Psecurity.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DefenceDealer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Crafting.cpp">
-      <Filter>Source Files\Crafting</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="StarterMenu.cpp">
-      <Filter>Source Files\Crafting</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="craftItem.cpp">
-      <Filter>Source Files\Crafting\Craft Item</Filter>
-    </ClCompile>
-    <ClCompile Include="item.cpp">
-      <Filter>Source Files\Crafting</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="seeInventory.cpp">
-      <Filter>Source Files\Crafting\See Inventory</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="By_Search.cpp">
-      <Filter>Source Files\Crafting\See Inventory</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="By_Type.cpp">
-      <Filter>Source Files\Crafting\See Inventory</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="FileIO.cpp">
       <Filter>Source Files</Filter>
@@ -60,31 +90,79 @@
     <ClCompile Include="ErrorChecking.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="PotionDealer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemDealer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SkillTree.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Character.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="item.h">
-      <Filter>Header Files\Crafting</Filter>
-    </ClInclude>
-    <ClInclude Include="inventory.h">
-      <Filter>Header Files\Crafting</Filter>
-    </ClInclude>
     <ClInclude Include="Crafting.h">
-      <Filter>Header Files\Crafting</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="StarterMenu.h">
-      <Filter>Header Files\Crafting</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="craftItem.h">
-      <Filter>Header Files\Crafting</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="seeInventory.h">
-      <Filter>Header Files\Crafting</Filter>
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillTree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Shop.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Dealer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WeaponsDealer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OtherFuntions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ErrorChecking.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="FileIO.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ErrorChecking.h">
-      <Filter>Header Files\Crafting</Filter>
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Psecurity.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DefenceDealer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PotionDealer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemDealer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="battle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleModule.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Character.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Objects.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

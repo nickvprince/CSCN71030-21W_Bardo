@@ -1,5 +1,5 @@
 #pragma once
 
-#include "StarterMenu.h"
 #include "craftItem.h"
-int Crafting(entity*);
+#include "StarterMenu.h"
+bool Crafting(entity*);
