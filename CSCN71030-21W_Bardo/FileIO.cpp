@@ -1302,7 +1302,7 @@ bool Save(entity* Player) {
 	if (file.is_open()) {
 		file << Player->name << ";" << endl;
 		file << Player->Weapon.name << ";" << endl;
-		//file << Player->damage << ";" << endl;
+		file << Player->damage << ";" << endl;
 		file << Player->defence << ";" << endl;
 		file << Player->health << ";" << endl;
 		file << Player->level << ";" << endl;
@@ -1313,12 +1313,62 @@ bool Save(entity* Player) {
 		file << Player->Skills[0] << ";";
 		file << Player->Skills[1] << ";";
 		file << Player->Skills[2] << "&";
-	
 		file.close();
-		ENCRYPT(USERDIR + (string)"USER.BSURF");
-		return true;
-	} 	else {
+	} 	
+	else {
 		ErrorLog("File Did not open to save", "Severe");
+		ENCRYPT(USERDIR + (string)"USER.BSURF");
 		return false;
 	}
+
+	fstream file;
+	file.open(INVENTORYDIR + (string)"USER.BINVF", ios::out);
+	for (int i = 0; i < MAX_ITEMS; i++) {
+		if (Player->INV->Weapons[i].name != "") {
+			file << "Weapon;" << endl;
+			file << Player->INV->Weapons[i].name << ";" << endl;
+			if (i == MAX_ITEMS - 1) {
+				file << Player->INV->ItemCount[i] << "&" << endl;
+			}
+			else {
+				file << Player->INV->ItemCount[i] << ";" << endl;
+			}
+		}
+		if (Player->INV->Shields[i].name != "") {
+			file << "Defence;" << endl;
+			file << Player->INV->Shields[i].name << ";" << endl;
+			if (i == MAX_ITEMS - 1) {
+				file << Player->INV->ItemCount[i] << "&" << endl;
+			}
+			else {
+				file << Player->INV->ItemCount[i] << ";" << endl;
+			}
+		}
+		if (Player->INV->Potions[i].name != "") {
+			file << "Potion;" << endl;
+			file << Player->INV->Potions[i].name << ";" << endl;
+			if (i == MAX_ITEMS - 1) {
+				file << Player->INV->ItemCount[i] << "&" << endl;
+			}
+			else {
+				file << Player->INV->ItemCount[i] << ";" << endl;
+			}
+		}
+		if (Player->INV->Items[i].name != "") {
+			file << "Item;" << endl;
+			file << Player->INV->Items[i].name << ";" << endl;
+			if (i == MAX_ITEMS - 1) {
+				file << Player->INV->ItemCount[i] << "&" << endl;
+			}
+			else {
+				file << Player->INV->ItemCount[i] << ";" << endl;
+			}
+			
+		}
+	
+	}
+	file.close();
+	ENCRYPT(USERDIR + (string)"USER.BSURF");
+	return true;
+
 }

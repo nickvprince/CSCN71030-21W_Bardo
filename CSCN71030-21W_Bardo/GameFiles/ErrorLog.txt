@@ -7,3 +7,7 @@ Crafting failed | Severity : Severe 2021/3/14 16:3:15EST
 Crafting failed | Severity : Severe 2021/3/14 16:3:16EST
 Crafting failed | Severity : Severe 2021/3/14 16:3:17EST
 Crafting failed | Severity : Severe 2021/3/14 16:3:18EST
+Crafting failed | Severity : Severe 2021/3/14 18:4:2EST
+Crafting failed | Severity : Severe 2021/3/14 18:4:4EST
+Crafting failed | Severity : Severe 2021/3/14 18:4:5EST
+Crafting failed | Severity : Severe 2021/3/14 18:4:5EST
