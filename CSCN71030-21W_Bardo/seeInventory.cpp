@@ -5,7 +5,7 @@
 
 using namespace std;
 
-void seeInventory(inventory i) {
+void seeInventory(entity *p) {
 	int inventory_choice = 0;
 	while (inventory_choice != 3) {
 		cout << "Select how you would like to view items in inventory." << endl;
@@ -23,10 +23,10 @@ void seeInventory(inventory i) {
 
 		switch (inventory_choice) {
 		case 1:
-			By_Type(i);   // Displays all items of a specific type that exists in inventory
+			By_Type(p);   // Displays all items of a specific type that exists in inventory
 			break;
 		case 2:
-			By_Search(i); // Searches through entire inventory for specified item by user and displays item info if item exist in inventory
+			By_Search(p); // Searches through entire inventory for specified item by user and displays item info if item exist in inventory
 			break;
 		case 3:
 			break;

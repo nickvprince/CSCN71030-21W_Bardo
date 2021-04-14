@@ -1,0 +1,9 @@
+Copper;
+Gold;
+Iron;
+Leather;
+Magnesium;
+Paper;
+Platinum;
+Silver;
+Water&

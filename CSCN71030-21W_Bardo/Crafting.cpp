@@ -17,28 +17,16 @@
 // - improve search algorithmn to be more efficient
 // - better method to implement crafting recipes 
 
+#include <iostream>
 #include "Crafting.h"
-int Crafting(void) {
-	inventory i;								// Below are test data to simulate game items in inventory, the data is used to test the 
-												// crafting module functions, this is just a basic data setup and will be changed in the future
-	i.material[0].setItem("Wood", "Organic", 5);
-	i.material[1].setItem("Iron Ore", "Found on mountains and used for weapon crafting", 12);
-	i.material[2].setItem("Saltpetre", "A white soluble substance that is found in caves, Also known as potassium nitrate", 10);
-	i.material[3].setItem("Sulfur", "A brittle solid found deep underground or near volcanic regions", 4);
-	i.material[4].setItem("Charcoal", "A black residue that is a byproduct of pyrolysis", 4);
-	i.material[5].setItem("Black Powder", " Great for making explosives, careful not to blow your finger off", true);
-	i.material[6].setItem("Flash Powder", " Emits bright light when ignited", true);
-	i.material[7].setItem("Magnesium", "Found in sea water and minerals", 5);
+#include "Objects.h"
+#include "seeInventory.h"
 
-	i.weapon[0].setItem("Sword", "Kills just about anything", true, 25);
-	i.weapon[1].setItem("Warhammer", "Highly destructive weapon", true, 100);
-	i.weapon[2].setItem("Bow", "Hits any target within 150 meters, there is no escape", 1, 50);
-	i.weapon[3].setItem("Musket", "Boom stick, good against a heavy armoured enemy", true, 160);
+int Crafting(entity* player) {
 
-	i.spell[0].setItem("Healing Potion", "Player regains 100 HP", 5);
-	i.spell[1].setItem("Flash Spell", "Emits blinding light, puts enemy in disabled state", true);
-
+	int userInput = 0;
 	while (userInput != 3) {
+
 		StarterMenu();
 		cin >> userInput;
 		system("cls");
@@ -50,14 +38,15 @@ int Crafting(void) {
 
 		switch (userInput) {
 		case 1: // Craft
-			craftItem(&i);
+			craftItem(player);
 			break;
 		case 2: // See Inventory
-			seeInventory(i);
+			seeInventory(player);
 			break;
 		case 3: // Exit
 			cout << "Farewell adventurer." << endl;
 			break;
 		}
 	}
+	return 0;
 }

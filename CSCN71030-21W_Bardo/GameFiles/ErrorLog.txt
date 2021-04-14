@@ -1,0 +1,19 @@
+Default triggered in get User | Severity : High 2021/3/7 17:1:4EST
+Battle Fail | Severity : Severe 2021/3/9 12:32:43EST
+Shop failed | Severity : Severe 2021/3/9 12:32:43EST
+Crafting failed | Severity : Severe 2021/3/9 12:32:44EST
+Skill Main failed | Severity : Severe 2021/3/9 12:32:45EST
+Error occured during weapon file retrieval, invalid item name - Module: Craft | Severity : Medium 2021/3/14 1:34:52EST
+Error occured during weapon file retrieval, invalid item name - Module: Craft | Severity : Medium 2021/3/14 1:35:40EST
+Error occured during weapon file retrieval, invalid item name - Module: Craft | Severity : Medium 2021/3/14 1:36:20EST
+Error occured during weapon file retrieval, invalid item name - Module: Craft | Severity : Medium 2021/3/14 1:40:11EST
+Error occured during weapon file retrieval, invalid item name - Module: Craft | Severity : Medium 2021/3/14 1:40:16EST
+Error occured during weapon file retrieval, invalid item name - Module: Craft | Severity : Medium 2021/3/14 1:40:21EST
+Error occured during weapon file retrieval, invalid item name - Module: Craft | Severity : Medium 2021/3/14 1:40:30EST
+Error occured during weapon file retrieval, invalid item name - Module: Craft | Severity : Medium 2021/3/14 1:42:19EST
+Error occured during weapon file retrieval, invalid item name - Module: Craft | Severity : Medium 2021/3/14 1:42:25EST
+Error occured during weapon file retrieval, invalid item name - Module: Craft | Severity : Medium 2021/3/14 1:42:38EST
+Error occured during weapon file retrieval, invalid item name - Module: Craft | Severity : Medium 2021/3/14 1:42:56EST
+Error occured during weapon file retrieval, invalid item name - Module: Craft | Severity : Medium 2021/3/14 1:43:13EST
+Error occured during weapon file retrieval, invalid item name - Module: Craft | Severity : Medium 2021/3/14 1:44:21EST
+Error occured during weapon file retrieval, invalid item name - Module: Craft | Severity : Medium 2021/3/14 1:44:31EST

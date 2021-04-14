@@ -54,6 +54,12 @@
     <ClCompile Include="By_Type.cpp">
       <Filter>Source Files\Crafting\See Inventory</Filter>
     </ClCompile>
+    <ClCompile Include="FileIO.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ErrorChecking.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="item.h">
@@ -72,6 +78,12 @@
       <Filter>Header Files\Crafting</Filter>
     </ClInclude>
     <ClInclude Include="seeInventory.h">
+      <Filter>Header Files\Crafting</Filter>
+    </ClInclude>
+    <ClInclude Include="FileIO.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ErrorChecking.h">
       <Filter>Header Files\Crafting</Filter>
     </ClInclude>
   </ItemGroup>

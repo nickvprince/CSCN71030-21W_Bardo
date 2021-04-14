@@ -3,10 +3,11 @@
 #include <stdio.h>
 #include <string>
 #include <stdbool.h>
+#include <ctype.h>
 #include "seeInventory.h"
 
 
-void By_Search(inventory i) {	
+void By_Search(entity *p) {
 	string find_item;
 	while (find_item != "exit") {
 		bool found_item = false;
@@ -15,30 +16,32 @@ void By_Search(inventory i) {
 		system("cls");
 		if (find_item != "") {
 			if (find_item != "exit") {
-				for (int a = 0; a < MAX_MATERIAL; a++) {
-					if (find_item == i.material[a].getItemName() && i.material[a].getQuantity() != 0) {
-						cout << "Name: " << i.material[a].getItemName() << "\t\t\t\t Quantity: " << i.material[a].getQuantity() << endl;
-						cout << "Description: " << i.material[a].getItemDescription() << endl << endl;
+				for (int a = 0; a < MAX_ITEMS; a++) {
+					if (find_item == p->INV->Items[a].name && p->INV->ItemCount[a] != 0) {
+						cout << p->INV->Items[a].name << "\t\t\t\t\t Quantity: " << p->INV->ItemCount[a] << endl;
 						found_item = true;
+						cout << endl;
 						break;
 					}
 				}
 				if (found_item == false) {
-					for (int a = 0; a < MAX_WEAPON; a++) {
-						if (find_item == i.weapon[a].getItemName() && i.weapon[a].getQuantity() != 0) {
-							cout << "Name: " << i.weapon[a].getItemName() << "\t\t\t\t Quantity: " << i.weapon[a].getQuantity() << endl;
-							cout << "Description: " << i.weapon[a].getItemDescription() << endl << endl;
+					for (int a = 0; a < MAX_ITEMS; a++) {
+						if (find_item == p->INV->Weapons[a].name && p->INV->ItemCount[a] != 0) {
+							cout << p->INV->Weapons[a].name << "\t\t\t\t\t Quantity: " << p->INV->ItemCount[a] << endl;
+							cout << "Damage: " << p->INV->Weapons[a].damage << endl << endl;
 							found_item = true;
+							cout << endl;
 							break;
 						}
 					}
 				}
 				if (found_item == false) {
-					for (int a = 0; a < MAX_SPELL; a++) {
-						if (find_item == i.spell[a].getItemName() && i.spell[a].getQuantity() != 0) {
-							cout << "Name: " << i.spell[a].getItemName() << "\t\t\t\t Quantity: " << i.spell[a].getQuantity() << endl;
-							cout << "Description: " << i.spell[a].getItemDescription() << endl << endl;
+					for (int a = 0; a < MAX_ITEMS; a++) {
+						if (find_item == p->INV->Shields[a].name && p->INV->ItemCount[a] != 0) {
+							cout << p->INV->Shields[a].name << "\t\t\t\t\t Quantity: " << p->INV->ItemCount[a] << endl;
+							cout << "Block Chance: " << p->INV->Shields[a].blockChance << endl << endl;
 							found_item = true;
+							cout << endl;
 							break;
 						}
 					}

@@ -1,20 +1,40 @@
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string>
+#include "Objects.h"
 #include "craftItem.h"
+
 using namespace std;
 int item_type;
 int item_craft;
 
-void craftItem(inventory* i) {		// Function asks user what type of item to craft and user selects a craftable item from crafting list
-									// and checks if inventory contains required crafting materials for requestes item using boolean logic operaters
-	item_craft = 0;
-	while (item_type != 4) {
+void craftItem(entity* p) {		// Function asks user what type of item to craft and user selects a craftable item from crafting list
+										// and checks if inventory contains required crafting materials for requested item using boolean logic operaters
+	item nullItem;
+	nullItem.name = "";
+	nullItem.failed == GOOD;
+	nullItem.value = 0;
+	bool namesEmpty[MAX_ITEMS] = { true };
+	bool allNamesEmpty = true;
+	bool validAmountItems[MAX_MATERIALS] = { false };
+	bool allValid = true;
+	bool exists = false;
+	bool complete = false;
+	string item_craft;
+
+	if (p->INV->itemsUsed == MAX_ITEMS) {
+		cout << "You already have " << MAX_ITEMS << " in your inventory" << endl;
+		return;
+	}
+
+	while (item_type != 3) {
+		item_craft = "";
+		if (p->INV->itemsUsed == MAX_ITEMS) { break; }
 		cout << "Select the type of item you wish to craft" << endl;
-		cout << "1 - Material" << endl;
+		cout << "1 - Shield" << endl;
 		cout << "2 - Weapon" << endl;
-		cout << "3 - Spell" << endl;
-		cout << "4 - Exit" << endl << endl;
+		cout << "3 - Exit" << endl << endl;
 		cin >> item_type;
 		system("cls");
 
@@ -25,135 +45,251 @@ void craftItem(inventory* i) {		// Function asks user what type of item to craft
 
 		switch (item_type) {
 		case 1:
-			while (item_craft != 3) {
-				cout << "Select the material you wish to craft" << endl;
-				cout << "1 - Black Powder\t\t" << R_BLACK_POWDER << endl;
-				cout << "2 - Flash Powder\t\t" << R_FLASH_POWDER << endl;
-				cout << "3 - Exit" << endl << endl;
+			if (p->INV->itemsUsed == MAX_ITEMS) { break; }
+			while (item_craft != "exit") {
+				for (int q = 0; q < MAX_MATERIALS; q++) {
+					validAmountItems[q] = false;
+				}
+				cout << "Type the shield you wish to craft. Type <exit> to exit." << endl << endl;
+				list* shield_list = new list;
+				shield_list = getListDefences();
+				printList(shield_list, 0);
+				cout << endl;
 				cin >> item_craft;
 				system("cls");
 
-				if (cin.fail()) { // input verification check
-					cin.clear();
-					cin.ignore(numeric_limits<streamsize>::max(), '\n');
+				if (item_craft == "exit") {
+					break;
 				}
 
-				switch (item_craft) {
-				case 1:
-					if ((BLACK_POWDER(i->material[2].getQuantity(), i->material[3].getQuantity(), i->material[4].getQuantity())) == 1) {
-						i->material[2].subQuantity(6);
-						i->material[3].subQuantity(1);
-						i->material[4].subQuantity(1);
-						i->material[5].addQuantity(1);
-						cout << i->material[5].getItemName() << " has been added to the inventory." << endl << endl;
-					}
-					else {
-						cout << "Insufficient crafting materials" << endl << endl;
-					}
+				string file_Name = DEFENCEDIR + item_craft + ".BAMF";
+				if ((FileExists(file_Name)) == false) {
+					ErrorLog("Error occured during weapon file retrieval, invalid item name - Module: Craft", "Medium");
 					break;
-				case 2:
-					if ((FLASH_POWDER(i->material[7].getQuantity(), i->material[4].getQuantity(), i->material[3].getQuantity())) == 1) {
-						i->material[7].subQuantity(4);
-						i->material[3].subQuantity(3);
-						i->material[4].subQuantity(2);
-						i->material[6].addQuantity(1);
-						cout << i->material[6].getItemName() << " has been added to the inventory." << endl << endl;
-					}
-					else {
-						cout << "Insufficient crafting materials" << endl << endl;
-					}
+				}
+				defence craft_shield = get_Defence(item_craft);
+
+				if (p->level < craft_shield.level) {
+					cout << "Insufficient level to craft item" << endl;
 					break;
-				case 3:
+				}
+				
+				for (int i = 0; i < MAX_ITEMS; i++) {
+					if (p->INV->Items[i].name == "") {
+						namesEmpty[i] = true;
+					}
+				}
+
+				for (int i = 0; i < MAX_ITEMS; i++) {
+					if (namesEmpty[i] == false) {
+						allNamesEmpty = false;
+					}
+				}
+
+				for (int i = 0; i < MAX_ITEMS; i++) { // check for valid crafting items
+					for (int j = 0; j < sizeof(craft_shield.craftingItems) / sizeof(string); j++) {
+						if (craft_shield.craftingItems[j] == p->INV->Items[i].name) {
+							if (p->INV->ItemCount[i] >= craft_shield.craftingItemsNum[j] || craft_shield.craftingItemsNum[j] == NULL) {
+								validAmountItems[j] = true;
+							}
+						}
+					}
+				}
+
+				for (int i = 0; i < MAX_MATERIALS; i++) { // check all items needed are present
+					if (validAmountItems[i] != true) {
+						allValid = false;
+					}
+				}
+
+				if (allValid == false || allNamesEmpty == true) {
+					system("cls");
+					cout << "Insufficient crafting materials" << endl << endl;
+					cout << "Required Items: " << endl;
+					for (int i = 0; i < MAX_MATERIALS; i++) {
+						if (craft_shield.craftingItems[i] != "") {
+							cout << "Item: " << craft_shield.craftingItems[i] << "\t\t\t\tQuantity: " << craft_shield.craftingItemsNum[i] << endl;
+						}
+					}
+					cout << endl;
+					break;
+
+				}
+
+				for (int i = 0; i < MAX_ITEMS; i++) { // remove crafting items
+					for (int j = 0; j < sizeof(craft_shield.craftingItems) / sizeof(string); j++) {
+						if (craft_shield.craftingItems[j] == p->INV->Items[i].name && craft_shield.craftingItems[j] != "") {
+
+							p->INV->ItemCount[i] -= craft_shield.craftingItemsNum[j];
+
+							if (p->INV->ItemCount[i] < 1) {
+								p->INV->Items[i] = nullItem;
+								p->INV->itemsUsed -= 1;
+								break;
+							}
+
+						}
+					}
+				}
+
+				for (int i = 0; i < MAX_ITEMS; i++) {
+					if (p->INV->Shields[i].name == craft_shield.name) {
+						p->INV->ItemCount[i]++;
+						exists = true;
+						complete = true;
+						break;
+					}
+				}
+
+				if (exists == false) {
+					for (int i = 0; i < MAX_ITEMS; i++) {
+						if (p->INV->ItemCount[i] == NULL) {
+							p->INV->Shields[i] = craft_shield;
+							p->INV->ItemCount[i]++;
+							p->INV->itemsUsed++;
+							complete = true;
+							break;
+						}
+					}
+				}
+				if (complete == true) {
+					cout << craft_shield.name << " was crafted and added to inventory" << endl << endl;
+					exists = false;
+				}
+				else {
+					cout << "Insufficient crafting materials" << endl << endl;
+					cout << "Required Items: " << endl;
+					for (int i = 0; i < MAX_MATERIALS; i++) {
+						if (craft_shield.craftingItems[i] != "") {
+							cout << "Item: " << craft_shield.craftingItems[i] << "\t\t\t\tQuantity: " << craft_shield.craftingItemsNum[i] << endl;
+						}
+					}
+					cout << endl;
 					break;
 				}
 			}
 			break;
 		case 2:
-			while (item_craft != 4) {
-				cout << "Select the weapon you wish to craft" << endl;
-				cout << "1 - Sword\t\t" << R_SWORD << endl;
-				cout << "2 - Warhammer\t\t" << R_WAR_HAMMER << endl;
-				cout << "3 - Musket\t\t" << R_MUSKET << endl;
-				cout << "4 - Exit" << endl << endl;
+			while (item_craft != "exit") {
+				for (int q = 0; q < MAX_MATERIALS; q++) {
+					validAmountItems[q] = false;
+				}
+				if (p->INV->itemsUsed == MAX_ITEMS) { break; }
+				cout << "Type the weapon you wish to craft. Type <exit> to exit." << endl << endl;
+				list* weapons_list = new list;
+				weapons_list = getListWeapons();
+				printList(weapons_list, 0);
+				cout << endl;
 				cin >> item_craft;
 				system("cls");
 
-				if (cin.fail()) { // input verification check
-					cin.clear();
-					cin.ignore(numeric_limits<streamsize>::max(), '\n');
-					system("cls");
+				if (item_craft == "exit") {
+					break;
 				}
 
-				switch (item_craft) {
-				case 1:
-					if ((SWORD(i->material[0].getQuantity(), i->material[1].getQuantity())) == 1) {
-						i->material[0].subQuantity(1);
-						i->material[1].subQuantity(10);
-						i->weapon[0].addQuantity(1);
-						cout << i->weapon[0].getItemName() << " has been added to the inventory." << endl << endl;
-					}
-					else {
-						cout << "Insufficient crafting materials" << endl << endl;
-					}
+				string file_Name = WEAPONDIR + item_craft + ".BWPF";
+				if ((FileExists(file_Name)) == false) {
+					ErrorLog("Error occured during weapon file retrieval, invalid item name - Module: Craft", "Medium");
 					break;
-				case 2:
-					if ((WAR_HAMMER(i->material[0].getQuantity(), i->material[1].getQuantity())) == 1) {
-						i->material[0].subQuantity(3);
-						i->material[1].subQuantity(5);
-						i->weapon[1].addQuantity(1);
-						cout << i->weapon[1].getItemName() << " has been added to the inventory." << endl << endl;
-					}
-					else {
-						cout << "Insufficient crafting materials" << endl << endl;
-					}
+				}
+				weapon craft_weapon = get_Weapon(item_craft);
+
+				if (p->level < craft_weapon.level) {
+					cout << "Insufficient level to craft item" << endl;
 					break;
-				case 3:
-					if ((MUSKET(i->material[0].getQuantity(), i->material[1].getQuantity())) == 1) {
-						i->material[0].subQuantity(3);
-						i->material[1].subQuantity(15);
-						i->weapon[3].addQuantity(1);
-						cout << i->weapon[3].getItemName() << " has been added to the inventory." << endl << endl;
+				}
+
+				for (int i = 0; i < MAX_ITEMS; i++) { // check for valid crafting items
+					for (int j = 0; j < sizeof(craft_weapon.craftingItems) / sizeof(string); j++) {
+						if (craft_weapon.craftingItems[j] == p->INV->Items[i].name) {
+							if (p->INV->ItemCount[i] >= craft_weapon.craftingItemsNum[j] || craft_weapon.craftingItemsNum[j] == NULL) {
+								validAmountItems[j] = true;
+							}
+						}
 					}
-					else {
-						cout << "Insufficient crafting materials" << endl << endl;
+				}
+
+				for (int i = 0; i < MAX_MATERIALS; i++) { // check all items needed are present
+					if (validAmountItems[i] != true) {
+						allValid = false;
 					}
-					break;
-				case 4:
+				}
+
+				if (allValid == false || allNamesEmpty == true) {
+					system("cls");
+					cout << "Insufficient crafting materials" << endl << endl;
+					cout << "Required Items: " << endl;
+					for (int i = 0; i < MAX_MATERIALS; i++) {
+						if (craft_weapon.craftingItems[i] != "") {
+							cout << "Item: " << craft_weapon.craftingItems[i] << "\t\t\t\tQuantity: " << craft_weapon.craftingItemsNum[i] << endl;
+						}
+					}
+					cout << endl;
+					return;
+
+				}
+
+				for (int i = 0; i < MAX_ITEMS; i++) { // remove crafting items
+					for (int j = 0; j < sizeof(craft_weapon.craftingItems) / sizeof(string); j++) {
+						if (craft_weapon.craftingItems[j] == p->INV->Items[i].name && craft_weapon.craftingItems[j] != "") {
+
+							p->INV->ItemCount[i] -= craft_weapon.craftingItemsNum[j];
+
+							if (p->INV->ItemCount[i] < 1) {
+								p->INV->Items[i] = nullItem;
+								p->INV->itemsUsed -= 1;
+								break;
+							}
+
+						}
+					}
+				}
+
+				for (int i = 0; i < MAX_ITEMS; i++) {
+					if (p->INV->Weapons[i].name == craft_weapon.name) {
+						p->INV->ItemCount[i]++;
+						exists = true;
+						complete = true;
+						break;
+					}
+				}
+
+				if (exists == false) {
+					for (int i = 0; i < MAX_ITEMS; i++) {
+						if (p->INV->ItemCount[i] == NULL) {
+							p->INV->Weapons[i] = craft_weapon;
+							p->INV->ItemCount[i]++;
+							p->INV->itemsUsed++;
+							complete = true;
+							break;
+						}
+					}
+				}
+				if (complete == true) {
+					cout << craft_weapon.name << "was crafted and added to inventory" << endl << endl;
+					exists = false;
+				}
+				else {
+					cout << "Insufficient crafting materials" << endl << endl;
+					cout << "Your Items: " << endl;
+					for (int i = 0; i < MAX_ITEMS; i++) {
+						if (p->INV->Items[i].name != "") {
+							cout << "Item: " << p->INV->Items[i].name << "\t\t\t\tQuantity: " << p->INV->ItemCount[i] << endl;
+						}
+					}
+					cout << endl;
+					cout << "Required Items: " << endl;
+					for (int i = 0; i < MAX_MATERIALS; i++) {
+						if (craft_weapon.craftingItems[i] != "") {
+							cout << "Item: " << craft_weapon.craftingItems[i] << "\t\t\t\tQuantity: " << craft_weapon.craftingItemsNum[i] << endl;
+						}
+					}
+					cout << endl;
 					break;
 				}
 			}
 			break;
 		case 3:
-			while (item_craft != 2) {
-				cout << "Select the spell you wish to craft" << endl;
-				cout << "1 - Flash Spell\t\t" << R_FLASH_SPELL << endl;
-				cout << "2 - Exit" << endl << endl;
-				cin >> item_craft;
-				system("cls");
-
-				if (cin.fail()) { // input verification check
-					cin.clear();
-					cin.ignore(numeric_limits<streamsize>::max(), '\n');
-					system("cls");
-				}
-
-				switch (item_craft) {
-				case 1:
-					if ((FLASH_SPELL(i->material[6].getQuantity(), i->material[5].getQuantity())) == 1) {
-						i->material[6].subQuantity(3);
-						i->material[5].subQuantity(1);
-						i->spell[1].addQuantity(1);
-						cout << i->spell[1].getItemName() << " has been added to the inventory." << endl << endl;
-					}
-					else {
-						cout << "Insufficient crafting materials" << endl << endl;
-					}
-					break;
-				case 2:
-					break;
-				}
-			}
-		case 4:
 			break;
 		}
 	}
