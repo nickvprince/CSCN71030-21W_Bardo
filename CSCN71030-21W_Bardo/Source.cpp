@@ -37,7 +37,7 @@ bool crafting(entity* player) {
 
 void printOptions();
 int main(int argc, char* argv[]) {
-
+	cout << lengthOfFile((char*)"./GameFiles/Armour/IronShield.BAMF");
 	entity* Player = new user;
 	if (argc == 1) {
 		Player = startIO(Player);
