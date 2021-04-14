@@ -13,90 +13,129 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\Battle">
+      <UniqueIdentifier>{d82aad0b-e755-41da-8c5f-73b56f5f1e31}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Economy">
+      <UniqueIdentifier>{2c0f8483-4fb1-459a-9825-e46e8ad9e434}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Backend">
+      <UniqueIdentifier>{bad44de8-8351-4218-9870-bd10482b92c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\SkillTree_Start">
+      <UniqueIdentifier>{d344742f-06a0-432b-a570-d0460ec78dbe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Battle">
+      <UniqueIdentifier>{44e943e6-f246-4d11-9516-e7d92238b399}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Economy">
+      <UniqueIdentifier>{c50e9fe7-3549-48bf-8983-f366ca3f86d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Backend">
+      <UniqueIdentifier>{c74de9b5-e6d1-4385-85ae-7e7a1e79a29a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Other">
+      <UniqueIdentifier>{64a25392-d435-4f16-b8bd-d42797d7dc1c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="enemy.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="player.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="battle.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="BattleModule.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Source.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Shop.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="battle.cpp">
+      <Filter>Source Files\Battle</Filter>
     </ClCompile>
-    <ClCompile Include="WeaponsDealer.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="BattleModule.cpp">
+      <Filter>Source Files\Battle</Filter>
+    </ClCompile>
+    <ClCompile Include="enemy.cpp">
+      <Filter>Source Files\Battle</Filter>
+    </ClCompile>
+    <ClCompile Include="player.cpp">
+      <Filter>Source Files\Battle</Filter>
     </ClCompile>
     <ClCompile Include="Dealer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ErrorChecking.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="FileIO.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="OtherFunctions.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Psecurity.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Economy</Filter>
     </ClCompile>
     <ClCompile Include="DefenceDealer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="PotionDealer.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Economy</Filter>
     </ClCompile>
     <ClCompile Include="ItemDealer.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Economy</Filter>
+    </ClCompile>
+    <ClCompile Include="PotionDealer.cpp">
+      <Filter>Source Files\Economy</Filter>
+    </ClCompile>
+    <ClCompile Include="Shop.cpp">
+      <Filter>Source Files\Economy</Filter>
+    </ClCompile>
+    <ClCompile Include="WeaponsDealer.cpp">
+      <Filter>Source Files\Economy</Filter>
+    </ClCompile>
+    <ClCompile Include="ErrorChecking.cpp">
+      <Filter>Source Files\Backend</Filter>
+    </ClCompile>
+    <ClCompile Include="FileIO.cpp">
+      <Filter>Source Files\Backend</Filter>
+    </ClCompile>
+    <ClCompile Include="OtherFunctions.cpp">
+      <Filter>Source Files\Backend</Filter>
+    </ClCompile>
+    <ClCompile Include="Psecurity.cpp">
+      <Filter>Source Files\Backend</Filter>
     </ClCompile>
     <ClCompile Include="SkillTree.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\SkillTree_Start</Filter>
+    </ClCompile>
+    <ClCompile Include="Character.cpp">
+      <Filter>Source Files\SkillTree_Start</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-   <ClInclude Include="SkillTree.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="battle.h">
+      <Filter>Header Files\Battle</Filter>
     </ClInclude>
-    <ClInclude Include="Shop.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="BattleModule.h">
+      <Filter>Header Files\Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="Character.h">
+      <Filter>Header Files\Battle</Filter>
     </ClInclude>
     <ClInclude Include="Dealer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="WeaponsDealer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="OtherFuntions.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ErrorChecking.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="FileIO.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Psecurity.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Economy</Filter>
     </ClInclude>
     <ClInclude Include="DefenceDealer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PotionDealer.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Economy</Filter>
     </ClInclude>
     <ClInclude Include="ItemDealer.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Economy</Filter>
+    </ClInclude>
+    <ClInclude Include="Shop.h">
+      <Filter>Header Files\Economy</Filter>
+    </ClInclude>
+    <ClInclude Include="WeaponsDealer.h">
+      <Filter>Header Files\Economy</Filter>
+    </ClInclude>
+    <ClInclude Include="ErrorChecking.h">
+      <Filter>Header Files\Backend</Filter>
+    </ClInclude>
+    <ClInclude Include="FileIO.h">
+      <Filter>Header Files\Backend</Filter>
+    </ClInclude>
+    <ClInclude Include="Objects.h">
+      <Filter>Header Files\Backend</Filter>
+    </ClInclude>
+    <ClInclude Include="OtherFuntions.h">
+      <Filter>Header Files\Backend</Filter>
+    </ClInclude>
+    <ClInclude Include="PotionDealer.h">
+      <Filter>Header Files\Economy</Filter>
+    </ClInclude>
+    <ClInclude Include="Psecurity.h">
+      <Filter>Header Files\Backend</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillTree.h">
+      <Filter>Header Files\Other</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
