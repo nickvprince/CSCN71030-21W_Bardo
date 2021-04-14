@@ -37,7 +37,8 @@ bool crafting(entity* player) {
 
 void printOptions();
 int main(int argc, char* argv[]) {
-
+	potion temp =get_Potion("AttackPotion");
+	cout << FileExists("./GameFiles/Armour/IronShield.BAMF");
 	entity* Player = new user;
 	if (argc == 1) {
 		Player = startIO(Player);

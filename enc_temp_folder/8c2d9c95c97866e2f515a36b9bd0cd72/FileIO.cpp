@@ -464,8 +464,8 @@ potion get_Potion(string name) { // retrieves a potion from a file and returns i
 					FILE >> input;
 				}
 				// debugging and seeing each word >
-				//cout << "WORD : " << word << "\n";
-				//cout << "Retreival : " << retrieval << "\n";
+				cout << "WORD : " << word << "\n";
+				cout << "Retreival : " << retrieval << "\n";
 				switch (retrieval) {
 				case 0:
 					ITEM.value = atoi(word);
