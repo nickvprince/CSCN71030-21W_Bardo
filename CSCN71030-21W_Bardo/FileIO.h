@@ -17,7 +17,7 @@
 
 #include "Objects.h"
 #include "ErrorChecking.h"
-
+#include "Psecurity.h"
 weapon get_Weapon(string name); // retrieves a weapon from a file and returns it as an object
 defence get_Defence(string name); // retrieves a defence item from a file and returns it as an object
 potion get_Potion(string name); // retrieves a potion from a file and returns it as an object
