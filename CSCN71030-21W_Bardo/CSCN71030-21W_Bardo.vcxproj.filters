@@ -13,6 +13,18 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Crafting">
+      <UniqueIdentifier>{8c04b0a6-dfa5-4362-8bcd-7b758c3b1eb5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Crafting">
+      <UniqueIdentifier>{45089398-0b04-4368-ab4b-f09193e2126d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Crafting\Craft Item">
+      <UniqueIdentifier>{d22337b4-de3c-44a5-af3f-550c386a425a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Crafting\See Inventory">
+      <UniqueIdentifier>{c729d528-3962-490b-8ff7-c029eb11fb67}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="enemy.cpp">
@@ -54,6 +66,30 @@
     <ClCompile Include="DefenceDealer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Crafting.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StarterMenu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="craftItem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="seeInventory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="By_Search.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="By_Type.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FileIO.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ErrorChecking.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="PotionDealer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -63,9 +99,24 @@
     <ClCompile Include="SkillTree.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Character.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-   <ClInclude Include="SkillTree.h">
+    <ClInclude Include="Crafting.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StarterMenu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="craftItem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="seeInventory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillTree.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Shop.h">
@@ -86,6 +137,9 @@
     <ClInclude Include="FileIO.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ErrorChecking.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="Psecurity.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -96,6 +150,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ItemDealer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="battle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleModule.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Character.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Objects.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
