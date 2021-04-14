@@ -1,0 +1,2 @@
+Default triggered in get User | Severity : High 2021/3/7 17:1:4EST
+Battle Fail | Severity : Severe 2021/3/14 -4:46:17EST

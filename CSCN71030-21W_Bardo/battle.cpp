@@ -1,7 +1,4 @@
 #include "battle.h"
-#include "player.h"
-#include "enemy.h"
-#include "entity.h"
 #include <iostream>
 #include <stdio.h>
 
@@ -11,38 +8,35 @@ void menu(entity& player)
 {
 	int i = 0;
 	char asd;
-	while (true)
-	{
-			cout << "\n-----------------------------------------";
-			cout << "\n Would you like to do a battle? (1 or 0) \n";
-			cout << "-----------------------------------------\n";
-			scanf_s("%d", &i);
-			scanf_s("%c", &asd);
-			if (!isdigit(i))
+		cout << "\n-----------------------------------------";
+		cout << "\n Would you like to do a battle? (1 or 0) \n";
+		cout << "-----------------------------------------\n";
+		scanf_s("%d", &i);
+		scanf_s("%c", &asd);
+		if (!isdigit(i))
+		{
+			if (i == 1)
 			{
-				if (i == 1)
-				{
-					enemy e1 = randEnemy(player);
-					battle(player, e1);
-				}
-				else if (i == 0)
-				{
-					system("cls");
-					cout << "Battle canceled " << endl;
-				}
-				else
-				{
-					system("cls");
-					cout << "Please enter a valid input" << endl;
-				}
+				enemy e1 = randEnemy(player);
+				battle(player, e1);
+			}
+			else if (i == 0)
+			{
+				system("cls");
+				cout << "Battle canceled " << endl;
 			}
 			else
 			{
 				system("cls");
-				cout << "Please enter a valid input";
-				menu(player);
+				cout << "Please enter a valid input" << endl;
 			}
-	}
+		}
+		else
+		{
+			system("cls");
+			cout << "Please enter a valid input";
+			menu(player);
+		}
 }
 
 void battle(entity& player, entity& enemy)
@@ -80,13 +74,13 @@ void battle(entity& player, entity& enemy)
 		cout << endl;
 
 		cout << "\n-------------------------";
-		cout << "\n You have gained " << enemy.exp << "exp " << endl;
+		cout << "\n You have gained " << enemy.currentexp << "exp " << endl;
 		cout << "-------------------------\n";
-		player.exp += enemy.exp;
+		player.currentexp += enemy.currentexp;
 
-		if (player.exp >= player.expmax)
+		if (player.currentexp >= player.expmax)
 		{
-			player.exp -= player.expmax;
+			player.currentexp -= player.expmax;
 			player.expmax *= 2;
 			levelUp(player);
 		}

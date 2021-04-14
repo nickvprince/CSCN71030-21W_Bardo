@@ -1,5 +1,5 @@
 #pragma once
-#include "entity.h"
+#include "Character.h"
 #include <stdio.h>
 #include <iostream>
 using namespace std;

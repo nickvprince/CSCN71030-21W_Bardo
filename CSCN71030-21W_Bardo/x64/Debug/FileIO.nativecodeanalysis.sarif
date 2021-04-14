@@ -1,0 +1,3037 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.5.json",
+  "runs": [
+    {
+      "results": [
+        {
+          "ruleId": "C6001",
+          "message": {
+            "text": "Using uninitialized memory 'word'."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                },
+                "region": {
+                  "startLine": 114,
+                  "startColumn": 27,
+                  "endLine": 114,
+                  "endColumn": 27
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "?get_Weapon@@YA?AVweapon@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "index": 0,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 67,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 1,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 68,
+                            "startColumn": 7
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 2,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 69,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 3,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 70,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 4,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 71,
+                            "startColumn": 7
+                          }
+                        },
+                        "message": {
+                          "text": "'word' is not initialized"
+                        }
+                      },
+                      "kinds": [
+                        "declaration"
+                      ],
+                      "importance": "essential"
+                    },
+                    {
+                      "index": 5,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 72,
+                            "startColumn": 10
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 6,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 74,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 7,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 75,
+                            "startColumn": 9
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 8,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 76,
+                            "startColumn": 14
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 9,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 77,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 10,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 78,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 11,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 79,
+                            "startColumn": 7
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 12,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 79,
+                            "startColumn": 14
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 13,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 79,
+                            "startColumn": 7
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 14,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 81,
+                            "startColumn": 20
+                          }
+                        },
+                        "message": {
+                          "text": "Assume switch ( '<branch condition>' ) resolves to case GOOD: "
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ],
+                      "importance": "important"
+                    },
+                    {
+                      "index": 15,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 90,
+                            "startColumn": 2
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 16,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 92,
+                            "startColumn": 17
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 17,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 93,
+                            "startColumn": 12
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 18,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 93,
+                            "startColumn": 25
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 19,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 93,
+                            "startColumn": 12
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 20,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 93,
+                            "startColumn": 23
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 21,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 93,
+                            "startColumn": 12
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 22,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 94,
+                            "startColumn": 19
+                          }
+                        },
+                        "message": {
+                          "text": "Enter this branch, (assume 'file.is_open()')"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ],
+                      "importance": "important"
+                    },
+                    {
+                      "index": 23,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 97,
+                            "startColumn": 9
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 24,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 100,
+                            "startColumn": 17
+                          }
+                        },
+                        "message": {
+                          "text": "Enter this loop, (assume 'input!=38')"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ],
+                      "importance": "important"
+                    },
+                    {
+                      "index": 25,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 102,
+                            "startColumn": 24
+                          }
+                        },
+                        "message": {
+                          "text": "Skip this loop, (assume 'input!=59&&input!=38' is false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ],
+                      "importance": "important"
+                    },
+                    {
+                      "index": 26,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 111,
+                            "startColumn": 13
+                          }
+                        },
+                        "message": {
+                          "text": "Assume switch ( 'retrieval' ) resolves to case 0: "
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ],
+                      "importance": "important"
+                    },
+                    {
+                      "index": 27,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 112,
+                            "startColumn": 5
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 28,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 114,
+                            "startColumn": 20
+                          }
+                        },
+                        "message": {
+                          "text": "'word' is an Input to 'atoi' (declared at c:\\program files (x86)\\windows kits\\10\\include\\10.0.18362.0\\ucrt\\stdlib.h:447)"
+                        }
+                      },
+                      "kinds": [
+                        "usage"
+                      ],
+                      "importance": "important"
+                    },
+                    {
+                      "index": 29,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 114,
+                            "startColumn": 27
+                          }
+                        },
+                        "message": {
+                          "text": "'word' is used, but may not have been initialized"
+                        }
+                      },
+                      "kinds": [
+                        "usage"
+                      ],
+                      "importance": "essential"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "suppressions": []
+        },
+        {
+          "ruleId": "C6054",
+          "message": {
+            "text": "String 'word' might not be zero-terminated."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                },
+                "region": {
+                  "startLine": 114,
+                  "startColumn": 6,
+                  "endLine": 114,
+                  "endColumn": 27
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "?get_Weapon@@YA?AVweapon@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "index": 0,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 67,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 1,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 68,
+                            "startColumn": 7
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 2,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 69,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 3,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 70,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 4,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 71,
+                            "startColumn": 7
+                          }
+                        },
+                        "message": {
+                          "text": "This expression may not zero-terminate 'word'"
+                        }
+                      },
+                      "kinds": [
+                        "declaration"
+                      ],
+                      "importance": "essential"
+                    },
+                    {
+                      "index": 5,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 72,
+                            "startColumn": 10
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 6,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 74,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 7,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 75,
+                            "startColumn": 9
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 8,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 76,
+                            "startColumn": 14
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 9,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 77,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 10,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 78,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 11,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 79,
+                            "startColumn": 7
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 12,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 79,
+                            "startColumn": 14
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 13,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 79,
+                            "startColumn": 7
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 14,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 81,
+                            "startColumn": 20
+                          }
+                        },
+                        "message": {
+                          "text": "Assume switch ( '<branch condition>' ) resolves to case GOOD: "
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ],
+                      "importance": "important"
+                    },
+                    {
+                      "index": 15,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 90,
+                            "startColumn": 2
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 16,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 92,
+                            "startColumn": 17
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 17,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 93,
+                            "startColumn": 12
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 18,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 93,
+                            "startColumn": 25
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 19,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 93,
+                            "startColumn": 12
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 20,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 93,
+                            "startColumn": 23
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 21,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 93,
+                            "startColumn": 12
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 22,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 94,
+                            "startColumn": 19
+                          }
+                        },
+                        "message": {
+                          "text": "Enter this branch, (assume 'file.is_open()')"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ],
+                      "importance": "important"
+                    },
+                    {
+                      "index": 23,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 97,
+                            "startColumn": 9
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 24,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 100,
+                            "startColumn": 17
+                          }
+                        },
+                        "message": {
+                          "text": "Enter this loop, (assume 'input!=38')"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ],
+                      "importance": "important"
+                    },
+                    {
+                      "index": 25,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 102,
+                            "startColumn": 24
+                          }
+                        },
+                        "message": {
+                          "text": "Skip this loop, (assume 'input!=59&&input!=38' is false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ],
+                      "importance": "important"
+                    },
+                    {
+                      "index": 26,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 111,
+                            "startColumn": 13
+                          }
+                        },
+                        "message": {
+                          "text": "Assume switch ( 'retrieval' ) resolves to case 0: "
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ],
+                      "importance": "important"
+                    },
+                    {
+                      "index": 27,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 112,
+                            "startColumn": 5
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 28,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 114,
+                            "startColumn": 20
+                          }
+                        },
+                        "message": {
+                          "text": "'word' is an Input to 'atoi' (declared at c:\\program files (x86)\\windows kits\\10\\include\\10.0.18362.0\\ucrt\\stdlib.h:447)"
+                        }
+                      },
+                      "kinds": [
+                        "usage"
+                      ],
+                      "importance": "important"
+                    },
+                    {
+                      "index": 29,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 114,
+                            "startColumn": 20
+                          }
+                        },
+                        "message": {
+                          "text": "'word' is required to be zero-terminated by a SAL annotation on 'atoi'"
+                        }
+                      },
+                      "kinds": [
+                        "usage"
+                      ],
+                      "importance": "essential"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "suppressions": []
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'weapon::BarterItemsNum' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/Objects.h"
+                },
+                "region": {
+                  "startLine": 46,
+                  "startColumn": 1,
+                  "endLine": 46,
+                  "endColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "??0weapon@@QEAA@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "suppressions": [],
+          "properties": {
+            "targetSymbol": "weapon::BarterItemsNum"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'weapon::craftingItemsNum' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/Objects.h"
+                },
+                "region": {
+                  "startLine": 46,
+                  "startColumn": 1,
+                  "endLine": 46,
+                  "endColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "??0weapon@@QEAA@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "suppressions": [],
+          "properties": {
+            "targetSymbol": "weapon::craftingItemsNum"
+          }
+        },
+        {
+          "ruleId": "C26812",
+          "message": {
+            "text": "The enum type 'ErrorType' is unscoped. Prefer 'enum class' over 'enum' (Enum.3)."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/Objects.h"
+                },
+                "region": {
+                  "startLine": 44,
+                  "startColumn": 21
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "??0weapon@@QEAA@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "suppressions": []
+        },
+        {
+          "ruleId": "C6001",
+          "message": {
+            "text": "Using uninitialized memory 'word'."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                },
+                "region": {
+                  "startLine": 225,
+                  "startColumn": 33,
+                  "endLine": 225,
+                  "endColumn": 33
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "?get_Defence@@YA?AVdefence@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "index": 0,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 181,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 1,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 182,
+                            "startColumn": 7
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 2,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 183,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 3,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 184,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 4,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 185,
+                            "startColumn": 7
+                          }
+                        },
+                        "message": {
+                          "text": "'word' is not initialized"
+                        }
+                      },
+                      "kinds": [
+                        "declaration"
+                      ],
+                      "importance": "essential"
+                    },
+                    {
+                      "index": 5,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 186,
+                            "startColumn": 10
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 6,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 187,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 7,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 188,
+                            "startColumn": 10
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 8,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 190,
+                            "startColumn": 15
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 9,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 191,
+                            "startColumn": 7
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 10,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 191,
+                            "startColumn": 14
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 11,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 191,
+                            "startColumn": 7
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 12,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 193,
+                            "startColumn": 20
+                          }
+                        },
+                        "message": {
+                          "text": "Assume switch ( '<branch condition>' ) resolves to case GOOD: "
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ],
+                      "importance": "important"
+                    },
+                    {
+                      "index": 13,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 202,
+                            "startColumn": 2
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 14,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 204,
+                            "startColumn": 18
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 15,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 205,
+                            "startColumn": 12
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 16,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 205,
+                            "startColumn": 26
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 17,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 205,
+                            "startColumn": 12
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 18,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 205,
+                            "startColumn": 24
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 19,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 205,
+                            "startColumn": 12
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 20,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 206,
+                            "startColumn": 19
+                          }
+                        },
+                        "message": {
+                          "text": "Enter this branch, (assume 'file.is_open()')"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ],
+                      "importance": "important"
+                    },
+                    {
+                      "index": 21,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 209,
+                            "startColumn": 9
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 22,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 212,
+                            "startColumn": 17
+                          }
+                        },
+                        "message": {
+                          "text": "Enter this loop, (assume 'input!=38')"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ],
+                      "importance": "important"
+                    },
+                    {
+                      "index": 23,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 214,
+                            "startColumn": 24
+                          }
+                        },
+                        "message": {
+                          "text": "Skip this loop, (assume 'input!=59&&input!=38' is false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ],
+                      "importance": "important"
+                    },
+                    {
+                      "index": 24,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 223,
+                            "startColumn": 13
+                          }
+                        },
+                        "message": {
+                          "text": "Assume switch ( 'retrieval' ) resolves to case 0: "
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ],
+                      "importance": "important"
+                    },
+                    {
+                      "index": 25,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 224,
+                            "startColumn": 5
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 26,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 225,
+                            "startColumn": 26
+                          }
+                        },
+                        "message": {
+                          "text": "'word' is an Input to 'atoi' (declared at c:\\program files (x86)\\windows kits\\10\\include\\10.0.18362.0\\ucrt\\stdlib.h:447)"
+                        }
+                      },
+                      "kinds": [
+                        "usage"
+                      ],
+                      "importance": "important"
+                    },
+                    {
+                      "index": 27,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 225,
+                            "startColumn": 33
+                          }
+                        },
+                        "message": {
+                          "text": "'word' is used, but may not have been initialized"
+                        }
+                      },
+                      "kinds": [
+                        "usage"
+                      ],
+                      "importance": "essential"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "suppressions": []
+        },
+        {
+          "ruleId": "C6054",
+          "message": {
+            "text": "String 'word' might not be zero-terminated."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                },
+                "region": {
+                  "startLine": 225,
+                  "startColumn": 6,
+                  "endLine": 225,
+                  "endColumn": 33
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "?get_Defence@@YA?AVdefence@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "index": 0,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 181,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 1,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 182,
+                            "startColumn": 7
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 2,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 183,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 3,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 184,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 4,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 185,
+                            "startColumn": 7
+                          }
+                        },
+                        "message": {
+                          "text": "This expression may not zero-terminate 'word'"
+                        }
+                      },
+                      "kinds": [
+                        "declaration"
+                      ],
+                      "importance": "essential"
+                    },
+                    {
+                      "index": 5,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 186,
+                            "startColumn": 10
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 6,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 187,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 7,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 188,
+                            "startColumn": 10
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 8,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 190,
+                            "startColumn": 15
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 9,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 191,
+                            "startColumn": 7
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 10,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 191,
+                            "startColumn": 14
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 11,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 191,
+                            "startColumn": 7
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 12,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 193,
+                            "startColumn": 20
+                          }
+                        },
+                        "message": {
+                          "text": "Assume switch ( '<branch condition>' ) resolves to case GOOD: "
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ],
+                      "importance": "important"
+                    },
+                    {
+                      "index": 13,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 202,
+                            "startColumn": 2
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 14,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 204,
+                            "startColumn": 18
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 15,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 205,
+                            "startColumn": 12
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 16,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 205,
+                            "startColumn": 26
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 17,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 205,
+                            "startColumn": 12
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 18,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 205,
+                            "startColumn": 24
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 19,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 205,
+                            "startColumn": 12
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 20,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 206,
+                            "startColumn": 19
+                          }
+                        },
+                        "message": {
+                          "text": "Enter this branch, (assume 'file.is_open()')"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ],
+                      "importance": "important"
+                    },
+                    {
+                      "index": 21,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 209,
+                            "startColumn": 9
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 22,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 212,
+                            "startColumn": 17
+                          }
+                        },
+                        "message": {
+                          "text": "Enter this loop, (assume 'input!=38')"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ],
+                      "importance": "important"
+                    },
+                    {
+                      "index": 23,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 214,
+                            "startColumn": 24
+                          }
+                        },
+                        "message": {
+                          "text": "Skip this loop, (assume 'input!=59&&input!=38' is false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ],
+                      "importance": "important"
+                    },
+                    {
+                      "index": 24,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 223,
+                            "startColumn": 13
+                          }
+                        },
+                        "message": {
+                          "text": "Assume switch ( 'retrieval' ) resolves to case 0: "
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ],
+                      "importance": "important"
+                    },
+                    {
+                      "index": 25,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 224,
+                            "startColumn": 5
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 26,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 225,
+                            "startColumn": 26
+                          }
+                        },
+                        "message": {
+                          "text": "'word' is an Input to 'atoi' (declared at c:\\program files (x86)\\windows kits\\10\\include\\10.0.18362.0\\ucrt\\stdlib.h:447)"
+                        }
+                      },
+                      "kinds": [
+                        "usage"
+                      ],
+                      "importance": "important"
+                    },
+                    {
+                      "index": 27,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 225,
+                            "startColumn": 26
+                          }
+                        },
+                        "message": {
+                          "text": "'word' is required to be zero-terminated by a SAL annotation on 'atoi'"
+                        }
+                      },
+                      "kinds": [
+                        "usage"
+                      ],
+                      "importance": "essential"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "suppressions": []
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'defence::BarterItemsNum' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/Objects.h"
+                },
+                "region": {
+                  "startLine": 57,
+                  "startColumn": 1,
+                  "endLine": 57,
+                  "endColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "??0defence@@QEAA@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "suppressions": [],
+          "properties": {
+            "targetSymbol": "defence::BarterItemsNum"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'defence::craftingItemsNum' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/Objects.h"
+                },
+                "region": {
+                  "startLine": 57,
+                  "startColumn": 1,
+                  "endLine": 57,
+                  "endColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "??0defence@@QEAA@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "suppressions": [],
+          "properties": {
+            "targetSymbol": "defence::craftingItemsNum"
+          }
+        },
+        {
+          "ruleId": "C6201",
+          "message": {
+            "text": "Index '15' is out of valid index range '0' to '14' for possibly stack allocated buffer 'word'."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                },
+                "region": {
+                  "startLine": 359,
+                  "startColumn": 2,
+                  "endLine": 359,
+                  "endColumn": 16
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "?get_Item@@YA?AVitem@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "suppressions": []
+        },
+        {
+          "ruleId": "C6385",
+          "message": {
+            "text": "Reading invalid data from 'word':  the readable size is '15' bytes, but '16' bytes may be read."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                },
+                "region": {
+                  "startLine": 359,
+                  "startColumn": 2,
+                  "endLine": 359,
+                  "endColumn": 16
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "?get_Item@@YA?AVitem@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "index": 0,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 278,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 1,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 279,
+                            "startColumn": 7
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 2,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 280,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 3,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 281,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 4,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 282,
+                            "startColumn": 7
+                          }
+                        },
+                        "message": {
+                          "text": "'word' is an array of 15 elements (15 bytes)"
+                        }
+                      },
+                      "kinds": [
+                        "declaration"
+                      ],
+                      "importance": "essential"
+                    },
+                    {
+                      "index": 5,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 283,
+                            "startColumn": 10
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 6,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 284,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 7,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 285,
+                            "startColumn": 7
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 8,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 286,
+                            "startColumn": 10
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 9,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 287,
+                            "startColumn": 12
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 10,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 288,
+                            "startColumn": 7
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 11,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 288,
+                            "startColumn": 14
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 12,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 288,
+                            "startColumn": 7
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 13,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 291,
+                            "startColumn": 11
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 14,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 291,
+                            "startColumn": 42
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 15,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 292,
+                            "startColumn": 22
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 16,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 291,
+                            "startColumn": 67
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 17,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 291,
+                            "startColumn": 42
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 18,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 292,
+                            "startColumn": 22
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 19,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 291,
+                            "startColumn": 67
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 20,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 291,
+                            "startColumn": 42
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 21,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 294,
+                            "startColumn": 10
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 22,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 297,
+                            "startColumn": 20
+                          }
+                        },
+                        "message": {
+                          "text": "Assume switch ( '<branch condition>' ) resolves to case CHK_FAIL: "
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ],
+                      "importance": "important"
+                    },
+                    {
+                      "index": 23,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 298,
+                            "startColumn": 2
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 24,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 299,
+                            "startColumn": 15
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 25,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 300,
+                            "startColumn": 29
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 26,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 300,
+                            "startColumn": 12
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 27,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 300,
+                            "startColumn": 11
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 28,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 356,
+                            "startColumn": 9
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 29,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 357,
+                            "startColumn": 8
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 30,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 358,
+                            "startColumn": 12
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "index": 31,
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+                          },
+                          "region": {
+                            "startLine": 359,
+                            "startColumn": 16
+                          }
+                        },
+                        "message": {
+                          "text": "Invalid read from 'word[15]', (readable range is 0 to 14)"
+                        }
+                      },
+                      "kinds": [
+                        "usage"
+                      ],
+                      "importance": "essential"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "suppressions": []
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'item::BarterItemsNum' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/Objects.h"
+                },
+                "region": {
+                  "startLine": 34,
+                  "startColumn": 1,
+                  "endLine": 34,
+                  "endColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "??0item@@QEAA@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "suppressions": [],
+          "properties": {
+            "targetSymbol": "item::BarterItemsNum"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'potion::BarterItemsNum' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/Objects.h"
+                },
+                "region": {
+                  "startLine": 63,
+                  "startColumn": 1,
+                  "endLine": 63,
+                  "endColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "??0potion@@QEAA@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "suppressions": [],
+          "properties": {
+            "targetSymbol": "potion::BarterItemsNum"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'inventory::ItemCount' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/Objects.h"
+                },
+                "region": {
+                  "startLine": 79,
+                  "startColumn": 1,
+                  "endLine": 79,
+                  "endColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "??0inventory@@QEAA@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "suppressions": [],
+          "properties": {
+            "targetSymbol": "inventory::ItemCount"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'inventory::Spells' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/Objects.h"
+                },
+                "region": {
+                  "startLine": 79,
+                  "startColumn": 1,
+                  "endLine": 79,
+                  "endColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "??0inventory@@QEAA@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "suppressions": [],
+          "properties": {
+            "targetSymbol": "inventory::Spells"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'entity::INV' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/Objects.h"
+                },
+                "region": {
+                  "startLine": 90,
+                  "startColumn": 1,
+                  "endLine": 90,
+                  "endColumn": 1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "??0entity@@QEAA@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "suppressions": [],
+          "properties": {
+            "targetSymbol": "entity::INV"
+          }
+        }
+      ],
+      "tool": {
+        "driver": {
+          "name": "PREfast",
+          "fullName": "PREfast Code Analysis",
+          "version": "14.28.29336.0"
+        }
+      },
+      "invocations": [
+        {
+          "commandLine": "\"C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.28.29333\\bin\\HostX86\\x64\\c1xx.dll\" -ACf{1F7B090C-16DB-4822-966A-A93D26ED4681} -ACpmspft140.dll -Alint -D_PREFAST_ -D_AST_FE_ -Analyze -zm0x00C4B1D0 -il C:\\Users\\User\\AppData\\Local\\Temp\\_CL_05c71101ast -typedil -f FileIO.cpp -Ze -D_MSC_EXTENSIONS -Zp16 -pc \\:/ -D_MSC_VER=1928 -D_MSC_FULL_VER=192829336 -D_MSC_BUILD=0 -D_M_AMD64=100 -ZILP448 -D_M_X64=100 -D_WIN64 -D_WIN32 -GR -D_CPPRTTI -nologo -W 3 -diagnostics:column -D_GUARDOVERFLOW_CRT_ALLOCATORS=1 -Ot -DCODE_ANALYSIS -D_DEBUG -D_CONSOLE -D_UNICODE -DUNICODE -EHs -D_CPPUNWIND -EHc -D__MSVC_RUNTIME_CHECKS -RTCs -RTCu -MDd -D_DEBUG -D_MT -D_DLL -GS -D_M_FP_PRECISE -permissive- -Zc:wchar_t -Zc:forScope -Fox64\\Debug\\FileIO.obj -Fdx64\\Debug\\vc142.pdb -Gd -analyze:projectdirectory C:\\Users\\User\\source\\repos\\Bardo5\\CSCN71030-21W_Bardo -analyze:rulesetdirectory ;C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\Team Tools\\Static Analysis Tools\\\\Rule Sets; -analyze:ruleset C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\Team Tools\\Static Analysis Tools\\Rule Sets\\NativeRecommendedRules.ruleset -analyze:quiet -analyze:plugin C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.28.29333\\bin\\HostX86\\x86\\EspXEngine.dll -FC -errorreport:prompt -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.28.29333\\include -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.28.29333\\atlmfc\\include -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Auxiliary\\VS\\include -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.18362.0\\ucrt -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.18362.0\\um -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.18362.0\\shared -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.18362.0\\winrt -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.18362.0\\cppwinrt -I C:\\Program Files (x86)\\Windows Kits\\NETFXSDK\\4.8\\Include\\um",
+          "executionSuccessful": true
+        }
+      ],
+      "artifacts": [
+        {
+          "location": {
+            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/Psecurity.h"
+          },
+          "roles": [
+            "resultFile"
+          ]
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/Source.cpp"
+          },
+          "roles": [
+            "analysisTarget",
+            "resultFile"
+          ]
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/user/source/repos/bardo5/cscn71030-21w_bardo/fileio.h"
+          },
+          "roles": [
+            "responseFile"
+          ]
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/user/source/repos/bardo5/cscn71030-21w_bardo/objects.h"
+          },
+          "roles": [
+            "analysisTarget",
+            "resultFile"
+          ]
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/user/source/repos/bardo5/cscn71030-21w_bardo/errorchecking.h"
+          },
+          "roles": [
+            "responseFile"
+          ]
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/user/source/repos/bardo5/cscn71030-21w_bardo/psecurity.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ]
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/User/source/repos/Bardo5/CSCN71030-21W_Bardo/FileIO.cpp"
+          },
+          "roles": [
+            "analysisTarget",
+            "resultFile"
+          ]
+        }
+      ]
+    }
+  ]
+}
