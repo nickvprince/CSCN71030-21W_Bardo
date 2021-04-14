@@ -60,8 +60,14 @@
     <ClCompile Include="ItemDealer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SkillTree.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
+   <ClInclude Include="SkillTree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="Shop.h">
       <Filter>Header Files</Filter>
     </ClInclude>

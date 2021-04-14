@@ -45,6 +45,7 @@ using namespace std;
 string ERRORLOG = "./GameFiles/ErrorLog.txt";
 
 
+
 // used in file verification
 int checkSums[] = { 16,16,16,16,14,14,14,14,26,26,26,26,16,1,1,1,1,1,0,1,1,0,0,0,1,0,0,5,679,45,30,1249,18,2,24,33,27,22,45,19 };
 string checkSumNames[] = { "WoodSword.BWPF","WoodAxe.BWPF","WoodMace.BWPF","WoodBow.BWPF","IronSword.BWPF","IronAxe.BWPF","IronMace.BWPF","IronBow.BWPF","GoldSword.BWPF","GoldAxe.BWPF","GoldMace.BWPF","GoldBow.BWPF","PlatinumStaff.BWPF","BabyDragon.BINVF","DarkElf.BINVF","Drough.BINVF","Elliott.BINVF","Orc.BINVF","Copper.BITMF","Gold.BITMF","Iron.BITMF","Leather.BITMF","Magnesium.BITMF","Paper.BITMF","Platinum.BITMF","Silver.BITMF","Water.BITMF","BabyDragon.BENF","DarkElf.BENF","Drough.BENF","Elliott.BENF","Orc.BENF","GoldArmour.BAMF","GoldShield.BAMF","IronArmour.BAMF","IronShield.BAMF","WoodShield.BAMF","WoodArmour.BAMF","PlatinumShield.BAMF","PlatinumArmour.BAMF" };
@@ -93,7 +94,7 @@ weapon get_Weapon(string name) { // retrieves a weapon from a file and returns i
 			Weapon.BarterItemsNum[i] = 0;
 			Weapon.craftingItemsNum[i] = 0;
 		}
-
+		
 		Weapon.failed = GOOD;
 		file.open(WEAPONDIR + (string)name, ios::in);
 		if (file.is_open()) {
@@ -257,8 +258,8 @@ defence get_Defence(string name) { // retrieves a defence item from a file and r
 						barterPosition++;
 						retrieval = CRAFTING_MATERIAL_START - 1;
 					}
-
-
+					
+					
 					break;
 				default:
 
@@ -266,11 +267,11 @@ defence get_Defence(string name) { // retrieves a defence item from a file and r
 						if (SWITCH == 0) {
 							Defence.craftingItems[itemPosition] = word;
 							retrieval--;
-
+							
 							SWITCH++;
 						} 						else {
 							Defence.BarterItems[barterPosition] = word;
-
+						
 							SWITCH--;
 						}
 					} 					else {
@@ -317,7 +318,7 @@ item get_Item(string name) {
 	item ITEM;
 	fstream FILE;
 
-
+	
 
 
 	ITEM.name = name;
@@ -342,7 +343,7 @@ item get_Item(string name) {
 	case GOOD: // file is usable start reading
 		for (int i = 0; i < MAX_MATERIALS; i++) {
 			ITEM.BarterItemsNum[i] = 0;
-
+		
 		}
 		ITEM.failed = GOOD;
 		FILE.open(ITEMDIR + (string)name, ios::in);
@@ -413,14 +414,14 @@ potion get_Potion(string name) { // retrieves a potion from a file and returns i
 
 
 void ErrorLog(string message, string Severity) {
-
-	fstream f;
-	time_t now = time(0);
-	tm* time = gmtime(&now);
-	f.open(ERRORLOG, ios::app);
+	
+		fstream f;
+		time_t now = time(0);
+		tm* time = gmtime(&now);
+		f.open(ERRORLOG, ios::app);
 	f << message << " | Severity : " << Severity << " 2021" << "/" << time->tm_mon << "/" << time->tm_mday << " " << (time->tm_hour) - 4 << ":" << time->tm_min << ":" << time->tm_sec << "EST" << endl;
-	f.close();
-
+		f.close();
+	
 }
 
 spell get_Spell(string name) { // retrieves a spell from a file and returns it as an object
@@ -434,7 +435,7 @@ inventory* get_Inventory(string name) { // retrieves inventory from a file and r
 	inventory* Inventory = new inventory;
 	for (int i = 0; i < MAX_ITEMS; i++) {
 		Inventory->ItemCount[i] = 0;
-
+	
 	}
 	int length = 0;
 	char input;
@@ -560,9 +561,9 @@ inventory* get_Inventory(string name) { // retrieves inventory from a file and r
 
 
 entity* get_User(string name) { // retrieves user information from a file and returns it as an object
-
+	
 	entity* User = new user;
-
+	
 	fstream userFile;
 	User->race = name;
 	User->INV = get_Inventory(name);
@@ -829,28 +830,28 @@ ErrorType isFileGood(char* name) { // does checking if file is good							NEEDS 
 	int flag = 0;
 	string exemptDirectories[] = { USERDIR,INVENTORYDIR,INVENTORYDIR,INVENTORYDIR,INVENTORYDIR,INVENTORYDIR,INVENTORYDIR };
 	string exemptFiles[] = { "User.BSURF","DarkElf.BINVF","User.BINVF","BabyDragon.BINVF","Drough.BINVF","Elliott.BINVF","Orc.BINVF" };
-
+	
 	for (int exempt = 0; exempt < sizeof(exemptFiles) / sizeof(string); exempt++) { // temporary exempt files from checksum ( files that change frequently ) until i get a better method of doing checksum
 		if (exemptFiles[exempt] == name) {
-
+		
 			flag = 1;
 			string path = exemptDirectories[exempt] + name;
 			if (FileExists(path) == 0) {
 				return EXISTS_FAIL; // directory not exist fail
 				ErrorLog("Exist Fail Triggered in isFileGood", "Unknown");
 			} 			else {
-
+		
 				return GOOD;
 			}
 		}
 	}
 	if (flag != 1) {
-
+		
 		for (int i = 0; i < sizeof(checkSumNames) / sizeof(string); i++) {
-
+			
 			if (name == checkSumNames[i]) {
 				if (getCheckSum(Directories[i] + checkSumNames[i]) == checkSums[i]) {
-
+					
 					return GOOD;
 				} 				else {
 					return CHK_FAIL;
@@ -936,7 +937,7 @@ list* getListWeapons() {
 		while (input != 38) {
 
 			while (input != 59 && input != 38) {
-
+			
 				word[counter] = input;
 				counter++;
 

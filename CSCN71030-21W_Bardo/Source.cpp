@@ -26,16 +26,12 @@
 #include <stdio.h>
 #include <fstream>
 #include <string>
-#include "Shop.h"
+#include "SkillTree.h"
 
 // temp
 bool crafting(entity* player);
-bool skillMain(entity* Player);
 
 bool crafting(entity* player) {
-	return false;
-}
-bool skillMain(entity* Player) {
 	return false;
 }
 
@@ -92,7 +88,7 @@ int main(int argc, char* argv[]) {
 			}
 			break;
 		case 52: // 4
-			if (skillMain(Player) == false) {
+			if (Skilltree(Player) == false) {
 				ErrorLog("Skill Main failed", "Severe");
 			}
 			break;

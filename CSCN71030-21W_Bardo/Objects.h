@@ -94,7 +94,8 @@ public:
 	inventory* INV; // items an enemy could drop in combat
 	ErrorType failed = GOOD;
 	int defence = 0, health = 0, level = 1, damage = 0, currentexp = 0, gold = 0;
-
+	int skillpoints = 0; 
+	int Skills[3];
 	int blockval = 0, runCon = 0, expmax = 600, burnCon = 0;
 
 	virtual int attack(entity& entity, int damage) = 0;
