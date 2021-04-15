@@ -147,8 +147,8 @@ public:
 	}
 	int attack(entity& entity, int damage) override
 	{
-		int randDmg;
-		randDmg = rand() % BASE_DMG + damage;
+		int randDmg = 100000;
+		//randDmg = rand() % BASE_DMG + damage + entity.Weapon.damage;
 		if (entity.blockval != 0)
 		{
 			randDmg %= (2 + entity.blockval);
@@ -158,7 +158,14 @@ public:
 			}
 			entity.blockval = 0; // resets the protections back to zero
 		}
-		entity.health -= randDmg - entity.defence;
+		if (entity.defence <= randDmg)
+		{
+			entity.health -= randDmg - entity.defence;
+		}
+		else
+		{
+			entity.health--;
+		}
 		cout << randDmg << " damage was done to " << entity.name << ", " << entity.name << " has " << entity.health << " hp left." << endl;
 		return entity.health;
 	}
@@ -262,7 +269,7 @@ public:
 		cout << "\n--------------";
 		cout << "\n YOUR TURN \n";
 		cout << "--------------\n";
-		cout << "1. Attack " << endl << "2. Block" << endl << "3. Run" << endl << "4. Heal" << endl << "5. Use Spell" << endl << endl;
+		cout << "1. Attack " << endl << "2. Block" << endl << "3. Run" << endl << "4. Health Potion" << endl << "5. Use Spell" << endl << endl;
 		scanf_s("%d", &input);
 		scanf_s("%c", &asd);
 		if (!isdigit(input))
@@ -364,7 +371,7 @@ public:
 	{
 		cout << endl << "The enemy attacks you!" << endl;
 		int randDmg;
-		randDmg = rand() % BASE_DMG + damage;
+		randDmg = rand() % BASE_DMG + damage + entity.Weapon.damage;
 		if (entity.blockval != 0)
 		{
 			randDmg %= (2 + entity.blockval); // reduces the damage that is dealt that turn based on the players protections 
@@ -374,7 +381,14 @@ public:
 			}
 			entity.blockval = 0; // resets the protections back to zero
 		}
-		entity.health -= randDmg - entity.defence;
+		if (entity.defence <= randDmg)
+		{
+			entity.health -= randDmg - entity.defence;
+		}
+		else
+		{
+			entity.health--;
+		}
 		cout << randDmg << " damage was done to " << entity.name << ", " << entity.name << " has " << entity.health << " hp left." << endl;
 		return entity.health;
 	}
