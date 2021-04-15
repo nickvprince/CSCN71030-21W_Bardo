@@ -139,6 +139,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="By_Search.cpp" />
+    <ClCompile Include="By_Type.cpp" />
+    <ClCompile Include="Crafting.cpp" />
+    <ClCompile Include="craftItem.cpp" />
+    <ClCompile Include="seeInventory.cpp" />
+    <ClCompile Include="StarterMenu.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Crafting.h" />
+    <ClInclude Include="craftItem.h" />
+    <ClInclude Include="seeInventory.h" />
+    <ClInclude Include="StarterMenu.h" />
     <ClCompile Include="battle.cpp" />
     <ClCompile Include="BattleModule.cpp" />
     <ClCompile Include="Character.cpp" />

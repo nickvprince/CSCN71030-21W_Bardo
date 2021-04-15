@@ -26,14 +26,7 @@
 #include <stdio.h>
 #include <fstream>
 #include <string>
-#include "SkillTree.h"
-
-// temp
-bool crafting(entity* player);
-
-bool crafting(entity* player) {
-	return false;
-}
+#include "seeInventory.h"
 
 void printOptions();
 int main(int argc, char* argv[]) {
@@ -83,7 +76,7 @@ int main(int argc, char* argv[]) {
 			}
 			break;
 		case 51: // 3
-			if (crafting(Player) == false) {
+			if (Crafting(Player) == false) {
 				ErrorLog("Crafting failed", "Severe");
 			}
 			break;
