@@ -61,6 +61,10 @@ public:
 
 class potion {
 public:
+	ErrorType failed = GOOD;
+	int Power = 0;
+	string craftingItems[MAX_MATERIALS];
+	int craftingItemsNum[MAX_MATERIALS];
 	string BarterItems[MAX_MATERIALS];
 	int BarterItemsNum[MAX_MATERIALS];
 	string name;

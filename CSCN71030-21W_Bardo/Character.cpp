@@ -71,7 +71,9 @@ entity* newGame() {
 	Player->damage = 2 + Player->Weapon.damage;
 	Player->health = 250;*/
 	Player = setStats(Player);
-
+	Player->level = 1;
+	Player->gold = 25;
+	Save(Player);
 	return Player;
 
 }
@@ -138,6 +140,7 @@ SETSTATS:
 	}
 	if (choice == '0')
 	{
+		
 		/*bool statCheck = defaultStat(Player);
 		if (statCheck == true) {*/
 		if (Player->race == "HUMAN") {
@@ -312,7 +315,8 @@ SHIELD:
 	if (defaultConfirmation() == false) {
 		goto SHIELD;
 	}
-
+	Player->level = 1;
+	Player->gold = 25;
 	return Player;
 
 }

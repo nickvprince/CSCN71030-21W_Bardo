@@ -29,7 +29,7 @@
 #include <stdlib.h>
 #include <string>
 #include <fstream>
-#include "FileIO.h"
+
 
 using namespace std;
 
@@ -142,10 +142,7 @@ public:
 		fstream file;
 		fstream File2;
 
-		if (!FileExists(name)) {
-			ErrorLog("File Does not exist in encrypt", "Average");
-			return;
-		}
+
 		string name2 = name + "2";
 		File2.open(name2, ios::out);
 		file.open(name, ios::in);
