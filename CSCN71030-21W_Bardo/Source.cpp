@@ -37,8 +37,8 @@ bool crafting(entity* player) {
 
 void printOptions();
 int main(int argc, char* argv[]) {
-	
-
+	//DECRYPT("./GameFiles/UserFiles/User.BSURF");
+	//ENCRYPT("./GameFiles/Inventory/User.BINVF");
 	entity* Player = new user;
 	if (argc == 1) {
 		Player = startIO(Player);

@@ -754,37 +754,40 @@ entity* get_User(string name) { // retrieves user information from a file and re
 					User->Weapon = get_Weapon(WORD);
 					break;
 				case 2:
+					User->damage = atoi(WORD);
+				case 3:
 					//defence health level exp
 					User->defence = atoi(WORD);
 					break;
-				case 3:
+				case 4:
 					User->health = atoi(WORD);
 					break;
-				case 4:
+				case 5:
 					User->level = atoi(WORD);
 					break;
-				case 5:
+				case 6:
 					User->currentexp = atoi(WORD);
 					break;
-				case 6:
+				case 7:
 					User->expmax = atoi(WORD);
 					break;
-				case 7:
+				case 8:
 					User->gold = atoi(WORD);
 					break;
-				case 8:
+				case 9:
 					User->Shield = get_Defence(WORD);
 					break;
-				case 9:
+				case 10:
 					User->Skills[0] = atoi(WORD);
 					break;
-				case 10:
+				case 11:
 					User->Skills[1] = atoi(WORD);
 					break;
-				case 11:
+				case 12:
 					User->Skills[2] = atoi(WORD);
 					break;
 				default:
+
 					ErrorLog("Default triggered in get User", "High");
 					break;
 				}
@@ -1321,54 +1324,68 @@ bool Save(entity* Player) {
 		return false;
 	}
 
-	fstream file;
+	
 	file.open(INVENTORYDIR + (string)"USER.BINVF", ios::out);
+	int flag = 0;
+	Player->INV->itemsUsed = 0;
+	for (int i = 0; i < MAX_ITEMS; i++){
+		if (Player->INV->Weapons[i].name != "" || Player->INV->Shields[i].name != "" || Player->INV->Potions[i].name != ""|| Player->INV->Items[i].name != "") {
+			Player->INV->itemsUsed++;
+		}
+	
+	}
 	for (int i = 0; i < MAX_ITEMS; i++) {
 		if (Player->INV->Weapons[i].name != "") {
 			file << "Weapon;" << endl;
 			file << Player->INV->Weapons[i].name << ";" << endl;
-			if (i == MAX_ITEMS - 1) {
+			if (i == Player->INV->itemsUsed-1) {
 				file << Player->INV->ItemCount[i] << "&" << endl;
 			}
 			else {
 				file << Player->INV->ItemCount[i] << ";" << endl;
 			}
+			flag++;
 		}
 		if (Player->INV->Shields[i].name != "") {
 			file << "Defence;" << endl;
 			file << Player->INV->Shields[i].name << ";" << endl;
-			if (i == MAX_ITEMS - 1) {
+			if (i == Player->INV->itemsUsed - 1) {
 				file << Player->INV->ItemCount[i] << "&" << endl;
 			}
 			else {
 				file << Player->INV->ItemCount[i] << ";" << endl;
 			}
+			flag++;
 		}
 		if (Player->INV->Potions[i].name != "") {
 			file << "Potion;" << endl;
 			file << Player->INV->Potions[i].name << ";" << endl;
-			if (i == MAX_ITEMS - 1) {
+			if (i == Player->INV->itemsUsed - 1) {
 				file << Player->INV->ItemCount[i] << "&" << endl;
 			}
 			else {
 				file << Player->INV->ItemCount[i] << ";" << endl;
 			}
+			flag++;
 		}
 		if (Player->INV->Items[i].name != "") {
 			file << "Item;" << endl;
 			file << Player->INV->Items[i].name << ";" << endl;
-			if (i == MAX_ITEMS - 1) {
+			if (i == Player->INV->itemsUsed - 1) {
 				file << Player->INV->ItemCount[i] << "&" << endl;
 			}
 			else {
 				file << Player->INV->ItemCount[i] << ";" << endl;
 			}
-			
+			flag++;
 		}
-	
+		if (flag == 0) {
+			file << "&";
+		}
 	}
 	file.close();
 	ENCRYPT(USERDIR + (string)"USER.BSURF");
+	ENCRYPT(INVENTORYDIR + (string)"USER.BINVF");
 	return true;
 
 }
