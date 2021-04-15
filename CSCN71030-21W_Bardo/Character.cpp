@@ -74,6 +74,7 @@ entity* newGame() {
 	Player->level = 1;
 	Player->gold = 25;
 	Player->damage += 100000; // For demo
+	Player->skillpoints = 10;
 	Save(Player);
 	return Player;
 
