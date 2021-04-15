@@ -27,9 +27,16 @@
 #include <fstream>
 #include <string>
 #include "seeInventory.h"
-
+void credits();
+void credits1();
+void credits2();
+void credits3();
+void credits4();
+void credits5();
 void printOptions();
 int main(int argc, char* argv[]) {
+
+
 	//DECRYPT("./GameFiles/UserFiles/User.BSURF");
 	//ENCRYPT("./GameFiles/Inventory/User.BINVF");
 	entity* Player = new user;
@@ -97,6 +104,9 @@ int main(int argc, char* argv[]) {
 			}
 			exit(0);
 			break;
+		case 55:
+			credits();
+			break;
 		default:
 			break;
 
@@ -104,7 +114,23 @@ int main(int argc, char* argv[]) {
      
     }
 }
-
+void credits() {
+	credits1();
+	credits2();
+	credits3();
+	credits4();
+	credits5();
+}
+void credits1() {
+}
+void credits2() {
+}
+void credits3() {
+}
+void credits4() {
+}
+void credits5() {
+}
 
 void printOptions() {
 	cout << "Welcome to the Bardo home town please choose an option\n";

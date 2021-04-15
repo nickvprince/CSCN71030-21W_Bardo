@@ -711,7 +711,7 @@ entity* get_User(string name) { // retrieves user information from a file and re
 	int caseNumber = 0;
 	char readInput = '\0';
 	int NEWCOUNTER = 0;
-
+	
 	for (int emptyCounter = 0; emptyCounter < WORD_SIZE; emptyCounter++) {
 		WORD[emptyCounter] = '\0';
 	}
@@ -811,6 +811,7 @@ entity* get_User(string name) { // retrieves user information from a file and re
 	}
 	userFile.close();
 	ENCRYPT(USERDIR + name);
+	User->skillpoints = User->level - (User->Skills[0] + User->Skills[1] + User->Skills[2]);
 	return User;
 }
 
