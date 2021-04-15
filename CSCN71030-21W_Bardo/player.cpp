@@ -13,6 +13,7 @@ void levelUp(entity& player)
 	cout << "Your defense has incereased to: " << player.defence << endl;
 	cout << "Your left with: " << player.currentexp << " exp. The amount of exp to get to the next level is now: " << player.expmax << endl;
 	cout << "-------------------------------------------------\n";
+	player.skillpoints++;
 }
 
 

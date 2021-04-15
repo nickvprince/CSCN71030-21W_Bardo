@@ -1,7 +1,6 @@
 #include "battle.h"
 #include <iostream>
 #include <stdio.h>
-
 using namespace std;
 
 void menu(entity& player)
@@ -17,7 +16,7 @@ void menu(entity& player)
 	{
 		if (i == 1)
 		{
-			enemy e1 = randEnemy(player);
+			enemy e1 = randEnemy(player); // get enemy from file
 			battle(player, e1);
 		} 			else if (i == 0)
 		{
@@ -60,7 +59,9 @@ void battle(entity& player, entity& enemy)
 		cout << "\n You chose to run away \n";
 		cout << "-------------------------\n";
 		player.runCon = 0;
+		
 		return;
+
 	} 	else if (player.health > 0)
 	{
 		cout << "\n-------------------------";
@@ -74,6 +75,91 @@ void battle(entity& player, entity& enemy)
 		cout << "-------------------------\n";
 		player.currentexp += enemy.currentexp;
 
+
+		for (int i = 0; i < MAX_ITEMS; i++)
+		{
+			if (enemy.INV->Weapons[i].name != "")
+			{
+				for (int b = 0; b < MAX_ITEMS; b++)
+				{
+					if (player.INV->Weapons[b].name == "" && player.INV->itemsUsed != MAX_ITEMS && player.INV->ItemCount[b] == 0)
+					{
+						player.INV->Weapons[b] = enemy.INV->Weapons[i];
+						player.INV->itemsUsed++;
+						player.INV->ItemCount[b]++;
+						break;
+					}
+				}
+			}
+		}
+		for (int i = 0; i < MAX_ITEMS; i++)
+		{
+			if (enemy.INV->Potions[i].name != "")
+			{
+				for (int b = 0; b < MAX_ITEMS; b++)
+				{
+					if (player.INV->Potions[b].name == "" && player.INV->itemsUsed != MAX_ITEMS && player.INV->ItemCount[b] == 0)
+					{
+						player.INV->Potions[b] = enemy.INV->Potions[i];
+						player.INV->itemsUsed++;
+						player.INV->ItemCount[b]++;
+						break;
+					}
+				}
+			}
+		}
+		for (int i = 0; i < MAX_ITEMS; i++)
+		{
+			if (enemy.INV->Shields[i].name != "")
+			{
+				for (int b = 0; b < MAX_ITEMS; b++)
+				{
+					if (player.INV->Shields[b].name == "" && player.INV->itemsUsed != MAX_ITEMS && player.INV->ItemCount[b] == 0)
+					{
+						player.INV->Shields[b] = enemy.INV->Shields[i];
+						player.INV->itemsUsed++;
+						player.INV->ItemCount[b]++;
+						break;
+					}
+				}
+			}
+		}
+		for (int i = 0; i < MAX_ITEMS; i++)
+		{
+			if (enemy.INV->Spells[i].name != "")
+			{
+				for (int b = 0; b < MAX_ITEMS; b++)
+				{
+					if (player.INV->Spells[b].name == "" && player.INV->itemsUsed != MAX_ITEMS && player.INV->ItemCount[b] == 0)
+					{
+						player.INV->Spells[b] = enemy.INV->Spells[i];
+						player.INV->itemsUsed++;
+						player.INV->ItemCount[b]++;
+						break;
+					}
+				}
+			}
+		}
+		for (int i = 0; i < MAX_ITEMS; i++)
+		{
+			if (enemy.INV->Items[i].name != "")
+			{
+				for (int b = 0; b < MAX_ITEMS; b++)
+				{
+					if (player.INV->Items[b].name == "" && player.INV->itemsUsed != MAX_ITEMS && player.INV->ItemCount[b] == 0)
+					{
+						player.INV->Items[b] = enemy.INV->Items[i];
+						player.INV->itemsUsed++;
+						player.INV->ItemCount[b]++;
+						break;
+					}
+				}
+			}
+		}
+
+
+
+
 		if (player.currentexp >= player.expmax)
 		{
 			player.currentexp -= player.expmax;
@@ -82,7 +168,9 @@ void battle(entity& player, entity& enemy)
 		} 		else
 		{
 			player.health = temphealth;
+		
 		}
+		
 		return;
 	} 	else if (enemy.health > 0)
 	{
@@ -90,6 +178,7 @@ void battle(entity& player, entity& enemy)
 		cout << "\n You have died :[ \n";
 		cout << "----------------------\n";
 		player.health = temphealth;
+		
 		return;
 	} 	else
 	{
