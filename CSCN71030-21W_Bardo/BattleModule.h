@@ -4,3 +4,5 @@
 
 bool battleMain(entity& player);
 
+
+void credits3();
