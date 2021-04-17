@@ -26,88 +26,168 @@
 #include <stdio.h>
 #include <fstream>
 #include <string>
-#include "Shop.h"
+#include <windows.h>
+#include "seeInventory.h"
 
-// temp
-bool skillMain(entity* Player);
-bool crafting(entity* player);
-bool menu(entity* Player);
-
-bool menu(entity* Player) {
-    return false;
-}
-bool crafting(entity* player) {
-    return false;
-}
-bool skillMain(entity* Player) {
-    return false;
-}
-// temp
+void credits();
+void credits1();
+void credits2();
+void credits3();
+void credits4();
+void credits5();
 
 void printOptions();
-int main() { 
-   
 
-    user* Player = get_User("User");
+int main(int argc, char* argv[]) {
 
-    int choice = 0;
-    // <- INIT
 
-    while (true) {
-        system("cls");
-        printOptions();
-        choice = getc(stdin);
-        switch (choice) {
-        case 49: // 1
-            if (menu(Player) == false) {
-                ErrorLog("Battle Fail", "Severe");
-            }
-            break;
-        case 50: // 2
-            if (shopMain(Player) == false) {
-                ErrorLog("Shop failed", "Severe");
-            }
-            break;
-        case 51: // 3
-            if (crafting(Player) == false) {
-                ErrorLog("Crafting failed", "Severe");
-            }
-            break;
-        case 52: // 4
-            if (skillMain(Player) == false) {
-                ErrorLog("Skill Main failed", "Severe");
-            }
-            break;
-        case 53:
-            if (Save(Player) == false) {
-                ErrorLog("Save Error", "Severe");
-            }
-            break;
-        case 54: // 5
-            if (Save(Player) == false) {
-                ErrorLog("Save Error", "Severe");
-            }
-            exit(0);
-            break;
-        default:
-            break;
+	//DECRYPT("./GameFiles/UserFiles/User.BSURF");
+	//ENCRYPT("./GameFiles/Inventory/User.BINVF");
+	entity* Player = new user;
+	if (argc == 1) {
+		Player = startIO(Player);
+	}
+	if (argc >= 2)
+	{
+		string cmdInput = argv[1];
+		if (cmdInput == "0") {
+			Player = newGame();
+		} else if (cmdInput == "1")
+		{
+			Player = get_User("USER");
 
-        }
-       while ((getchar()) != '\n');
-    }
+			bool checkLoader = loadScreen(Player);
+			if (checkLoader == false)
+			{
+				Player = newGame();
+			}
+
+
+		}
+	}
+
+
+	int choice = 0;
+	// <- INIT
+
+	while (true) {
+		system("cls");
+		//printStats(Player);
+		printOptions();
+		while ((getchar()) != '\n');
+		choice = getc(stdin);
+		switch (choice) {
+		case 49: // 1
+			if (battleMain(*Player) == false) {
+				ErrorLog("Battle Fail", "Severe");
+			}
+			break;
+		case 50: // 2
+			if (shopMain(Player) == false) {
+				ErrorLog("Shop failed", "Severe");
+			}
+			break;
+		case 51: // 3
+			if (Crafting(Player) == false) {
+				ErrorLog("Crafting failed", "Severe");
+			}
+			break;
+		case 52: // 4
+			if (Skilltree(Player) == false) {
+				ErrorLog("Skill Main failed", "Severe");
+			}
+			break;
+		case 53:
+			if (Save(Player) == false) {
+				ErrorLog("Save Error", "Severe");
+			}
+			break;
+		case 54: // 5
+			if (Save(Player) == false) {
+				ErrorLog("Save Error", "Severe");
+			}
+			exit(0);
+			break;
+		case 55:
+			credits();
+			break;
+		default:
+			break;
+
+		}
+
+	}
+}
+void credits() {
+	credits1();
+	credits2();
+	credits3();
+	credits4();
+	credits5();
+}
+void credits1() {
+
+	int slash = 92;
+
+	system("cls");
+
+	cout << "  _____           _      _    _     ____                _       " << endl
+		<< " |  __ " << (char)slash << "         (_)    | |  | |   |  _ " << (char)slash << "              | |      " << endl
+		<< " | |__) | __ ___  _  ___| | _| |_  | |_) | __ _ _ __ __| | ___  " << endl
+		<< " |  ___/ '__/ _ " << (char)slash << "| |/ _ " << (char)slash << " |/ / __| |  _ < / _` | '__/ _` |/ _ " << (char)slash << " " << endl
+		<< " | |   | | | (_) | |  __/   <| |_  | |_) | (_| | | | (_| | (_) |" << endl
+		<< " |_|   |_|  " << (char)slash << "___/| |" << (char)slash << "___|_|=" << (char)slash
+		<< "_" << (char)slash << "" << (char)slash << "__| |____/ " << (char)slash << "__,_|_|  " << (char)slash << "__,_|" << (char)slash << "___/ " << endl
+		<< "                _/ |                                            " << endl
+		<< "               |__/                                             " << endl << endl;
+
+	Sleep(3500);
+	cout << "What is Projekt Bardo?" << endl;
+	Sleep(2000);
+	cout << "Console-Based RPG game" << endl;
+	Sleep(2000);
+	cout << "There Are 6 Modules" << endl << endl;
+	Sleep(2000);
+	cout << "The Game Includes:" << endl;
+	Sleep(1250);
+	cout << "\tTurn Based Battle" << endl;
+	Sleep(1250);
+	cout << "\tA Skill Tree" << endl;
+	Sleep(1250);
+	cout << "\tAn Economy" << endl;
+	Sleep(1250);
+	cout << "\tThe Ability to Craft Items" << endl;
+	Sleep(1250);
+	cout << "\tCharacter Creation and Personalization" << endl;
+	Sleep(1250);
+	cout << "\tFile IO Dependancy" << endl;
+	Sleep(1250);
+	cout << "\tMultiple Items And Weapons" << endl << endl;
+
+	pressAnyButtonToContinue("");
+	return;
+
+}
+void credits2() {
+}
+void credits3() {
+}
+void credits4() {
+}
+void credits5() {
 }
 
-
 void printOptions() {
-    cout << "Welcome to the Bardo home town please choose an option\n";
-    cout << "-------------------------------------------------------\n";
-    cout << endl;
-    cout << "1. Battle\n";
-    cout << "2. Shop\n";
-    cout << "3. Forge\n";
-    cout << "4. Skill tree\n";
-    cout << "5. Save Game\n";
-    cout << "6. Exit\n";
-    cout << "Enter : ";
+	cout << "Welcome to the Bardo home town please choose an option\n";
+	cout << "-------------------------------------------------------\n";
+	cout << endl;
+	cout << "1. Battle\n";
+	cout << "2. Shop\n";
+	cout << "3. Forge\n";
+	cout << "4. Skill tree\n";
+	cout << "5. Save Game\n";
+	cout << "6. Exit\n";
+	cout << "7. Project Details\n";
+	cout << "Enter : ";
 }
 
