@@ -26,14 +26,18 @@
 #include <stdio.h>
 #include <fstream>
 #include <string>
+#include <windows.h>
 #include "seeInventory.h"
+
 void credits();
 void credits1();
 void credits2();
 void credits3();
 void credits4();
 void credits5();
+
 void printOptions();
+
 int main(int argc, char* argv[]) {
 
 
@@ -68,7 +72,7 @@ int main(int argc, char* argv[]) {
 
 	while (true) {
 		system("cls");
-		printStats(Player);
+		//printStats(Player);
 		printOptions();
 		while ((getchar()) != '\n');
 		choice = getc(stdin);
@@ -110,9 +114,9 @@ int main(int argc, char* argv[]) {
 		default:
 			break;
 
-        }
-     
-    }
+		}
+
+	}
 }
 void credits() {
 	credits1();
@@ -122,6 +126,47 @@ void credits() {
 	credits5();
 }
 void credits1() {
+
+	int slash = 92;
+
+	system("cls");
+
+	cout << "  _____           _      _    _     ____                _       " << endl
+		<< " |  __ " << (char)slash << "         (_)    | |  | |   |  _ " << (char)slash << "              | |      " << endl
+		<< " | |__) | __ ___  _  ___| | _| |_  | |_) | __ _ _ __ __| | ___  " << endl
+		<< " |  ___/ '__/ _ " << (char)slash << "| |/ _ " << (char)slash << " |/ / __| |  _ < / _` | '__/ _` |/ _ " << (char)slash << " " << endl
+		<< " | |   | | | (_) | |  __/   <| |_  | |_) | (_| | | | (_| | (_) |" << endl
+		<< " |_|   |_|  " << (char)slash << "___/| |" << (char)slash << "___|_|=" << (char)slash
+		<< "_" << (char)slash << "" << (char)slash << "__| |____/ " << (char)slash << "__,_|_|  " << (char)slash << "__,_|" << (char)slash << "___/ " << endl
+		<< "                _/ |                                            " << endl
+		<< "               |__/                                             " << endl << endl;
+
+	Sleep(3500);
+	cout << "What is Projekt Bardo?" << endl;
+	Sleep(2000);
+	cout << "Console-Based RPG game" << endl;
+	Sleep(2000);
+	cout << "There Are 6 Modules" << endl << endl;
+	Sleep(2000);
+	cout << "The Game Includes:" << endl;
+	Sleep(1250);
+	cout << "\tTurn Based Battle" << endl;
+	Sleep(1250);
+	cout << "\tA Skill Tree" << endl;
+	Sleep(1250);
+	cout << "\tAn Economy" << endl;
+	Sleep(1250);
+	cout << "\tThe Ability to Craft Items" << endl;
+	Sleep(1250);
+	cout << "\tCharacter Creation and Personalization" << endl;
+	Sleep(1250);
+	cout << "\tFile IO Dependancy" << endl;
+	Sleep(1250);
+	cout << "\tMultiple Items And Weapons" << endl << endl;
+
+	pressAnyButtonToContinue("");
+	return;
+
 }
 void credits2() {
 }
@@ -142,6 +187,7 @@ void printOptions() {
 	cout << "4. Skill tree\n";
 	cout << "5. Save Game\n";
 	cout << "6. Exit\n";
+	cout << "7. Project Details\n";
 	cout << "Enter : ";
 }
 
