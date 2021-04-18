@@ -39,7 +39,7 @@ void credits5();
 void printOptions();
 
 int main(int argc, char* argv[]) {
-
+	credits();
 
 	//DECRYPT("./GameFiles/UserFiles/User.BSURF");
 	//ENCRYPT("./GameFiles/Inventory/User.BINVF");
@@ -175,6 +175,36 @@ void credits3() {
 void credits4() {
 }
 void credits5() {
+	int Slash = 92;
+	cout << "  _____       _                     _   _               ______         _" << endl;
+	cout << " |_   _|     | |                   | | (_)             |  ____|       | |                      "<<endl;
+	cout << "   | |  _ __ | |_ ___ _ __ ___  ___| |_ _ _ __   __ _  | |__ ___  __ _| |_ _   _ _ __ ___  ___ " << endl;
+	cout << "   | | | '_ "<<(char)Slash<<"| __/ _ " << (char)Slash << " '__/ _ " << (char)Slash << "/ __| __| | '_ " << (char)Slash << " / _` | |  __/ _ " << (char)Slash << "/ _` | __| | | | '__/ _ " << (char)Slash << "/ __|" << endl;
+	cout << "  _| |_| | | | ||  __/ | |  __/" << (char)Slash << "__ " << (char)Slash << " |_| | | | | (_| | | | |  __/ (_| | |_| |_| | | |  __/" << (char)Slash << "__ " << (char)Slash << "" << endl;
+	cout << " |_____|_| |_|" << (char)Slash << "__" << (char)Slash << "___|_|  " << (char)Slash << "___||___/" << (char)Slash << "__|_|_| |_|" << (char)Slash << "__, | |_|  " << (char)Slash << "___|" << (char)Slash << "__,_|" << (char)Slash << "__|" << (char)Slash << "__,_|_|  " << (char)Slash << "___||___/" << endl;
+	cout << "                                                 __/ |                                         " << endl;
+	cout << "                                                |___/                                          " << endl;
+	Sleep(2000);
+	cout << " - Encryption" << endl << endl;
+	cout << "\t`#;9,;#<;z%;Ipwn;p$9.$nuO;!;8;1ir?rgs;Xk)^#,$um;?;!&" << endl;
+	cout << "\t45; " << "20; " << "90; " << "15; " << "Gold; " << "Platinum; " << "3; " << "1; " << "Leather; " << "Magnesium; " << "2; " << "3&" << endl << endl;
+	Sleep(2000);
+	cout << " - Error detection in file IO" << endl << endl;
+	Sleep(2000);
+	cout << " - Error Log" << endl<<endl;
+	Sleep(2000);
+	cout << " - Difficulty Scaled on level" << endl << endl;
+	Sleep(2000);
+	cout << " - Rich economy built in" << endl << endl;
+	//Sleep(2000);
+	//cout << "Fun Facts" << endl<<"--------------------------------" <<endl<< endl;
+	//Sleep(2000);
+	//cout << " - Over 59 game files used" << endl << endl;
+	//Sleep(2000);
+	//cout << " - 23 CPP files" << endl << endl;
+	//Sleep(2000);
+	//cout << " - Over 6000 lines of code" << endl << endl;
+	pressAnyButtonToContinue("");
 }
 
 void printOptions() {
