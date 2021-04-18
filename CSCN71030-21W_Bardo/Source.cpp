@@ -136,8 +136,7 @@ void credits1() {
 		<< " | |__) | __ ___  _  ___| | _| |_  | |_) | __ _ _ __ __| | ___  " << endl
 		<< " |  ___/ '__/ _ " << (char)slash << "| |/ _ " << (char)slash << " |/ / __| |  _ < / _` | '__/ _` |/ _ " << (char)slash << " " << endl
 		<< " | |   | | | (_) | |  __/   <| |_  | |_) | (_| | | | (_| | (_) |" << endl
-		<< " |_|   |_|  " << (char)slash << "___/| |" << (char)slash << "___|_|=" << (char)slash
-		<< "_" << (char)slash << "" << (char)slash << "__| |____/ " << (char)slash << "__,_|_|  " << (char)slash << "__,_|" << (char)slash << "___/ " << endl
+		<< " |_|   |_|  " << (char)slash << "___/| |" << (char)slash << "___|_|=" << (char)slash << "_"  << "" << (char)slash << "__| |____/ " << (char)slash << "__,_|_|  " << (char)slash << "__,_|" << (char)slash << "___/ " << endl
 		<< "                _/ |                                            " << endl
 		<< "               |__/                                             " << endl << endl;
 
@@ -163,12 +162,33 @@ void credits1() {
 	cout << "\tFile IO Dependancy" << endl;
 	Sleep(1250);
 	cout << "\tMultiple Items And Weapons" << endl << endl;
-
+	Sleep(750);
 	pressAnyButtonToContinue("");
 	return;
 
 }
 void credits2() {
+	int slash = 92;
+	system("cls");
+	cout << "  _______       ___" << endl;
+	cout << " |__   __|      | |" << endl;
+	cout << "    | | ___  ___| |__ __" << endl;
+	cout << "    | |/ _ " << (char)slash << "/ __| __/ __| " << endl;
+	cout << "    | |  __/" << (char)slash << "__ " << (char)slash << " |_" << (char)slash << "__ " << (char)slash << " " << endl;
+	cout << "    |_|" << (char)slash << "___||___/" << (char)slash << "__|___/ " << endl << endl;
+	Sleep(2500);
+	cout << "Total number of tests: 55" << endl;
+	Sleep(1500);
+	cout << "Passed tests: 49" << endl;
+	Sleep(1500);
+	cout << "Failed tests: 6" << endl;
+	Sleep(1500);
+	cout << "Pass rate: 89.10%" << endl;
+	Sleep(1500);
+	cout << "Fail rate: 10.90%" << endl << endl;
+	Sleep(750);
+	pressAnyButtonToContinue("");
+	return;
 }
 void credits3()
 {
