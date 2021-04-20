@@ -36,7 +36,7 @@ bool Checksum(string name, int size); // verify size of file matches what its su
 bool VerifyAllFiles(); // runs checksum on all files to verify they are the proper size also verifies all files exist
 #ifdef _WIN32 // only run in windows OS
 void HideFile(string name, int type); // hide file from user
-void ShowFile(string name);
+void ShowFile(string name); // unhides a file or directory from the system/user
 #endif
 
-int getCheckSum(string name);
+int getCheckSum(string name); // returns the checksum of a given file

@@ -37,6 +37,12 @@
     <Filter Include="Header Files\Other">
       <UniqueIdentifier>{64a25392-d435-4f16-b8bd-d42797d7dc1c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Crafting">
+      <UniqueIdentifier>{79425ff1-15da-4b44-b1b1-bd4d8a9c1025}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Crafting">
+      <UniqueIdentifier>{49f13f41-72fa-4af5-8459-6b5320231935}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp">
@@ -92,6 +98,24 @@
     </ClCompile>
     <ClCompile Include="Character.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="By_Search.cpp">
+      <Filter>Source Files\Backend</Filter>
+    </ClCompile>
+    <ClCompile Include="By_Type.cpp">
+      <Filter>Source Files\Backend</Filter>
+    </ClCompile>
+    <ClCompile Include="Crafting.cpp">
+      <Filter>Source Files\Crafting</Filter>
+    </ClCompile>
+    <ClCompile Include="craftItem.cpp">
+      <Filter>Source Files\Crafting</Filter>
+    </ClCompile>
+    <ClCompile Include="seeInventory.cpp">
+      <Filter>Source Files\Backend</Filter>
+    </ClCompile>
+    <ClCompile Include="StarterMenu.cpp">
+      <Filter>Source Files\Crafting</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -151,6 +175,18 @@
     </ClInclude>
     <ClInclude Include="Objects.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Crafting.h">
+      <Filter>Header Files\Crafting</Filter>
+    </ClInclude>
+    <ClInclude Include="craftItem.h">
+      <Filter>Header Files\Crafting</Filter>
+    </ClInclude>
+    <ClInclude Include="seeInventory.h">
+      <Filter>Header Files\Backend</Filter>
+    </ClInclude>
+    <ClInclude Include="StarterMenu.h">
+      <Filter>Header Files\Crafting</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

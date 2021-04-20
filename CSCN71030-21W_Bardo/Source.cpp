@@ -28,7 +28,6 @@
 #include <string>
 #include <windows.h>
 #include "seeInventory.h"
-
 void credits();
 void credits1();
 void credits2();
@@ -39,10 +38,7 @@ void credits5();
 void printOptions();
 
 int main(int argc, char* argv[]) {
-	credits();
 
-	//DECRYPT("./GameFiles/UserFiles/User.BSURF");
-	//ENCRYPT("./GameFiles/Inventory/User.BINVF");
 	entity* Player = new user;
 	if (argc == 1) {
 		Player = startIO(Player);
@@ -72,50 +68,59 @@ int main(int argc, char* argv[]) {
 
 	while (true) {
 		system("cls");
-		//printStats(Player);
+		printStats(Player);
 		printOptions();
-		while ((getchar()) != '\n');
-		choice = getc(stdin);
+	
+		scanf_s("%d", &choice);
 		switch (choice) {
-		case 49: // 1
+		case 1: // 1
 			if (battleMain(*Player) == false) {
+				pressAnyButtonToContinue("Battle failed press any button to continue...");
 				ErrorLog("Battle Fail", "Severe");
 			}
 			break;
-		case 50: // 2
+		case 2: // 2
 			if (shopMain(Player) == false) {
+				pressAnyButtonToContinue("Shop failed press any button to continue...");
 				ErrorLog("Shop failed", "Severe");
 			}
 			break;
-		case 51: // 3
+		case 3: // 3
 			if (Crafting(Player) == false) {
+				pressAnyButtonToContinue("Crafting failed press any button to continue...");
 				ErrorLog("Crafting failed", "Severe");
 			}
 			break;
-		case 52: // 4
+		case 4: // 4
 			if (Skilltree(Player) == false) {
+				pressAnyButtonToContinue("Skill Tree failed press any button to continue...");
 				ErrorLog("Skill Main failed", "Severe");
 			}
 			break;
-		case 53:
+		case 5:
 			if (Save(Player) == false) {
+				pressAnyButtonToContinue("Could not save your game...");
 				ErrorLog("Save Error", "Severe");
+				break;
 			}
+			pressAnyButtonToContinue("Game Saved press any button to continue...");
 			break;
-		case 54: // 5
+		case 6: // 5
 			if (Save(Player) == false) {
+
 				ErrorLog("Save Error", "Severe");
 			}
 			exit(0);
 			break;
-		case 55:
+		case 7:
 			credits();
 			break;
 		default:
+			char c;
+			scanf("%c%*[^\n]%*c", &c);
 			break;
-
 		}
-
+	
 	}
 }
 void credits() {
@@ -140,7 +145,7 @@ void credits1() {
 		<< "                _/ |                                            " << endl
 		<< "               |__/                                             " << endl << endl;
 
-	Sleep(3500);
+	Sleep(1500);
 	cout << "What is Projekt Bardo?" << endl;
 	Sleep(2000);
 	cout << "Console-Based RPG game" << endl;
@@ -202,10 +207,15 @@ void credits3()
 
 	printf("\nThe main issues were as follows:\n");
 	printf("1. The player would heal when the enemies would attack them. \nThis was due to the damage value being less than the defence stat of the player and the damage going into the negatives.\n\n");
-	printf("2. Get weapons had poorly formatted data files which led to cascading issues.\n\n");
-	printf("3. Get defence did not increment a variable that was cruicial to its function. \n\n");
-	printf("4. Merge errors that led us to take much more time than needed for integration.\n\n");
-	printf("5. As seen earlier we had 2219 errors after merging which had to be sorted out but they turned out to be mostly include errors.\n");
+	Sleep(2000);
+	printf("2. Get weapons had poorly formatted data files which led to cascading issues.\n\n"); 
+	Sleep(2000);
+	printf("3. Get defence did not increment a variable that was cruicial to its function. \n\n"); 
+	Sleep(2000);
+	printf("4. Merge errors that led us to take much more time than needed for integration.\n\n"); 
+	Sleep(2000);
+	printf("5. As seen earlier we had 2219 errors after merging which had to be sorted out but they turned out to be mostly include errors.\n"); 
+	Sleep(2000);
 
 	pressAnyButtonToContinue("");
 	system("cls");
