@@ -22,7 +22,7 @@
 #include "seeInventory.h"
 
 bool Crafting(entity* player) {
-
+	system("cls");
 	int userInput = 0;
 	while (userInput != 3) {
 
