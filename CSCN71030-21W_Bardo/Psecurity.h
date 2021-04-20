@@ -29,7 +29,7 @@
 #include <stdlib.h>
 #include <string>
 #include <fstream>
-#include "FileIO.h"
+
 
 using namespace std;
 
@@ -45,7 +45,7 @@ void DECRYPT(string name); // decrypts entire file
 * Public functionality includes encryption and decryption of an entire file
 */
 class encrypt {
-private:
+public:
 #define KEY "Cihper!kcblk@3976" // hardcoded password for encryption and decryption
 
 	int location = 0; // location in the password matched with input for encryption and decryption
@@ -142,10 +142,7 @@ public:
 		fstream file;
 		fstream File2;
 
-		if (!FileExists(name)) {
-			ErrorLog("File Does not exist in encrypt", "Average");
-			return;
-		}
+
 		string name2 = name + "2";
 		File2.open(name2, ios::out);
 		file.open(name, ios::in);

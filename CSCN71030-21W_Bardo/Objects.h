@@ -61,6 +61,10 @@ public:
 
 class potion {
 public:
+	ErrorType failed = GOOD;
+	int Power = 0;
+	string craftingItems[MAX_MATERIALS];
+	int craftingItemsNum[MAX_MATERIALS];
 	string BarterItems[MAX_MATERIALS];
 	int BarterItemsNum[MAX_MATERIALS];
 	string name;
@@ -143,8 +147,8 @@ public:
 	}
 	int attack(entity& entity, int damage) override
 	{
-		int randDmg = 100000;
-		//randDmg = rand() % BASE_DMG + damage + entity.Weapon.damage;
+		int randDmg = 0;
+		randDmg = rand() % BASE_DMG + damage + entity.Weapon.damage;
 		if (entity.blockval != 0)
 		{
 			randDmg %= (2 + entity.blockval);
@@ -182,6 +186,23 @@ public:
 	}
 	void spellmenu(entity& enemy, entity& player)
 	{
+		int flag = 0;
+		for (int i = 0; i < MAX_ITEMS; i++)
+		{
+			if (enemy.INV->Items[i].name == "Scroll")
+			{
+				player.INV->ItemCount[i]--;
+				if(player.INV->ItemCount[i] == 0) {
+					player.INV->Items[i].name = "";
+				}
+				flag++;
+			}
+			if (flag == 0) {
+				cout << "You do not have a scroll...";
+				getc(stdin);
+				return;
+			}
+		}
 		char spell = 0;
 		char asd;
 		cout << endl << "What spell do you wish to use?" << endl;
