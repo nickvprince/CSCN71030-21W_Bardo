@@ -27,6 +27,7 @@ bool Crafting(entity* player) {
 	while (userInput != 3) {
 
 		StarterMenu();
+		cout << "Enter: ";
 		cin >> userInput;
 		system("cls");
 
@@ -43,7 +44,6 @@ bool Crafting(entity* player) {
 			seeInventory(player);
 			break;
 		case 3: // Exit
-			cout << "Farewell adventurer." << endl;
 			break;
 		}
 	}
