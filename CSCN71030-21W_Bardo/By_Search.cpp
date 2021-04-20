@@ -6,7 +6,6 @@
 #include <ctype.h>
 #include "seeInventory.h"
 
-
 void By_Search(entity *p) {
 	string find_item;
 	while (find_item != "exit") {

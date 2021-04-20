@@ -163,7 +163,7 @@ void battle(entity& player, entity& enemy)
 			}
 		}
 
-
+		system("pause >nul");
 
 
 		if (player.currentexp >= player.expmax)
@@ -176,7 +176,7 @@ void battle(entity& player, entity& enemy)
 			player.health = temphealth;
 		
 		}
-		
+	
 		return;
 	} 	else if (enemy.health > 0)
 	{

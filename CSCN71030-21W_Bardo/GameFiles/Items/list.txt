@@ -7,4 +7,5 @@ Paper;
 Platinum;
 Silver;
 Water;
-Scroll&
+Scroll;
+Wood&

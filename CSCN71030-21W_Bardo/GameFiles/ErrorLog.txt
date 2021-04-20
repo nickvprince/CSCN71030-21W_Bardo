@@ -143,3 +143,6 @@ File Exists Fail | Severity : Average 2021/3/20 13:36:5EST
 File Exists Fail | Severity : Average 2021/3/20 13:36:5EST
 File Exists Fail | Severity : Average 2021/3/20 13:36:5EST
 File Exists Fail | Severity : Average 2021/3/20 13:36:5EST
+Error occured during weapon file retrieval, invalid item name - Module: Craft | Severity : Medium 2021/3/20 16:44:11EST
+Error occured during weapon file retrieval, invalid item name - Module: Craft | Severity : Medium 2021/3/20 16:44:15EST
+Error occured during weapon file retrieval, invalid item name - Module: Craft | Severity : Medium 2021/3/20 16:44:17EST
