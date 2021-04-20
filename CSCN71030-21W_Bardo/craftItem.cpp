@@ -20,7 +20,7 @@ void craftItem(entity* p) {		// Function asks user what type of item to craft an
 	bool allValid = true;
 	bool exists = false;
 	bool complete = false;
-	string item_craft;
+	int item_craft;
 
 	if (p->INV->itemsUsed == MAX_ITEMS) {
 		cout << "You already have " << MAX_ITEMS << " in your inventory" << endl;
@@ -28,12 +28,13 @@ void craftItem(entity* p) {		// Function asks user what type of item to craft an
 	}
 
 	while (item_type != 3) {
-		item_craft = "";
+		item_craft = 50;
 		if (p->INV->itemsUsed == MAX_ITEMS) { break; }
-		cout << "Select the type of item you wish to craft" << endl;
+		cout << "Enter the type of item you wish to craft" << endl;
 		cout << "1 - Shield" << endl;
 		cout << "2 - Weapon" << endl;
 		cout << "3 - Exit" << endl << endl;
+		cout << "Enter: ";
 		cin >> item_type;
 		system("cls");
 
@@ -45,28 +46,35 @@ void craftItem(entity* p) {		// Function asks user what type of item to craft an
 		switch (item_type) {
 		case 1:
 			if (p->INV->itemsUsed == MAX_ITEMS) { break; }
-			while (item_craft != "exit") {
+			while (item_craft != 0) {
 				for (int q = 0; q < MAX_MATERIALS; q++) {
 					validAmountItems[q] = false;
 				}
-				cout << "Type the shield you wish to craft. Type <exit> to exit." << endl << endl;
+				cout << "Enter the shield you wish to craft. Type 0 to exit." << endl << endl;
 				list* shield_list = new list;
 				shield_list = getListDefences();
-				printList(shield_list, 0);
+				printList(shield_list, 1);
 				cout << endl;
+				cout << "Enter: ";
 				cin >> item_craft;
 				system("cls");
 
-				if (item_craft == "exit") {
+				if (cin.fail()) { // input verification check
+					cin.clear();
+					cin.ignore(numeric_limits<streamsize>::max(), '\n');
 					break;
 				}
 
-				string file_Name = DEFENCEDIR + item_craft + ".BAMF";
+				if (item_craft == 0) {
+					break;
+				}
+
+				string file_Name = DEFENCEDIR + shield_list->names[item_craft-1] + ".BAMF";
 				if ((FileExists(file_Name)) == false) {
 					ErrorLog("Error occured during weapon file retrieval, invalid item name - Module: Craft", "Medium");
 					break;
 				}
-				defence craft_shield = get_Defence(item_craft);
+				defence craft_shield = get_Defence(shield_list->names[item_craft - 1]);
 
 				if (p->level < craft_shield.level) {
 					cout << "Insufficient level to craft item" << endl;
@@ -169,29 +177,36 @@ void craftItem(entity* p) {		// Function asks user what type of item to craft an
 			}
 			break;
 		case 2:
-			while (item_craft != "exit") {
+			while (item_craft != 0) {
 				for (int q = 0; q < MAX_MATERIALS; q++) {
 					validAmountItems[q] = false;
 				}
 				if (p->INV->itemsUsed == MAX_ITEMS) { break; }
-				cout << "Type the weapon you wish to craft. Type <exit> to exit." << endl << endl;
+				cout << "Enter the weapon you wish to craft. Type 0 to exit." << endl << endl;
 				list* weapons_list = new list;
 				weapons_list = getListWeapons();
-				printList(weapons_list, 0);
+				printList(weapons_list, 1);
 				cout << endl;
+				cout << "Enter: ";
 				cin >> item_craft;
 				system("cls");
 
-				if (item_craft == "exit") {
+				if (cin.fail()) { // input verification check
+					cin.clear();
+					cin.ignore(numeric_limits<streamsize>::max(), '\n');
 					break;
 				}
 
-				string file_Name = WEAPONDIR + item_craft + ".BWPF";
+				if (item_craft == 0) {
+					break;
+				}
+
+				string file_Name = WEAPONDIR + weapons_list->names[item_craft-1] + ".BWPF";
 				if ((FileExists(file_Name)) == false) {
 					ErrorLog("Error occured during weapon file retrieval, invalid item name - Module: Craft", "Medium");
 					break;
 				}
-				weapon craft_weapon = get_Weapon(item_craft);
+				weapon craft_weapon = get_Weapon(weapons_list->names[item_craft - 1]);
 
 				if (p->level < craft_weapon.level) {
 					cout << "Insufficient level to craft item" << endl;
