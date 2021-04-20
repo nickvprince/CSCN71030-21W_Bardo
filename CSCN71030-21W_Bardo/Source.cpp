@@ -116,8 +116,7 @@ int main(int argc, char* argv[]) {
 			credits();
 			break;
 		default:
-			char c;
-			scanf("%c%*[^\n]%*c", &c);
+	
 			break;
 		}
 	
@@ -197,43 +196,87 @@ void credits2() {
 }
 void credits3()
 {
-	int i = 91;
-	printf("  _____                             \n");
-	printf(" |_   _|                            \n");
-	printf("   | |  ___ ___ _   _  ___  ___     \n");
-	printf("   | | / __/ __| | | |/ _ %c/ __|    \n", i);
-	printf("  _| |_%c__ %c__ %c |_| |  __/%c__ %c    \n", i, i, i, i, i);
-	printf(" |_____|___/___/%c__,_|%c___||___/    \n", i, i);
+	system("cls");
+	int slash = 92;
 
-	printf("\nThe main issues were as follows:\n");
-	printf("1. The player would heal when the enemies would attack them. \nThis was due to the damage value being less than the defence stat of the player and the damage going into the negatives.\n\n");
-	Sleep(2000);
-	printf("2. Get weapons had poorly formatted data files which led to cascading issues.\n\n"); 
-	Sleep(2000);
-	printf("3. Get defence did not increment a variable that was cruicial to its function. \n\n"); 
-	Sleep(2000);
-	printf("4. Merge errors that led us to take much more time than needed for integration.\n\n"); 
-	Sleep(2000);
-	printf("5. As seen earlier we had 2219 errors after merging which had to be sorted out but they turned out to be mostly include errors.\n"); 
-	Sleep(2000);
+	cout << "  _____                         " << endl;
+	cout << " |_   _|                        " << endl;
+	cout << "   | |  ___ ___ _   _  ___  ___ " << endl;
+	cout << "   | | / __/ __| | | |/ _ " << char(slash) << "/ __|" << endl;
+	cout << "  _| |_" << char(slash) << "__ " << char(slash) << "__ " << char(slash) << " |_| |  __/" << char(slash) << "__ " << char(slash) << "" << endl;
+	cout << " |_____|___/___/" << char(slash) << "__,_|" << char(slash) << "___||___/" << endl;
 
+
+
+	Sleep(2000);
+	cout << "The main issues were as follows:" << endl << endl;
+	Sleep(2000);
+	cout << "1. The player would heal when the enemies would attack them. " << endl << "This was due to the damage value being less than the defence stat of the player and the damage going into the negatives." << endl << endl;
+	Sleep(2000);
+	cout << "2. Get weapons had poorly formatted data files which led to cascading issues." << endl << endl;
+	Sleep(2000);
+	cout << "3. Get defence did not increment a variable that was cruicial to its function. " << endl << endl;
+	Sleep(2000);
+	cout << "4. Merge errors that led us to take much more time than needed for integration." << endl << endl;
+	Sleep(2000);
+	cout << "5. As seen earlier we had 2219 errors after merging which had to be sorted out but they turned out to be mostly include errors." << endl;
+	Sleep(2000);
 	pressAnyButtonToContinue("");
 	system("cls");
 
-	printf("  _____                           ______ _              _ \n");
-	printf(" |_   _|                         |  ____(_)            | |\n");
-	printf("   | |  ___ ___ _   _  ___  ___  | |__   ___  _____  __| |\n");
-	printf("   | | / __/ __| | | |/ _ %c/ __| |  __| | %c %c/ / _ %c/ _` |\n", i, i, i, i);
-	printf("  _| |_%c__ %c__ %c |_| |  __/%c__ %c | |    | |>  <  __/ (_| |\n", i, i, i, i, i);
-	printf(" |_____|___/___/%c__,_|%c___||___/ |_|    |_/_/%c_%c___|%c__,_|\n", i, i, i, i, i);
+	cout << "  _____                           ______ _              _ " << endl;
+	cout << " |_   _|                         |  ____(_)            | |" << endl;
+	cout << "   | |  ___ ___ _   _  ___  ___  | |__   ___  _____  __| |" << endl;
+	cout << "   | | / __/ __| | | |/ _ " << char(slash) << "/ __| |  __| | " << char(slash) << " " << char(slash) << "/ / _ " << char(slash) << "/ _` |" << endl;
+	cout << "  _| |_" << char(slash) << "__ " << char(slash) << "__ " << char(slash) << " |_| |  __/" << char(slash) << "__ " << char(slash) << " | |    | |>  <  __/ (_| |" << endl;
+	cout << " |_____|___/___/" << char(slash) << "__,_|" << char(slash) << "___||___/ |_|    |_/_/" << char(slash) << "_" << char(slash) << "___|" << char(slash) << "__,_|" << endl;
 
-	printf("\nIn the end everything ended up passing.\n\n");
-	printf("To fix these we had an excessively 11 and a half hour call re-analyzing algorithms and fixing and merging all that was left.\n\n\n");
 
+	Sleep(2000);
+	cout << "In the end everything ended up passing." << endl << endl;
+	Sleep(2000);
+	cout << "To fix these we had an excessively 11 and a half hour call re-analyzing algorithms and fixing and merging all that was left." << endl << endl;
+	Sleep(2000);
 	pressAnyButtonToContinue("");
 
 }
-void credits4() {
+void credits4()
+{
+	system("cls");
+	int slash = 92;
+	cout << "  _____                                                         _       " << endl;
+	cout << " |_   _|                                                       | |      " << endl;
+	cout << "   | |  _ __ ___  _ __  _ __ _____   _____ _ __ ___   ___ _ __ | |_ ___ " << endl;
+	cout << "   | | | '_ ` _ " << char(slash) << "| '_ " << char(slash) << "| '__/ _ " << char(slash) << " " << char(slash) << " / / _ " << char(slash) << " '_ ` _ " << char(slash) << " / _ " << char(slash) << " '_ " << char(slash) << "| __/ __|" << endl;
+	cout << "  _| |_| | | | | | |_) | | | (_) " << char(slash) << " V /  __/ | | | | |  __/ | | | |_" << char(slash) << "__ " << char(slash) << "" << endl;
+	cout << " |_____|_| |_| |_| .__/|_|  " << char(slash) << "___/ " << char(slash) << "_/ " << char(slash) << "___|_| |_| |_|" << char(slash) << "___|_| |_|" << char(slash) << "__|___/" << endl;
+	cout << "                 | |                                                    " << endl;
+	cout << "                 |_|                                                    " << endl;
+	Sleep(2000);
+	cout << "Create a login system where players can create multiple profiles; current program is restricted to one character at any given time" << endl << endl;
+	Sleep(2000);
+	cout << "Implement a simple AI system for the battle mode" << endl << endl;
+	Sleep(2000);
+	cout << "Create a difficulty system for the game. Users can select different modes (Beginner, Intermediate, Hard, Harder than hard)" << endl << endl;
+	Sleep(2000);
+	cout << "System would scale the values up according to difficulty selected" << endl << endl;
+	Sleep(2000);
+	pressAnyButtonToContinue("");
+	system("cls");
+	cout << "  _______                     _____                                                         _       " << endl;
+	cout << " |__   __|                   |_   _|                                                       | |      " << endl;
+	cout << "    | | ___  __ _ _ __ ___     | |  _ __ ___  _ __  _ __ _____   _____ _ __ ___   ___ _ __ | |_ ___ " << endl;
+	cout << "    | |/ _ " << char(slash) << "/ _` | '_ ` _ " << char(slash) << "    | | | '_ ` _ " << char(slash) << "| '_ " << char(slash) << "| '__/ _ " << char(slash) << " " << char(slash) << " / / _ " << char(slash) << " '_ ` _ " << char(slash) << " / _ " << char(slash) << " '_ " << char(slash) << "| __/ __|" << endl;
+	cout << "    | |  __/ (_| | | | | | |  _| |_| | | | | | |_) | | | (_) " << char(slash) << " V /  __/ | | | | |  __/ | | | |_" << char(slash) << "__ " << char(slash) << "" << endl;
+	cout << "    |_|" << char(slash) << "___|" << char(slash) << "__,_|_| |_| |_| |_____|_| |_| |_| .__/|_|  " << char(slash) << "___/ " << char(slash) << "_/ " << char(slash) << "___|_| |_| |_|" << char(slash) << "___|_| |_|" << char(slash) << "__|___/" << endl;
+	cout << "                                             | |                                                    " << endl;
+	cout << "                                             |_|                                                    " << endl;
+	Sleep(2000);
+	cout << "Time Management" << endl << endl;
+	Sleep(2000);
+	cout << "Talk about the interface" << endl << endl;
+	Sleep(2000);
+	pressAnyButtonToContinue("");
 }
 void credits5() {
 	system("cls");
