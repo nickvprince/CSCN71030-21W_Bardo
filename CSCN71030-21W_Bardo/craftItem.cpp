@@ -65,7 +65,7 @@ void craftItem(entity* p) {		// Function asks user what type of item to craft an
 					break;
 				}
 
-				if (item_craft == 0) {
+				if (item_craft == 0 || item_craft < 0 || item_craft - 1 >= (int)sizeof(shield_list)) {
 					break;
 				}
 
@@ -197,7 +197,7 @@ void craftItem(entity* p) {		// Function asks user what type of item to craft an
 					break;
 				}
 
-				if (item_craft == 0) {
+				if (item_craft == 0 || item_craft < 0 || item_craft - 1 >= 13){
 					break;
 				}
 
