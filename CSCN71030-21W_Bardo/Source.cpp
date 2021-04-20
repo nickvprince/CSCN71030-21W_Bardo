@@ -28,7 +28,6 @@
 #include <string>
 #include <windows.h>
 #include "seeInventory.h"
-#define CLEAR_BUFFER_SIZE 100
 void credits();
 void credits1();
 void credits2();
@@ -76,28 +75,35 @@ int main(int argc, char* argv[]) {
 		switch (choice) {
 		case 1: // 1
 			if (battleMain(*Player) == false) {
+				pressAnyButtonToContinue("Battle failed press any button to continue...");
 				ErrorLog("Battle Fail", "Severe");
 			}
 			break;
 		case 2: // 2
 			if (shopMain(Player) == false) {
+				pressAnyButtonToContinue("Shop failed press any button to continue...");
 				ErrorLog("Shop failed", "Severe");
 			}
 			break;
 		case 3: // 3
 			if (Crafting(Player) == false) {
+				pressAnyButtonToContinue("Crafting failed press any button to continue...");
 				ErrorLog("Crafting failed", "Severe");
 			}
 			break;
 		case 4: // 4
 			if (Skilltree(Player) == false) {
+				pressAnyButtonToContinue("Skill Tree failed press any button to continue...");
 				ErrorLog("Skill Main failed", "Severe");
 			}
 			break;
 		case 5:
 			if (Save(Player) == false) {
+				pressAnyButtonToContinue("Could not save your game...");
 				ErrorLog("Save Error", "Severe");
+				break;
 			}
+			pressAnyButtonToContinue("Game Saved press any button to continue...");
 			break;
 		case 6: // 5
 			if (Save(Player) == false) {
@@ -114,8 +120,7 @@ int main(int argc, char* argv[]) {
 			scanf("%c%*[^\n]%*c", &c);
 			break;
 		}
-		char c;
-		scanf("%c%*[^\n]%*c", &c);
+	
 	}
 }
 void credits() {

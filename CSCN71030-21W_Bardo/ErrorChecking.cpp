@@ -87,6 +87,7 @@ bool Checksum(string name, int size) { // verify size of file matches what its s
 
 int getCheckSum(string name) {
 	fstream file;
+	
 	int length = 0;
 	unsigned int sum = 0;
 	char input = 'a';

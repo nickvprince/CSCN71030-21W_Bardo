@@ -17,10 +17,10 @@
 *	Object classes named : weapon, defence, potion, spell, inventory, user, enemy
 *	base weapon variables defined, class item created
 */
-#define MAX_MATERIALS 10
-#define MAX_ITEMS 20 
-#define MAX_NUM_FILES 15
-#define BASE_DMG 5
+#define MAX_MATERIALS 10 // max number of crafting/Bartering materials for an item
+#define MAX_ITEMS 20  // max number of items in a players inventory
+#define MAX_NUM_FILES 15 // max files that can be found in a directory
+#define BASE_DMG 5 // base damage of characters and enemies
 using namespace std;
 #include <iostream>
 #include <stdio.h>
@@ -98,8 +98,8 @@ public:
 	inventory* INV; // items an enemy could drop in combat
 	ErrorType failed = GOOD;
 	int defence = 0, health = 0, level = 1, damage = 0, currentexp = 0, gold = 0;
-	int skillpoints = 0; 
-	int Skills[3];
+	int skillpoints = 0;  // unspent skill points
+	int Skills[3]; // Health, Defence, attack
 	int blockval = 0, runCon = 0, expmax = 600, burnCon = 0;
 
 	virtual int attack(entity& entity, int damage) = 0;
