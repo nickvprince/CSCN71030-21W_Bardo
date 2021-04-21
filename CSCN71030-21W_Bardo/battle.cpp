@@ -152,6 +152,10 @@ void battle(entity& player, entity& enemy)
 			{
 				for (int b = 0; b < MAX_ITEMS; b++)
 				{
+					if (enemy.INV->Items[i].name == player.INV->Items[b].name) {
+						player.INV->ItemCount[b]++;
+						break;
+					}
 					if (player.INV->Items[b].name == "" && player.INV->itemsUsed != MAX_ITEMS && player.INV->ItemCount[b] == 0)
 					{
 						player.INV->Items[b] = enemy.INV->Items[i];

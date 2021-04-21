@@ -213,6 +213,18 @@ void craftItem(entity* p) {		// Function asks user what type of item to craft an
 					break;
 				}
 
+				for (int i = 0; i < MAX_ITEMS; i++) {
+					if (p->INV->Items[i].name == "") {
+						namesEmpty[i] = true;
+					}
+				}
+
+				for (int i = 0; i < MAX_ITEMS; i++) {
+					if (namesEmpty[i] == false) {
+						allNamesEmpty = false;
+					}
+				}
+
 				for (int i = 0; i < MAX_ITEMS; i++) { // check for valid crafting items
 					for (int j = 0; j < sizeof(craft_weapon.craftingItems) / sizeof(string); j++) {
 						if (craft_weapon.craftingItems[j] == p->INV->Items[i].name) {
@@ -239,8 +251,7 @@ void craftItem(entity* p) {		// Function asks user what type of item to craft an
 						}
 					}
 					cout << endl;
-					return;
-
+					break;
 				}
 
 				for (int i = 0; i < MAX_ITEMS; i++) { // remove crafting items
@@ -280,7 +291,7 @@ void craftItem(entity* p) {		// Function asks user what type of item to craft an
 					}
 				}
 				if (complete == true) {
-					cout << craft_weapon.name << "was crafted and added to inventory" << endl << endl;
+					cout << craft_weapon.name << " was crafted and added to inventory" << endl << endl;
 					exists = false;
 				}
 				else {
