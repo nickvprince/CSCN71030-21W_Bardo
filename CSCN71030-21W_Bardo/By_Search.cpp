@@ -6,12 +6,11 @@
 #include <ctype.h>
 #include "seeInventory.h"
 
-
 void By_Search(entity *p) {
 	string find_item;
 	while (find_item != "exit") {
 		bool found_item = false;
-		cout << "Enter the item name to search (type <exit> to quit): "; 
+		cout << "Enter the item name to search (type <exit> to exit): "; 
 		getline(cin, find_item);
 		system("cls");
 		if (find_item != "") {

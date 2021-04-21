@@ -75,6 +75,12 @@ void battle(entity& player, entity& enemy)
 		cout << "-------------------------\n";
 		player.currentexp += enemy.currentexp;
 
+		cout << endl;
+
+		cout << "\n-------------------------";
+		cout << "\n You have gained " << enemy.gold << "gold " << endl;
+		cout << "-------------------------\n";
+		player.gold += enemy.gold;
 
 		for (int i = 0; i < MAX_ITEMS; i++)
 		{
@@ -157,7 +163,7 @@ void battle(entity& player, entity& enemy)
 			}
 		}
 
-
+		system("pause >nul");
 
 
 		if (player.currentexp >= player.expmax)
@@ -170,7 +176,7 @@ void battle(entity& player, entity& enemy)
 			player.health = temphealth;
 		
 		}
-		
+	
 		return;
 	} 	else if (enemy.health > 0)
 	{

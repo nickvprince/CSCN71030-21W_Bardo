@@ -3,7 +3,7 @@
 using namespace std;
 
 void StarterMenu() {
-
+	system("cls");
 	cout << "Welcome adventurer, what would you like to craft?" << endl;
 	cout << "Enter the option number to select." << endl;
 	cout << "1 - Craft" << endl;

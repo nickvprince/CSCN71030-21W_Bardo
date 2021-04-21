@@ -26,9 +26,9 @@ inventory* get_Inventory(string name); // retrieves inventory from a file and re
 entity* get_User(string name); // retrieves user information from a file and returns it as an object
 enemy* get_Enemy(string name, int level); // retrieves an enemy from a file and returns it as an object
 item get_Item(string name); // retrieves an item such as leather or copper
-list* getListEnemy(); 
+list* getListEnemy(); // gets a list of enemies from a file kept in the enemies directory
 void cleanObj(entity* obj); // removes an enemy or user from heap
-void cleanObj(list* list);
+void cleanObj(list* list); // removes an object of type list from heap
 bool FileExists(string name); // checks if file exists
 int lengthOfFile(char* name); // length of file in bytes
 bool createFile(char* name); // creates an empty file
@@ -37,10 +37,10 @@ bool removeDirectory(char* name); // removes a directory
 void ErrorLog(string message, string Severity); // outputs error message to file
 ErrorType isFileGood(char* name); // Checks if a file is good using file exists and checksum
 
-bool Save(entity* Player);
-list* getListWeapons();
-list* getListDefences();
-list* getListItems();
-list* getListPotions();
-list* getListSpells();
-void printList(list* list, int type);
+bool Save(entity* Player); // save game
+list* getListWeapons(); // gets a list of weapons from a file found in the weapons directory
+list* getListDefences();// gets a list of armour from a file found in the defence directory
+list* getListItems();// gets a list of items from a file found in the items directory
+list* getListPotions();// gets a list of potions from a file found in the potions directory
+list* getListSpells();// gets a list of spells from a file found in the spells directory
+void printList(list* list, int type); // prints a list either just the names (0) or in numberd format | 1., 2. (1)

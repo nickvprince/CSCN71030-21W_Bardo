@@ -32,6 +32,7 @@ using namespace std;
 *   get_Weapon version 1.1 finished without comments
 */
 
+// directories
 #define SPELLSDIR "./GameFiles/Spells/"
 #define POTIONSDIR "./GameFiles/Potions/"
 #define WEAPONDIR "./GameFiles/Weapons/"
@@ -40,9 +41,15 @@ using namespace std;
 #define INVENTORYDIR "./GameFiles/Inventory/"
 #define ENEMYDIR "./GameFiles/Enemy/"
 #define USERDIR "./GameFiles/UserFiles/"
-#define WORD_SIZE 15
-#define Empty 0x00000000CDCDCDCD
 string ERRORLOG = "./GameFiles/ErrorLog.txt";
+
+
+// longest line in a given file
+#define WORD_SIZE 15
+
+// equivelent to null
+#define Empty 0x00000000CDCDCDCD
+
 
 
 
@@ -982,67 +989,50 @@ ErrorType isFileGood(char* name) { // does checking if file is good							NEEDS 
 	return GOOD;
 #define INVENTORYDIR "./GameFiles/Inventory/"
 #define USERDIR "./GameFiles/UserFiles/"
-	int flag = 0;
+	int flag = 1;
 	string exemptDirectories[] = { USERDIR,INVENTORYDIR,INVENTORYDIR,INVENTORYDIR,INVENTORYDIR,INVENTORYDIR,INVENTORYDIR };
-	string exemptFiles[] = { "User.BSURF","DarkElf.BINVF","User.BINVF","BabyDragon.BINVF","Drough.BINVF","Elliott.BINVF","Orc.BINVF" };
-	
+	string exemptFiles[] = { "USER.BSURF","DarkElf.BINVF","USER.BINVF","BabyDragon.BINVF","Drough.BINVF","Elliott.BINVF","Orc.BINVF" };
+
 	for (int exempt = 0; exempt < sizeof(exemptFiles) / sizeof(string); exempt++) { // temporary exempt files from checksum ( files that change frequently ) until i get a better method of doing checksum
 		if (exemptFiles[exempt] == name) {
 		
-			flag = 1;
+		
 			string path = exemptDirectories[exempt] + name;
+		
 			if (FileExists(path) == 0) {
+		
 				return EXISTS_FAIL; // directory not exist fail
 				ErrorLog("Exist Fail Triggered in isFileGood", "Unknown");
-			} 			else {
-		
+				flag++;
+			} 			
+			else {
+			
 				return GOOD;
 			}
 		}
 	}
-	if (flag != 1) {
-		
+
+	/*if (flag == 1) {
+	
 		for (int i = 0; i < sizeof(checkSumNames) / sizeof(string); i++) {
-			
+		
 			if (name == checkSumNames[i]) {
+				string dec = Directories[i] + checkSumNames[i];
+				cout << dec << endl;
+				DECRYPT(dec);
+				getc(stdin);
 				if (getCheckSum(Directories[i] + checkSumNames[i]) == checkSums[i]) {
-					
+					ENCRYPT(dec);
 					return GOOD;
-				} 				else {
+				} 				
+				else {
+					ENCRYPT(dec);
 					return CHK_FAIL;
 					ErrorLog("Checksum Triggered in isFileGood " + checkSumNames[i] + " ", "Low");
 				}
 			}
 		}
-	}
-
-
-
-	int found = 0; // used to see if the file was found in the hardcoded list
-
-	for (int counter = 0; counter < sizeof(checkSumNames); counter++) {
-		if (checkSumNames[counter] == name) { // if name provided is found in the hardcoded file list
-			found++;
-			string path = Directories[counter] + name;
-			if (FileExists(path) == 0) {
-				return EXISTS_FAIL; // directory not exist fail
-				ErrorLog("Exists Fail triggered in isFileGood", "Unknown");
-			} 			else if (Checksum(path, checkSums[counter]) == 0) { // if checksum is wrong from that identified at the top of the file
-				return CHK_FAIL;
-				ErrorLog("Checksum Fail triggerd in isFileGood", "Unknown");
-			}
-
-		}
-
-	}
-	if (found == 1) { // found the file and didnt fail
-		return GOOD;
-	} 	else if (found == 0) { // didnt find the file
-		return EXISTS_FAIL;
-	} 	else { // something went wrong return common error
-		return COMMON_FAIL;
-	}
-	return COMMON_FAIL; // just in case code breaks
+	}*/
 }
 
 bool removeDirectory(char* name) { // remove directory

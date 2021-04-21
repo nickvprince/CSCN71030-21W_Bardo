@@ -274,7 +274,7 @@ entity* manualSetStats(entity* Player) {
 			case '3':
 
 				cout << "Enter the number of attribute points to use: ";
-				cin >> defpoints;
+				cin >> defence;
 				defpoints = atoi(defence);
 
 				if ((valueCheck(defence) == false) || (defpoints > beginnerAttPoints))
